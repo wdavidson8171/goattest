@@ -13,7 +13,11 @@ struct ContentView: View {
     @Query private var items: [Item]
 
     var body: some View {
-        Image("goat").resizable().aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fit/*@END_MENU_TOKEN@*/)
+        VStack{
+            Text("welcome to FUCKING goat bingo")
+            Image("goat").resizable().aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fit/*@END_MENU_TOKEN@*/)
+        }
+        
         NavigationSplitView {
             List {
                 ForEach(items) { item in
