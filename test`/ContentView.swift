@@ -14,7 +14,11 @@ struct ContentView: View {
 
     var body: some View {
         VStack{
+<<<<<<< HEAD
             Text("i have beef with github")
+=======
+            Text("i have MASSIVE beef with github")
+>>>>>>> d27d755e837997c376c90e31cfc14b236d2368f2
             Image("goat").resizable().aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fit/*@END_MENU_TOKEN@*/)
         }
         
