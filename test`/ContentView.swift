@@ -16,7 +16,7 @@ struct ContentView: View {
         VStack{
             Text("i have MASSIVE beef with github")
             Text("can you see me writng?")
-            Text("I am coming for your family, github! XOXO - Waverly")
+            Text("I am coming for your family, github! XOXO ")
 
             Text("github is evil yes it is send help!!")
 
