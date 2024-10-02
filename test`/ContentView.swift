@@ -14,6 +14,8 @@ struct ContentView: View {
 
     var body: some View {
         VStack{
+            Text("i have MASSIVE beef with github")
+            Text("can you see me writng?")
 
             Text("github is evil yes it is send help!!")
 
