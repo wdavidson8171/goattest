@@ -17,6 +17,7 @@ struct ContentView: View {
             Text("i have MASSIVE beef with github")
             Text("can you see me writng?")
             Text("I am coming for your family, github! ")
+            Text("We are STILL somehow testing this")
 
             Text("github is evil yes it is send help!! Hey yo WHAT'S UP. I don't know????!!!?@?#")
             Text("kjsadfhjdsfhwkhh")
