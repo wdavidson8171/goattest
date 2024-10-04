@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         VStack{
             Text("i have MASSIVE beef with github!@#$%^&*()")
-            Image("goat").resizable().aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fit/*@END_MENU_TOKEN@*/)
+            Image("goat").resizable().aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fit/*@END_MENU_TOKEN@*/).cornerRadius(300)
         }
         
         NavigationSplitView {
