@@ -19,6 +19,7 @@ struct ContentView: View {
             Text("I am coming for your family, github! ")
 
             Text("github is evil yes it is send help!! Hey yo WHAT'S UP. I don't know????!!!?@?#")
+            Text("kjsadfhjdsfhwkhh")
 
             Image("goat").resizable().aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fit/*@END_MENU_TOKEN@*/)
         }
