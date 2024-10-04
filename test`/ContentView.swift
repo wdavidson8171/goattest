@@ -15,14 +15,6 @@ struct ContentView: View {
     var body: some View {
         VStack{
             Text("i have MASSIVE beef with github!@#$%^&*()")
-            Text("can you see me writng?")
-            Text("I am coming for your family, github! ")
-            Text("We are STILL somehow testing this")
-
-            Text("github is evil yes it is send help!! Hey yo WHAT'S UP. I don't know????!!!?@?#")
-            Text("kjsadfhjdsfhwkhh!!!!!!!!!!!!!!!!")
-            Text("LOOK MORE EDITS")
-
             Image("goat").resizable().aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fit/*@END_MENU_TOKEN@*/)
         }
         
