@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Survey: View {
     var body: some View {
+    
             NavigationStack{
                 VStack{
                     Text("SURVEEEYYY")

@@ -10,11 +10,15 @@ import SwiftUI
 struct Goat: View {
     var body: some View {
         NavigationStack{
-            VStack{
-                Text("GOAT")
-                NavigationLink("Bingo", destination: Bingo())
-                NavigationLink("Profile", destination: Homepage())
-                NavigationLink("Goat", destination: Goat())
+            TabView{
+                NavigationLink("Bingo", destination: Bingo()).tabItem{
+                    Text("Bingo")
+                }
+                NavigationLink("Profile", destination: Homepage()).tabItem{ Text("Profile")
+                }
+                NavigationLink("Goat", destination: Goat()).tabItem{
+                    Text("Goat")
+                }
             }
         }
     }
