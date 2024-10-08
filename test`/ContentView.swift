@@ -27,7 +27,7 @@ struct ContentView: View {
             VStack{
                 Text("i have MASSIVE beef with github!@#$%^&*()")
                 Image("goat").resizable().aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fit/*@END_MENU_TOKEN@*/).cornerRadius(300)
-                NavigationLink("Clicky clicky...", destination: Tesstt())
+                NavigationLink("Clicky clicky...", destination: Homepage())
             }
         }
         
