@@ -15,18 +15,22 @@ struct ContentView: View {
     
     
     var body: some View {
-        VStack{
-            Text("i have MASSIVE beef with github!@#$%^&*()")
-            Image("goat").resizable().aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fit/*@END_MENU_TOKEN@*/).cornerRadius(300)
-            
-            TextField("Name", text: $textInput)
-                .textFieldStyle(.roundedBorder)
-                .padding()
+        NavigationStack{
+            VStack{
+                Text("i have MASSIVE beef with github!@#$%^&*()")
+                Image("goat").resizable().aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fit/*@END_MENU_TOKEN@*/).cornerRadius(300)
+                
+                TextField("Name", text: $textInput)
+                    .textFieldStyle(.roundedBorder)
+                    .padding()
+            }
+            VStack{
+                Text("i have MASSIVE beef with github!@#$%^&*()")
+                Image("goat").resizable().aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fit/*@END_MENU_TOKEN@*/).cornerRadius(300)
+                NavigationLink("Clicky clicky...", destination: Tesstt())
+            }
         }
-        VStack{
-            Text("i have MASSIVE beef with github!@#$%^&*()")
-            Image("goat").resizable().aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fit/*@END_MENU_TOKEN@*/).cornerRadius(300)
-        }
+        
         
         
     }
