@@ -15,11 +15,13 @@ struct Homepage: View {
                     .tabItem{
                     Image("bingoTab")
                 }
-                NavigationLink("Profile", destination: Homepage()).tabItem{ Text("Profile")
+                NavigationLink("Profile", destination: Homepage())
+                    .tabItem{
+                    Image("profileTab")
                     
                 }
                 NavigationLink("Goat", destination: Goat()).tabItem{
-                    Text("Goat")
+                    Image("goatTab")
                 
                         
                 }
