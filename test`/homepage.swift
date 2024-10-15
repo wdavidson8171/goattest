@@ -12,6 +12,7 @@ struct Homepage: View {
         NavigationStack{
             TabView{
                 NavigationLink("Bingo", destination: Bingo())
+                
                     .tabItem{
                     Image("bingoTab")
                 }
