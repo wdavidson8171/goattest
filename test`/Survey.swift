@@ -23,13 +23,13 @@ struct Survey: View {
                     }) {
                         if(self.didTap == true){
                             Image(systemName: "circle.fill")
-                            
                         }
                         else{
                             Image(systemName: "circle")
                         }
                         Text("Family Activites")
                           }
+                    
                 }
             }
     }

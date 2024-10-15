@@ -11,13 +11,16 @@ struct Bingo: View {
     var body: some View {
         NavigationStack{
             TabView{
-                NavigationLink("Bingo", destination: Bingo()).tabItem{
-                    Text("Bingo")
+                NavigationLink("Bingo", destination: Bingo())
+                    .tabItem{
+                    Image("bingoTab")
                 }
-                NavigationLink("Profile", destination: Homepage()).tabItem{ Text("Profile")
+                NavigationLink("Profile", destination: Homepage())
+                    .tabItem{
+                    Image("profileTab")
                 }
                 NavigationLink("Goat", destination: Goat()).tabItem{
-                    Text("Goat")
+                    Image("goatTab")
                 }
             }
         }

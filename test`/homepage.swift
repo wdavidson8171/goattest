@@ -18,12 +18,9 @@ struct Homepage: View {
                 NavigationLink("Profile", destination: Homepage())
                     .tabItem{
                     Image("profileTab")
-                    
                 }
                 NavigationLink("Goat", destination: Goat()).tabItem{
                     Image("goatTab")
-                
-                        
                 }
             }
         }
