@@ -8,33 +8,96 @@
 import SwiftUI
 
 struct Survey: View {
-    @State private var didTap:Bool = false
-    @State public var family:Bool = false
-    var body: some View {
     
-            NavigationStack{
-                VStack{
-                    Text("SURVEEEYYY")
-                    NavigationLink("Done w/ survey", destination: Bingo())
-                    
-                    Button(action: {
-                        self.didTap.toggle()
-                        self.family.toggle()
-                    }) {
-                        if(self.didTap == true){
-                            Image(systemName: "circle.fill")
-                        }
-                        else{
-                            Image(systemName: "circle")
-                        }
-                        Text("Family Activites")
-                          }
-                    
-                }
-            }
+    @State var selectedItems = [String]()
+    @State var allItems:[String] = [
+        "Family activities",
+        "Group Activities",
+        "Household Chores",
+        "Indoor Activities",
+        "Creative Activities",
+        "Outdoor Activities",
+        "Exercise",
+        "Going out (cheap)",
+        "Going Out (fancy)",
+        "Cooking/Baking",
+        "Self Care",
+        "Spring",
+        "Summer",
+        "Fall",
+        "Winter"    ]
+    
+    var body: some View{
+        iOSview(selectedItems: selectedItems, allItems: allItems)
     }
 }
 
 #Preview {
-    Survey()
+Survey()
 }
+
+struct MultiSelectPickerView: View {
+@State var allItems: [String]
+
+@Binding var selectedItems: [String]
+
+var body: some View{
+    Form{
+        List{
+            ForEach(allItems, id: \.self){ item in
+                Button(action: {
+                    withAnimation {
+                        if self.selectedItems.contains(item){
+                            self.selectedItems.removeAll(where: {$0 == item})
+                        } else {
+                            self.selectedItems.append(item)
+                        }
+                    }
+                }){
+                    HStack{
+                        Image(systemName: "checkmark")
+                            . opacity(self.selectedItems.contains(item) ? 1.0 : 0.0)
+                        Text(item)
+                    }
+                }
+                .foregroundColor(.primary)
+            }
+        }
+    }
+}
+}
+struct iOSview:View{
+@State var selectedItems:[String]
+@State var allItems:[String]
+
+var body: some View{
+
+    NavigationView{
+        Form{
+            Section("What activities are you interested in?", content: {
+                NavigationLink(destination: {
+                    MultiSelectPickerView(allItems: allItems, selectedItems: $selectedItems)
+                        .navigationTitle("Choose your activities")
+                }, label: {
+                    HStack{
+                        Text("Select Activities:")
+                            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                        
+                        Spacer()
+                        Image(systemName: "\($selectedItems.count).cirlce")
+                            .foregroundColor(.red)
+                            .font(.title2)
+                    }
+                
+                })
+            })
+            Section("My selected activities:", content: {
+                Text(selectedItems.joined(separator: "\n"))
+                    .foregroundColor(.green)
+            }
+        )}
+    }
+    .navigationTitle("my items")
+}
+}
+
