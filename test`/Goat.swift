@@ -9,13 +9,13 @@ import SwiftUI
 
 struct Goat: View {
     var body: some View {
-        //NavigationStack{
+        NavigationStack{
             TabView{
                 NavigationLink("Bingo", destination: Bingo())
                     .tabItem{
                     Image("bingoTab")
                 }
-                NavigationLink("Profile", destination: Homepage())
+                NavigationLink("Homepage", destination: Homepage())
                     .tabItem{
                     Image("profileTab")
                 }
@@ -23,7 +23,7 @@ struct Goat: View {
                     Image("goatTab")
                 }
             }
-        //}
+        }
     }
 }
 
