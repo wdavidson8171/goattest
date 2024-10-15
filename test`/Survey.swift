@@ -81,7 +81,7 @@ var body: some View{
                 }, label: {
                     HStack{
                         Text("Select Activities:")
-                            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                            .foregroundColor(.darkGreen)
                         
                         Spacer()
                         Image(systemName: "\($selectedItems.count).cirlce")
@@ -93,7 +93,7 @@ var body: some View{
             })
             Section("My selected activities:", content: {
                 Text(selectedItems.joined(separator: "\n"))
-                    .foregroundColor(.green)
+                    .foregroundColor(.darkBrown)
             }
         )}
     }
