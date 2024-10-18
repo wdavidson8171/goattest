@@ -9,22 +9,32 @@ import SwiftUI
 
 struct Homepage: View {
     var body: some View {
-        NavigationStack{
+        
+        
+        VStack{
+            Button(action: {
+                print("YEST")
+            }, label: {
+                Image("bingoTab")
+                    .resizable().aspectRatio(contentMode: .fit).frame(height: 75)
+            })
+        }
+        /*NavigationStack{
             TabView{
-                NavigationLink("Bingo", destination: Bingo())
                 
+                NavigationLink("Bingo", destination: Bingo())
                     .tabItem{
                     Image("bingoTab")
                 }
                 NavigationLink("Homepage", destination: Homepage())
                     .tabItem{
-                    Image("profileTab")
+                        Image("profileTab")
                 }
                 NavigationLink("Goat", destination: Goat()).tabItem{
                     Image("goatTab")
                 }
             }
-        }
+        }*/
     }
 }
 
