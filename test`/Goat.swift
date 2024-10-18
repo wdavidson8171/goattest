@@ -10,6 +10,12 @@ import SwiftUI
 struct Goat: View {
     var body: some View {
         NavigationStack{
+            HStack{
+                NavigationLink("Inventory", destination: Inventory())
+                NavigationLink("Dress Up", destination: DressUp())
+            }
+        }
+        NavigationStack{
             TabView{
                 NavigationLink("Bingo", destination: Bingo())
                     .tabItem{
