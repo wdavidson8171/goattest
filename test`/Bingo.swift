@@ -113,6 +113,7 @@ struct Bingo: View {
                 }
             }
         }
+        
     }
 }
 
