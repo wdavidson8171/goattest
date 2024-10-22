@@ -98,21 +98,7 @@ struct Bingo: View {
                 }.padding()
             }
         }.padding()
-        NavigationStack{
-            TabView{
-                NavigationLink("Bingo", destination: Bingo())
-                    .tabItem{
-                    Image("bingoTab")
-                }
-                NavigationLink("Homepage", destination: Homepage())
-                    .tabItem{
-                    Image("profileTab")
-                }
-                NavigationLink("Goat", destination: Goat()).tabItem{
-                    Image("goatTab")
-                }
-            }
-        }
+        
     }
 }
 

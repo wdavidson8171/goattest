@@ -15,23 +15,23 @@ struct ContentView: View {
     
     
     var body: some View {
-        NavigationStack{
-            VStack{
-                Text("i have MASSIVE beef with github!@#$%^&*()")
-                Image("goat").resizable().aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fit/*@END_MENU_TOKEN@*/).cornerRadius(300)
-                
-                TextField("Name", text: $textInput)
-                    .textFieldStyle(.roundedBorder)
-                    .padding()
+        
+        TabView{
+            Bingo().tabItem{
+                Label("Bingo", systemImage: "square.grid.3x3")
             }
-            VStack{
-                Text("i have MASSIVE beef with github!@#$%^&*()")
-                Image("goat").resizable().aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fit/*@END_MENU_TOKEN@*/).cornerRadius(300)
-                NavigationLink("Clicky clicky...", destination: Homepage())
+            Homepage().tabItem{
+                Label("Profile", systemImage: "person.circle")
+            }
+            Goat().tabItem{
+                Label("Goat", systemImage:"lasso.badge.sparkles")
             }
         }
         
-        
-        
+    
     }
+        
+        
+        
 }
+
