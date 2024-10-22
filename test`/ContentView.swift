@@ -7,17 +7,8 @@
 
 import SwiftUI
 import SwiftData
-import UIKit
 
-class ViewController: UIViewController{
-    override func viewDidLoad(){
-        super.viewDidLoad()
-    }
-    
-}
-
-
-/*struct ContentView: View {
+struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
     @State private var textInput = ""
@@ -43,4 +34,4 @@ class ViewController: UIViewController{
         
         
     }
-}*/
+}
