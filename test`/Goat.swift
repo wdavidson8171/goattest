@@ -7,7 +7,12 @@
 
 import SwiftUI
 
+
 struct Goat: View {
+    
+    
+    //let clock = Timer.publish(every: 1, on: .main, in: common).autoconnect()
+    
     var body: some View {
         /*NavigationStack{
             HStack{
@@ -15,7 +20,15 @@ struct Goat: View {
                 NavigationLink("Dress Up", destination: DressUp())
             }
         }*/
-        Text("GOAT")
+        VStack{
+            Image(.hBzero)
+            Image(.babyGoat)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(50)
+            Text("GOAT")
+        }
+        
     }
 }
 
