@@ -22,6 +22,7 @@ struct Goat: View {
         }*/
         VStack{
             Image(.hBzero)
+            
             Image(.babyGoat)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
