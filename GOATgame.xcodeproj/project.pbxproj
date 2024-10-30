@@ -27,7 +27,7 @@
 		F35347C22CB5A76500B04EF8 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		F392187A2CC2D0C3006E02CB /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		F392187E2CC2D0F1006E02CB /* DressUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DressUp.swift; sourceTree = "<group>"; };
-		F3ADEA282CA33A1400349343 /* test`.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "test`.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3ADEA282CA33A1400349343 /* GOATgame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GOATgame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3ADEA2B2CA33A1400349343 /* test_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test_App.swift; sourceTree = "<group>"; };
 		F3ADEA2D2CA33A1400349343 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F3ADEA2F2CA33A1400349343 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 		F3ADEA292CA33A1400349343 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F3ADEA282CA33A1400349343 /* test`.app */,
+				F3ADEA282CA33A1400349343 /* GOATgame.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,9 +93,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F3ADEA272CA33A1400349343 /* test` */ = {
+		F3ADEA272CA33A1400349343 /* GOATgame */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F3ADEA392CA33A1500349343 /* Build configuration list for PBXNativeTarget "test`" */;
+			buildConfigurationList = F3ADEA392CA33A1500349343 /* Build configuration list for PBXNativeTarget "GOATgame" */;
 			buildPhases = (
 				F3ADEA242CA33A1400349343 /* Sources */,
 				F3ADEA252CA33A1400349343 /* Frameworks */,
@@ -105,9 +105,9 @@
 			);
 			dependencies = (
 			);
-			name = "test`";
+			name = GOATgame;
 			productName = "test`";
-			productReference = F3ADEA282CA33A1400349343 /* test`.app */;
+			productReference = F3ADEA282CA33A1400349343 /* GOATgame.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -125,7 +125,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F3ADEA232CA33A1400349343 /* Build configuration list for PBXProject "test`" */;
+			buildConfigurationList = F3ADEA232CA33A1400349343 /* Build configuration list for PBXProject "GOATgame" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -138,7 +138,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F3ADEA272CA33A1400349343 /* test` */,
+				F3ADEA272CA33A1400349343 /* GOATgame */,
 			);
 		};
 /* End PBXProject section */
@@ -364,7 +364,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F3ADEA232CA33A1400349343 /* Build configuration list for PBXProject "test`" */ = {
+		F3ADEA232CA33A1400349343 /* Build configuration list for PBXProject "GOATgame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F3ADEA372CA33A1500349343 /* Debug */,
@@ -373,7 +373,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F3ADEA392CA33A1500349343 /* Build configuration list for PBXNativeTarget "test`" */ = {
+		F3ADEA392CA33A1500349343 /* Build configuration list for PBXNativeTarget "GOATgame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F3ADEA3A2CA33A1500349343 /* Debug */,
