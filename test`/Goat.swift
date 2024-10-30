@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct Goat: View {
-    @State var countDownTimer = 9
+    @State var countDownTimer = 8
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var img: Image?
     
@@ -21,16 +21,14 @@ struct Goat: View {
             }
         }*/
         VStack{
-            Text(String(countDownTimer))
+            Text("Time until your goat gets sad and skinny: " + String(countDownTimer))
                 .onReceive(timer) { _ in
                     if countDownTimer > 0{
                         countDownTimer -= 1
-                        Image(getBar(Int: Int(countDownTimer)))
                         
                     }
                 }
-            
-            Image(.hBzero)
+            Image(getBar(Int: Int(countDownTimer)))
             
             Image(.babyGoat)
                 .resizable()
@@ -53,28 +51,28 @@ struct Goat: View {
         return "\(hour):\(minute):\(second)"
     }
     func getBar(Int num: Int)-> ImageResource{
-        if num == 9{
+        if num == 8{
             return .HB_8
         }
-        if num == 8{
+        if num == 7{
             return .HB_7
         }
-        if num == 7{
+        if num == 6{
             return .HB_6
         }
-        if num == 6{
+        if num == 5{
             return .HB_5
         }
-        if num == 5{
+        if num == 4{
             return .HB_4
         }
-        if num == 4{
+        if num == 3{
             return .HB_3
         }
-        if num == 3{
+        if num == 2{
             return .HB_2
         }
-        if num == 2{
+        if num == 1{
             return .HB_1
         }
         else{
