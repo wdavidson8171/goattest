@@ -11,6 +11,7 @@ struct Homepage: View {
     @State private var text = ""
     @AppStorage ("STRING_KEY") var savedText = ""
     @State var selectedDate: Date = Date()
+    @AppStorage ("DATE_KEY") var savedDate: Date = Date()
     let startingDate: Date = Calendar.current.date(from: DateComponents(year: 1900)) ?? Date()
     let endingDate: Date = Date()
     
@@ -34,14 +35,19 @@ struct Homepage: View {
                     print("Loaded: \(savedText)")
                 }
             
-            Spacer()
             
-            DatePicker("Enter Birthday:", selection: $selectedDate, in: startingDate...endingDate, displayedComponents: [.date])
+            DatePicker("Birthday:", selection: $selectedDate, in: startingDate...endingDate, displayedComponents: [.date])
                 .datePickerStyle(CompactDatePickerStyle())
-            
+                .padding()
+                .onChange(of: selectedDate) { selectedDate in
+                    self.savedDate = selectedDate
+                }
+                .onAppear {
+                    selectedDate = savedDate
+                }
+            Spacer()
             }
-            .padding()
-            
+        .padding()
             
             }
         }
