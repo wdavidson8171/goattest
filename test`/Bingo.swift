@@ -1,7 +1,7 @@
 //
 //  Bingo.swift
 //  test`
-//  test by mandell -- 
+//  test by mandell --
 //  Created by Waverly Davidson on 10/8/24.
 //
 
@@ -11,7 +11,7 @@ import UIKit
 //class Buttons{}
 
 var testSquares = ["a","b","c","d","e","f"]
-//let arrays = [UIImage(named: "clean_bathroom"),UIImage(named: "binoTab"),UIImage(named: "goatTab") ]
+
 let choreArray = [ "clean_bathroom", "laundry","trash", "sweep", "dishes", "clean_bedroom","bed"]
 let familyArray = ["boardgame", "walk","meal","picnic"]
 let indoorArray = ["movie","read","puzzle","videoGame"]
@@ -20,7 +20,11 @@ let exerciseArray = ["hike","run","swim","bike","gym","dance","yoga","justDance"
 let cheapArray = ["thriftig","coffee","usedBooks","boba","foodCart","arcade","iceCream"]
 let spennyArray = ["snackMovie","mall","bookstore","hibachi","tea","brunch","seeSports"]
 let cookingArray = ["familyRecipe", "cookies","cake","newRecipe","lunch","breakfast","dinner","barbecue"]
-let selfCareArray = ["nap","water","bath","mask","haircut","mani","brush","bed","sleepIn","smoothie","phoneBreak","music","present","treat"]
+let selfCareArray = ["nap","water","bath","mask","haircut","maniPedi","brushHair","bedEarly","sleepIn","makeSmoothie","phoneBreak","listenToMusic","present","sweettTreat"]
+let fallArray = ["pumpkinPatch","pumpkinSpice","hauntedHouse","cornMaze","carvePumpkin"]
+let winterArray = ["goToMountain","hotChocolate","pajamaParty","snowman"]
+let springArray = ["sitInMeadow","springCleaning","dyeEgg","bouquet"]
+let summerArray = ["waterBalloonFight","swimmingHole","pool","berryPicking","amusementPark","beach"]
 
 struct Bingo: View {
     
