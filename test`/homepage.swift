@@ -16,6 +16,8 @@ struct Homepage: View {
     let endingDate: Date = Date()
     @State private var goatName = ""
     @AppStorage ("GOAT_NAME_KEY") var savedGoatName = ""
+    @State private var joinDate = Date()
+    @AppStorage ("JOIN_DATE_KEY") var savedJoinDate = Date()
     
     var body: some View {
         VStack(spacing: 5) {
@@ -45,7 +47,6 @@ struct Homepage: View {
             DatePicker("Birthday:", selection: $selectedDate, in: startingDate...endingDate, displayedComponents: [.date])
                 .datePickerStyle(CompactDatePickerStyle())
                 .padding()
-                .frame(alignment: .trailing)
                 .onChange(of: selectedDate) { selectedDate in
                     self.savedDate = selectedDate
                 }
@@ -75,6 +76,15 @@ struct Homepage: View {
             
             
             Spacer()
+            
+            Text("Member Since \(joinDate, format: Date.FormatStyle(date: .numeric, time: .omitted))")
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .onChange(of: joinDate) { joinDate in self.savedJoinDate = joinDate
+                }
+                .onAppear {
+                    joinDate = savedJoinDate
+                }
         }
             
         .padding()
