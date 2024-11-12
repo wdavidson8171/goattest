@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B0BCB492CE3DA450084EFB9 /* popUpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0BCB482CE3DA450084EFB9 /* popUpWindow.swift */; };
 		F35347BD2CB5A70A00B04EF8 /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35347BC2CB5A70A00B04EF8 /* Homepage.swift */; };
 		F35347BF2CB5A72B00B04EF8 /* Bingo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35347BE2CB5A72B00B04EF8 /* Bingo.swift */; };
 		F35347C12CB5A74100B04EF8 /* Goat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35347C02CB5A74100B04EF8 /* Goat.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B0BCB482CE3DA450084EFB9 /* popUpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpWindow.swift; sourceTree = "<group>"; };
 		F35347BC2CB5A70A00B04EF8 /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
 		F35347BE2CB5A72B00B04EF8 /* Bingo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bingo.swift; sourceTree = "<group>"; };
 		F35347C02CB5A74100B04EF8 /* Goat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goat.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				F3ADEA312CA33A1500349343 /* Assets.xcassets */,
 				F3ADEA332CA33A1500349343 /* test_.entitlements */,
 				F3ADEA342CA33A1500349343 /* Preview Content */,
+				7B0BCB482CE3DA450084EFB9 /* popUpWindow.swift */,
 			);
 			path = "test`";
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				F3ADEA2E2CA33A1400349343 /* ContentView.swift in Sources */,
 				F3ADEA302CA33A1400349343 /* Item.swift in Sources */,
 				F35347C32CB5A76500B04EF8 /* Survey.swift in Sources */,
+				7B0BCB492CE3DA450084EFB9 /* popUpWindow.swift in Sources */,
 				F35347BF2CB5A72B00B04EF8 /* Bingo.swift in Sources */,
 				F3ADEA2C2CA33A1400349343 /* test_App.swift in Sources */,
 				F35347C12CB5A74100B04EF8 /* Goat.swift in Sources */,
