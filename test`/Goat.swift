@@ -20,6 +20,13 @@ struct Goat: View {
     @AppStorage("firstOpenedMin") var firstOpenedMin: Int = -1
     @AppStorage("firstOpenedSec") var firstOpenedSec: Int = -1
     
+    let currentYear: Int = Calendar.current.component(.year, from: Date())
+    let currentMonth: Int = Calendar.current.component(.month, from: Date())
+    let currentDay: Int = Calendar.current.component(.day, from: Date())
+    let currentHour: Int = Calendar.current.component(.hour, from: Date())
+    let currentMin: Int = Calendar.current.component(.minute, from: Date())
+    let currentSec: Int = Calendar.current.component(.second, from: Date())
+    
     
     
     var body: some View {
@@ -49,6 +56,13 @@ struct Goat: View {
             Text("firstOpened hour: " + String(isFirstOpenedHourSet()))
             Text("firstOpened min: " + String(isFirstOpenedMinSet()))
             Text("firstOpened sec: " + String(isFirstOpenedSecSet()))
+            
+            Text("current year: " + String(currentYear))
+            Text("current month: " + String(currentMonth))
+            Text("current day: " + String(currentDay))
+            Text("current hour: " + String(currentHour))
+            Text("current min: " + String(currentMin))
+            Text("current sec: " + String(currentSec))
         }
         
     }
