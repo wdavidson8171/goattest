@@ -16,8 +16,8 @@ struct Homepage: View {
     let endingDate: Date = Date()
     @State private var goatName = ""
     @AppStorage ("GOAT_NAME_KEY") var savedGoatName = ""
-    @State private var joinDate = Date()
-    @AppStorage ("JOIN_DATE_KEY") var savedJoinDate = Date()
+    @State var joinDate: Date = Date()
+    @AppStorage ("JOIN_DATE_KEY") var savedJoinDate: Date = Date()
     
     var body: some View {
         VStack(spacing: 5) {
@@ -83,8 +83,9 @@ struct Homepage: View {
                 .onChange(of: joinDate) { joinDate in self.savedJoinDate = joinDate
                 }
                 .onAppear {
-                    joinDate = savedJoinDate
+                    self.$joinDate.wrappedValue = savedJoinDate
                 }
+            // check next class that it still says the 12th
         }
             
         .padding()
