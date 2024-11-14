@@ -27,11 +27,30 @@ struct Goat: View {
     let currentMin: Int = Calendar.current.component(.minute, from: Date())
     let currentSec: Int = Calendar.current.component(.second, from: Date())
     
+    //how many seconds it takes for the bar to go down by one thing
+    @State var x: CGFloat
+    
+    @State var nowe: Date
+    //let sjdn: Int = Calendar.current.component(.second, from: now.addingTimeInterval(x))
+    //Calender.current.component.distance(to: now.addingTimeInterval(x))
+    @State var sjdn: Int
+    
+    init(){
+        //how many seconds it takes for the bar to go down by one thing
+        _x = .init(initialValue: 20.0)
+        
+        _nowe = .init(initialValue: Date())
+        _sjdn = State(initialValue: Int(Calendar.current.component(.second, from: nowe.addingTimeInterval(x))))
+    }
+    
+    
+    
     
     
     var body: some View {
         
         VStack{
+            //the bar at the top of the screen
             Text("Time until your goat gets sad and skinny: " + String(countDownTimer))
                 .onReceive(timer) { _ in
                     //if countDownTimer > 0{
@@ -39,6 +58,7 @@ struct Goat: View {
                         
                    // }
                 }
+            
             Image(getBar(Int: Int(countDownTimer)))
             
             Image(.babyGoat)
@@ -106,6 +126,14 @@ struct Goat: View {
         return firstOpenedSec
     }
     
+    func getSecondsPassed()-> Int{
+        var secondsPassed: Int = 0
+        if currentYear > firstOpenedYear{
+            let yearsPassed: Int = currentYear - firstOpenedYear
+            secondsPassed += yearsPassed * 31536000
+        }
+    }
+    
     func getCurrentTime()-> String{
         let date = Date()
         let calendar = Calendar.current
@@ -118,6 +146,7 @@ struct Goat: View {
         return "\(hour):\(minute):\(second)"
     }
     
+    //returns how full the bar should be
     func getBar(Int num: Int)-> ImageResource{
         if num == 8{
             return .HB_8
