@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B0BCB492CE3DA450084EFB9 /* popUpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0BCB482CE3DA450084EFB9 /* popUpWindow.swift */; };
+		7BD2D0452CE688DD0040C25D /* popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD2D0442CE688DD0040C25D /* popup.swift */; };
 		F35347BD2CB5A70A00B04EF8 /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35347BC2CB5A70A00B04EF8 /* Homepage.swift */; };
 		F35347BF2CB5A72B00B04EF8 /* Bingo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35347BE2CB5A72B00B04EF8 /* Bingo.swift */; };
 		F35347C12CB5A74100B04EF8 /* Goat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35347C02CB5A74100B04EF8 /* Goat.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		7B0BCB482CE3DA450084EFB9 /* popUpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpWindow.swift; sourceTree = "<group>"; };
+		7BD2D0442CE688DD0040C25D /* popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popup.swift; sourceTree = "<group>"; };
 		F35347BC2CB5A70A00B04EF8 /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
 		F35347BE2CB5A72B00B04EF8 /* Bingo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bingo.swift; sourceTree = "<group>"; };
 		F35347C02CB5A74100B04EF8 /* Goat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goat.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				F3ADEA2F2CA33A1400349343 /* Item.swift */,
 				F35347BC2CB5A70A00B04EF8 /* Homepage.swift */,
 				F35347BE2CB5A72B00B04EF8 /* Bingo.swift */,
+				7BD2D0442CE688DD0040C25D /* popup.swift */,
 				F35347C02CB5A74100B04EF8 /* Goat.swift */,
 				F35347C22CB5A76500B04EF8 /* Survey.swift */,
 				F392187A2CC2D0C3006E02CB /* Inventory.swift */,
@@ -166,6 +169,7 @@
 				F392187B2CC2D0C3006E02CB /* Inventory.swift in Sources */,
 				F3ADEA2E2CA33A1400349343 /* ContentView.swift in Sources */,
 				F3ADEA302CA33A1400349343 /* Item.swift in Sources */,
+				7BD2D0452CE688DD0040C25D /* popup.swift in Sources */,
 				F35347C32CB5A76500B04EF8 /* Survey.swift in Sources */,
 				7B0BCB492CE3DA450084EFB9 /* popUpWindow.swift in Sources */,
 				F35347BF2CB5A72B00B04EF8 /* Bingo.swift in Sources */,
