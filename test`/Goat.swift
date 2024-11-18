@@ -36,14 +36,14 @@ struct Goat: View {
     let day2 = Date().addingTimeInterval(109283)
     
     //why doesnt this work omfg
-    var comps = DateComponents()
+    /*var comps = DateComponents()
     comps.year = firstOpenedYear
     comps.month = firstOpenedMonth
     comps.day = firstOpenedDay
     comps.hour = firstOpenedHour
     comps.minute = firstOpenedMin
     comps.second = firstOpenedSec
-    let date3 = Calendar.current.date(from: comps)!
+    let date3 = Calendar.current.date(from: comps)!*/
     
     
     
