@@ -85,7 +85,6 @@ struct Homepage: View {
                 .onAppear {
                     self.$joinDate.wrappedValue = savedJoinDate
                 }
-            // check next class that it still says the 12th
         }
             
         .padding()
