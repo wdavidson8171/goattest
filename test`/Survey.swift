@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-func survey(){
+
     struct Survey: View {
         
         @State var selectedItems = [String]()
@@ -101,5 +101,3 @@ func survey(){
             .navigationTitle("my items")
         }
     }
-    
-}
