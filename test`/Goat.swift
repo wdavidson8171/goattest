@@ -32,36 +32,10 @@ struct Goat: View {
     let currentMin: Int = Calendar.current.component(.minute, from: Date())
     let currentSec: Int = Calendar.current.component(.second, from: Date())
     
-    let day1 = Date()
-    let day2 = Date().addingTimeInterval(109283)
-    
-    //why doesnt this work omfg
-    /*var comps = DateComponents()
-    comps.year = firstOpenedYear
-    comps.month = firstOpenedMonth
-    comps.day = firstOpenedDay
-    comps.hour = firstOpenedHour
-    comps.minute = firstOpenedMin
-    comps.second = firstOpenedSec
-    let date3 = Calendar.current.date(from: comps)!*/
-    
-    
+    let currentDate = Date()
     
     //how many seconds it takes for the bar to go down by one thing
-    @State var x: CGFloat
-    
-    @State var nowe: Date
-    //let sjdn: Int = Calendar.current.component(.second, from: now.addingTimeInterval(x))
-    //Calender.current.component.distance(to: now.addingTimeInterval(x))
-    @State var sjdn: Int = 1
-    
-    init(){
-        //how many seconds it takes for the bar to go down by one thing
-        _x = .init(initialValue: 20.0)
-        
-        _nowe = .init(initialValue: Date())
-        _sjdn = State(initialValue: Int(Calendar.current.component(.second, from: nowe.addingTimeInterval(x))))
-    }
+    @State var x: Int = 10
     
     
     
@@ -80,13 +54,13 @@ struct Goat: View {
             
             Image(getBar(Int: Int(countDownTimer)))
             
-            Image(.babyGoat)
+            /*Image(.babyGoat)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding(50)
             Text("GOAT")
             Text("" + getCurrentTime())
-            Text("" + String(firstOpenedYear))
+            Text("" + String(firstOpenedYear))*/
             
             
             Text("firstOpened year: " + String(isFirstOpenedYearSet()))
@@ -105,7 +79,7 @@ struct Goat: View {
             
             Text(DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .short))
             
-            Text("" + String(getSecondsPassed(day1, to: day2)))
+            Text("" + String(getSecondsPassed(getFirstOpenedDate(), to: currentDate)))
         }
         
     }
@@ -149,11 +123,62 @@ struct Goat: View {
         return firstOpenedSec
     }
     
-    
+    //returns the seconds passed from the date the app was first opened to the current date
     func getSecondsPassed(_ from: Date, to: Date)-> Int{
         let secondsPassed: DateComponents = Calendar.current.dateComponents([.second], from: from, to: to)
-        
         return secondsPassed.second!
+    }
+    
+    //returns the date the app was first opened
+    func getFirstOpenedDate() -> Date{
+        var comps = DateComponents()
+        comps.year = firstOpenedYear
+        comps.month = firstOpenedMonth
+        comps.day = firstOpenedDay
+        comps.hour = firstOpenedHour
+        comps.minute = firstOpenedMin
+        comps.second = firstOpenedSec
+        let date3 = Calendar.current.date(from: comps)!
+        return date3
+    }
+    
+    //returns the state of the goat
+    func getGoatState()-> ImageResource{
+        let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: currentDate)
+        if secondsPassed > 8 * x{
+            return .deadGoat
+        }
+        else if secondsPassed <= 8 * x && secondsPassed > 4 * x{
+            return .skinnyGoat
+        }
+        else if secondsPassed <= 4 * x && secondsPassed > 0{
+            return .normalGoat
+        }
+        else if secondsPassed <= 0 && secondsPassed > -4 * x{
+            return .plumpGoat
+        }
+        else{
+            return .superGoat
+        }
+    }
+    
+    func getBarState(){
+        let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: currentDate)
+        if secondsPassed > 8 * x{
+            //barState = 0
+        }
+        else if secondsPassed <= 8 * x && secondsPassed > 4 * x{
+            //goatstate 1 (malnourished)
+        }
+        else if secondsPassed <= 4 * x && secondsPassed > 0{
+            //goatstate 2 (normal)
+        }
+        else if secondsPassed <= 0 && secondsPassed > -4 * x{
+            //goatstate 3 (mildly obese)
+        }
+        else if secondsPassed <= -4 * x{
+            //goatstate 4 (morbidly obese)
+        }
     }
     
     func getCurrentTime()-> String{
