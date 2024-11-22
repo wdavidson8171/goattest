@@ -73,6 +73,23 @@ struct Homepage: View {
                         print("Loaded: \(savedGoatName)")
                     }
             }
+            Text("Goat Clothes Inventory: ")
+                .frame(alignment: .leading)
+            
+            
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(1..<9){index in
+                            Text("View \(index)")}
+                            .frame(width: 100, height: 100)
+                            .background(.pink)
+                            .foregroundColor(.white)
+                        }
+                    }
+    // need to make a list with mock data but where???
+    // also this DOES NOT work so DONT push
+    //why is it not showing up?? wait actually it did, but will it all the time?
+                
             
             
             Spacer()
@@ -91,6 +108,8 @@ struct Homepage: View {
             
             }
         }
+
+
         #Preview {
             Homepage()
         }
