@@ -33,10 +33,55 @@ struct Bingo: View {
     
   @State var showImage: Bool = false
   @State var showingPopup: Bool = false
-    //survey()
+
+    func randomImage(){
+        @State var randomArray = [" "]
+        var choice = GlobalVariables.SavedItems[Int.random(in:0...GlobalVariables.SavedItems.count-1)]
+        
+        if choice == "Household Chores"{
+            randomArray = choreArray
+        }
+        if choice == "Indoor Activities"{
+            randomArray = indoorArray
+        }
+        if choice == "Family Activities"{
+            randomArray = familyArray
+        }
+        if choice == "Creative Activities"{
+            randomArray = creativeArray
+        }
+        if choice == "Exercise"{
+            randomArray = exerciseArray
+        }
+        if choice == "Going Out (fancy)"{
+            randomArray = spennyArray
+        }
+        if choice == "Going Out (cheap"{
+            randomArray = cheapArray
+        }
+        if choice == "Cooking/Baking"{
+            randomArray = cookingArray
+        }
+        if choice == "Self Care"{
+            randomArray = selfCareArray
+        }
+        if choice == "Spring"{
+            randomArray = springArray
+        }
+        if choice == "Summer"{
+            randomArray = summerArray
+        }
+        if choice == "Fall"{
+            randomArray = fallArray
+        }
+        if choice == "Winter"{
+            randomArray = winterArray
+        }
+        
+        
+    }
     
     
-    //suvey
     func buttonPresed(){
         print("kill meeee")
         buttonPressed = true
@@ -46,10 +91,9 @@ struct Bingo: View {
         print("aghhhhh")
     }
 
-    var num = testSquares.randomElement()!
-    var picture = choreArray[0]
+
     
-    let button1 = choreArray[Int.random(in:0...choreArray.count-1)]
+    let button1 = randomArray[Int.random(in:0...ranomArray.count-1)]
     let button2 = fallArray[Int.random(in:0...fallArray.count-1)]
     let button3 = choreArray[Int.random(in:0...choreArray.count-1)]
     let button4 = fallArray[Int.random(in:0...fallArray.count-1)]
@@ -149,7 +193,7 @@ struct Bingo: View {
                 Button(action: {buttonPresed()}){
                     Image(button1)                 }.padding(5)            }
         }.padding()
-            .onAppear(){print(num)}
+            .onAppear()
         
     }
     
@@ -159,7 +203,5 @@ struct Bingo: View {
 #Preview {
 
     Bingo()
-    
-    
 }
 
