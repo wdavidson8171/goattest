@@ -53,6 +53,10 @@ struct Goat: View {
                 }
             
             Image(getBar(Int: Int(countDownTimer)))
+            Image(getGoatState())
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(10)
             
             /*Image(.babyGoat)
                 .resizable()
