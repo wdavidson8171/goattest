@@ -50,7 +50,7 @@ struct Goat: View {
         
         VStack{
             //the bar at the top of the screen
-            Text("Time until your goat gets sad and skinny: " + String(countDownTimer))
+            Text("Fatness bar:")
                 .onReceive(timer) { _ in
                     currentYear = Calendar.current.component(.year, from: Date())
                     currentMonth = Calendar.current.component(.month, from: Date())
@@ -67,7 +67,8 @@ struct Goat: View {
                    // }
                 }
             
-            Image(getBar(Int: Int(countDownTimer)))
+            //Image(getBar(Int: Int(countDownTimer)))
+            Image(getBarState())
             
             Image(getGoatState())
                 .resizable()
@@ -154,7 +155,7 @@ struct Goat: View {
     //returns the seconds passed from the date the app was first opened to the current date
     func getSecondsPassed(_ from: Date, to: Date)-> Int{
         let secondsPassed: DateComponents = Calendar.current.dateComponents([.second], from: from, to: to)
-        return secondsPassed.second!
+        return secondsPassed.second! - 50
     }
     
     //returns the date the app was first opened
@@ -170,19 +171,31 @@ struct Goat: View {
         return date3
     }
     
-    //returns the state of the goat
+    func getCurrentDate()-> Date{
+        var comps = DateComponents()
+        comps.year = Calendar.current.component(.year, from: Date())
+        comps.month = Calendar.current.component(.month, from: Date())
+        comps.day = Calendar.current.component(.day, from: Date())
+        comps.hour = Calendar.current.component(.hour, from: Date())
+        comps.minute = Calendar.current.component(.minute, from: Date())
+        comps.second = Calendar.current.component(.second, from: Date())
+        let date3 = Calendar.current.date(from: comps)!
+        return date3
+    }
+    
+    //returns the appropriate goat image
     func getGoatState()-> ImageResource{
-        let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: currentDate)
-        if secondsPassed > 8 * x{
+        let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
+        if secondsPassed > 16 * x{
             return .deadGoat
         }
-        else if secondsPassed <= 8 * x && secondsPassed > 4 * x{
+        else if secondsPassed <= 16 * x && secondsPassed > 8 * x{
             return .skinnyGoat
         }
-        else if secondsPassed <= 4 * x && secondsPassed > 0{
+        else if secondsPassed <= 8 * x && secondsPassed > 0{
             return .normalGoat
         }
-        else if secondsPassed <= 0 && secondsPassed > -4 * x{
+        else if secondsPassed <= 0 && secondsPassed > -8 * x{
             return .plumpGoat
         }
         else{
@@ -190,31 +203,135 @@ struct Goat: View {
         }
     }
     
-    func getBarState(){
-        let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: currentDate)
-        if secondsPassed > 8 * x{
-            //barState = 0
+    //returns the appropriate bar image
+    func getBarState()-> ImageResource{
+        let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
+        if secondsPassed > 16 * x{
+            return .hBzero
         }
-        else if secondsPassed <= 8 * x && secondsPassed > 4 * x{
-            if secondsPassed <= 5 * x && secondsPassed > 4 * x{
-                //barState = 4
+        else if secondsPassed <= 16 * x && secondsPassed > 8 * x{
+            if secondsPassed < 9 * x{
+                return .HB_8
             }
-            else if secondsPassed <= 6 * x && secondsPassed > 5 * x{
-                //barState = 3
+            else if secondsPassed < 10 * x{
+                return .HB_7
             }
-            else if secondsPassed <= 7 * x && secondsPassed > 6 * x{
-                //barState = 2
+            else if secondsPassed < 11 * x{
+                return .HB_6
             }
-            
+            else if secondsPassed < 12 * x{
+                return .HB_5
+            }
+            else if secondsPassed < 13 * x{
+                return .HB_4
+            }
+            else if secondsPassed < 14 * x{
+                return .HB_3
+            }
+            else if secondsPassed < 15 * x{
+                return .HB_2
+            }
+            else if secondsPassed < 16 * x{
+                return .HB_1
+            }
+            //(if it equals 16)
+            else{
+                return .hBzero
+            }
         }
-        else if secondsPassed <= 4 * x && secondsPassed > 0{
-            //goatstate 2 (normal)
+        else if secondsPassed <= 8 * x && secondsPassed > 0{
+            if secondsPassed < 1 * x{
+                return .HB_8
+            }
+            else if secondsPassed < 2 * x{
+                return .HB_7
+            }
+            else if secondsPassed < 3 * x{
+                return .HB_6
+            }
+            else if secondsPassed < 4 * x{
+                return .HB_5
+            }
+            else if secondsPassed < 5 * x{
+                return .HB_4
+            }
+            else if secondsPassed < 6 * x{
+                return .HB_3
+            }
+            else if secondsPassed < 7 * x{
+                return .HB_2
+            }
+            else if secondsPassed < 8 * x{
+                return .HB_1
+            }
+            //(if it equals 8)
+            else{
+                return .hBzero
+            }
         }
-        else if secondsPassed <= 0 && secondsPassed > -4 * x{
-            //goatstate 3 (mildly obese)
+        else if secondsPassed <= 0 && secondsPassed > -8 * x{
+            if secondsPassed < -7 * x{
+                return .HB_8
+            }
+            else if secondsPassed < -6 * x{
+                return .HB_7
+            }
+            else if secondsPassed < -5 * x{
+                return .HB_6
+            }
+            else if secondsPassed < -4 * x{
+                return .HB_5
+            }
+            else if secondsPassed < -3 * x{
+                return .HB_4
+            }
+            else if secondsPassed < -2 * x{
+                return .HB_3
+            }
+            else if secondsPassed < -1 * x{
+                return .HB_2
+            }
+            else if secondsPassed < 0 * x{
+                return .HB_1
+            }
+            //(if it equals 0)
+            else{
+                return .hBzero
+            }
         }
-        else if secondsPassed <= -4 * x{
-            //goatstate 4 (morbidly obese)
+        else if secondsPassed <= -8 * x && secondsPassed > -16 * x{
+            if secondsPassed < -15 * x{
+                return .HB_8
+            }
+            else if secondsPassed < -14 * x{
+                return .HB_7
+            }
+            else if secondsPassed < -13 * x{
+                return .HB_6
+            }
+            else if secondsPassed < -12 * x{
+                return .HB_5
+            }
+            else if secondsPassed < -11 * x{
+                return .HB_4
+            }
+            else if secondsPassed < -10 * x{
+                return .HB_3
+            }
+            else if secondsPassed < -9 * x{
+                return .HB_2
+            }
+            else if secondsPassed < -8 * x{
+                return .HB_1
+            }
+            //(if it equals 0)
+            else{
+                return .hBzero
+            }
+        }
+        //(if its less than -16)
+        else{
+            return .HB_8
         }
     }
     
@@ -228,37 +345,6 @@ struct Goat: View {
         let minute = calendar.component(.minute, from: date)
         let second = calendar.component(.second, from: date)
         return "\(hour):\(minute):\(second)"
-    }
-    
-    //returns how full the bar should be
-    func getBar(Int num: Int)-> ImageResource{
-        if num == 8{
-            return .HB_8
-        }
-        if num == 7{
-            return .HB_7
-        }
-        if num == 6{
-            return .HB_6
-        }
-        if num == 5{
-            return .HB_5
-        }
-        if num == 4{
-            return .HB_4
-        }
-        if num == 3{
-            return .HB_3
-        }
-        if num == 2{
-            return .HB_2
-        }
-        if num == 1{
-            return .HB_1
-        }
-        else{
-            return .hBzero
-        }
     }
 }
 
