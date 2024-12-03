@@ -10,6 +10,7 @@ import UIKit
 
 
 var buttonPressed = false
+var hideButton = false
 
 var testSquares = ["a","b","c","d","e","f"]
 
@@ -31,177 +32,202 @@ let summerArray = ["waterBalloonFight","swimmingHole","pool","berryPicking","amu
 
 struct Bingo: View {
     
-  @State var showImage: Bool = false
-  @State var showingPopup: Bool = false
-
+    @State var showImage: Bool = false
+    @State var showingPopup: Bool = false
+    @State var randomArray = [" "]
+    
     func randomImage(){
-        @State var randomArray = [" "]
+        
         var choice = GlobalVariables.SavedItems[Int.random(in:0...GlobalVariables.SavedItems.count-1)]
         
         if choice == "Household Chores"{
-            randomArray = choreArray
+            for thing in choreArray{
+                randomArray.append(thing)
+            }
         }
         if choice == "Indoor Activities"{
-            randomArray = indoorArray
+            for thing in indoorArray{
+                randomArray.append(thing)
+            }
         }
         if choice == "Family Activities"{
-            randomArray = familyArray
+            for thing in familyArray{
+                randomArray.append(thing)
+            }
         }
         if choice == "Creative Activities"{
-            randomArray = creativeArray
+            for thing in creativeArray{
+                randomArray.append(thing)
+            }
         }
         if choice == "Exercise"{
-            randomArray = exerciseArray
+            for thing in exerciseArray{
+                randomArray.append(thing)
+            }
         }
         if choice == "Going Out (fancy)"{
-            randomArray = spennyArray
+            for thing in spennyArray{
+                randomArray.append(thing)
+            }
         }
         if choice == "Going Out (cheap"{
-            randomArray = cheapArray
+            for thing in cheapArray{
+                randomArray.append(thing)
+            }
         }
         if choice == "Cooking/Baking"{
-            randomArray = cookingArray
+            for thing in cookingArray{
+                randomArray.append(thing)
+            }
         }
         if choice == "Self Care"{
-            randomArray = selfCareArray
+            for thing in selfCareArray{
+                randomArray.append(thing)
+            }
         }
         if choice == "Spring"{
-            randomArray = springArray
+            for thing in springArray{
+                randomArray.append(thing)
+            }
         }
         if choice == "Summer"{
-            randomArray = summerArray
+            for thing in summerArray{
+                randomArray.append(thing)
+            }
         }
         if choice == "Fall"{
-            randomArray = fallArray
+            for thing in fallArray{
+                randomArray.append(thing)
+            }
         }
         if choice == "Winter"{
-            randomArray = winterArray
+            for thing in winterArray{
+                randomArray.append(thing)
+            }
+        }
+            
+            
         }
         
         
-    }
-    
-    
-    func buttonPresed(){
-        print("kill meeee")
-        buttonPressed = true
-            
-    }
-    func test(){
-        print("aghhhhh")
-    }
-
-
-    
-    let button1 = randomArray[Int.random(in:0...ranomArray.count-1)]
-    let button2 = fallArray[Int.random(in:0...fallArray.count-1)]
-    let button3 = choreArray[Int.random(in:0...choreArray.count-1)]
-    let button4 = fallArray[Int.random(in:0...fallArray.count-1)]
-    let button5 = choreArray[Int.random(in:0...choreArray.count-1)]
-    let button6 = fallArray[Int.random(in:0...fallArray.count-1)]
-    let button7 = choreArray[Int.random(in:0...choreArray.count-1)]
-    let button8 = fallArray[Int.random(in:0...fallArray.count-1)]
-    let button9 = choreArray[Int.random(in:0...choreArray.count-1)]
-    let button10 = fallArray[Int.random(in:0...fallArray.count-1)]
-    let button11 = choreArray[Int.random(in:0...choreArray.count-1)]
-    let button12 = fallArray[Int.random(in:0...fallArray.count-1)]
-    let button13 = choreArray[Int.random(in:0...choreArray.count-1)]
-    let button14 = fallArray[Int.random(in:0...fallArray.count-1)]
-    let button15 = choreArray[Int.random(in:0...choreArray.count-1)]
-    let button16 = fallArray[Int.random(in:0...fallArray.count-1)]
-    let button17 = choreArray[Int.random(in:0...choreArray.count-1)]
-    let button18 = fallArray[Int.random(in:0...fallArray.count-1)]
-    let button19 = choreArray[Int.random(in:0...choreArray.count-1)]
-    let button20 = fallArray[Int.random(in:0...fallArray.count-1)]
-    let button21 = choreArray[Int.random(in:0...choreArray.count-1)]
-    let button22 = fallArray[Int.random(in:0...fallArray.count-1)]
-    let button23 = choreArray[Int.random(in:0...choreArray.count-1)]
-    let button24 = fallArray[Int.random(in:0...fallArray.count-1)]
-    
-    var body: some View {
+        func buttonPresed(){
+            print("kill meeee")
+            buttonPressed = true
+            hideButton = true
+        }
+        func test(){
+            print("aghhhhh")
+        }
         
+
         
-        VStack{
-            HStack{
-                
-                Button(action: {buttonPresed()}){
-                    Image(button1)                 }.padding(5)
-                    .sheet(isPresented: $showImage) {
-                        ZStack{
-                            Text("kil meeee")
-                        }
-                    }
+        let button1 = choreArray[Int.random(in:0...choreArray.count-1)]
+        let button2 = fallArray[Int.random(in:0...fallArray.count-1)]
+        let button3 = choreArray[Int.random(in:0...choreArray.count-1)]
+        let button4 = fallArray[Int.random(in:0...fallArray.count-1)]
+        let button5 = choreArray[Int.random(in:0...choreArray.count-1)]
+        let button6 = fallArray[Int.random(in:0...fallArray.count-1)]
+        let button7 = choreArray[Int.random(in:0...choreArray.count-1)]
+        let button8 = fallArray[Int.random(in:0...fallArray.count-1)]
+        let button9 = choreArray[Int.random(in:0...choreArray.count-1)]
+        let button10 = fallArray[Int.random(in:0...fallArray.count-1)]
+        let button11 = choreArray[Int.random(in:0...choreArray.count-1)]
+        let button12 = fallArray[Int.random(in:0...fallArray.count-1)]
+        let button13 = choreArray[Int.random(in:0...choreArray.count-1)]
+        let button14 = fallArray[Int.random(in:0...fallArray.count-1)]
+        let button15 = choreArray[Int.random(in:0...choreArray.count-1)]
+        let button16 = fallArray[Int.random(in:0...fallArray.count-1)]
+        let button17 = choreArray[Int.random(in:0...choreArray.count-1)]
+        let button18 = fallArray[Int.random(in:0...fallArray.count-1)]
+        let button19 = choreArray[Int.random(in:0...choreArray.count-1)]
+        let button20 = fallArray[Int.random(in:0...fallArray.count-1)]
+        let button21 = choreArray[Int.random(in:0...choreArray.count-1)]
+        let button22 = fallArray[Int.random(in:0...fallArray.count-1)]
+        let button23 = choreArray[Int.random(in:0...choreArray.count-1)]
+        let button24 = fallArray[Int.random(in:0...fallArray.count-1)]
+        
+        var body: some View {
             
-                Button(action: {buttonPresed()}){
-                    Image(button2)                 }.padding(5)
-                Button(action: {buttonPresed()}){
-                    Image(button2)                 }.padding(5)
-                Button(action: {buttonPresed()}){
-                    Image(button1)                 }.padding(5)
-            }
-            HStack{
-                Button(action: {buttonPresed()}){
-                    Image(button1)                 }.padding(5)
             
-                Button(action: {buttonPresed()}){
-                    Image(button2)                 }.padding(5)
-                Button(action: {buttonPresed()}){
-                    Image(button2)                 }.padding(5)
-                Button(action: {buttonPresed()}){
-                    Image(button1)                 }.padding(5)
-            }
-            HStack{
-                Button(action: {buttonPresed()}){
-                    Image(button1)                 }.padding(5)
+            VStack{
+                HStack{
+                    
+                    Button(action: {buttonPresed()}){
+                        Image(button1)
+                    }.padding(5).disabled(hideButton == true)// this is how to disable a button correctly just need to work on when the button pressed func runs vs when this is checked to make it work correctly also disables without graying out
+                    Button(action: {buttonPresed()}){
+                        Image(button2)                 }.padding(5)
+                    Button(action: {buttonPresed()}){
+                        Image(button2)                 }.padding(5)
+                    Button(action: {buttonPresed()}){
+                        Image(button1)                 }.padding(5)
+                }
+                HStack{
+                    Button(action: {buttonPresed()}){
+                        Image(button1)                 }.padding(5)
+                    
+                    Button(action: {buttonPresed()}){
+                        Image(button2)                 }.padding(5)
+                    Button(action: {buttonPresed()}){
+                        Image(button2)                 }.padding(5)
+                    Button(action: {buttonPresed()}){
+                        Image(button1)                 }.padding(5)
+                }
+                HStack{
+                    Button(action: {buttonPresed()}){
+                        Image(button1)                 }.padding(5)
+                    
+                    Button(action: {buttonPresed()}){
+                        Image(button2)                 }.padding(5)
+                    Button(action: {buttonPresed()}){
+                        Image(button2)                 }.padding(5)
+                    Button(action: {buttonPresed()}){
+                        Image(button1)                 }.padding(5)
+                }
+                HStack{
+                    Button(action: {buttonPresed()}){
+                        Image(button1)                 }.padding(5)
+                    
+                    Button(action: {buttonPresed()}){
+                        Image(button2)                 }.padding(5)
+                    Button(action: {buttonPresed()}){
+                        Image(button2)                 }.padding(5)
+                    Button(action: {buttonPresed()}){
+                        Image(button1)                 }.padding(5)
+                }
+                HStack{
+                    Button(action: {buttonPresed()}){
+                        Image(button1)                 }.padding(5)
+                    
+                    Button(action: {buttonPresed()}){
+                        Image(button2)                 }.padding(5)
+                    Button(action: {buttonPresed()}){
+                        Image(button2)                 }.padding(5)
+                    Button(action: {buttonPresed()}){
+                        Image(button1)                 }.padding(5)
+                }
+                HStack{
+                    Button(action: {buttonPresed()}){
+                        Image(button1)                 }.padding(5)
+                    
+                    Button(action: {buttonPresed()}){
+                        Image(button2)                 }.padding(5)
+                    Button(action: {buttonPresed()}){
+                        Image(button2)                 }.padding(5)
+                    Button(action: {buttonPresed()}){
+                        Image(button1)                 }.padding(5)
+                }
+            }.padding()
+                .onAppear()
             
-                Button(action: {buttonPresed()}){
-                    Image(button2)                 }.padding(5)
-                Button(action: {buttonPresed()}){
-                    Image(button2)                 }.padding(5)
-                Button(action: {buttonPresed()}){
-                    Image(button1)                 }.padding(5)            }
-            HStack{
-                Button(action: {buttonPresed()}){
-                    Image(button1)                 }.padding(5)
-            
-                Button(action: {buttonPresed()}){
-                    Image(button2)                 }.padding(5)
-                Button(action: {buttonPresed()}){
-                    Image(button2)                 }.padding(5)
-                Button(action: {buttonPresed()}){
-                    Image(button1)                 }.padding(5)
-            }
-            HStack{
-                Button(action: {buttonPresed()}){
-                    Image(button1)                 }.padding(5)
-            
-                Button(action: {buttonPresed()}){
-                    Image(button2)                 }.padding(5)
-                Button(action: {buttonPresed()}){
-                    Image(button2)                 }.padding(5)
-                Button(action: {buttonPresed()}){
-                    Image(button1)                 }.padding(5)
-            }
-            HStack{
-                Button(action: {buttonPresed()}){
-                    Image(button1)                 }.padding(5)
-            
-                Button(action: {buttonPresed()}){
-                    Image(button2)                 }.padding(5)
-                Button(action: {buttonPresed()}){
-                    Image(button2)                 }.padding(5)
-                Button(action: {buttonPresed()}){
-                    Image(button1)                 }.padding(5)            }
-        }.padding()
-            .onAppear()
+        }
         
     }
     
-}
-
 
 #Preview {
 
     Bingo()
 }
+
 
