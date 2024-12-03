@@ -18,6 +18,15 @@ struct Homepage: View {
     @AppStorage ("GOAT_NAME_KEY") var savedGoatName = ""
     @State var joinDate: Date = Date()
     @AppStorage ("JOIN_DATE_KEY") var savedJoinDate: Date = Date()
+    @State var unlocked1: Bool = false
+    @State var unlocked2: Bool = false
+    @State var unlocked3: Bool = false
+    @State var unlocked4: Bool = false
+    @State var unlocked5: Bool = false
+    
+    private let mockScrollData = ["\(String(describing: imageOneUnlock))", "turtleHolder2", "turtleHolder3", "turtleHolder4", "turtleHolder5"]
+    //the locked thing isnt showing up... but also the image isnt so thats good?
+    
     
     var body: some View {
         VStack(spacing: 5) {
@@ -76,19 +85,18 @@ struct Homepage: View {
             Text("Goat Clothes Inventory: ")
                 .frame(alignment: .leading)
             
-            
                     ScrollView(.horizontal) {
                         HStack {
-                            ForEach(1..<9){index in
-                            Text("View \(index)")}
-                            .frame(width: 100, height: 100)
-                            .background(.pink)
-                            .foregroundColor(.white)
+                            ForEach(mockScrollData, id: \.self) { picture in Image(picture)
+                                    .resizable()
+                                    .frame(width: 100, height: 100)
+                                    .background(.white)
+                                    .foregroundColor(.white)
+                            }
+                        
                         }
                     }
-    // need to make a list with mock data but where???
-    // also this DOES NOT work so DONT push
-    //why is it not showing up?? wait actually it did, but will it all the time?
+    // gray out? blur? locked clothes but also they have to be able to be unlocked and then the image would change? is that possible? i think so
                 
             
             
@@ -107,6 +115,13 @@ struct Homepage: View {
         .padding()
             
             }
+    func imageOneUnlock(unlocked1: Bool) -> String {
+        let image1 = if (unlocked1) { "turtleHolder1" } else {"locked"}
+        return image1
+    }
+    //locked image isn't showing up so fix this
+    //make names better and less confusing
+    //do this for all of them? maybe there's an easier way idk
         }
 
 
