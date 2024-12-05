@@ -11,6 +11,7 @@ import UIKit
 
 var buttonPressed = false
 var hideButton = false
+var hide = false
 
 var testSquares = ["a","b","c","d","e","f"]
 
@@ -110,10 +111,12 @@ struct Bingo: View {
         }
         
         
-        func buttonPresed(){
+    func buttonPresed() -> Bool{
             print("kill meeee")
             buttonPressed = true
             hideButton = true
+            print(hideButton)
+            return hideButton
         }
         func test(){
             print("aghhhhh")
@@ -152,9 +155,9 @@ struct Bingo: View {
             VStack{
                 HStack{
                     
-                    Button(action: {buttonPresed()}){
+                    Button(action: {hide = buttonPresed()}){
                         Image(button1)
-                    }.padding(5).disabled(hideButton == true)// this is how to disable a button correctly just need to work on when the button pressed func runs vs when this is checked to make it work correctly also disables without graying out
+                    }.padding(5).disabled(Image(button1).isPressed)// this is how to disable a button correctly just need to work on when the button pressed func runs vs when this is checked to make it work correctly also disables without graying out
                     Button(action: {buttonPresed()}){
                         Image(button2)                 }.padding(5)
                     Button(action: {buttonPresed()}){
