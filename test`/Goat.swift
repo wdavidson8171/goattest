@@ -14,7 +14,6 @@ import Foundation
 struct Goat: View {
     @State var countDownTimer = 8
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @AppStorage("userOnboarded") var userOnboarded: Bool = false
     
     @AppStorage("firstOpenedYear") var firstOpenedYear: Int = -1
     @AppStorage("firstOpenedMonth") var firstOpenedMonth: Int = -1
@@ -39,7 +38,13 @@ struct Goat: View {
     var b: Bool = true
     
     //how many seconds it takes for the bar to go down by one thing (you can change this number to make it faster/slower)
-    @State var x: Int = 2
+    @State var x: Int = 1
+    
+    var width: CGFloat = 200
+    var height: CGFloat = 20
+    @State var percent: CGFloat = 100
+    var color1 = Color(#colorLiteral(red: 0.7519986012, green: 0.8191245168, blue: 0.67492058, alpha: 1))
+    var color2 = Color(#colorLiteral(red: 0.2172280641, green: 0.289908183, blue: 0.1743075374, alpha: 1))
     
     
     
@@ -49,7 +54,7 @@ struct Goat: View {
     var body: some View {
         
         VStack{
-            //the bar at the top of the screen
+            //tbh I'm not really sure what this does BUT IT WORKS
             Text("Fatness bar:")
                 .onReceive(timer) { _ in
                     currentYear = Calendar.current.component(.year, from: Date())
@@ -60,35 +65,25 @@ struct Goat: View {
                     currentSec = Calendar.current.component(.second, from: Date())
                     currentDate = Date()
                     secsLeftResult = getSecondsPassed(getFirstOpenedDate(), to: currentDate)
-                    
-                    //if countDownTimer > 0{
-                        countDownTimer -= 1
-                        
-                   // }
+                    countDownTimer -= 1
+                    if needToReset() {
+                        percent = 100
+                    }
+                    if percent >= 1 {
+                        percent -= CGFloat(x)
+                    }
                 }
             
-            //Image(getBar(Int: Int(countDownTimer)))
+            //calls the method which returns the appropriate bar image
             Image(getBarState())
             
+            //calls the method which returns the appropriate goat image
             Image(getGoatState())
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding(10)
-                
-                
             
-            /*Image(.babyGoat)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding(50)
-            Text("GOAT")
-            Text("" + getCurrentTime())
-            Text("" + String(firstOpenedYear))*/
-            
-            
-            
-            
-            Text("firstOpened year: " + String(isFirstOpenedYearSet()))
+            /*Text("firstOpened year: " + String(isFirstOpenedYearSet()))
             Text("firstOpened month: " + String(isFirstOpenedMonthSet()))
             Text("firstOpened day: " + String(isFirstOpenedDaySet()))
             Text("firstOpened hour: " + String(isFirstOpenedHourSet()))
@@ -100,15 +95,24 @@ struct Goat: View {
             Text("current day: " + String(currentDay))
             Text("current hour: " + String(currentHour))
             Text("current min: " + String(currentMin))
-            Text("current sec: " + String(currentSec))
-                
-                //.onReceive(timer) { _ in
-                //self.currentSec = Calendar.current.component(.second, from: Date())
-            //}
+            Text("current sec: " + String(currentSec))*/
             
             Text(DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .short))
             
             Text("" + String(secsLeftResult))
+            
+            let multiplier = width / 100
+            
+            Text("\(Int(percent))")
+            
+            ZStack(alignment: .leading) {
+                RoundedRectangle(cornerRadius: height, style: .continuous).frame(width: width, height: height).foregroundColor(Color.gray.opacity(0.2))
+                RoundedRectangle(cornerRadius: height, style: .continuous).frame(width: percent * multiplier, height: height).background(
+                    LinearGradient(gradient: Gradient(colors: [color1, color2]), startPoint: .leading, endPoint: .trailing).clipShape(RoundedRectangle(cornerRadius: height, style: .continuous))
+                ).foregroundColor(.clear)
+            }
+                
+            
         }
         
     }
@@ -171,6 +175,7 @@ struct Goat: View {
         return date3
     }
     
+    //returns the current date
     func getCurrentDate()-> Date{
         var comps = DateComponents()
         comps.year = Calendar.current.component(.year, from: Date())
@@ -200,6 +205,16 @@ struct Goat: View {
         }
         else{
             return .superGoat
+        }
+    }
+    
+    func needToReset()-> Bool{
+        let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
+        if secondsPassed == 16 * x || secondsPassed == 8 || secondsPassed == 0 || secondsPassed == -8 * x{
+            return true
+        }
+        else{
+            return false
         }
     }
     
@@ -324,7 +339,7 @@ struct Goat: View {
             else if secondsPassed < -8 * x{
                 return .HB_1
             }
-            //(if it equals 0)
+            //(if it equals -16)
             else{
                 return .hBzero
             }
@@ -335,17 +350,6 @@ struct Goat: View {
         }
     }
     
-    func getCurrentTime()-> String{
-        let date = Date()
-        let calendar = Calendar.current
-        let day = calendar.component(.day, from: date)
-        let month = calendar.component(.month, from: date)
-        let year = calendar.component(.year, from: date)
-        let hour = calendar.component(.hour, from: date)
-        let minute = calendar.component(.minute, from: date)
-        let second = calendar.component(.second, from: date)
-        return "\(hour):\(minute):\(second)"
-    }
 }
 
 #Preview {
