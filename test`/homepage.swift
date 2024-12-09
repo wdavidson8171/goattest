@@ -24,11 +24,15 @@ struct Homepage: View {
     @State var unlocked4: Bool = false
     @State var unlocked5: Bool = false
     
-    private let mockScrollData = ["\(String(describing: imageOneUnlock))", "turtleHolder2", "turtleHolder3", "turtleHolder4", "turtleHolder5"]
+    
     //the locked thing isnt showing up... but also the image isnt so thats good?
     
     
     var body: some View {
+        let mockScrollData = [
+            Image(imageOneUnlock()), Image(imageTwoUnlock()), Image(imageThreeUnlock()), Image(imageFourUnlock()), Image(imageFiveUnlock())]
+        //maye get rid of Image() part here and put it somewhere else??
+        
         VStack(spacing: 5) {
             Text("Profile")
                 .font(.largeTitle)
@@ -87,7 +91,7 @@ struct Homepage: View {
             
                     ScrollView(.horizontal) {
                         HStack {
-                            ForEach(mockScrollData, id: \.self) { picture in Image(picture)
+                            ForEach(mockScrollData) { picture in mockScrollData[picture]
                                     .resizable()
                                     .frame(width: 100, height: 100)
                                     .background(.white)
@@ -115,13 +119,27 @@ struct Homepage: View {
         .padding()
             
             }
-    func imageOneUnlock(unlocked1: Bool) -> String {
-        let image1 = if (unlocked1) { "turtleHolder1" } else {"locked"}
-        return image1
+    func imageOneUnlock() -> ImageResource {
+        if (unlocked1) { return .turtleHolder1 }
+        else {return .locked}
     }
-    //locked image isn't showing up so fix this
-    //make names better and less confusing
-    //do this for all of them? maybe there's an easier way idk
+    func imageTwoUnlock() -> ImageResource {
+        if (unlocked1) { return .turtleHolder2 }
+        else {return .locked}
+    }
+    func imageThreeUnlock() -> ImageResource {
+        if (unlocked1) { return .turtleHolder3 }
+        else {return .locked}
+    }
+    func imageFourUnlock() -> ImageResource {
+        if (unlocked1) { return .turtleHolder4 }
+        else {return .locked}
+    }
+    func imageFiveUnlock() -> ImageResource {
+        if (unlocked1) { return .turtleHolder5 }
+        else {return .locked}
+    }
+    //Image(func())
         }
 
 
