@@ -117,7 +117,7 @@ struct GlobalVariables{
                         
                     })
                     Section("My selected activities:", content: {
-                        Text(selectedItems.joined(separator: "\n"))
+                        Text(GlobalVariables.SavedItems.joined(separator: "\n"))
                             .foregroundColor(.darkBrown)
                     }
                     )

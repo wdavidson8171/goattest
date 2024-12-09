@@ -35,11 +35,11 @@ struct Bingo: View {
     
     @State var showImage: Bool = false
     @State var showingPopup: Bool = false
-    @State var randomArray = [" "]
+    @State var randomArray = [" a", "b"]
     
     func randomImage(){
         
-        var choice = GlobalVariables.SavedItems[Int.random(in:0...GlobalVariables.SavedItems.count-1)]
+        let choice = GlobalVariables.SavedItems[Int.random(in:0...GlobalVariables.SavedItems.count-1)]
         
         if choice == "Household Chores"{
             for thing in choreArray{
@@ -116,14 +116,16 @@ struct Bingo: View {
             buttonPressed = true
             hideButton = true
             print(hideButton)
+            print(randomArray)
             return hideButton
         }
         func test(){
             print("aghhhhh")
-        }
+    }
         
 
         
+        //randomImage()
         let button1 = choreArray[Int.random(in:0...choreArray.count-1)]
         let button2 = fallArray[Int.random(in:0...fallArray.count-1)]
         let button3 = choreArray[Int.random(in:0...choreArray.count-1)]
@@ -148,6 +150,7 @@ struct Bingo: View {
         let button22 = fallArray[Int.random(in:0...fallArray.count-1)]
         let button23 = choreArray[Int.random(in:0...choreArray.count-1)]
         let button24 = fallArray[Int.random(in:0...fallArray.count-1)]
+    
         
         var body: some View {
             
@@ -156,8 +159,8 @@ struct Bingo: View {
                 HStack{
                     
                     Button(action: {hide = buttonPresed()}){
-                        Image(button1)
-                    }.padding(5).disabled(Image(button1).isPressed)// this is how to disable a button correctly just need to work on when the button pressed func runs vs when this is checked to make it work correctly also disables without graying out
+                        Text("testy")
+                    }.padding(5)// this is how to disable a button correctly just need to work on when the button pressed func runs vs when this is checked to make it work correctly also disables without graying out
                     Button(action: {buttonPresed()}){
                         Image(button2)                 }.padding(5)
                     Button(action: {buttonPresed()}){
