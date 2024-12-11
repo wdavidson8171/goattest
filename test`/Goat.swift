@@ -38,7 +38,7 @@ struct Goat: View {
     var b: Bool = true
     
     //how many seconds it takes for the bar to go down by one thing (you can change this number to make it faster/slower)
-    @State var x: Int = 1
+    @State var x: Int = 20
     
     var width: CGFloat = 200
     var height: CGFloat = 20
@@ -69,10 +69,19 @@ struct Goat: View {
                     if needToReset() {
                         percent = 100
                     }
-                    if percent >= 1 {
-                        percent -= CGFloat(x)
+                    if isFull() {
+                        percent = 100
                     }
+                    else if isEmpty() {
+                        percent = 0
+                    }
+                    else if percent >= 1 {
+                        percent -= 100 / (8 * CGFloat(x) + 1)
+                    }
+                    
                 }
+            
+            
             
             //calls the method which returns the appropriate bar image
             Image(getBarState())
@@ -99,6 +108,10 @@ struct Goat: View {
             
             Text(DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .short))
             
+            Text("percent: " + percent.description)
+            Text("firstdateopened: " + getFirstOpenedDate().description)
+            Text("currentdate: " + currentDate.description)
+            
             Text("" + String(secsLeftResult))
             
             let multiplier = width / 100
@@ -116,6 +129,15 @@ struct Goat: View {
         }
         
     }
+    
+    /*func returnWidth()-> CGFloat{
+        if (percent * (width/100)) < 0{
+            return 0
+        }
+        else{
+            return percent * (width/100)
+        }
+    }*/
     
     //checks to see if this is the first time the app is being opened
     //if it is, it sets the firstOpened year/day/min/etc. to the current time & saves it to app storage
@@ -159,7 +181,7 @@ struct Goat: View {
     //returns the seconds passed from the date the app was first opened to the current date
     func getSecondsPassed(_ from: Date, to: Date)-> Int{
         let secondsPassed: DateComponents = Calendar.current.dateComponents([.second], from: from, to: to)
-        return secondsPassed.second! - 50
+        return secondsPassed.second! - 20
     }
     
     //returns the date the app was first opened
@@ -178,6 +200,12 @@ struct Goat: View {
     //returns the current date
     func getCurrentDate()-> Date{
         var comps = DateComponents()
+        isFirstOpenedYearSet()
+        isFirstOpenedMonthSet()
+        isFirstOpenedDaySet()
+        isFirstOpenedHourSet()
+        isFirstOpenedMinSet()
+        isFirstOpenedSecSet()
         comps.year = Calendar.current.component(.year, from: Date())
         comps.month = Calendar.current.component(.month, from: Date())
         comps.day = Calendar.current.component(.day, from: Date())
@@ -211,6 +239,26 @@ struct Goat: View {
     func needToReset()-> Bool{
         let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
         if secondsPassed == 16 * x || secondsPassed == 8 || secondsPassed == 0 || secondsPassed == -8 * x{
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    
+    func isEmpty()-> Bool{
+        let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
+        if secondsPassed >= 16 * x{
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    
+    func isFull()-> Bool{
+        let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
+        if secondsPassed <= -16 * x{
             return true
         }
         else{
