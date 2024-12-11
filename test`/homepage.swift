@@ -48,30 +48,25 @@ struct Homepage: View {
                 .frame(width: 80, height: 80)
                 .padding()
             
-            TextField("Name", text: $text)
-                .padding()
-                .frame(width: 300, height: 30)
-                .background(Color.black.opacity(0.05))
-                .cornerRadius(10)
-                .disableAutocorrection(true)
-                .onChange(of: text) { text in
-                    self.savedText = text
-                }
-                .onAppear {
-                    self.text = savedText
-                    print("Loaded: \(savedText)")
-                }
+            HStack{
+                Text("Name:")
+                TextField("Name", text: $text)
+                    .padding()
+                    .frame(width: 300, height: 30)
+                    .background(Color.black.opacity(0.05))
+                    .cornerRadius(10)
+                    .disableAutocorrection(true)
+                    .onChange(of: text) { text in
+                        self.savedText = text
+                    }
+                    .onAppear {
+                        self.text = savedText
+                        print("Loaded: \(savedText)")
+                    }
+            }
             
             
-            DatePicker("Birthday:", selection: $selectedDate, in: startingDate...endingDate, displayedComponents: [.date])
-                .datePickerStyle(CompactDatePickerStyle())
-                .padding()
-                .onChange(of: selectedDate) { selectedDate in
-                    self.savedDate = selectedDate
-                }
-                .onAppear {
-                    selectedDate = savedDate
-                }
+            
                 HStack{
                     Image("goaticon")
                         .resizable()
@@ -90,6 +85,16 @@ struct Homepage: View {
                             self.goatName = savedGoatName
                             print("Loaded: \(savedGoatName)")
                         }
+                }
+            
+            DatePicker("Birthday:", selection: $selectedDate, in: startingDate...endingDate, displayedComponents: [.date])
+                .datePickerStyle(CompactDatePickerStyle())
+                .padding()
+                .onChange(of: selectedDate) { selectedDate in
+                    self.savedDate = selectedDate
+                }
+                .onAppear {
+                    selectedDate = savedDate
                 }
             
             HStack{
