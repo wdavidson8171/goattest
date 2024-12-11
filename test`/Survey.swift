@@ -79,7 +79,7 @@ import SwiftUI
     }
 
 struct GlobalVariables{
-    static var SavedItems:[String] = []
+    static var SavedItems:[String] = ["placeholder ","plaveholder"]
 }
     struct iOSview:View{
         @State var selectedItems:[String]
@@ -89,7 +89,7 @@ struct GlobalVariables{
         func saveSurvey(){
             let userDefaults = UserDefaults.standard
             userDefaults.set(selectedItems, forKey: "selectedItems")
-            GlobalVariables.SavedItems = (userDefaults.array(forKey: "selectedItems") as? [String] ?? [" "])
+            GlobalVariables.SavedItems = (userDefaults.array(forKey: "selectedItems") as? [String] ?? [])
             print(GlobalVariables.SavedItems)
         }
         
