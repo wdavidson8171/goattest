@@ -28,10 +28,10 @@ struct Homepage: View {
     @State var joinDate: Date = Date()
     @AppStorage ("JOIN_DATE_KEY") var savedJoinDate: Date = Date()
     @State var unlocked1: Bool = false
-    @State var unlocked2: Bool = true
+    @State var unlocked2: Bool = false
     @State var unlocked3: Bool = false
     @State var unlocked4: Bool = false
-    @State var unlocked5: Bool = false
+    @State var unlocked5: Bool = true
     
     
     
@@ -91,21 +91,11 @@ struct Homepage: View {
                             print("Loaded: \(savedGoatName)")
                         }
                 }
-            Spacer()
-            HStack{
-                Image(systemName: "list.bullet.clipboard").foregroundStyle(.accent)
-                Button(action: {buttonPresed()}){
-                    Text("Survey")}
-                .popover(isPresented: $showPopup, arrowEdge: .bottom) {
-                    TabView {
-                        Survey().tabItem{
-                            Label("Survey", systemImage: "list.bullet.clipboard")
-                        }
-                    }
-                }
-            }
+            
             HStack{
                 Text("Goat Clothes Inventory: ")
+                    .padding(.bottom, 15)
+                    .padding(.top, 6)
                 Spacer()
             }
             
@@ -124,6 +114,21 @@ struct Homepage: View {
                     
                 }
             }
+            
+            Spacer()
+            HStack{
+                Image(systemName: "list.bullet.clipboard").foregroundStyle(.accent)
+                Button(action: {buttonPresed()}){
+                    Text("Survey")}
+                .popover(isPresented: $showPopup, arrowEdge: .bottom) {
+                    TabView {
+                        Survey().tabItem{
+                            Label("Survey", systemImage: "list.bullet.clipboard")
+                        }
+                    }
+                }
+            }
+            
     
             
             Spacer()
