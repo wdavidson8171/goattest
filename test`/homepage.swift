@@ -8,6 +8,15 @@
 import SwiftUI
 
 struct Homepage: View {
+    
+    @State var showPopup = false
+    func buttonPresed(){
+        showPopup = true
+        buttonPressed = true
+        
+    }
+
+    
     @State private var text = ""
     @AppStorage ("STRING_KEY") var savedText = ""
     @State var selectedDate: Date = Date()
@@ -18,8 +27,18 @@ struct Homepage: View {
     @AppStorage ("GOAT_NAME_KEY") var savedGoatName = ""
     @State var joinDate: Date = Date()
     @AppStorage ("JOIN_DATE_KEY") var savedJoinDate: Date = Date()
+    @State var unlocked1: Bool = false
+    @State var unlocked2: Bool = false
+    @State var unlocked3: Bool = false
+    @State var unlocked4: Bool = false
+    @State var unlocked5: Bool = true
+    
+    
     
     var body: some View {
+        let mockScrollData = [
+            imageOneUnlock(), imageTwoUnlock(), imageThreeUnlock(), imageFourUnlock(), imageFiveUnlock()]
+        
         VStack(spacing: 5) {
             Text("Profile")
                 .font(.largeTitle)
@@ -53,27 +72,64 @@ struct Homepage: View {
                 .onAppear {
                     selectedDate = savedDate
                 }
+                HStack{
+                    Image("goaticon")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                    Text("Goat Name: ")
+                    TextField("", text: $goatName)
+                        .padding()
+                        .frame(width: 200, height: 30)
+                        .background(Color.black.opacity(0.05))
+                        .cornerRadius(10)
+                        .disableAutocorrection(true)
+                        .onChange(of: goatName) { goatName in
+                            self.savedGoatName = goatName
+                        }
+                        .onAppear {
+                            self.goatName = savedGoatName
+                            print("Loaded: \(savedGoatName)")
+                        }
+                }
             
             HStack{
-                Image("goaticon")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                Text("Goat Name: ")
-                TextField("", text: $goatName)
-                    .padding()
-                    .frame(width: 200, height: 30)
-                    .background(Color.black.opacity(0.05))
-                    .cornerRadius(10)
-                    .disableAutocorrection(true)
-                    .onChange(of: goatName) { goatName in
-                        self.savedGoatName = goatName
-                    }
-                    .onAppear {
-                        self.goatName = savedGoatName
-                        print("Loaded: \(savedGoatName)")
-                    }
+                Text("Goat Clothes Inventory: ")
+                    .padding(.bottom, 15)
+                    .padding(.top, 6)
+                Spacer()
             }
             
+            
+            
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(mockScrollData, id: \.self) { picture in
+                        
+                        Image(picture)
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                            .background(.white)
+                            .foregroundColor(.white)
+                    }
+                    
+                }
+            }
+            
+            Spacer()
+            HStack{
+                Image(systemName: "list.bullet.clipboard").foregroundStyle(.accent)
+                Button(action: {buttonPresed()}){
+                    Text("Survey")}
+                .popover(isPresented: $showPopup, arrowEdge: .bottom) {
+                    TabView {
+                        Survey().tabItem{
+                            Label("Survey", systemImage: "list.bullet.clipboard")
+                        }
+                    }
+                }
+            }
+            
+    
             
             Spacer()
             
@@ -90,7 +146,28 @@ struct Homepage: View {
         .padding()
             
             }
-        }
+    func imageOneUnlock() -> ImageResource {
+        if (unlocked1) { return .turtleHolder1 }
+        else {return .locked}
+    }
+    func imageTwoUnlock() -> ImageResource {
+        if (unlocked2) { return .turtleHolder2 }
+        else {return .locked}
+    }
+    func imageThreeUnlock() -> ImageResource {
+        if (unlocked3) { return .turtleHolder3 }
+        else {return .locked}
+    }
+    func imageFourUnlock() -> ImageResource {
+        if (unlocked4) { return .turtleHolder4 }
+        else {return .locked}
+    }
+    func imageFiveUnlock() -> ImageResource {
+        if (unlocked5) { return .turtleHolder5 }
+        else {return .locked}
+    }        }
+
+
         #Preview {
             Homepage()
         }
