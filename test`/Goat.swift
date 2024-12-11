@@ -25,17 +25,23 @@ struct Goat: View {
     
     @AppStorage("firstOpenedDate") var firstOpenedDate: Date = Date()
     
-    let currentYear: Int = Calendar.current.component(.year, from: Date())
-    let currentMonth: Int = Calendar.current.component(.month, from: Date())
-    let currentDay: Int = Calendar.current.component(.day, from: Date())
-    let currentHour: Int = Calendar.current.component(.hour, from: Date())
-    let currentMin: Int = Calendar.current.component(.minute, from: Date())
-    let currentSec: Int = Calendar.current.component(.second, from: Date())
+    @State var currentYear: Int = Calendar.current.component(.year, from: Date())
+    @State var currentMonth: Int = Calendar.current.component(.month, from: Date())
+    @State var currentDay: Int = Calendar.current.component(.day, from: Date())
+    @State var currentHour: Int = Calendar.current.component(.hour, from: Date())
+    @State var currentMin: Int = Calendar.current.component(.minute, from: Date())
+    @State var currentSec: Int = Calendar.current.component(.second, from: Date())
     
-    let currentDate = Date()
+    @State var secsLeftResult: Int = 0
     
-    //how many seconds it takes for the bar to go down by one thing
-    @State var x: Int = 10
+    @State var currentDate = Date()
+    
+    var b: Bool = true
+    
+    //how many seconds it takes for the bar to go down by one thing (you can change this number to make it faster/slower)
+    @State var x: Int = 2
+    
+    
     
     
     
@@ -46,6 +52,15 @@ struct Goat: View {
             //the bar at the top of the screen
             Text("Time until your goat gets sad and skinny: " + String(countDownTimer))
                 .onReceive(timer) { _ in
+                    currentYear = Calendar.current.component(.year, from: Date())
+                    currentMonth = Calendar.current.component(.month, from: Date())
+                    currentDay = Calendar.current.component(.day, from: Date())
+                    currentHour = Calendar.current.component(.hour, from: Date())
+                    currentMin = Calendar.current.component(.minute, from: Date())
+                    currentSec = Calendar.current.component(.second, from: Date())
+                    currentDate = Date()
+                    secsLeftResult = getSecondsPassed(getFirstOpenedDate(), to: currentDate)
+                    
                     //if countDownTimer > 0{
                         countDownTimer -= 1
                         
@@ -53,10 +68,13 @@ struct Goat: View {
                 }
             
             Image(getBar(Int: Int(countDownTimer)))
+            
             Image(getGoatState())
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding(10)
+                
+                
             
             /*Image(.babyGoat)
                 .resizable()
@@ -65,6 +83,8 @@ struct Goat: View {
             Text("GOAT")
             Text("" + getCurrentTime())
             Text("" + String(firstOpenedYear))*/
+            
+            
             
             
             Text("firstOpened year: " + String(isFirstOpenedYearSet()))
@@ -80,10 +100,14 @@ struct Goat: View {
             Text("current hour: " + String(currentHour))
             Text("current min: " + String(currentMin))
             Text("current sec: " + String(currentSec))
+                
+                //.onReceive(timer) { _ in
+                //self.currentSec = Calendar.current.component(.second, from: Date())
+            //}
             
             Text(DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .short))
             
-            Text("" + String(getSecondsPassed(getFirstOpenedDate(), to: currentDate)))
+            Text("" + String(secsLeftResult))
         }
         
     }
@@ -172,7 +196,16 @@ struct Goat: View {
             //barState = 0
         }
         else if secondsPassed <= 8 * x && secondsPassed > 4 * x{
-            //goatstate 1 (malnourished)
+            if secondsPassed <= 5 * x && secondsPassed > 4 * x{
+                //barState = 4
+            }
+            else if secondsPassed <= 6 * x && secondsPassed > 5 * x{
+                //barState = 3
+            }
+            else if secondsPassed <= 7 * x && secondsPassed > 6 * x{
+                //barState = 2
+            }
+            
         }
         else if secondsPassed <= 4 * x && secondsPassed > 0{
             //goatstate 2 (normal)

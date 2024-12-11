@@ -8,6 +8,15 @@
 import SwiftUI
 
 struct Homepage: View {
+    
+    @State var showPopup = false
+    func buttonPresed(){
+        showPopup = true
+        buttonPressed = true
+        
+    }
+
+    
     @State private var text = ""
     @AppStorage ("STRING_KEY") var savedText = ""
     @State var selectedDate: Date = Date()
@@ -63,25 +72,37 @@ struct Homepage: View {
                 .onAppear {
                     selectedDate = savedDate
                 }
-            
+                HStack{
+                    Image("goaticon")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                    Text("Goat Name: ")
+                    TextField("", text: $goatName)
+                        .padding()
+                        .frame(width: 200, height: 30)
+                        .background(Color.black.opacity(0.05))
+                        .cornerRadius(10)
+                        .disableAutocorrection(true)
+                        .onChange(of: goatName) { goatName in
+                            self.savedGoatName = goatName
+                        }
+                        .onAppear {
+                            self.goatName = savedGoatName
+                            print("Loaded: \(savedGoatName)")
+                        }
+                }
+            Spacer()
             HStack{
-                Image("goaticon")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                Text("Goat Name: ")
-                TextField("", text: $goatName)
-                    .padding()
-                    .frame(width: 200, height: 30)
-                    .background(Color.black.opacity(0.05))
-                    .cornerRadius(10)
-                    .disableAutocorrection(true)
-                    .onChange(of: goatName) { goatName in
-                        self.savedGoatName = goatName
+                Image(systemName: "list.bullet.clipboard").foregroundStyle(.accent)
+                Button(action: {buttonPresed()}){
+                    Text("Survey")}
+                .popover(isPresented: $showPopup, arrowEdge: .bottom) {
+                    TabView {
+                        Survey().tabItem{
+                            Label("Survey", systemImage: "list.bullet.clipboard")
+                        }
                     }
-                    .onAppear {
-                        self.goatName = savedGoatName
-                        print("Loaded: \(savedGoatName)")
-                    }
+                }
             }
             HStack{
                 Text("Goat Clothes Inventory: ")
