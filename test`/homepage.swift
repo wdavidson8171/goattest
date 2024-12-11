@@ -19,19 +19,16 @@ struct Homepage: View {
     @State var joinDate: Date = Date()
     @AppStorage ("JOIN_DATE_KEY") var savedJoinDate: Date = Date()
     @State var unlocked1: Bool = false
-    @State var unlocked2: Bool = false
+    @State var unlocked2: Bool = true
     @State var unlocked3: Bool = false
     @State var unlocked4: Bool = false
     @State var unlocked5: Bool = false
     
     
-    //the locked thing isnt showing up... but also the image isnt so thats good?
-    
     
     var body: some View {
         let mockScrollData = [
-            Image(imageOneUnlock()), Image(imageTwoUnlock()), Image(imageThreeUnlock()), Image(imageFourUnlock()), Image(imageFiveUnlock())]
-        //maye get rid of Image() part here and put it somewhere else??
+            imageOneUnlock(), imageTwoUnlock(), imageThreeUnlock(), imageFourUnlock(), imageFiveUnlock()]
         
         VStack(spacing: 5) {
             Text("Profile")
@@ -86,23 +83,27 @@ struct Homepage: View {
                         print("Loaded: \(savedGoatName)")
                     }
             }
-            Text("Goat Clothes Inventory: ")
-                .frame(alignment: .leading)
+            HStack{
+                Text("Goat Clothes Inventory: ")
+                Spacer()
+            }
             
-                    ScrollView(.horizontal) {
-                        HStack {
-                            ForEach(mockScrollData) { picture in mockScrollData[picture]
-                                    .resizable()
-                                    .frame(width: 100, height: 100)
-                                    .background(.white)
-                                    .foregroundColor(.white)
-                            }
+            
+            
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(mockScrollData, id: \.self) { picture in
                         
-                        }
+                        Image(picture)
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                            .background(.white)
+                            .foregroundColor(.white)
                     }
-    // gray out? blur? locked clothes but also they have to be able to be unlocked and then the image would change? is that possible? i think so
-                
-            
+                    
+                }
+            }
+    
             
             Spacer()
             
@@ -124,23 +125,21 @@ struct Homepage: View {
         else {return .locked}
     }
     func imageTwoUnlock() -> ImageResource {
-        if (unlocked1) { return .turtleHolder2 }
+        if (unlocked2) { return .turtleHolder2 }
         else {return .locked}
     }
     func imageThreeUnlock() -> ImageResource {
-        if (unlocked1) { return .turtleHolder3 }
+        if (unlocked3) { return .turtleHolder3 }
         else {return .locked}
     }
     func imageFourUnlock() -> ImageResource {
-        if (unlocked1) { return .turtleHolder4 }
+        if (unlocked4) { return .turtleHolder4 }
         else {return .locked}
     }
     func imageFiveUnlock() -> ImageResource {
-        if (unlocked1) { return .turtleHolder5 }
+        if (unlocked5) { return .turtleHolder5 }
         else {return .locked}
-    }
-    //Image(func())
-        }
+    }        }
 
 
         #Preview {
