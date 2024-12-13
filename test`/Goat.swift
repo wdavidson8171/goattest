@@ -37,8 +37,8 @@ struct Goat: View {
     
     var b: Bool = true
     
-    //how many seconds it takes for the bar to go down by one thing (you can change this number to make it faster/slower)
-    @State var x: Int = 20
+    //how many seconds it takes for the bar to go down by one thing (you can change this number to make it faster/slower, higher number = faster, closer to 0 = slower)
+    @State var x: CGFloat = 0.1
     
     var width: CGFloat = 200
     var height: CGFloat = 20
@@ -76,15 +76,17 @@ struct Goat: View {
                         percent = 0
                     }
                     else if percent >= 1 {
-                        percent -= 100 / (8 * CGFloat(x) + 1)
+                        percent -= 100 * CGFloat(x)
                     }
                     
                 }
             
+            Text("needtoreset result: " + String(needToReset()))
+            
             
             
             //calls the method which returns the appropriate bar image
-            Image(getBarState())
+            //Image(getBarState())
             
             //calls the method which returns the appropriate goat image
             Image(getGoatState())
@@ -181,7 +183,7 @@ struct Goat: View {
     //returns the seconds passed from the date the app was first opened to the current date
     func getSecondsPassed(_ from: Date, to: Date)-> Int{
         let secondsPassed: DateComponents = Calendar.current.dateComponents([.second], from: from, to: to)
-        return secondsPassed.second! - 20
+        return secondsPassed.second!
     }
     
     //returns the date the app was first opened
@@ -219,16 +221,16 @@ struct Goat: View {
     //returns the appropriate goat image
     func getGoatState()-> ImageResource{
         let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
-        if secondsPassed > 16 * x{
+        if CGFloat(secondsPassed) > 400 * x{
             return .deadGoat
         }
-        else if secondsPassed <= 16 * x && secondsPassed > 8 * x{
+        else if CGFloat(secondsPassed) <= 400 * x && CGFloat(secondsPassed) > 300 * x{
             return .skinnyGoat
         }
-        else if secondsPassed <= 8 * x && secondsPassed > 0{
+        else if CGFloat(secondsPassed) <= 300 * x && CGFloat(secondsPassed) > 200 * x{
             return .normalGoat
         }
-        else if secondsPassed <= 0 && secondsPassed > -8 * x{
+        else if CGFloat(secondsPassed) <= 200 && CGFloat(secondsPassed) > 100 * x{
             return .plumpGoat
         }
         else{
@@ -238,7 +240,7 @@ struct Goat: View {
     
     func needToReset()-> Bool{
         let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
-        if secondsPassed == 16 * x || secondsPassed == 8 || secondsPassed == 0 || secondsPassed == -8 * x{
+        if CGFloat(secondsPassed) == 400 * x || CGFloat(secondsPassed) == 300 || CGFloat(secondsPassed) == 200 || CGFloat(secondsPassed) == 100 * x{
             return true
         }
         else{
@@ -248,7 +250,7 @@ struct Goat: View {
     
     func isEmpty()-> Bool{
         let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
-        if secondsPassed >= 16 * x{
+        if CGFloat(secondsPassed) >= 400 * x{
             return true
         }
         else{
@@ -258,7 +260,7 @@ struct Goat: View {
     
     func isFull()-> Bool{
         let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
-        if secondsPassed <= -16 * x{
+        if CGFloat(secondsPassed) <= 0 * x{
             return true
         }
         else{
@@ -267,7 +269,7 @@ struct Goat: View {
     }
     
     //returns the appropriate bar image
-    func getBarState()-> ImageResource{
+    /*func getBarState()-> ImageResource{
         let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
         if secondsPassed > 16 * x{
             return .hBzero
@@ -396,7 +398,7 @@ struct Goat: View {
         else{
             return .HB_8
         }
-    }
+    }*/
     
 }
 
