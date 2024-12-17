@@ -75,8 +75,8 @@ struct Goat: View {
                     else if isEmpty() {
                         percent = 0
                     }
-                    else if percent >= 1 {
-                        percent -= 100 * CGFloat(x)
+                    else if percent > 0 {
+                        percent -= (100 / CGFloat(x)) * 0.01
                     }
                     
                 }
@@ -114,15 +114,15 @@ struct Goat: View {
             Text("firstdateopened: " + getFirstOpenedDate().description)
             Text("currentdate: " + currentDate.description)
             
-            Text("" + String(secsLeftResult))
+            Text("secsleft: " + String(secsLeftResult))
             
-            let multiplier = width / 100
+            //let multiplier = width / 100
             
             Text("\(Int(percent))")
             
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: height, style: .continuous).frame(width: width, height: height).foregroundColor(Color.gray.opacity(0.2))
-                RoundedRectangle(cornerRadius: height, style: .continuous).frame(width: percent * multiplier, height: height).background(
+                RoundedRectangle(cornerRadius: height, style: .continuous).frame(width: returnWidth(), height: height).background(
                     LinearGradient(gradient: Gradient(colors: [color1, color2]), startPoint: .leading, endPoint: .trailing).clipShape(RoundedRectangle(cornerRadius: height, style: .continuous))
                 ).foregroundColor(.clear)
             }
@@ -132,14 +132,14 @@ struct Goat: View {
         
     }
     
-    /*func returnWidth()-> CGFloat{
+    func returnWidth()-> CGFloat{
         if (percent * (width/100)) < 0{
             return 0
         }
         else{
             return percent * (width/100)
         }
-    }*/
+    }
     
     //checks to see if this is the first time the app is being opened
     //if it is, it sets the firstOpened year/day/min/etc. to the current time & saves it to app storage
@@ -240,9 +240,13 @@ struct Goat: View {
     
     func needToReset()-> Bool{
         let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
-        if CGFloat(secondsPassed) == 400 * x || CGFloat(secondsPassed) == 300 || CGFloat(secondsPassed) == 200 || CGFloat(secondsPassed) == 100 * x{
+        /*if CGFloat(secondsPassed) == 400 * x || CGFloat(secondsPassed) == 300 || CGFloat(secondsPassed) == 200 || CGFloat(secondsPassed) == 100 * x{
+            return true
+        }*/
+        if CGFloat(percent) <= 0{
             return true
         }
+        
         else{
             return false
         }
