@@ -37,8 +37,8 @@ struct Goat: View {
     
     var b: Bool = true
     
-    //how many seconds it takes for the bar to go down by one thing (you can change this number to make it faster/slower, higher number = faster, closer to 0 = slower)
-    @State var x: CGFloat = 0.1
+    //how many seconds it takes for the bar to go down by one thing (you can change this number to make it faster/slower, higher number = slower, closer to 0 = faster)
+    @State var x: CGFloat = 9099
     
     var width: CGFloat = 200
     var height: CGFloat = 20
@@ -78,11 +78,17 @@ struct Goat: View {
                     else if percent > 0 {
                         percent -= (100 / CGFloat(x)) * 0.01
                     }
-                    
                 }
             
-            Text("needtoreset result: " + String(needToReset()))
+            //Text("needtoreset result: " + String(needToReset()))
+            ZStack(alignment: .leading) {
+                RoundedRectangle(cornerRadius: height, style: .continuous).frame(width: width, height: height).foregroundColor(Color.gray.opacity(0.2))
+                RoundedRectangle(cornerRadius: height, style: .continuous).frame(width: returnWidth(), height: height).background(
+                    LinearGradient(gradient: Gradient(colors: [color1, color2]), startPoint: .leading, endPoint: .trailing).clipShape(RoundedRectangle(cornerRadius: height, style: .continuous))
+                ).foregroundColor(.clear)
+            }
             
+            Text(getGoatStateText())
             
             
             //calls the method which returns the appropriate bar image
@@ -92,7 +98,7 @@ struct Goat: View {
             Image(getGoatState())
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .padding(10)
+                .frame(width: 500, height: 500)
             
             /*Text("firstOpened year: " + String(isFirstOpenedYearSet()))
             Text("firstOpened month: " + String(isFirstOpenedMonthSet()))
@@ -108,24 +114,22 @@ struct Goat: View {
             Text("current min: " + String(currentMin))
             Text("current sec: " + String(currentSec))*/
             
-            Text(DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .short))
+            //Text(DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .short))
             
-            Text("percent: " + percent.description)
-            Text("firstdateopened: " + getFirstOpenedDate().description)
-            Text("currentdate: " + currentDate.description)
+            //Text("percent: " + percent.description)
+            //Text("firstdateopened: " + getFirstOpenedDate().description)
+            //Text("currentdate: " + currentDate.description)
             
             Text("secsleft: " + String(secsLeftResult))
             
             //let multiplier = width / 100
             
             Text("\(Int(percent))")
+            Text("\(400 * x)")
+            Text("\(300 * x)")
+            Text("\(200 * x)")
+            Text("\(100 * x)")
             
-            ZStack(alignment: .leading) {
-                RoundedRectangle(cornerRadius: height, style: .continuous).frame(width: width, height: height).foregroundColor(Color.gray.opacity(0.2))
-                RoundedRectangle(cornerRadius: height, style: .continuous).frame(width: returnWidth(), height: height).background(
-                    LinearGradient(gradient: Gradient(colors: [color1, color2]), startPoint: .leading, endPoint: .trailing).clipShape(RoundedRectangle(cornerRadius: height, style: .continuous))
-                ).foregroundColor(.clear)
-            }
                 
             
         }
@@ -235,6 +239,26 @@ struct Goat: View {
         }
         else{
             return .superGoat
+        }
+    }
+    
+    //returns the appropriate goat image
+    func getGoatStateText()-> String{
+        let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
+        if CGFloat(secondsPassed) > 400 * x{
+            return "DEAD"
+        }
+        else if CGFloat(secondsPassed) <= 400 * x && CGFloat(secondsPassed) > 300 * x{
+            return "VERY SKINNY"
+        }
+        else if CGFloat(secondsPassed) <= 300 * x && CGFloat(secondsPassed) > 200 * x{
+            return "NORMAL"
+        }
+        else if CGFloat(secondsPassed) <= 200 && CGFloat(secondsPassed) > 100 * x{
+            return "PLUMP"
+        }
+        else{
+            return "SUPERB"
         }
     }
     
