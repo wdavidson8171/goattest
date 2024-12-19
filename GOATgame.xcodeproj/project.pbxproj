@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B0BCB492CE3DA450084EFB9 /* popUpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0BCB482CE3DA450084EFB9 /* popUpWindow.swift */; };
+		7BAB14D32D14A1B800371C66 /* dropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB14D22D14A1B800371C66 /* dropDownView.swift */; };
 		7BD2D0452CE688DD0040C25D /* popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD2D0442CE688DD0040C25D /* popup.swift */; };
 		F35347BD2CB5A70A00B04EF8 /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35347BC2CB5A70A00B04EF8 /* Homepage.swift */; };
 		F35347BF2CB5A72B00B04EF8 /* Bingo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35347BE2CB5A72B00B04EF8 /* Bingo.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		7B0BCB482CE3DA450084EFB9 /* popUpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpWindow.swift; sourceTree = "<group>"; };
+		7BAB14D22D14A1B800371C66 /* dropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dropDownView.swift; sourceTree = "<group>"; };
 		7BD2D0442CE688DD0040C25D /* popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popup.swift; sourceTree = "<group>"; };
 		F35347BC2CB5A70A00B04EF8 /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
 		F35347BE2CB5A72B00B04EF8 /* Bingo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bingo.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				F3ADEA2D2CA33A1400349343 /* ContentView.swift */,
 				F3ADEA2F2CA33A1400349343 /* Item.swift */,
 				F35347BC2CB5A70A00B04EF8 /* Homepage.swift */,
+				7BAB14D22D14A1B800371C66 /* dropDownView.swift */,
 				F35347BE2CB5A72B00B04EF8 /* Bingo.swift */,
 				7BD2D0442CE688DD0040C25D /* popup.swift */,
 				F35347C02CB5A74100B04EF8 /* Goat.swift */,
@@ -175,6 +178,7 @@
 				F35347BF2CB5A72B00B04EF8 /* Bingo.swift in Sources */,
 				F3ADEA2C2CA33A1400349343 /* test_App.swift in Sources */,
 				F35347C12CB5A74100B04EF8 /* Goat.swift in Sources */,
+				7BAB14D32D14A1B800371C66 /* dropDownView.swift in Sources */,
 				F392187F2CC2D0F1006E02CB /* DressUp.swift in Sources */,
 				F35347BD2CB5A70A00B04EF8 /* Homepage.swift in Sources */,
 			);

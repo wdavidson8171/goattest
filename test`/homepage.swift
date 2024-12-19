@@ -28,6 +28,8 @@ struct Homepage: View {
     @State var joinDate: Date = Date()
     @AppStorage ("JOIN_DATE_KEY") var savedJoinDate: Date = Date()
     
+    @State private var selection: String?
+    
     var body: some View {
         VStack(spacing: 5) {
             Text("Profile")
@@ -95,7 +97,16 @@ struct Homepage: View {
                 }
             }
             
-            Spacer()
+            NavigationStack{
+                Text("Customize your background!").font(.system(size: 18, design: .rounded))
+                VStack(spacing:15){
+                    dropDownView(
+                        hint: "Select", options: ["darkGreen", "drabPink","darkBrown"], selection: $selection
+                    )
+                }
+                
+                .font(.system(size: 15))
+            }
             
             Text("Member Since \(joinDate, format: Date.FormatStyle(date: .numeric, time: .omitted))")
                 .font(.caption)
