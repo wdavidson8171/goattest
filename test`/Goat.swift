@@ -100,12 +100,21 @@ struct Goat: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 500, height: 500)
-                Image(.testHat)
+                //Image(.testHat)
+                    //.resizable()
+                    //.aspectRatio(contentMode: .fit)
+                    //.frame(width: 500, height: 500)
+                    //.padding([.bottom],160)
+                    //.padding([.leading], 70)
+                /*Image(.bling)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 500, height: 500)
-                    //.padding([.bottom],160)
-                    //.padding([.leading], 70)
+                 */
+                Image(.ski)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 500, height: 500)
             }
             
             
