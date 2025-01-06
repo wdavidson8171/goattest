@@ -101,7 +101,7 @@ struct Homepage: View {
                 Text("Customize your background!").font(.system(size: 18, design: .rounded))
                 VStack(spacing:15){
                     dropDownView(
-                        hint: "Select", options: ["darkGreen", "drabPink","darkBrown"], selection: $selection
+                       hint: "Select", options: ["darkGreen", "drabPink","darkBrown", "coolTeal"], selection: $selection
                     )
                 }
                 
