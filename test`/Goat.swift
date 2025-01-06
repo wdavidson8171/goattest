@@ -38,7 +38,7 @@ struct Goat: View {
     var b: Bool = true
     
     //how many seconds it takes for the bar to go down by one thing (you can change this number to make it faster/slower, higher number = slower, closer to 0 = faster)
-    @State var x: CGFloat = 9099
+    @State var x: CGFloat = 10
     
     var width: CGFloat = 200
     var height: CGFloat = 20
@@ -94,11 +94,20 @@ struct Goat: View {
             //calls the method which returns the appropriate bar image
             //Image(getBarState())
             
-            //calls the method which returns the appropriate goat image
-            Image(getGoatState())
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 500, height: 500)
+            ZStack(){
+                //calls the method which returns the appropriate goat image
+                Image(getGoatState())
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 500, height: 500)
+                Image(.testHat)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 500, height: 500)
+                    //.padding([.bottom],160)
+                    //.padding([.leading], 70)
+            }
+            
             
             /*Text("firstOpened year: " + String(isFirstOpenedYearSet()))
             Text("firstOpened month: " + String(isFirstOpenedMonthSet()))
