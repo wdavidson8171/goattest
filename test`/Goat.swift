@@ -38,7 +38,7 @@ struct Goat: View {
     var b: Bool = true
     
     //how many seconds it takes for the bar to go down by one thing (you can change this number to make it faster/slower, higher number = slower, closer to 0 = faster)
-    @State var x: CGFloat = 10
+    @State var x: CGFloat = 1000
     
     var width: CGFloat = 200
     var height: CGFloat = 20
@@ -112,6 +112,24 @@ struct Goat: View {
                     .frame(width: 500, height: 500)
                     .padding([.trailing], 30)
                     .padding([.top], 5)
+                Image(.cowboy)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 500, height: 500)
+                    .padding([.trailing], 30)
+                    .padding([.top], 10)
+                Image(.superhero)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 500, height: 500)
+                    .padding([.trailing], 30)
+                    .padding([.top], 10)
+                Image(.pirate)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 500, height: 500)
+                    .padding([.trailing], 30)
+                    .padding([.top], 10)
                  
                 /*Image(.ski)
                     .resizable()
