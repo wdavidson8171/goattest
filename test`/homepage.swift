@@ -15,7 +15,7 @@ struct Homepage: View {
         buttonPressed = true
         
     }
-
+    
     
     @State private var text = ""
     @AppStorage ("STRING_KEY") var savedText = ""
@@ -67,25 +67,25 @@ struct Homepage: View {
             
             
             
-                HStack{
-                    Image("goaticon")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                    Text("Goat Name: ")
-                    TextField("", text: $goatName)
-                        .padding()
-                        .frame(width: 200, height: 30)
-                        .background(Color.black.opacity(0.05))
-                        .cornerRadius(10)
-                        .disableAutocorrection(true)
-                        .onChange(of: goatName) { goatName in
-                            self.savedGoatName = goatName
-                        }
-                        .onAppear {
-                            self.goatName = savedGoatName
-                            print("Loaded: \(savedGoatName)")
-                        }
-                }
+            HStack{
+                Image("goaticon")
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                Text("Goat Name: ")
+                TextField("", text: $goatName)
+                    .padding()
+                    .frame(width: 200, height: 30)
+                    .background(Color.black.opacity(0.05))
+                    .cornerRadius(10)
+                    .disableAutocorrection(true)
+                    .onChange(of: goatName) { goatName in
+                        self.savedGoatName = goatName
+                    }
+                    .onAppear {
+                        self.goatName = savedGoatName
+                        print("Loaded: \(savedGoatName)")
+                    }
+            }
             
             DatePicker("Birthday:", selection: $selectedDate, in: startingDate...endingDate, displayedComponents: [.date])
                 .datePickerStyle(CompactDatePickerStyle())
@@ -134,7 +134,7 @@ struct Homepage: View {
                 }
             }
             
-    
+            
             
             Spacer()
             
@@ -147,10 +147,10 @@ struct Homepage: View {
                     self.$joinDate.wrappedValue = savedJoinDate
                 }
         }
-            
+        
         .padding()
-            
-            }
+        
+    }
     func imageOneUnlock() -> ImageResource {
         if (unlocked1) { return .turtleHolder1 }
         else {return .locked}
@@ -170,7 +170,29 @@ struct Homepage: View {
     func imageFiveUnlock() -> ImageResource {
         if (unlocked5) { return .turtleHolder5 }
         else {return .locked}
-    }        }
+    }
+    /*func getGoatClothes()-> ImageResource{
+        if INSERT CONDITION HERE{
+            return .bling
+        }
+        else if INSERT CONDITION HERE{
+            return .cowboy
+        }
+        else if INSERT CONDITION HERE{
+            return .superhero
+        }
+        else if INSERT CONDITION HERE{
+            return .pirate
+        }
+        else if INSERT CONDITION HERE{
+            return .ski
+        }
+        else{
+            return .blank
+        }
+    }*/
+    
+}
 
 
         #Preview {
