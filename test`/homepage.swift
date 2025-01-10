@@ -27,17 +27,28 @@ struct Homepage: View {
     @AppStorage ("GOAT_NAME_KEY") var savedGoatName = ""
     @State var joinDate: Date = Date()
     @AppStorage ("JOIN_DATE_KEY") var savedJoinDate: Date = Date()
-    @State var unlocked1: Bool = false
-    @State var unlocked2: Bool = false
-    @State var unlocked3: Bool = false
-    @State var unlocked4: Bool = false
+    @State var unlocked1: Bool = true
+    @State var unlocked2: Bool = true
+    @State var unlocked3: Bool = true
+    @State var unlocked4: Bool = true
     @State var unlocked5: Bool = true
     
     
     
     var body: some View {
         let mockScrollData = [
-            imageOneUnlock(), imageTwoUnlock(), imageThreeUnlock(), imageFourUnlock(), imageFiveUnlock()]
+            Button(action: { print("Button 1 pressed")}) {
+                Image(imageOneUnlock())
+            }, Button(action: { print("Button 2 pressed")}) {
+                Image(imageTwoUnlock())
+            }, Button(action: { print("Button 3 pressed")}) {
+                Image(imageThreeUnlock())
+            }, Button(action: { print("Button 4 pressed")}) {
+                Image(imageFourUnlock())
+            }, Button(action: { print("Button 5 pressed")}) {
+                Image(imageFiveUnlock())
+            }]
+        
         
         VStack(spacing: 5) {
             Text("Profile")
@@ -120,6 +131,12 @@ struct Homepage: View {
                 }
             }
             
+            /*
+             figure out how to loop through an array of buttons
+             is it the buttons in the list or the images in the buttons?
+             */
+            
+            
             Spacer()
             HStack{
                 Image(systemName: "list.bullet.clipboard").foregroundStyle(.accent)
@@ -134,7 +151,9 @@ struct Homepage: View {
                 }
             }
             
-            
+            /*Button(action: { print("Button 1 pressed")}) {
+                Image(imageOneUnlock())
+            }*/
             
             Spacer()
             
@@ -152,23 +171,23 @@ struct Homepage: View {
         
     }
     func imageOneUnlock() -> ImageResource {
-        if (unlocked1) { return .turtleHolder1 }
+        if (unlocked1) { return .bling }
         else {return .locked}
     }
     func imageTwoUnlock() -> ImageResource {
-        if (unlocked2) { return .turtleHolder2 }
+        if (unlocked2) { return .cowboy }
         else {return .locked}
     }
     func imageThreeUnlock() -> ImageResource {
-        if (unlocked3) { return .turtleHolder3 }
+        if (unlocked3) { return .superhero }
         else {return .locked}
     }
     func imageFourUnlock() -> ImageResource {
-        if (unlocked4) { return .turtleHolder4 }
+        if (unlocked4) { return .pirate }
         else {return .locked}
     }
     func imageFiveUnlock() -> ImageResource {
-        if (unlocked5) { return .turtleHolder5 }
+        if (unlocked5) { return .ski }
         else {return .locked}
     }
     /*func getGoatClothes()-> ImageResource{
