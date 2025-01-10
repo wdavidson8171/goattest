@@ -468,6 +468,27 @@ struct Goat: View {
         }
     }*/
     
+    /*func getGoatClothes()-> ImageResource{
+        if INSERT CONDITION HERE{
+            return .bling
+        }
+        else if INSERT CONDITION HERE{
+            return .cowboy
+        }
+        else if INSERT CONDITION HERE{
+            return .superhero
+        }
+        else if INSERT CONDITION HERE{
+            return .pirate
+        }
+        else if INSERT CONDITION HERE{
+            return .ski
+        }
+        else{
+            return .blank
+        }
+    }*/
+    
 }
 
 #Preview {
