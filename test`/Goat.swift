@@ -139,6 +139,9 @@ struct Goat: View {
                     .padding([.top], 10)*/
             }
             
+            //Image(.cleanBedroom)
+            Label("TEST", image: .cleanBedroom).labelStyle(.iconOnly)
+            
             
             /*Text("firstOpened year: " + String(isFirstOpenedYearSet()))
             Text("firstOpened month: " + String(isFirstOpenedMonthSet()))
@@ -468,26 +471,12 @@ struct Goat: View {
         }
     }*/
     
-    /*func getGoatClothes()-> ImageResource{
-        if INSERT CONDITION HERE{
-            return .bling
-        }
-        else if INSERT CONDITION HERE{
-            return .cowboy
-        }
-        else if INSERT CONDITION HERE{
-            return .superhero
-        }
-        else if INSERT CONDITION HERE{
-            return .pirate
-        }
-        else if INSERT CONDITION HERE{
-            return .ski
-        }
-        else{
-            return .blank
-        }
-    }*/
+    func imagePressed(xje: ImageResource){
+        //if(xje.isPressed){
+                
+        //}
+    }
+    
     
 }
 
