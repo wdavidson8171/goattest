@@ -98,7 +98,7 @@ struct GlobalVariables{
             
             NavigationView{
                 Form{
-                    Section("What activities are you interested in?", content: {
+                    Section("What activities are you interested in? \nPlease select at least 3 for a more satisfying experience", content: {
                         NavigationLink(destination: {
                             MultiSelectPickerView(allItems: allItems, selectedItems: $selectedItems)
                                 .navigationTitle("Choose your activities")
