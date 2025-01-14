@@ -48,6 +48,8 @@ struct Homepage: View {
             }, Button(action: { print("Button 5 pressed")}) {
                 Image(imageFiveUnlock())
             }]
+            
+            //Image(imageOneUnlock()), Image(imageTwoUnlock()), Image(imageThreeUnlock()), Image(imageFourUnlock()), Image(imageFiveUnlock())]
         
         
         VStack(spacing: 5) {
@@ -119,13 +121,17 @@ struct Homepage: View {
             
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(mockScrollData, id: \.self) { picture in
+                    /*ForEach(mockScrollData, id: \.self) { picture in
                         
                         Image(picture)
                             .resizable()
                             .frame(width: 100, height: 100)
                             .background(.white)
                             .foregroundColor(.white)
+                     */
+                    
+                   ForEach(mockScrollData, id: \self) { index in
+                       mockScrollData[index].printImage()
                     }
                     
                 }
@@ -133,7 +139,10 @@ struct Homepage: View {
             
             /*
              figure out how to loop through an array of buttons
+             firsdt figure out what im tring to do fully (print images?)
              is it the buttons in the list or the images in the buttons?
+             this is impossible probably just ask mandell at the start of class
+             also make sure its even possible in the first place
              */
             
             
@@ -170,6 +179,7 @@ struct Homepage: View {
         .padding()
         
     }
+
     func imageOneUnlock() -> ImageResource {
         if (unlocked1) { return .bling }
         else {return .locked}

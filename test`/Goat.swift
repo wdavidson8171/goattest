@@ -484,6 +484,9 @@ struct Goat: View {
         else if INSERT CONDITION HERE{
             return .ski
         }
+        else if INSERT CONDITION HERE{
+            return .olivia
+        }
         else{
             return .blank
         }
