@@ -478,7 +478,7 @@ struct Bingo: View {
             ZStack{
                 Image("bingoLady").border(Color.pastelPink, width: 10).cornerRadius(10)
                 if GlobalVariables.submitted == true{
-                    Color.lilac                              .ignoresSafeArea()
+                    Color.lavender                              .ignoresSafeArea()
                     
                 }
                 VStack{

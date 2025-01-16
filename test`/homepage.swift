@@ -82,8 +82,8 @@ struct Homepage: View {
                             self.goatName = savedGoatName
                             print("Loaded: \(savedGoatName)")
                         }
-                }
-            Spacer()
+                }.padding(15)
+            
             HStack{
                 Image(systemName: "list.bullet.clipboard").foregroundStyle(.accent)
                 Button(action: {buttonPresed()}){
@@ -95,18 +95,18 @@ struct Homepage: View {
                         }
                     }
                 }
-            }
-            
-            NavigationStack{
+            }.padding(15)
+            VStack{
                 Text("Customize your background!").font(.system(size: 18, design: .rounded))
                 VStack(spacing:15){
                     dropDownView(
-                       hint: "Select", options: ["darkGreen", "drabPink","darkBrown", "coolTeal"], selection: $selection
+                       hint: "Select", options: ["Lovely Lavender", "Brilliant Blue","Pleasant Pink"], selection: $selection
                     )
                 }
                 
                 .font(.system(size: 15))
-            }
+            }.padding(15)
+            Spacer()
             
             Text("Member Since \(joinDate, format: Date.FormatStyle(date: .numeric, time: .omitted))")
                 .font(.caption)
