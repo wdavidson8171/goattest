@@ -15,7 +15,7 @@ struct Homepage: View {
         buttonPressed = true
         
     }
-
+    
     
     @State private var text = ""
     @AppStorage ("STRING_KEY") var savedText = ""
@@ -27,10 +27,20 @@ struct Homepage: View {
     @AppStorage ("GOAT_NAME_KEY") var savedGoatName = ""
     @State var joinDate: Date = Date()
     @AppStorage ("JOIN_DATE_KEY") var savedJoinDate: Date = Date()
+    @State var unlocked1: Bool = false
+    @State var unlocked2: Bool = false
+    @State var unlocked3: Bool = false
+    @State var unlocked4: Bool = false
+    @State var unlocked5: Bool = true
+    
+    
     
     @State private var selection: String?
     
     var body: some View {
+        let mockScrollData = [
+            imageOneUnlock(), imageTwoUnlock(), imageThreeUnlock(), imageFourUnlock(), imageFiveUnlock()]
+        
         VStack(spacing: 5) {
             Text("Profile")
                 .font(.largeTitle)
@@ -40,20 +50,44 @@ struct Homepage: View {
                 .frame(width: 80, height: 80)
                 .padding()
             
-            TextField("Name", text: $text)
-                .padding()
-                .frame(width: 300, height: 30)
-                .background(Color.black.opacity(0.05))
-                .cornerRadius(10)
-                .disableAutocorrection(true)
-                .onChange(of: text) { text in
-                    self.savedText = text
-                }
-                .onAppear {
-                    self.text = savedText
-                    print("Loaded: \(savedText)")
-                }
+            HStack{
+                Text("Name:")
+                TextField("Name", text: $text)
+                    .padding()
+                    .frame(width: 300, height: 30)
+                    .background(Color.black.opacity(0.05))
+                    .cornerRadius(10)
+                    .disableAutocorrection(true)
+                    .onChange(of: text) { text in
+                        self.savedText = text
+                    }
+                    .onAppear {
+                        self.text = savedText
+                        print("Loaded: \(savedText)")
+                    }
+            }
             
+            
+            
+            HStack{
+                Image("goaticon")
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                Text("Goat Name: ")
+                TextField("", text: $goatName)
+                    .padding()
+                    .frame(width: 200, height: 30)
+                    .background(Color.black.opacity(0.05))
+                    .cornerRadius(10)
+                    .disableAutocorrection(true)
+                    .onChange(of: goatName) { goatName in
+                        self.savedGoatName = goatName
+                    }
+                    .onAppear {
+                        self.goatName = savedGoatName
+                        print("Loaded: \(savedGoatName)")
+                    }
+            }
             
             DatePicker("Birthday:", selection: $selectedDate, in: startingDate...endingDate, displayedComponents: [.date])
                 .datePickerStyle(CompactDatePickerStyle())
@@ -64,6 +98,7 @@ struct Homepage: View {
                 .onAppear {
                     selectedDate = savedDate
                 }
+<<<<<<< HEAD
                 HStack{
                     Image("goaticon")
                         .resizable()
@@ -84,6 +119,33 @@ struct Homepage: View {
                         }
                 }.padding(15)
             
+=======
+            
+            HStack{
+                Text("Goat Clothes Inventory: ")
+                    .padding(.bottom, 15)
+                    .padding(.top, 6)
+                Spacer()
+            }
+            
+            
+            
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(mockScrollData, id: \.self) { picture in
+                        
+                        Image(picture)
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                            .background(.white)
+                            .foregroundColor(.white)
+                    }
+                    
+                }
+            }
+            
+            Spacer()
+>>>>>>> edd5ea350e66964adb9a237c622371c74ee348e9
             HStack{
                 Image(systemName: "list.bullet.clipboard").foregroundStyle(.accent)
                 Button(action: {buttonPresed()}){
@@ -95,6 +157,7 @@ struct Homepage: View {
                         }
                     }
                 }
+<<<<<<< HEAD
             }.padding(15)
             VStack{
                 Text("Customize your background!").font(.system(size: 18, design: .rounded))
@@ -106,6 +169,12 @@ struct Homepage: View {
                 
                 .font(.system(size: 15))
             }.padding(15)
+=======
+            }
+            
+            
+            
+>>>>>>> edd5ea350e66964adb9a237c622371c74ee348e9
             Spacer()
             
             Text("Member Since \(joinDate, format: Date.FormatStyle(date: .numeric, time: .omitted))")
@@ -117,11 +186,54 @@ struct Homepage: View {
                     self.$joinDate.wrappedValue = savedJoinDate
                 }
         }
-            
+        
         .padding()
-            
-            }
+        
+    }
+    func imageOneUnlock() -> ImageResource {
+        if (unlocked1) { return .turtleHolder1 }
+        else {return .locked}
+    }
+    func imageTwoUnlock() -> ImageResource {
+        if (unlocked2) { return .turtleHolder2 }
+        else {return .locked}
+    }
+    func imageThreeUnlock() -> ImageResource {
+        if (unlocked3) { return .turtleHolder3 }
+        else {return .locked}
+    }
+    func imageFourUnlock() -> ImageResource {
+        if (unlocked4) { return .turtleHolder4 }
+        else {return .locked}
+    }
+    func imageFiveUnlock() -> ImageResource {
+        if (unlocked5) { return .turtleHolder5 }
+        else {return .locked}
+    }
+    /*func getGoatClothes()-> ImageResource{
+        if INSERT CONDITION HERE{
+            return .bling
         }
+        else if INSERT CONDITION HERE{
+            return .cowboy
+        }
+        else if INSERT CONDITION HERE{
+            return .superhero
+        }
+        else if INSERT CONDITION HERE{
+            return .pirate
+        }
+        else if INSERT CONDITION HERE{
+            return .ski
+        }
+        else{
+            return .blank
+        }
+    }*/
+    
+}
+
+
         #Preview {
             Homepage()
         }
