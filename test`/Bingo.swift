@@ -36,6 +36,9 @@ struct Bingo: View {
     @State var showingPopup: Bool = false
     @State var randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
     
+    var coins = GlobalVariables.coin
+    var cans = GlobalVariables.can
+    
     func randomImage(){
         print(GlobalVariables.SavedItems.count)
         
@@ -190,6 +193,8 @@ struct Bingo: View {
         hideButton = true
         print(hideButton)
         print(randomArray)
+        GlobalVariables.coin = coins+1
+        print(GlobalVariables.coin)
         //return hideButton
     }
     
@@ -481,7 +486,14 @@ struct Bingo: View {
                     Color.lavender                              .ignoresSafeArea()
                     
                 }
+                HStack{
+                    Image("coin")
+                    Text("\(GlobalVariables.coin)")
+                    Image("tincan")
+                    Text("\(GlobalVariables.can)")
+                }.position(x: 280, y: 7).padding(20)
                 VStack{
+                    
                     HStack{
                         
                         Button(action: {buttonPresed()}){
@@ -656,6 +668,7 @@ struct Bingo: View {
                         if GlobalVariables.submitted == true{
                             randomImage()
                             populateArray()
+                           
                         }
                         
                     }

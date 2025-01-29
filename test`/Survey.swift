@@ -79,6 +79,8 @@ import SwiftUI
 struct GlobalVariables{
     static var SavedItems:[String] = ["Your selected items ","will appear here"]
     static var submitted:Bool = false
+    static var coin = 0
+    static var can = 0
 }
     struct iOSview:View{
         @State var selectedItems:[String]
