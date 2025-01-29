@@ -12,7 +12,7 @@ import Foundation
 
 
 struct Goat: View {
-    @State var countDownTimer = 8
+    //@State var countDownTimer = 8
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @AppStorage("firstOpenedYear") var firstOpenedYear: Int = -1
@@ -38,7 +38,7 @@ struct Goat: View {
     var b: Bool = true
     
     //how many seconds it takes for the bar to go down by one thing (you can change this number to make it faster/slower, higher number = slower, closer to 0 = faster)
-    @State var x: CGFloat = 1000
+    @State var x: CGFloat = 5
     
     var width: CGFloat = 200
     var height: CGFloat = 20
@@ -65,8 +65,8 @@ struct Goat: View {
                     currentSec = Calendar.current.component(.second, from: Date())
                     currentDate = Date()
                     secsLeftResult = getSecondsPassed(getFirstOpenedDate(), to: currentDate)
-                    countDownTimer -= 1
-                    if needToReset() {
+                    //countDownTimer -= 1
+                    /*if needToReset() {
                         percent = 100
                     }
                     if isFull() {
@@ -77,6 +77,10 @@ struct Goat: View {
                     }
                     else if percent > 0 {
                         percent -= (100 / CGFloat(x)) * 0.01
+                    }*/
+                    percent = (100 * x - (CGFloat(secsLeftResult) .truncatingRemainder (dividingBy: 100 * x))) / x
+                    if isEmpty() {
+                        percent = 0
                     }
                 }
             
@@ -106,19 +110,21 @@ struct Goat: View {
                     //.frame(width: 500, height: 500)
                     //.padding([.bottom],160)
                     //.padding([.leading], 70)
-                Image(.bling)
+                /*Image(.bling)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 500, height: 500)
                     .padding([.trailing], 30)
-                    .padding([.top], 5)
-                Image(.cowboy)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 500, height: 500)
-                    .padding([.trailing], 30)
-                    .padding([.top], 10)
-                Image(.superhero)
+                    .padding([.top], 5)*/
+                if(getGoatState() != .deadGoat){
+                    Image(.cowboy)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 500, height: 500)
+                        .padding([.trailing], 30)
+                        .padding([.top], 10)
+                }
+                /*Image(.superhero)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 500, height: 500)
@@ -129,7 +135,7 @@ struct Goat: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 500, height: 500)
                     .padding([.trailing], 30)
-                    .padding([.top], 10)
+                    .padding([.top], 10)*/
                  
                 /*Image(.ski)
                     .resizable()
@@ -138,6 +144,9 @@ struct Goat: View {
                     .padding([.trailing], 30)
                     .padding([.top], 10)*/
             }
+            
+            //Image(.cleanBedroom)
+            //Label("TEST", image: .cleanBedroom).labelStyle(.iconOnly)
             
             
             /*Text("firstOpened year: " + String(isFirstOpenedYearSet()))
@@ -164,11 +173,6 @@ struct Goat: View {
             
             //let multiplier = width / 100
             
-            Text("\(Int(percent))")
-            Text("\(400 * x)")
-            Text("\(300 * x)")
-            Text("\(200 * x)")
-            Text("\(100 * x)")
             
                 
             
@@ -265,16 +269,16 @@ struct Goat: View {
     //returns the appropriate goat image
     func getGoatState()-> ImageResource{
         let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
-        if CGFloat(secondsPassed) > 400 * x{
+        if CGFloat(secondsPassed) >= 400 * x{
             return .deadGoat
         }
-        else if CGFloat(secondsPassed) <= 400 * x && CGFloat(secondsPassed) > 300 * x{
+        else if CGFloat(secondsPassed) < 400 * x && CGFloat(secondsPassed) >= 300 * x{
             return .skinnyGoat
         }
-        else if CGFloat(secondsPassed) <= 300 * x && CGFloat(secondsPassed) > 200 * x{
+        else if CGFloat(secondsPassed) < 300 * x && CGFloat(secondsPassed) >= 200 * x{
             return .normalGoat
         }
-        else if CGFloat(secondsPassed) <= 200 && CGFloat(secondsPassed) > 100 * x{
+        else if CGFloat(secondsPassed) < 200 * x && CGFloat(secondsPassed) >= 100 * x{
             return .plumpGoat
         }
         else{
@@ -285,16 +289,16 @@ struct Goat: View {
     //returns the appropriate goat image
     func getGoatStateText()-> String{
         let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
-        if CGFloat(secondsPassed) > 400 * x{
+        if CGFloat(secondsPassed) >= 400 * x{
             return "DEAD"
         }
-        else if CGFloat(secondsPassed) <= 400 * x && CGFloat(secondsPassed) > 300 * x{
+        else if CGFloat(secondsPassed) < 400 * x && CGFloat(secondsPassed) >= 300 * x{
             return "VERY SKINNY"
         }
-        else if CGFloat(secondsPassed) <= 300 * x && CGFloat(secondsPassed) > 200 * x{
+        else if CGFloat(secondsPassed) < 300 * x && CGFloat(secondsPassed) >= 200 * x{
             return "NORMAL"
         }
-        else if CGFloat(secondsPassed) <= 200 && CGFloat(secondsPassed) > 100 * x{
+        else if CGFloat(secondsPassed) < 200 && CGFloat(secondsPassed) >= 100 * x{
             return "PLUMP"
         }
         else{
@@ -468,29 +472,12 @@ struct Goat: View {
         }
     }*/
     
-    /*func getGoatClothes()-> ImageResource{
-        if INSERT CONDITION HERE{
-            return .bling
-        }
-        else if INSERT CONDITION HERE{
-            return .cowboy
-        }
-        else if INSERT CONDITION HERE{
-            return .superhero
-        }
-        else if INSERT CONDITION HERE{
-            return .pirate
-        }
-        else if INSERT CONDITION HERE{
-            return .ski
-        }
-        else if INSERT CONDITION HERE{
-            return .olivia
-        }
-        else{
-            return .blank
-        }
-    }*/
+    func imagePressed(xje: ImageResource){
+        //if(xje.isPressed){
+                
+        //}
+    }
+    
     
 }
 

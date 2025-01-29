@@ -18,14 +18,12 @@ import SwiftUI
         
         
         @State var allItems:[String] = [
-            "Family activities",
-            "Group Activities",
+            "Family Activities",
             "Household Chores",
             "Indoor Activities",
             "Creative Activities",
-            "Outdoor Activities",
             "Exercise",
-            "Going out (cheap)",
+            "Going Out (cheap)",
             "Going Out (fancy)",
             "Cooking/Baking",
             "Self Care",
@@ -79,7 +77,8 @@ import SwiftUI
     }
 
 struct GlobalVariables{
-    static var SavedItems:[String] = []
+    static var SavedItems:[String] = ["Your selected items ","will appear here"]
+    static var submitted:Bool = false
 }
     struct iOSview:View{
         @State var selectedItems:[String]
@@ -87,9 +86,10 @@ struct GlobalVariables{
         
         
         func saveSurvey(){
+            GlobalVariables.submitted = true
             let userDefaults = UserDefaults.standard
             userDefaults.set(selectedItems, forKey: "selectedItems")
-            GlobalVariables.SavedItems = (userDefaults.array(forKey: "selectedItems") as? [String] ?? [" "])
+            GlobalVariables.SavedItems = (userDefaults.array(forKey: "selectedItems") as? [String] ?? [])
             print(GlobalVariables.SavedItems)
         }
         
@@ -98,7 +98,7 @@ struct GlobalVariables{
             
             NavigationView{
                 Form{
-                    Section("What activities are you interested in?", content: {
+                    Section("What activities are you interested in? \nPlease select at least 3 for a more satisfying experience", content: {
                         NavigationLink(destination: {
                             MultiSelectPickerView(allItems: allItems, selectedItems: $selectedItems)
                                 .navigationTitle("Choose your activities")

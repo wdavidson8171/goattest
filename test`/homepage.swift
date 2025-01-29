@@ -15,7 +15,7 @@ struct Homepage: View {
         buttonPressed = true
         
     }
-    
+
     
     @State private var text = ""
     @AppStorage ("STRING_KEY") var savedText = ""
@@ -27,31 +27,10 @@ struct Homepage: View {
     @AppStorage ("GOAT_NAME_KEY") var savedGoatName = ""
     @State var joinDate: Date = Date()
     @AppStorage ("JOIN_DATE_KEY") var savedJoinDate: Date = Date()
-    @State var unlocked1: Bool = true
-    @State var unlocked2: Bool = true
-    @State var unlocked3: Bool = true
-    @State var unlocked4: Bool = true
-    @State var unlocked5: Bool = true
     
-    
+    @State private var selection: String?
     
     var body: some View {
-        let mockScrollData = [
-            Button(action: { print("Button 1 pressed")}) {
-                Image(imageOneUnlock())
-            }, Button(action: { print("Button 2 pressed")}) {
-                Image(imageTwoUnlock())
-            }, Button(action: { print("Button 3 pressed")}) {
-                Image(imageThreeUnlock())
-            }, Button(action: { print("Button 4 pressed")}) {
-                Image(imageFourUnlock())
-            }, Button(action: { print("Button 5 pressed")}) {
-                Image(imageFiveUnlock())
-            }]
-            
-            //Image(imageOneUnlock()), Image(imageTwoUnlock()), Image(imageThreeUnlock()), Image(imageFourUnlock()), Image(imageFiveUnlock())]
-        
-        
         VStack(spacing: 5) {
             Text("Profile")
                 .font(.largeTitle)
@@ -61,44 +40,20 @@ struct Homepage: View {
                 .frame(width: 80, height: 80)
                 .padding()
             
-            HStack{
-                Text("Name:")
-                TextField("Name", text: $text)
-                    .padding()
-                    .frame(width: 300, height: 30)
-                    .background(Color.black.opacity(0.05))
-                    .cornerRadius(10)
-                    .disableAutocorrection(true)
-                    .onChange(of: text) { text in
-                        self.savedText = text
-                    }
-                    .onAppear {
-                        self.text = savedText
-                        print("Loaded: \(savedText)")
-                    }
-            }
+            TextField("Name", text: $text)
+                .padding()
+                .frame(width: 300, height: 30)
+                .background(Color.black.opacity(0.05))
+                .cornerRadius(10)
+                .disableAutocorrection(true)
+                .onChange(of: text) { text in
+                    self.savedText = text
+                }
+                .onAppear {
+                    self.text = savedText
+                    print("Loaded: \(savedText)")
+                }
             
-            
-            
-            HStack{
-                Image("goaticon")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                Text("Goat Name: ")
-                TextField("", text: $goatName)
-                    .padding()
-                    .frame(width: 200, height: 30)
-                    .background(Color.black.opacity(0.05))
-                    .cornerRadius(10)
-                    .disableAutocorrection(true)
-                    .onChange(of: goatName) { goatName in
-                        self.savedGoatName = goatName
-                    }
-                    .onAppear {
-                        self.goatName = savedGoatName
-                        print("Loaded: \(savedGoatName)")
-                    }
-            }
             
             DatePicker("Birthday:", selection: $selectedDate, in: startingDate...endingDate, displayedComponents: [.date])
                 .datePickerStyle(CompactDatePickerStyle())
@@ -109,44 +64,26 @@ struct Homepage: View {
                 .onAppear {
                     selectedDate = savedDate
                 }
+                HStack{
+                    Image("goaticon")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                    Text("Goat Name: ")
+                    TextField("", text: $goatName)
+                        .padding()
+                        .frame(width: 200, height: 30)
+                        .background(Color.black.opacity(0.05))
+                        .cornerRadius(10)
+                        .disableAutocorrection(true)
+                        .onChange(of: goatName) { goatName in
+                            self.savedGoatName = goatName
+                        }
+                        .onAppear {
+                            self.goatName = savedGoatName
+                            print("Loaded: \(savedGoatName)")
+                        }
+                }.padding(15)
             
-            HStack{
-                Text("Goat Clothes Inventory: ")
-                    .padding(.bottom, 15)
-                    .padding(.top, 6)
-                Spacer()
-            }
-            
-            
-            
-            ScrollView(.horizontal) {
-                HStack {
-                    /*ForEach(mockScrollData, id: \.self) { picture in
-                        
-                        Image(picture)
-                            .resizable()
-                            .frame(width: 100, height: 100)
-                            .background(.white)
-                            .foregroundColor(.white)
-                     */
-                    
-                   ForEach(mockScrollData, id: \self) { index in
-                       mockScrollData[index].printImage()
-                    }
-                    
-                }
-            }
-            
-            /*
-             figure out how to loop through an array of buttons
-             firsdt figure out what im tring to do fully (print images?)
-             is it the buttons in the list or the images in the buttons?
-             this is impossible probably just ask mandell at the start of class
-             also make sure its even possible in the first place
-             */
-            
-            
-            Spacer()
             HStack{
                 Image(systemName: "list.bullet.clipboard").foregroundStyle(.accent)
                 Button(action: {buttonPresed()}){
@@ -158,12 +95,17 @@ struct Homepage: View {
                         }
                     }
                 }
-            }
-            
-            /*Button(action: { print("Button 1 pressed")}) {
-                Image(imageOneUnlock())
-            }*/
-            
+            }.padding(15)
+            VStack{
+                Text("Customize your background!").font(.system(size: 18, design: .rounded))
+                VStack(spacing:15){
+                    dropDownView(
+                       hint: "Select", options: ["Lovely Lavender", "Bombastic Blue","Pleasant Pink"], selection: $selection
+                    )
+                }
+                
+                .font(.system(size: 15))
+            }.padding(15)
             Spacer()
             
             Text("Member Since \(joinDate, format: Date.FormatStyle(date: .numeric, time: .omitted))")
@@ -175,57 +117,11 @@ struct Homepage: View {
                     self.$joinDate.wrappedValue = savedJoinDate
                 }
         }
-        
+            
         .padding()
-        
-    }
-
-    func imageOneUnlock() -> ImageResource {
-        if (unlocked1) { return .bling }
-        else {return .locked}
-    }
-    func imageTwoUnlock() -> ImageResource {
-        if (unlocked2) { return .cowboy }
-        else {return .locked}
-    }
-    func imageThreeUnlock() -> ImageResource {
-        if (unlocked3) { return .superhero }
-        else {return .locked}
-    }
-    func imageFourUnlock() -> ImageResource {
-        if (unlocked4) { return .pirate }
-        else {return .locked}
-    }
-    func imageFiveUnlock() -> ImageResource {
-        if (unlocked5) { return .ski }
-        else {return .locked}
-    }
-    /*func getGoatClothes()-> ImageResource{
-        if INSERT CONDITION HERE{
-            return .bling
+            
+            }
         }
-        else if INSERT CONDITION HERE{
-            return .cowboy
-        }
-        else if INSERT CONDITION HERE{
-            return .superhero
-        }
-        else if INSERT CONDITION HERE{
-            return .pirate
-        }
-        else if INSERT CONDITION HERE{
-            return .ski
-        }
-        else{
-            return .blank
-        }
-    }*/
-    
-}
-
-
         #Preview {
             Homepage()
         }
-
-
