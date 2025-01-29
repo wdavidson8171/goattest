@@ -30,6 +30,8 @@ struct Homepage: View {
     
     @State private var selection: String?
     
+    @State var selectedImage = ImageResource .nada
+    
     var body: some View {
         VStack(spacing: 5) {
             Text("Profile")
@@ -106,6 +108,64 @@ struct Homepage: View {
                 
                 .font(.system(size: 15))
             }.padding(15)
+            
+            HStack{
+                Button{
+                    //what happens if the button is pressed
+                } label: {
+                    Image(.nada).resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100)
+                        .border(.black, width: 2)
+                }
+                
+                Button{
+                    //what happens if the button is pressed
+                } label: {
+                    Image(.uggs).resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100).border(.black, width: 2)
+                }
+                
+                Button{
+                    //what happens if the button is pressed
+                } label: {
+                    Image(.bling).resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100).border(.black, width: 2)
+                }
+                Button{
+                    //what happens if the button is pressed
+                } label: {
+                    Image(.cowboy).resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100).border(.black, width: 2)
+                }
+                Button{
+                    //what happens if the button is pressed
+                } label: {
+                    Image(.ski).resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100).border(.black, width: 2)
+                }
+                Button{
+                    //what happens if the button is pressed
+                } label: {
+                    Image(.superhero).resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100).border(.black, width: 2)
+                }
+                Button{
+                    //what happens if the button is pressed
+                } label: {
+                    Image(.pirate).resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100).border(.black, width: 2)
+                }
+            }
+            
+            
+            
             Spacer()
             
             Text("Member Since \(joinDate, format: Date.FormatStyle(date: .numeric, time: .omitted))")
@@ -116,9 +176,13 @@ struct Homepage: View {
                 .onAppear {
                     self.$joinDate.wrappedValue = savedJoinDate
                 }
+            
         }
+        
             
         .padding()
+        
+        //GlobalVariables.coin += 10
             
             }
         }
