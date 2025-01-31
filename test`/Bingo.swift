@@ -29,15 +29,15 @@ let winterArray = ["goToMountain","hotChocolate","pajamaParty","snowman"]
 let springArray = ["sitInMeadow","springCleaning","dyeEgg","bouquet"]
 let summerArray = ["waterBaloonFight","swimmingHole","pool","berryPicking","amusementPark","beach"]
 
-
+var cans = 0
 struct Bingo: View {
     
     @State var showImage: Bool = false
     @State var showingPopup: Bool = false
     @State var randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
     
-    var coins = GlobalVariables.coin
-    var cans = GlobalVariables.can
+    //var coins = GlobalVariables.coin
+    
     
     func randomImage(){
         print(GlobalVariables.SavedItems.count)
@@ -181,9 +181,6 @@ struct Bingo: View {
             count += 1
         }
         
-        
-        
-        
     }
     
     
@@ -193,9 +190,19 @@ struct Bingo: View {
         hideButton = true
         print(hideButton)
         print(randomArray)
-        GlobalVariables.coin = coins+1
+        GlobalVariables.coin = GlobalVariables.coin+1
         print(GlobalVariables.coin)
+        cans = cans+1
+        
         //return hideButton
+    }
+    
+    func canCounter(){
+       
+        if buttonPressed == true{
+            
+            print("fuck swift")
+        }
     }
     
     func test(){
@@ -483,17 +490,17 @@ struct Bingo: View {
             ZStack{
                 Image("bingoLady").border(Color.pastelPink, width: 10).cornerRadius(10)
                 if GlobalVariables.submitted == true{
-                    Color.lavender                              .ignoresSafeArea()
+                    Color.lavender.ignoresSafeArea()
                     
                 }
                 HStack{
                     Image("coin")
-                    Text("\(GlobalVariables.coin)")
+                    Text("\(GlobalVariables.coin)").font(.system(.body, design: .serif))
                     Image("tincan")
-                    Text("\(GlobalVariables.can)")
+                    Text("\(GlobalVariables.can)").font(.system(.body, design: .serif))
                 }.position(x: 280, y: 7).padding(20)
+                
                 VStack{
-                    
                     HStack{
                         
                         Button(action: {buttonPresed()}){
@@ -668,6 +675,7 @@ struct Bingo: View {
                         if GlobalVariables.submitted == true{
                             randomImage()
                             populateArray()
+                            canCounter()
                            
                         }
                         
