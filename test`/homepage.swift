@@ -8,15 +8,25 @@
 import SwiftUI
 
 var selectedImage = ImageResource .nada
-var ownedList: [ImageResource] = [.nada]
 var clickedImage = ImageResource .nada
 var costOfItem: Int = 0
 var tempCoins: Int = 500
+var ownedList: [ImageResource] = [.nada]
 
 
 struct Homepage: View {
     //@AppStorage("ownedList") var ownedList: [ImageResource] = [.nada]
     
+    
+    let userDefaults = UserDefaults.standard
+    UserDefaults.standard.set(ownedList, forKey: "ownedList")
+    let savedOwnedList = userDefaults.array(forKey: "ownedList") as? [ImageResource]
+    
+    /* For next class: figure out how to save an array probably use userdefaults
+     should the 1st U in "user defaults" be capitalized or not?
+     should you declare owned list first as equal to the data stored?
+     or declare it with just nada?
+     */
     
     @State var showPopup = false
     func buttonPresed(){
