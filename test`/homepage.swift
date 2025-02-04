@@ -48,10 +48,12 @@ struct Homepage: View {
             Text("Profile")
                 .font(.largeTitle)
                 .bold()
+                .padding(.top, 10)
             Image("profileicon")
                 .resizable()
                 .frame(width: 80, height: 80)
-                .padding()
+                .padding(.bottom, 15)
+                
             
             TextField("Name", text: $text)
                 .padding()
@@ -76,7 +78,9 @@ struct Homepage: View {
                 }
                 .onAppear {
                     selectedDate = savedDate
-                }
+                }.padding(.leading, 25)
+                .padding(.trailing, 20)
+            
             HStack{
                 Image("goaticon")
                     .resizable()
@@ -95,7 +99,10 @@ struct Homepage: View {
                         self.goatName = savedGoatName
                         print("Loaded: \(savedGoatName)")
                     }
-            }.padding(15)
+            }
+                .padding(.top, -10)
+                .padding(.leading, 5)
+                .padding(.trailing, 5)
             
             HStack{
                 Image(systemName: "list.bullet.clipboard").foregroundStyle(.accent)
