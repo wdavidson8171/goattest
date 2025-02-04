@@ -29,12 +29,38 @@ let winterArray = ["goToMountain","hotChocolate","pajamaParty","snowman"]
 let springArray = ["sitInMeadow","springCleaning","dyeEgg","bouquet"]
 let summerArray = ["waterBaloonFight","swimmingHole","pool","berryPicking","amusementPark","beach"]
 
-var cans = 0
 struct Bingo: View {
     
     @State var showImage: Bool = false
     @State var showingPopup: Bool = false
     @State var randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
+    @State var cans = 0
+    @State var coins = 0
+    @State var tnum = 1
+    @State var overlayOpacity1 = 0.0
+    @State var overlayOpacity2 = 0.0
+    @State var overlayOpacity3 = 0.0
+    @State var overlayOpacity4 = 0.0
+    @State var overlayOpacity5 = 0.0
+    @State var overlayOpacity6 = 0.0
+    @State var overlayOpacity7 = 0.0
+    @State var overlayOpacity8 = 0.0
+    @State var overlayOpacity9 = 0.0
+    @State var overlayOpacity10 = 0.0
+    @State var overlayOpacity11 = 0.0
+    @State var overlayOpacity12 = 0.0
+    @State var overlayOpacity13 = 0.0
+    @State var overlayOpacity14 = 0.0
+    @State var overlayOpacity15 = 0.0
+    @State var overlayOpacity16 = 0.0
+    @State var overlayOpacity17 = 0.0
+    @State var overlayOpacity18 = 0.0
+    @State var overlayOpacity19 = 0.0
+    @State var overlayOpacity20 = 0.0
+    @State var overlayOpacity21 = 0.0
+    @State var overlayOpacity22 = 0.0
+    @State var overlayOpacity23 = 0.0
+    @State var overlayOpacity24 = 0.0
     
     //var coins = GlobalVariables.coin
     
@@ -184,17 +210,340 @@ struct Bingo: View {
     }
     
     
-    func buttonPresed(){
+    func buttonPresed1(){
+        tnum = tnum - 1
+        overlayOpacity1 = 0.6
         print("kill meeee")
         buttonPressed = true
         hideButton = true
         print(hideButton)
         print(randomArray)
-        GlobalVariables.coin = GlobalVariables.coin+1
-        print(GlobalVariables.coin)
-        cans = cans+1
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
         
         //return hideButton
+    }
+    func buttonPresed2(){
+        tnum = tnum - 1
+        overlayOpacity2 = 0.6
+        
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+    }
+    
+    func buttonPresed3(){
+        tnum = tnum - 1
+        overlayOpacity3 = 0.6
+        
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+    }
+    
+    func buttonPresed4(){
+        tnum = tnum - 1
+        overlayOpacity4 = 0.6
+        
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+    }
+    
+    func buttonPresed5(){
+        tnum = tnum - 1
+        overlayOpacity5 = 0.6
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+        
+        //return hideButton
+    }
+    func buttonPresed6(){
+        tnum = tnum - 1
+        overlayOpacity6 = 0.6
+        
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+    }
+    
+    func buttonPresed7(){
+        tnum = tnum - 1
+        overlayOpacity7 = 0.6
+        
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+    }
+    
+    func buttonPresed8(){
+        tnum = tnum - 1
+        overlayOpacity8 = 0.6
+        
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+    }
+    
+    func buttonPresed9(){
+        tnum = tnum - 1
+        overlayOpacity9 = 0.6
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+        
+        //return hideButton
+    }
+    func buttonPresed10(){
+        tnum = tnum - 1
+        overlayOpacity10 = 0.6
+        
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+    }
+    
+    func buttonPresed11(){
+        tnum = tnum - 1
+        overlayOpacity11 = 0.6
+        
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+    }
+    
+    func buttonPresed12(){
+        tnum = tnum - 1
+        overlayOpacity12 = 0.6
+        
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+    }
+    
+    func buttonPresed13(){
+        tnum = tnum - 1
+        overlayOpacity13 = 0.6
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+        
+        //return hideButton
+    }
+    func buttonPresed14(){
+        tnum = tnum - 1
+        overlayOpacity14 = 0.6
+        
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+    }
+    
+    func buttonPresed15(){
+        tnum = tnum - 1
+        overlayOpacity15 = 0.6
+        
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+    }
+    
+    func buttonPresed16(){
+        tnum = tnum - 1
+        overlayOpacity16 = 0.6
+        
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+    }
+    
+    func buttonPresed17(){
+        tnum = tnum - 1
+        overlayOpacity17 = 0.6
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+        
+        //return hideButton
+    }
+    func buttonPresed18(){
+        tnum = tnum - 1
+        overlayOpacity18 = 0.6
+        
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+    }
+    
+    func buttonPresed19(){
+        tnum = tnum - 1
+        overlayOpacity19 = 0.6
+        
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+    }
+    
+    func buttonPresed20(){
+        tnum = tnum - 1
+        overlayOpacity20 = 0.6
+        
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+    }
+    
+    func buttonPresed21(){
+        tnum = tnum - 1
+        overlayOpacity21 = 0.6
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+        
+        //return hideButton
+    }
+    func buttonPresed22(){
+        tnum = tnum - 1
+        overlayOpacity22 = 0.6
+        
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+    }
+    
+    func buttonPresed23(){
+        tnum = tnum - 1
+        overlayOpacity23 = 0.6
+        
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
+    }
+    
+    func buttonPresed24(){
+        tnum = tnum - 1
+        overlayOpacity24 = 0.6
+        
+        print("kill meeee")
+        buttonPressed = true
+        hideButton = true
+        print(hideButton)
+        print(randomArray)
+        GlobalVariables.can = GlobalVariables.can+1
+        print(GlobalVariables.can)
+        cans = GlobalVariables.can
     }
     
     func canCounter(){
@@ -495,176 +844,201 @@ struct Bingo: View {
                 }
                 HStack{
                     Image("coin")
-                    Text("\(GlobalVariables.coin)").font(.system(.body, design: .serif))
+                    Text("\(coins)").font(.system(.body, design: .serif))
                     Image("tincan")
-                    Text("\(GlobalVariables.can)").font(.system(.body, design: .serif))
+                    Text("\(cans)").font(.system(.body, design: .serif))
                 }.position(x: 280, y: 7).padding(20)
                 
                 VStack{
                     HStack{
                         
-                        Button(action: {buttonPresed()}){
-                            Image(button1)}
+                        Button(action: {buttonPresed1()}){
+                            Image(button1)}.disabled(tnum <= 0)
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity1))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed2()}){
                             Image(button2)}
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity2))
+                        //.foregroundColor(.blue)
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
                         
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed3()}){
                             Image(button3)}
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity3))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
                         
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed4()}){
                             Image(button4)}
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity4))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(2)
                     }
                     HStack{
-                        Button(action: {buttonPresed()}){
-                            Image(button5)                 }
+                        Button(action: {buttonPresed5()}){
+                            Image(button5)}
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity5))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         
-                        Button(action: {buttonPresed()}){
-                            Image(button6)                 }
+                        Button(action: {buttonPresed6()}){
+                            Image(button6)}
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity6))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
                         
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed7()}){
                             Image(button7)                 }
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity7))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
                         
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed8()}){
                             Image(button8)                 }
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity8))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(2)
                     }
                     HStack{
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed9()}){
                             Image(button9)                 }
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity9))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed10()}){
                             Image(button10)                 }
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity10))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
                         
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed11()}){
                             Image(button11)                 }
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity11))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
                         
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed12()}){
                             Image(button12)                 }
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity12))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(2)
                     }
                     HStack{
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed13()}){
                             Image(button13)                 }
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity13))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed14()}){
                             Image(button14)                 }
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity14))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
                         
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed15()}){
                             Image(button15)                 }
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity15))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
                         
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed16()}){
                             Image(button16)                 }
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity16))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(2)
                     }
                     HStack{
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed17()}){
                             Image(button17)                 }
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity17))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed18()}){
                             Image(button18)                 }
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity18))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
                         
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed19()}){
                             Image(button19)                 }
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity19))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
                         
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed20()}){
                             Image(button20)                 }
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity20))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(2)
                     }
                     HStack{
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed21()}){
                             Image(button21)                 }
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity21))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed22()}){
                             Image(button22)                 }
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity22))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
                         
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed23()}){
                             Image(button23)                 }
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity23))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
                         
-                        Button(action: {buttonPresed()}){
+                        Button(action: {buttonPresed24()}){
                             Image(button24)                 }
+                        .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity24))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)

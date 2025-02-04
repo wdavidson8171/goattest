@@ -79,8 +79,8 @@ import SwiftUI
 struct GlobalVariables{
     static var SavedItems:[String] = ["Your selected items ","will appear here"]
     static var submitted:Bool = false
-    static var coin:Int = 50
-    static var can:Int = 100
+    static var coin:Int = 0
+    static var can:Int = 0
     static var color:[String] = [" "]
     //static var selected:String
 }
