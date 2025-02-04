@@ -13,6 +13,8 @@ var clickedImage = ImageResource .nada
 var costOfItem: Int = 0
 var tempCoins: Int = 500
 
+/*typealias ImageResources = [ImageResource]
+
 extension Array: RawRepresentable where Element: Codable {
     public init?(rawValue: String) {
         guard let data = rawValue.data(using: .utf8),
@@ -31,17 +33,40 @@ extension Array: RawRepresentable where Element: Codable {
         }
         return result
     }
+}*/
+
+typealias PinnedRecipes = [ImageResource]
+
+
+extension PinnedRecipes: RawRepresentable {
+    public init?(rawValue: String) {
+        guard let data = rawValue.data(using: .utf8),
+            let result = try? JSONDecoder().decode([PinnedRecipes].self, from: data)
+        else {
+            return nil
+        }
+        self = result
+    }
+
+    public var rawValue: String {
+        guard let data = try? JSONEncoder().encode(self),
+            let result = String(data: data, encoding: .utf8)
+        else {
+            return "[]"
+        }
+        return result
+    }
 }
 
 
 struct Homepage: View {
     @AppStorage("uggsOwned") var uggsOwned: Bool = false
     
-    @AppStorage("ownedList") public var ownedList: [[ImageResource]] = [.nada]
+    @AppStorage("ownedList") var ownedList: [[ImageResource]] = [[.nada]]
     
-    @AppStorage("items") public var items: [[String]] = [
-            ["1", "2"],
-            ["a", "b", "c"],
+    @AppStorage("items") public var items: [[Int]] = [
+        [1, 2],
+        [2, 4, 6],
         ]
     
     
