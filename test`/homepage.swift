@@ -8,7 +8,7 @@
 import SwiftUI
 
 var selectedImage = ImageResource .nada
-
+var ownedList: [ImageResource] = [.nada]
 var clickedImage = ImageResource .nada
 var costOfItem: Int = 0
 var tempCoins: Int = 500
