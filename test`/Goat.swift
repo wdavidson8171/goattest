@@ -116,14 +116,14 @@ struct Goat: View {
                     .frame(width: 500, height: 500)
                     .padding([.trailing], 30)
                     .padding([.top], 5)*/
-                //if(getGoatState() != .deadGoat){
+                if(getGoatState() != .deadGoat){
                     Image(selectedImage)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 500, height: 500)
                         .padding([.trailing], 30)
                         .padding([.top], 10)
-                //}
+                }
                 /*Image(.superhero)
                     .resizable()
                     .aspectRatio(contentMode: .fit)

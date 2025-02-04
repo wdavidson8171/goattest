@@ -8,13 +8,15 @@
 import SwiftUI
 
 var selectedImage = ImageResource .nada
-var ownedList: [ImageResource] = [.nada]
+
 var clickedImage = ImageResource .nada
 var costOfItem: Int = 0
 var tempCoins: Int = 500
 
 
 struct Homepage: View {
+    //@AppStorage("ownedList") var ownedList: [ImageResource] = [.nada]
+    
     
     @State var showPopup = false
     func buttonPresed(){
@@ -135,7 +137,7 @@ struct Homepage: View {
                         }
                         else{
                             clickedImage = .uggs
-                            costOfItem = 10
+                            costOfItem = 100
                             showingPopup = true
                         }
                     } label: {
@@ -145,35 +147,70 @@ struct Homepage: View {
                     }
                     
                     Button{
-                        selectedImage = .bling
+                        if isOwned(imagex: .bling) {
+                            selectedImage = .bling
+                        }
+                        else{
+                            clickedImage = .bling
+                            costOfItem = 100
+                            showingPopup = true
+                        }
                     } label: {
                         Image(.bling).resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 100, height: 100).border(.black, width: 2)
                     }
                     Button{
-                        selectedImage = .cowboy
+                        if isOwned(imagex: .cowboy) {
+                            selectedImage = .cowboy
+                        }
+                        else{
+                            clickedImage = .cowboy
+                            costOfItem = 100
+                            showingPopup = true
+                        }
                     } label: {
                         Image(.cowboy).resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 100, height: 100).border(.black, width: 2)
                     }
                     Button{
-                        selectedImage = .ski
+                        if isOwned(imagex: .ski) {
+                            selectedImage = .ski
+                        }
+                        else{
+                            clickedImage = .ski
+                            costOfItem = 100
+                            showingPopup = true
+                        }
                     } label: {
                         Image(.ski).resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 100, height: 100).border(.black, width: 2)
                     }
                     Button{
-                        selectedImage = .superhero
+                        if isOwned(imagex: .superhero) {
+                            selectedImage = .superhero
+                        }
+                        else{
+                            clickedImage = .superhero
+                            costOfItem = 100
+                            showingPopup = true
+                        }
                     } label: {
                         Image(.superhero).resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 100, height: 100).border(.black, width: 2)
                     }
                     Button{
-                        selectedImage = .pirate
+                        if isOwned(imagex: .pirate) {
+                            selectedImage = .pirate
+                        }
+                        else{
+                            clickedImage = .pirate
+                            costOfItem = 100
+                            showingPopup = true
+                        }
                     } label: {
                         Image(.pirate).resizable()
                             .aspectRatio(contentMode: .fit)
@@ -190,6 +227,7 @@ struct Homepage: View {
                                 ownedList.append(clickedImage)
                                 tempCoins -= costOfItem
                                 selectedImage = clickedImage
+                                showingPopup = false
                             }
                             else{
                                 Text("Not enough coins!")
