@@ -8,14 +8,42 @@
 import SwiftUI
 
 var selectedImage = ImageResource .nada
-var ownedList: [ImageResource] = [.nada]
+//var ownedList: [ImageResource] = [.nada]
 var clickedImage = ImageResource .nada
 var costOfItem: Int = 0
 var tempCoins: Int = 500
 
+extension Array: RawRepresentable where Element: Codable {
+    public init?(rawValue: String) {
+        guard let data = rawValue.data(using: .utf8),
+              let result = try? JSONDecoder().decode([Element].self, from: data)
+        else {
+            return nil
+        }
+        self = result
+    }
+
+    public var rawValue: String {
+        guard let data = try? JSONEncoder().encode(self),
+              let result = String(data: data, encoding: .utf8)
+        else {
+            return "[]"
+        }
+        return result
+    }
+}
+
 
 struct Homepage: View {
-    //@AppStorage("ownedList") var ownedList: [ImageResource] = [.nada]
+    @AppStorage("uggsOwned") var uggsOwned: Bool = false
+    
+    @AppStorage("ownedList") public var ownedList: [[ImageResource]] = [.nada]
+    
+    @AppStorage("items") public var items: [[String]] = [
+            ["1", "2"],
+            ["a", "b", "c"],
+        ]
+    
     
     
     @State var showPopup = false
@@ -134,6 +162,7 @@ struct Homepage: View {
                     Button{
                         if isOwned(imagex: .uggs) {
                             selectedImage = .uggs
+                            uggsOwned = true
                         }
                         else{
                             clickedImage = .uggs
