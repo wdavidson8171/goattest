@@ -12,8 +12,9 @@ var selectedImage = ImageResource .nada
 var clickedImage = ImageResource .nada
 var costOfItem: Int = 0
 var tempCoins: Int = 500
+var currentPos: Int = 0
 
-/*typealias ImageResources = [ImageResource]
+//typealias ImageResources = [ImageResource]
 
 extension Array: RawRepresentable where Element: Codable {
     public init?(rawValue: String) {
@@ -33,9 +34,9 @@ extension Array: RawRepresentable where Element: Codable {
         }
         return result
     }
-}*/
+}
 
-typealias PinnedRecipes = [ImageResource]
+/*typealias PinnedRecipes = [ImageResource]
 
 
 extension PinnedRecipes: RawRepresentable {
@@ -56,18 +57,14 @@ extension PinnedRecipes: RawRepresentable {
         }
         return result
     }
-}
-
+}*/
 
 struct Homepage: View {
-    @AppStorage("uggsOwned") var uggsOwned: Bool = false
     
-    @AppStorage("ownedList") var ownedList: [[ImageResource]] = [[.nada]]
     
-    @AppStorage("items") public var items: [[Int]] = [
-        [1, 2],
-        [2, 4, 6],
-        ]
+    //@AppStorage("ownedList") var ownedList: [[ImageResource]] = [[.nada]]
+    
+    @AppStorage("ownedList2") public var ownedList2: [Bool] = [false, false, false, false, false, false]
     
     
     
@@ -185,13 +182,14 @@ struct Homepage: View {
                     }
                     
                     Button{
-                        if isOwned(imagex: .uggs) {
+                        if isOwned2(position: 0) {
                             selectedImage = .uggs
-                            uggsOwned = true
+                            ownedList2[0] = true
                         }
                         else{
                             clickedImage = .uggs
                             costOfItem = 100
+                            currentPos = 0
                             showingPopup = true
                         }
                     } label: {
@@ -201,12 +199,14 @@ struct Homepage: View {
                     }
                     
                     Button{
-                        if isOwned(imagex: .bling) {
+                        if isOwned2(position: 1) {
                             selectedImage = .bling
+                            ownedList2[1] = true
                         }
                         else{
                             clickedImage = .bling
                             costOfItem = 100
+                            currentPos = 1
                             showingPopup = true
                         }
                     } label: {
@@ -215,12 +215,14 @@ struct Homepage: View {
                             .frame(width: 100, height: 100).border(.black, width: 2)
                     }
                     Button{
-                        if isOwned(imagex: .cowboy) {
+                        if isOwned2(position: 2) {
                             selectedImage = .cowboy
+                            ownedList2[2] = true
                         }
                         else{
                             clickedImage = .cowboy
                             costOfItem = 100
+                            currentPos = 2
                             showingPopup = true
                         }
                     } label: {
@@ -229,12 +231,14 @@ struct Homepage: View {
                             .frame(width: 100, height: 100).border(.black, width: 2)
                     }
                     Button{
-                        if isOwned(imagex: .ski) {
+                        if isOwned2(position: 3) {
                             selectedImage = .ski
+                            ownedList2[3] = true
                         }
                         else{
                             clickedImage = .ski
                             costOfItem = 100
+                            currentPos = 3
                             showingPopup = true
                         }
                     } label: {
@@ -243,12 +247,14 @@ struct Homepage: View {
                             .frame(width: 100, height: 100).border(.black, width: 2)
                     }
                     Button{
-                        if isOwned(imagex: .superhero) {
+                        if isOwned2(position: 4) {
                             selectedImage = .superhero
+                            ownedList2[4] = true
                         }
                         else{
                             clickedImage = .superhero
                             costOfItem = 100
+                            currentPos = 4
                             showingPopup = true
                         }
                     } label: {
@@ -257,12 +263,14 @@ struct Homepage: View {
                             .frame(width: 100, height: 100).border(.black, width: 2)
                     }
                     Button{
-                        if isOwned(imagex: .pirate) {
+                        if isOwned2(position: 5) {
                             selectedImage = .pirate
+                            ownedList2[5] = true
                         }
                         else{
                             clickedImage = .pirate
                             costOfItem = 100
+                            currentPos = 5
                             showingPopup = true
                         }
                     } label: {
@@ -278,7 +286,9 @@ struct Homepage: View {
                         Text("Cost: " + String(costOfItem) + " coins")
                         Button("Buy") {
                             if tempCoins >= costOfItem {
-                                ownedList.append(clickedImage)
+                                //ERROR COME BACK AND CHANGE FIX
+                                //ownedList.append(clickedImage)
+                                ownedList2[currentPos] = true
                                 tempCoins -= costOfItem
                                 selectedImage = clickedImage
                                 showingPopup = false
@@ -314,18 +324,35 @@ struct Homepage: View {
         
     }
     
-    
+    func isOwned2(position: Int) -> Bool {
+        if ownedList2[position] == true{
+            return true
+        }
+        else {
+            return false
+        }
+    }
 }
 
+//ERROR, OWNEDLIST, COME BACK & EDIT
 func isOwned(imagex: ImageResource) -> Bool {
     var B = false
-    ownedList.forEach { image in
+    /*ownedList.forEach { image in
         if imagex == image {
             B = true
         }
-    }
+    }*/
     return B
 }
+
+/*func isOwned2(position: Int) -> Bool {
+    if ownedList2[position].equals(true) {
+        return true
+    }
+    else {
+        return false
+    }
+}*/
 
         #Preview {
             Homepage()
