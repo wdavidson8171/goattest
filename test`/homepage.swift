@@ -11,16 +11,18 @@ var selectedImage = ImageResource .nada
 var clickedImage = ImageResource .nada
 var costOfItem: Int = 0
 var tempCoins: Int = 500
-var ownedList: [ImageResource] = [.nada]
+//private var ownedList: [ImageResource] = [.nada]
+//let userDefaults = UserDefaults.standard
+var ownedList: [ImageResource] = UserDefaults.standard.array(forKey: "ownedList") as?? [ImageResource]
+
+//@AppStorage("ownedList") var ownedListStorage: [ImageResource] = [.nada]
 
 
 struct Homepage: View {
-    //@AppStorage("ownedList") var ownedList: [ImageResource] = [.nada]
+    State private var ownedList: [ImageResource] = [.nada]
+    //UserDefaults.standard.set(ownedList, forKey: "ownedList")
     
-    
-    let userDefaults = UserDefaults.standard
-    UserDefaults.standard.set(ownedList, forKey: "ownedList")
-    let savedOwnedList = userDefaults.array(forKey: "ownedList") as? [ImageResource]
+    //let savedOwnedList = userDefaults.array(forKey: "ownedList") as? [ImageResource]
     
     /* For next class: figure out how to save an array probably use userdefaults
      should the 1st U in "user defaults" be capitalized or not?
@@ -53,6 +55,7 @@ struct Homepage: View {
     
     
     var body: some View {
+        //ownedList.append(.nada)
         
         VStack(spacing: 5) {
             Text("Profile")
