@@ -134,6 +134,7 @@ struct Homepage: View {
                     dropDownView(
                         hint: "Select", options: ["Lovely Lavender", "Bombastic Blue","Pleasant Pink"], selection: $selection
                     )
+                    
                 }
                 
                 .font(.system(size: 15))
