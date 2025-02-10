@@ -11,7 +11,7 @@ var selectedImage = ImageResource .nada
 //var ownedList: [ImageResource] = [.nada]
 var clickedImage = ImageResource .nada
 var costOfItem: Int = 0
-var tempCoins: Int = 500
+//var tempCoins: Int = 500
 var currentPos: Int = 0
 
 //typealias ImageResources = [ImageResource]
@@ -36,33 +36,9 @@ extension Array: RawRepresentable where Element: Codable {
     }
 }
 
-/*typealias PinnedRecipes = [ImageResource]
-
-
-extension PinnedRecipes: RawRepresentable {
-    public init?(rawValue: String) {
-        guard let data = rawValue.data(using: .utf8),
-            let result = try? JSONDecoder().decode([PinnedRecipes].self, from: data)
-        else {
-            return nil
-        }
-        self = result
-    }
-
-    public var rawValue: String {
-        guard let data = try? JSONEncoder().encode(self),
-            let result = String(data: data, encoding: .utf8)
-        else {
-            return "[]"
-        }
-        return result
-    }
-}*/
-
 struct Homepage: View {
-    
-    
-    //@AppStorage("ownedList") var ownedList: [[ImageResource]] = [[.nada]]
+    @AppStorage("tempCoins")var tempCoins: Int = 500
+
     
     @AppStorage("ownedList2") public var ownedList2: [Bool] = [false, false, false, false, false, false]
     
@@ -284,6 +260,7 @@ struct Homepage: View {
                             .frame(width: 500, height: 500).border(.black, width: 5)
                         Text("You need to own Uggs to use this image!")
                         Text("Cost: " + String(costOfItem) + " coins")
+                        Text("Your money: " + String(tempCoins) + " coins")
                         Button("Buy") {
                             if tempCoins >= costOfItem {
                                 //ERROR COME BACK AND CHANGE FIX
@@ -335,7 +312,7 @@ struct Homepage: View {
 }
 
 //ERROR, OWNEDLIST, COME BACK & EDIT
-func isOwned(imagex: ImageResource) -> Bool {
+/*func isOwned(imagex: ImageResource) -> Bool {
     var B = false
     /*ownedList.forEach { image in
         if imagex == image {
@@ -343,7 +320,7 @@ func isOwned(imagex: ImageResource) -> Bool {
         }
     }*/
     return B
-}
+}*/
 
 /*func isOwned2(position: Int) -> Bool {
     if ownedList2[position].equals(true) {
