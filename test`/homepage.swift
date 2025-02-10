@@ -14,8 +14,6 @@ var costOfItem: Int = 0
 //var tempCoins: Int = 500
 var currentPos: Int = 0
 
-//typealias ImageResources = [ImageResource]
-
 extension Array: RawRepresentable where Element: Codable {
     public init?(rawValue: String) {
         guard let data = rawValue.data(using: .utf8),
