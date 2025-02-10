@@ -86,7 +86,7 @@ struct Bingo: View {
     @State var disabled23: Bool = false
     @State var disabled24: Bool = false
     @State var moneyArray: [String] = [" "]
-    
+    @State var chosenColor = GlobalVariables.color.count-1
     
     //var coins = GlobalVariables.coin
     
@@ -822,8 +822,7 @@ struct Bingo: View {
     @State var button22 = " "
     @State var button23 = " "
     @State var button24 = " "
-    
-    
+
     
     
     func populateArray() {  //randomImage()
@@ -1076,13 +1075,14 @@ struct Bingo: View {
         
         
         var body: some View {
-            
+            var chosenColor = GlobalVariables.color.count-1
             ZStack{
                 Image("bingoLady").border(Color.pastelPink, width: 10).cornerRadius(10)
-                if GlobalVariables.submitted == true{
+                
+                /*if GlobalVariables.submitted == true{
                     Color.lavender.ignoresSafeArea()
                     
-                }
+                }*/
                 HStack{
                     Image("coin")
                     Text("\(coins)").font(.system(.body, design: .serif))

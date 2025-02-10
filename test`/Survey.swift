@@ -81,7 +81,7 @@ struct GlobalVariables{
     static var submitted:Bool = false
     static var coin:Int = 0
     static var can:Int = 0
-    static var color:[String] = [" "]
+    static var color:[String] = ["white"]
     //static var selected:String
 }
     struct iOSview:View{

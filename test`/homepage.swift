@@ -12,11 +12,15 @@ var ownedList: [ImageResource] = [.nada]
 var clickedImage = ImageResource .nada
 var costOfItem: Int = 0
 var tempCoins: Int = 500
+//var color: String
+
 
 
 struct Homepage: View {
     //@AppStorage("ownedList") var ownedList: [ImageResource] = [.nada]
-    
+    func colorPickerPurple(){
+        GlobalVariables.color.append("nicePink")
+    }
     
     @State var showPopup = false
     func buttonPresed(){
@@ -24,6 +28,7 @@ struct Homepage: View {
         buttonPressed = true
         
     }
+    
     
     
     @State private var text = ""
@@ -111,12 +116,19 @@ struct Homepage: View {
             }.padding(15)
             VStack{
                 Text("Customize your background!").font(.system(size: 18, design: .rounded))
-                VStack(spacing:15){
+                
+                HStack{
+                    Button(action: {colorPickerPurple()}){
+                        Image("swath lavender")
+                    }.border(Color.black, width: 1.5)
+                        
+                }
+                /*VStack(spacing:15){
                     dropDownView(
                         hint: "Select", options: ["Lovely Lavender", "Bombastic Blue","Pleasant Pink"], selection: $selection
                     )
                     
-                }
+                }*/
                 
                 .font(.system(size: 15))
             }.padding(15)
