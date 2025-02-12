@@ -19,9 +19,30 @@ var tempCoins: Int = 500
 struct Homepage: View {
     //@AppStorage("ownedList") var ownedList: [ImageResource] = [.nada]
     func colorPickerPurple(){
-        GlobalVariables.color.append("nicePink")
+        GlobalVariables.color.insert("lavender", at: 0)
+        print(GlobalVariables.color)
+
     }
-    
+    func colorPickerPink(){
+        GlobalVariables.color.insert("nicePink", at: 0)
+        print(GlobalVariables.color)
+    }
+    func colorPickerTeal(){
+        GlobalVariables.color.insert("coolTeal", at: 0)
+        print(GlobalVariables.color)
+
+    }
+   
+    func colorPickerBlue(){
+        GlobalVariables.color.insert("pastelBlue", at: 0)
+        print(GlobalVariables.color)
+
+    }
+    func colorPickerOrange(){
+        GlobalVariables.color.insert("orangish", at: 0)
+        print(GlobalVariables.color)
+
+    }
     @State var showPopup = false
     func buttonPresed(){
         showPopup = true
@@ -118,10 +139,23 @@ struct Homepage: View {
                 Text("Customize your background!").font(.system(size: 18, design: .rounded))
                 
                 HStack{
+                    
+                    Button(action: {colorPickerPink()}){
+                        Image("swath pink")
+                    }.border(Color.black, width: 1.5)
+                    Button(action: {colorPickerOrange()}){
+                        Image("swath orangish")
+                    }.border(Color.black, width: 1.5)
+                    Button(action: {colorPickerTeal()}){
+                        Image("swath teal")
+                    }.border(Color.black, width: 1.5)
+                    Button(action: {colorPickerBlue()}){
+                        Image("swath blue")
+                    }.border(Color.black, width: 1.5)
                     Button(action: {colorPickerPurple()}){
                         Image("swath lavender")
                     }.border(Color.black, width: 1.5)
-                        
+                    
                 }
                 /*VStack(spacing:15){
                     dropDownView(

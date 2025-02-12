@@ -12,6 +12,7 @@ import UIKit
 var buttonPressed = false
 var hideButton = false
 var hide = false
+var chosenColor = GlobalVariables.color[GlobalVariables.color.count-1]
 
 var testSquares = ["a","b","c","d","e","f"]
 
@@ -86,7 +87,7 @@ struct Bingo: View {
     @State var disabled23: Bool = false
     @State var disabled24: Bool = false
     @State var moneyArray: [String] = [" "]
-    @State var chosenColor = GlobalVariables.color.count-1
+    @State var chosenColor = GlobalVariables.color[0]
     
     //var coins = GlobalVariables.coin
     
@@ -1070,19 +1071,37 @@ struct Bingo: View {
             }
         }
         randomArray.remove(at: randomArray.firstIndex(of: button24)!)
+       
     }
         
         
         
         var body: some View {
-            var chosenColor = GlobalVariables.color.count-1
             ZStack{
                 Image("bingoLady").border(Color.pastelPink, width: 10).cornerRadius(10)
                 
-                /*if GlobalVariables.submitted == true{
-                    Color.lavender.ignoresSafeArea()
-                    
-                }*/
+                
+                if GlobalVariables.submitted == true{
+                    if GlobalVariables.color[0] == "lavender"{
+                        Text("lavender ischosen")
+                        Color.lavender.ignoresSafeArea()
+                    }
+                    else if GlobalVariables.color[0] == "nicePink"{
+                        Color.nicePink.ignoresSafeArea()
+                    }
+                    else if GlobalVariables.color[0] == "coolTeal"{
+                        Color.coolTeal.ignoresSafeArea()
+                    }
+                    else if GlobalVariables.color[0] == "pastelBlue"{
+                        Color.pastelBlue.ignoresSafeArea()
+                    }
+                    else if GlobalVariables.color[0] == "orangish"{
+                        Color.orangish.ignoresSafeArea()
+                    }
+                    else {
+                        Color.white.ignoresSafeArea()
+                    }
+                }
                 HStack{
                     Image("coin")
                     Text("\(coins)").font(.system(.body, design: .serif))
