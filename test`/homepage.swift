@@ -8,16 +8,41 @@
 import SwiftUI
 
 var selectedImage = ImageResource .nada
-var ownedList: [ImageResource] = [.nada]
+//var ownedList: [ImageResource] = [.nada]
 var clickedImage = ImageResource .nada
 var costOfItem: Int = 0
-var tempCoins: Int = 500
+//var tempCoins: Int = 500
+var currentPos: Int = 0
 var profileImage = ImageResource .profileicon
 
+extension Array: RawRepresentable where Element: Codable {
+    public init?(rawValue: String) {
+        guard let data = rawValue.data(using: .utf8),
+              let result = try? JSONDecoder().decode([Element].self, from: data)
+        else {
+            return nil
+        }
+        self = result
+    }
+
+    public var rawValue: String {
+        guard let data = try? JSONEncoder().encode(self),
+              let result = String(data: data, encoding: .utf8)
+        else {
+            return "[]"
+        }
+        return result
+    }
+}
 
 struct Homepage: View {
+    @AppStorage("tempCoins")var tempCoins: Int = 500
 
-
+    
+    @AppStorage("ownedList2") public var ownedList2: [Bool] = [false, false, false, false, false, false]
+    
+    
+    
     @State var showPopup = false
     func buttonPresed(){
         showPopup = true
@@ -152,12 +177,14 @@ struct Homepage: View {
                     }
                     
                     Button{
-                        if isOwned(imagex: .uggs) {
+                        if isOwned2(position: 0) {
                             selectedImage = .uggs
+                            ownedList2[0] = true
                         }
                         else{
                             clickedImage = .uggs
                             costOfItem = 100
+                            currentPos = 0
                             showingPopup = true
                         }
                     } label: {
@@ -167,12 +194,14 @@ struct Homepage: View {
                     }
                     
                     Button{
-                        if isOwned(imagex: .bling) {
+                        if isOwned2(position: 1) {
                             selectedImage = .bling
+                            ownedList2[1] = true
                         }
                         else{
                             clickedImage = .bling
                             costOfItem = 100
+                            currentPos = 1
                             showingPopup = true
                         }
                     } label: {
@@ -181,12 +210,14 @@ struct Homepage: View {
                             .frame(width: 100, height: 100).border(.black, width: 2)
                     }
                     Button{
-                        if isOwned(imagex: .cowboy) {
+                        if isOwned2(position: 2) {
                             selectedImage = .cowboy
+                            ownedList2[2] = true
                         }
                         else{
                             clickedImage = .cowboy
                             costOfItem = 100
+                            currentPos = 2
                             showingPopup = true
                         }
                     } label: {
@@ -195,12 +226,14 @@ struct Homepage: View {
                             .frame(width: 100, height: 100).border(.black, width: 2)
                     }
                     Button{
-                        if isOwned(imagex: .ski) {
+                        if isOwned2(position: 3) {
                             selectedImage = .ski
+                            ownedList2[3] = true
                         }
                         else{
                             clickedImage = .ski
                             costOfItem = 100
+                            currentPos = 3
                             showingPopup = true
                         }
                     } label: {
@@ -209,12 +242,14 @@ struct Homepage: View {
                             .frame(width: 100, height: 100).border(.black, width: 2)
                     }
                     Button{
-                        if isOwned(imagex: .superhero) {
+                        if isOwned2(position: 4) {
                             selectedImage = .superhero
+                            ownedList2[4] = true
                         }
                         else{
                             clickedImage = .superhero
                             costOfItem = 100
+                            currentPos = 4
                             showingPopup = true
                         }
                     } label: {
@@ -223,12 +258,14 @@ struct Homepage: View {
                             .frame(width: 100, height: 100).border(.black, width: 2)
                     }
                     Button{
-                        if isOwned(imagex: .pirate) {
+                        if isOwned2(position: 5) {
                             selectedImage = .pirate
+                            ownedList2[5] = true
                         }
                         else{
                             clickedImage = .pirate
                             costOfItem = 100
+                            currentPos = 5
                             showingPopup = true
                         }
                     } label: {
@@ -242,9 +279,12 @@ struct Homepage: View {
                             .frame(width: 500, height: 500).border(.black, width: 5)
                         Text("You need to own Uggs to use this image!")
                         Text("Cost: " + String(costOfItem) + " coins")
+                        Text("Your money: " + String(tempCoins) + " coins")
                         Button("Buy") {
                             if tempCoins >= costOfItem {
-                                ownedList.append(clickedImage)
+                                //ERROR COME BACK AND CHANGE FIX
+                                //ownedList.append(clickedImage)
+                                ownedList2[currentPos] = true
                                 tempCoins -= costOfItem
                                 selectedImage = clickedImage
                                 showingPopup = false
@@ -280,18 +320,35 @@ struct Homepage: View {
         
     }
     
-    
+    func isOwned2(position: Int) -> Bool {
+        if ownedList2[position] == true{
+            return true
+        }
+        else {
+            return false
+        }
+    }
 }
 
-func isOwned(imagex: ImageResource) -> Bool {
+//ERROR, OWNEDLIST, COME BACK & EDIT
+/*func isOwned(imagex: ImageResource) -> Bool {
     var B = false
-    ownedList.forEach { image in
+    /*ownedList.forEach { image in
         if imagex == image {
             B = true
         }
-    }
+    }*/
     return B
-}
+}*/
+
+/*func isOwned2(position: Int) -> Bool {
+    if ownedList2[position].equals(true) {
+        return true
+    }
+    else {
+        return false
+    }
+}*/
 
         #Preview {
             Homepage()
