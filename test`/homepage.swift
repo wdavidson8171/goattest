@@ -38,7 +38,7 @@ extension Array: RawRepresentable where Element: Codable {
 struct Homepage: View {
     @AppStorage("tempCoins")var tempCoins: Int = 500
 
-    
+    //NEWPICREMEMBER1
     @AppStorage("ownedList2") public var ownedList2: [Bool] = [false, false, false, false, false, false]
     
     
@@ -190,7 +190,7 @@ struct Homepage: View {
                     } label: {
                         Image(.uggs).resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 100, height: 100).border(.black, width: 2)
+                            .frame(width: 100, height: 100).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 0)))
                     }
                     
                     Button{
@@ -207,7 +207,7 @@ struct Homepage: View {
                     } label: {
                         Image(.bling).resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 100, height: 100).border(.black, width: 2)
+                            .frame(width: 100, height: 100).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 1)))
                     }
                     Button{
                         if isOwned2(position: 2) {
@@ -223,7 +223,7 @@ struct Homepage: View {
                     } label: {
                         Image(.cowboy).resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 100, height: 100).border(.black, width: 2)
+                            .frame(width: 100, height: 100).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 2)))
                     }
                     Button{
                         if isOwned2(position: 3) {
@@ -239,7 +239,7 @@ struct Homepage: View {
                     } label: {
                         Image(.ski).resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 100, height: 100).border(.black, width: 2)
+                            .frame(width: 100, height: 100).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 3)))
                     }
                     Button{
                         if isOwned2(position: 4) {
@@ -255,7 +255,7 @@ struct Homepage: View {
                     } label: {
                         Image(.superhero).resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 100, height: 100).border(.black, width: 2)
+                            .frame(width: 100, height: 100).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 4)))
                     }
                     Button{
                         if isOwned2(position: 5) {
@@ -271,7 +271,7 @@ struct Homepage: View {
                     } label: {
                         Image(.pirate).resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 100, height: 100).border(.black, width: 2)
+                            .frame(width: 100, height: 100).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 5)))
                     }
                 }.popover(isPresented: $showingPopup) {
                     VStack{
@@ -328,6 +328,15 @@ struct Homepage: View {
             return false
         }
     }
+    
+    func getOverlayOpacity(position: Int) -> Double {
+        if isOwned2(position: position) {
+            return 0
+        } else {
+            return 0.7
+        }
+    }
+    
 }
 
 //ERROR, OWNEDLIST, COME BACK & EDIT
