@@ -16,7 +16,6 @@ var profileImage = ImageResource .profileicon
 
 
 struct Homepage: View {
-    //@AppStorage("ownedList") var ownedList: [ImageResource] = [.nada]
 
 
     @State var showPopup = false
@@ -63,6 +62,7 @@ struct Homepage: View {
             }.popover(isPresented: $showingProfilePopup) {
                 //make grid of buttons that you can set as profileImage
                 //does this require v and h stacks?
+                //profile1, other real goats, olivia?, some random guy?
             }
             
                 
