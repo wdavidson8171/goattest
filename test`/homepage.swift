@@ -13,6 +13,7 @@ var clickedImage = ImageResource .nada
 var costOfItem: Int = 0
 //var tempCoins: Int = 500
 var currentPos: Int = 0
+var profileImage = ImageResource .profileicon
 
 extension Array: RawRepresentable where Element: Codable {
     public init?(rawValue: String) {
@@ -46,7 +47,7 @@ struct Homepage: View {
     func buttonPresed(){
         showPopup = true
         buttonPressed = true
-        
+
     }
     
     
@@ -65,17 +66,30 @@ struct Homepage: View {
     
     @State var showingPopup = false
     
+    @State var showingProfilePopup = false
+    
     
     var body: some View {
-        
         VStack(spacing: 5) {
             Text("Profile")
                 .font(.largeTitle)
                 .bold()
-            Image("profileicon")
-                .resizable()
-                .frame(width: 80, height: 80)
-                .padding()
+                .padding(.top, 10)
+            VStack{
+                Button{
+                    showingProfilePopup = true
+                } label: {
+                    Image(profileImage)
+                        .resizable()
+                        .frame(width: 80, height: 80)
+                        .padding(.bottom, 15)
+                }
+            }.popover(isPresented: $showingProfilePopup) {
+                //make grid of buttons that you can set as profileImage
+                //does this require v and h stacks?
+            }
+            
+                
             
             TextField("Name", text: $text)
                 .padding()
@@ -100,7 +114,9 @@ struct Homepage: View {
                 }
                 .onAppear {
                     selectedDate = savedDate
-                }
+                }.padding(.leading, 25)
+                .padding(.trailing, 20)
+            
             HStack{
                 Image("goaticon")
                     .resizable()
@@ -119,7 +135,10 @@ struct Homepage: View {
                         self.goatName = savedGoatName
                         print("Loaded: \(savedGoatName)")
                     }
-            }.padding(15)
+            }
+                .padding(.top, -10)
+                .padding(.leading, 5)
+                .padding(.trailing, 5)
             
             HStack{
                 Image(systemName: "list.bullet.clipboard").foregroundStyle(.accent)
@@ -139,6 +158,7 @@ struct Homepage: View {
                     dropDownView(
                         hint: "Select", options: ["Lovely Lavender", "Bombastic Blue","Pleasant Pink"], selection: $selection
                     )
+                    
                 }
                 
                 .font(.system(size: 15))
