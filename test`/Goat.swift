@@ -12,7 +12,6 @@ import Foundation
 
 
 struct Goat: View {
-    //@State var countDownTimer = 8
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @AppStorage("firstOpenedYear") var firstOpenedYear: Int = -1
@@ -65,26 +64,13 @@ struct Goat: View {
                     currentSec = Calendar.current.component(.second, from: Date())
                     currentDate = Date()
                     secsLeftResult = getSecondsPassed(getFirstOpenedDate(), to: currentDate)
-                    //countDownTimer -= 1
-                    /*if needToReset() {
-                        percent = 100
-                    }
-                    if isFull() {
-                        percent = 100
-                    }
-                    else if isEmpty() {
-                        percent = 0
-                    }
-                    else if percent > 0 {
-                        percent -= (100 / CGFloat(x)) * 0.01
-                    }*/
                     percent = (100 * x - (CGFloat(secsLeftResult) .truncatingRemainder (dividingBy: 100 * x))) / x
                     if isEmpty() {
                         percent = 0
                     }
                 }
             
-            //Text("needtoreset result: " + String(needToReset()))
+            //the code for the bars appearance
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: height, style: .continuous).frame(width: width, height: height).foregroundColor(Color.gray.opacity(0.2))
                 RoundedRectangle(cornerRadius: height, style: .continuous).frame(width: returnWidth(), height: height).background(
@@ -93,10 +79,7 @@ struct Goat: View {
             }
             
             Text(getGoatStateText())
-            
-            
-            //calls the method which returns the appropriate bar image
-            //Image(getBarState())
+            Text(getCurrentDate(), style: .date)
             
             ZStack(){
                 //calls the method which returns the appropriate goat image
@@ -104,18 +87,7 @@ struct Goat: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 500, height: 500)
-                //Image(.testHat)
-                    //.resizable()
-                    //.aspectRatio(contentMode: .fit)
-                    //.frame(width: 500, height: 500)
-                    //.padding([.bottom],160)
-                    //.padding([.leading], 70)
-                /*Image(.bling)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 500, height: 500)
-                    .padding([.trailing], 30)
-                    .padding([.top], 5)*/
+                //adds 
                 //if(getGoatState() != .deadGoat){
                     Image(selectedImage)
                         .resizable()
@@ -124,54 +96,9 @@ struct Goat: View {
                         .padding([.trailing], 30)
                         .padding([.top], 10)
                 //}
-                /*Image(.superhero)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 500, height: 500)
-                    .padding([.trailing], 30)
-                    .padding([.top], 10)
-                Image(.pirate)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 500, height: 500)
-                    .padding([.trailing], 30)
-                    .padding([.top], 10)*/
-                 
-                /*Image(.ski)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 500, height: 500)
-                    .padding([.trailing], 30)
-                    .padding([.top], 10)*/
             }
             
-            //Image(.cleanBedroom)
-            //Label("TEST", image: .cleanBedroom).labelStyle(.iconOnly)
-            
-            
-            /*Text("firstOpened year: " + String(isFirstOpenedYearSet()))
-            Text("firstOpened month: " + String(isFirstOpenedMonthSet()))
-            Text("firstOpened day: " + String(isFirstOpenedDaySet()))
-            Text("firstOpened hour: " + String(isFirstOpenedHourSet()))
-            Text("firstOpened min: " + String(isFirstOpenedMinSet()))
-            Text("firstOpened sec: " + String(isFirstOpenedSecSet()))
-            
-            Text("current year: " + String(currentYear))
-            Text("current month: " + String(currentMonth))
-            Text("current day: " + String(currentDay))
-            Text("current hour: " + String(currentHour))
-            Text("current min: " + String(currentMin))
-            Text("current sec: " + String(currentSec))*/
-            
-            //Text(DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .short))
-            
-            //Text("percent: " + percent.description)
-            //Text("firstdateopened: " + getFirstOpenedDate().description)
-            //Text("currentdate: " + currentDate.description)
-            
-            Text("secsleft: " + String(secsLeftResult))
-            
-            //let multiplier = width / 100
+            Text("secs passed: " + String(secsLeftResult))
             
             
                 
@@ -307,10 +234,6 @@ struct Goat: View {
     }
     
     func needToReset()-> Bool{
-        let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
-        /*if CGFloat(secondsPassed) == 400 * x || CGFloat(secondsPassed) == 300 || CGFloat(secondsPassed) == 200 || CGFloat(secondsPassed) == 100 * x{
-            return true
-        }*/
         if CGFloat(percent) <= 0{
             return true
         }
@@ -338,144 +261,6 @@ struct Goat: View {
         else{
             return false
         }
-    }
-    
-    //returns the appropriate bar image
-    /*func getBarState()-> ImageResource{
-        let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
-        if secondsPassed > 16 * x{
-            return .hBzero
-        }
-        else if secondsPassed <= 16 * x && secondsPassed > 8 * x{
-            if secondsPassed < 9 * x{
-                return .HB_8
-            }
-            else if secondsPassed < 10 * x{
-                return .HB_7
-            }
-            else if secondsPassed < 11 * x{
-                return .HB_6
-            }
-            else if secondsPassed < 12 * x{
-                return .HB_5
-            }
-            else if secondsPassed < 13 * x{
-                return .HB_4
-            }
-            else if secondsPassed < 14 * x{
-                return .HB_3
-            }
-            else if secondsPassed < 15 * x{
-                return .HB_2
-            }
-            else if secondsPassed < 16 * x{
-                return .HB_1
-            }
-            //(if it equals 16)
-            else{
-                return .hBzero
-            }
-        }
-        else if secondsPassed <= 8 * x && secondsPassed > 0{
-            if secondsPassed < 1 * x{
-                return .HB_8
-            }
-            else if secondsPassed < 2 * x{
-                return .HB_7
-            }
-            else if secondsPassed < 3 * x{
-                return .HB_6
-            }
-            else if secondsPassed < 4 * x{
-                return .HB_5
-            }
-            else if secondsPassed < 5 * x{
-                return .HB_4
-            }
-            else if secondsPassed < 6 * x{
-                return .HB_3
-            }
-            else if secondsPassed < 7 * x{
-                return .HB_2
-            }
-            else if secondsPassed < 8 * x{
-                return .HB_1
-            }
-            //(if it equals 8)
-            else{
-                return .hBzero
-            }
-        }
-        else if secondsPassed <= 0 && secondsPassed > -8 * x{
-            if secondsPassed < -7 * x{
-                return .HB_8
-            }
-            else if secondsPassed < -6 * x{
-                return .HB_7
-            }
-            else if secondsPassed < -5 * x{
-                return .HB_6
-            }
-            else if secondsPassed < -4 * x{
-                return .HB_5
-            }
-            else if secondsPassed < -3 * x{
-                return .HB_4
-            }
-            else if secondsPassed < -2 * x{
-                return .HB_3
-            }
-            else if secondsPassed < -1 * x{
-                return .HB_2
-            }
-            else if secondsPassed < 0 * x{
-                return .HB_1
-            }
-            //(if it equals 0)
-            else{
-                return .hBzero
-            }
-        }
-        else if secondsPassed <= -8 * x && secondsPassed > -16 * x{
-            if secondsPassed < -15 * x{
-                return .HB_8
-            }
-            else if secondsPassed < -14 * x{
-                return .HB_7
-            }
-            else if secondsPassed < -13 * x{
-                return .HB_6
-            }
-            else if secondsPassed < -12 * x{
-                return .HB_5
-            }
-            else if secondsPassed < -11 * x{
-                return .HB_4
-            }
-            else if secondsPassed < -10 * x{
-                return .HB_3
-            }
-            else if secondsPassed < -9 * x{
-                return .HB_2
-            }
-            else if secondsPassed < -8 * x{
-                return .HB_1
-            }
-            //(if it equals -16)
-            else{
-                return .hBzero
-            }
-        }
-        //(if its less than -16)
-        else{
-            return .HB_8
-        }
-    }*/
-    
-    func imagePressed(xje: ImageResource){
-        //if(xje.isPressed){
-                
-        //}
     }
     
     
