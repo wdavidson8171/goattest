@@ -4,8 +4,10 @@
 //
 //  Created by Waverly Davidson on 10/8/24.
 //
+//6.14  10.45
 
 import SwiftUI
+import PhotosUI
 
 var selectedImage = ImageResource .nada
 //var ownedList: [ImageResource] = [.nada]
@@ -13,7 +15,7 @@ var clickedImage = ImageResource .nada
 var costOfItem: Int = 0
 //var tempCoins: Int = 500
 var currentPos: Int = 0
-var profileImage = ImageResource .profileicon
+//var profileImage = ImageResource .profileicon
 
 extension Array: RawRepresentable where Element: Codable {
     public init?(rawValue: String) {
@@ -40,6 +42,14 @@ struct Homepage: View {
 
     
     @AppStorage("ownedList2") public var ownedList2: [Bool] = [false, false, false, false, false, false]
+    
+    @State var profileImage = ImageResource .profileicon
+    @State var profileString = "profile"
+    @AppStorage("PROFILE_STRING_KEY") var savedProfileString: String = ("")
+    /* make a 2nd variabke that is a string of the selected profileImage's name
+     save that string instead of the actual image resource
+     this might mean you need to change where you change profile image
+     might need an "in-between" variable*/
     
     
     
@@ -88,8 +98,15 @@ struct Homepage: View {
                 //make grid of buttons that you can set as profileImage
                 //does this require v and h stacks?
                 //profile1, other real goats, olivia?, some random guy?
+                Button{
+                    profileImage = .profile1
+                    
+                } label: {
+                    Image("profile1")
+                        .resizable()
+                        .frame(width: 80, height: 80)
+                }
             }
-            
                 
             
             TextField("Name", text: $text)
@@ -183,7 +200,7 @@ struct Homepage: View {
                         }
                         else{
                             clickedImage = .uggs
-                            costOfItem = 100
+                            costOfItem = 50
                             currentPos = 0
                             showingPopup = true
                         }
@@ -200,7 +217,7 @@ struct Homepage: View {
                         }
                         else{
                             clickedImage = .bling
-                            costOfItem = 100
+                            costOfItem = 25
                             currentPos = 1
                             showingPopup = true
                         }
@@ -216,7 +233,7 @@ struct Homepage: View {
                         }
                         else{
                             clickedImage = .cowboy
-                            costOfItem = 100
+                            costOfItem = 50
                             currentPos = 2
                             showingPopup = true
                         }
@@ -232,7 +249,7 @@ struct Homepage: View {
                         }
                         else{
                             clickedImage = .ski
-                            costOfItem = 100
+                            costOfItem = 320
                             currentPos = 3
                             showingPopup = true
                         }
@@ -248,7 +265,7 @@ struct Homepage: View {
                         }
                         else{
                             clickedImage = .superhero
-                            costOfItem = 100
+                            costOfItem = 40
                             currentPos = 4
                             showingPopup = true
                         }
@@ -264,7 +281,7 @@ struct Homepage: View {
                         }
                         else{
                             clickedImage = .pirate
-                            costOfItem = 100
+                            costOfItem = 30
                             currentPos = 5
                             showingPopup = true
                         }
@@ -328,6 +345,7 @@ struct Homepage: View {
             return false
         }
     }
+    
 }
 
 //ERROR, OWNEDLIST, COME BACK & EDIT
