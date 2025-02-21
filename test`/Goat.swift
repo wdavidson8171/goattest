@@ -52,132 +52,156 @@ struct Goat: View {
     
     
     var body: some View {
-        
-        VStack{
-            //tbh I'm not really sure what this does BUT IT WORKS
-            Text("Fatness bar:")
-                .onReceive(timer) { _ in
-                    currentYear = Calendar.current.component(.year, from: Date())
-                    currentMonth = Calendar.current.component(.month, from: Date())
-                    currentDay = Calendar.current.component(.day, from: Date())
-                    currentHour = Calendar.current.component(.hour, from: Date())
-                    currentMin = Calendar.current.component(.minute, from: Date())
-                    currentSec = Calendar.current.component(.second, from: Date())
-                    currentDate = Date()
-                    secsLeftResult = getSecondsPassed(getFirstOpenedDate(), to: currentDate)
-                    //countDownTimer -= 1
-                    /*if needToReset() {
-                        percent = 100
-                    }
-                    if isFull() {
-                        percent = 100
-                    }
-                    else if isEmpty() {
-                        percent = 0
-                    }
-                    else if percent > 0 {
-                        percent -= (100 / CGFloat(x)) * 0.01
-                    }*/
-                    percent = (100 * x - (CGFloat(secsLeftResult) .truncatingRemainder (dividingBy: 100 * x))) / x
-                    if isEmpty() {
-                        percent = 0
-                    }
+        ZStack{
+            if GlobalVariables.submitted == true{
+                if GlobalVariables.color[0] == "lavender"{
+                    Text("lavender ischosen")
+                    Color.lavender.ignoresSafeArea()
                 }
-            
-            //Text("needtoreset result: " + String(needToReset()))
-            ZStack(alignment: .leading) {
-                RoundedRectangle(cornerRadius: height, style: .continuous).frame(width: width, height: height).foregroundColor(Color.gray.opacity(0.2))
-                RoundedRectangle(cornerRadius: height, style: .continuous).frame(width: returnWidth(), height: height).background(
-                    LinearGradient(gradient: Gradient(colors: [color1, color2]), startPoint: .leading, endPoint: .trailing).clipShape(RoundedRectangle(cornerRadius: height, style: .continuous))
-                ).foregroundColor(.clear)
+                else if GlobalVariables.color[0] == "nicePink"{
+                    Color.nicePink.ignoresSafeArea()
+                }
+                else if GlobalVariables.color[0] == "coolTeal"{
+                    Color.coolTeal.ignoresSafeArea()
+                }
+                else if GlobalVariables.color[0] == "pastelBlue"{
+                    Color.pastelBlue.ignoresSafeArea()
+                }
+                else if GlobalVariables.color[0] == "orangish"{
+                    Color.orangish.ignoresSafeArea()
+                }
+                else {
+                    Color.white.ignoresSafeArea()
+                }
             }
             
-            Text(getGoatStateText())
-            
-            
-            //calls the method which returns the appropriate bar image
-            //Image(getBarState())
-            
-            ZStack(){
-                //calls the method which returns the appropriate goat image
-                Image(getGoatState())
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 500, height: 500)
-                //Image(.testHat)
+            VStack{
+                //tbh I'm not really sure what this does BUT IT WORKS
+                Text("Fatness bar:")
+                    .onReceive(timer) { _ in
+                        currentYear = Calendar.current.component(.year, from: Date())
+                        currentMonth = Calendar.current.component(.month, from: Date())
+                        currentDay = Calendar.current.component(.day, from: Date())
+                        currentHour = Calendar.current.component(.hour, from: Date())
+                        currentMin = Calendar.current.component(.minute, from: Date())
+                        currentSec = Calendar.current.component(.second, from: Date())
+                        currentDate = Date()
+                        secsLeftResult = getSecondsPassed(getFirstOpenedDate(), to: currentDate)
+                        //countDownTimer -= 1
+                        /*if needToReset() {
+                         percent = 100
+                         }
+                         if isFull() {
+                         percent = 100
+                         }
+                         else if isEmpty() {
+                         percent = 0
+                         }
+                         else if percent > 0 {
+                         percent -= (100 / CGFloat(x)) * 0.01
+                         }*/
+                        percent = (100 * x - (CGFloat(secsLeftResult) .truncatingRemainder (dividingBy: 100 * x))) / x
+                        if isEmpty() {
+                            percent = 0
+                        }
+                    }
+                
+                //Text("needtoreset result: " + String(needToReset()))
+                ZStack(alignment: .leading) {
+                    RoundedRectangle(cornerRadius: height, style: .continuous).frame(width: width, height: height).foregroundColor(Color.gray.opacity(0.2))
+                    RoundedRectangle(cornerRadius: height, style: .continuous).frame(width: returnWidth(), height: height).background(
+                        LinearGradient(gradient: Gradient(colors: [color1, color2]), startPoint: .leading, endPoint: .trailing).clipShape(RoundedRectangle(cornerRadius: height, style: .continuous))
+                    ).foregroundColor(.clear)
+                }
+                
+                Text(getGoatStateText())
+                
+                
+                //calls the method which returns the appropriate bar image
+                //Image(getBarState())
+                
+                ZStack(){
+                    //calls the method which returns the appropriate goat image
+                    Image(getGoatState())
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 500, height: 500)
+                        
+                    //Image(.testHat)
                     //.resizable()
                     //.aspectRatio(contentMode: .fit)
                     //.frame(width: 500, height: 500)
                     //.padding([.bottom],160)
                     //.padding([.leading], 70)
-                /*Image(.bling)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 500, height: 500)
-                    .padding([.trailing], 30)
-                    .padding([.top], 5)*/
-                if(getGoatState() != .deadGoat){
-                    Image(selectedImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 500, height: 500)
-                        .padding([.trailing], 30)
-                        .padding([.top], 10)
+                    /*Image(.bling)
+                     .resizable()
+                     .aspectRatio(contentMode: .fit)
+                     .frame(width: 500, height: 500)
+                     .padding([.trailing], 30)
+                     .padding([.top], 5)*/
+                    if(getGoatState() != .deadGoat){
+                        Image(selectedImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 500, height: 500)
+                            .padding([.trailing], 30)
+                            .padding([.top], 10)
+                    }
+                    /*Image(.superhero)
+                     .resizable()
+                     .aspectRatio(contentMode: .fit)
+                     .frame(width: 500, height: 500)
+                     .padding([.trailing], 30)
+                     .padding([.top], 10)
+                     Image(.pirate)
+                     .resizable()
+                     .aspectRatio(contentMode: .fit)
+                     .frame(width: 500, height: 500)
+                     .padding([.trailing], 30)
+                     .padding([.top], 10)*/
+                    
+                    /*Image(.ski)
+                     .resizable()
+                     .aspectRatio(contentMode: .fit)
+                     .frame(width: 500, height: 500)
+                     .padding([.trailing], 30)
+                     .padding([.top], 10)*/
                 }
-                /*Image(.superhero)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 500, height: 500)
-                    .padding([.trailing], 30)
-                    .padding([.top], 10)
-                Image(.pirate)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 500, height: 500)
-                    .padding([.trailing], 30)
-                    .padding([.top], 10)*/
+                
+                //Image(.cleanBedroom)
+                //Label("TEST", image: .cleanBedroom).labelStyle(.iconOnly)
+                
+                
+                /*Text("firstOpened year: " + String(isFirstOpenedYearSet()))
+                 Text("firstOpened month: " + String(isFirstOpenedMonthSet()))
+                 Text("firstOpened day: " + String(isFirstOpenedDaySet()))
+                 Text("firstOpened hour: " + String(isFirstOpenedHourSet()))
+                 Text("firstOpened min: " + String(isFirstOpenedMinSet()))
+                 Text("firstOpened sec: " + String(isFirstOpenedSecSet()))
                  
-                /*Image(.ski)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 500, height: 500)
-                    .padding([.trailing], 30)
-                    .padding([.top], 10)*/
+                 Text("current year: " + String(currentYear))
+                 Text("current month: " + String(currentMonth))
+                 Text("current day: " + String(currentDay))
+                 Text("current hour: " + String(currentHour))
+                 Text("current min: " + String(currentMin))
+                 Text("current sec: " + String(currentSec))*/
+                
+                //Text(DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .short))
+                
+                //Text("percent: " + percent.description)
+                //Text("firstdateopened: " + getFirstOpenedDate().description)
+                //Text("currentdate: " + currentDate.description)
+                
+                Text("secsleft: " + String(secsLeftResult))
+                
+                //let multiplier = width / 100
+                
+                
+                
+                
             }
             
-            //Image(.cleanBedroom)
-            //Label("TEST", image: .cleanBedroom).labelStyle(.iconOnly)
-            
-            
-            /*Text("firstOpened year: " + String(isFirstOpenedYearSet()))
-            Text("firstOpened month: " + String(isFirstOpenedMonthSet()))
-            Text("firstOpened day: " + String(isFirstOpenedDaySet()))
-            Text("firstOpened hour: " + String(isFirstOpenedHourSet()))
-            Text("firstOpened min: " + String(isFirstOpenedMinSet()))
-            Text("firstOpened sec: " + String(isFirstOpenedSecSet()))
-            
-            Text("current year: " + String(currentYear))
-            Text("current month: " + String(currentMonth))
-            Text("current day: " + String(currentDay))
-            Text("current hour: " + String(currentHour))
-            Text("current min: " + String(currentMin))
-            Text("current sec: " + String(currentSec))*/
-            
-            //Text(DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .short))
-            
-            //Text("percent: " + percent.description)
-            //Text("firstdateopened: " + getFirstOpenedDate().description)
-            //Text("currentdate: " + currentDate.description)
-            
-            Text("secsleft: " + String(secsLeftResult))
-            
-            //let multiplier = width / 100
-            
-            
-                
-            
         }
-        
     }
     
     func returnWidth()-> CGFloat{
