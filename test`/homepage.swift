@@ -15,7 +15,7 @@ var clickedImage = ImageResource .nada
 var costOfItem: Int = 0
 //var tempCoins: Int = 500
 var currentPos: Int = 0
-//var profileImage = ImageResource .profileicon
+
 
 extension Array: RawRepresentable where Element: Codable {
     public init?(rawValue: String) {
@@ -43,15 +43,17 @@ struct Homepage: View {
     
     @AppStorage("ownedList2") public var ownedList2: [Bool] = [false, false, false, false, false, false]
     
-    @State var profileImage = ImageResource .profileicon
-    @State var profileString = "profile"
+    
+    let profileString = "profileicon"
     @AppStorage("PROFILE_STRING_KEY") var savedProfileString: String = ("")
     /* make a 2nd variabke that is a string of the selected profileImage's name
      save that string instead of the actual image resource
      this might mean you need to change where you change profile image
      might need an "in-between" variable*/
+    //@State var profileImage = ImageResource(name: profileString, bundle: .main)
     
     
+    @State var profileImage = ImageResource .profileicon
     
     @State var showPopup = false
     func buttonPresed(){
@@ -78,6 +80,13 @@ struct Homepage: View {
     
     @State var showingProfilePopup = false
     
+    //@State var profileImage = ImageResource(name: profileString, bundle: .main)
+    /*let bundle = Bundle.main
+    init(profileString: String, bundle: Bundle){
+        self.profileString = profileString
+        self.bundle = bundle
+    }*/
+    
     
     var body: some View {
         VStack(spacing: 5) {
@@ -100,6 +109,7 @@ struct Homepage: View {
                 //profile1, other real goats, olivia?, some random guy?
                 Button{
                     profileImage = .profile1
+                    showingProfilePopup = false
                     
                 } label: {
                     Image("profile1")
@@ -345,6 +355,8 @@ struct Homepage: View {
             return false
         }
     }
+    
+    
     
 }
 
