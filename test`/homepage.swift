@@ -45,14 +45,8 @@ struct Homepage: View {
     
     
     @State private var profileImage: String = UserDefaults.standard.string(forKey: "profileImage") ?? "profileicon"
-    /* make a 2nd variabke that is a string of the selected profileImage's name
-     save that string instead of the actual image resource
-     this might mean you need to change where you change profile image
-     might need an "in-between" variable*/
-    //@State var profileImage = ImageResource(name: profileString, bundle: .main)
+    //initializes profileImage variable as a string that if not changed starts as profileIcon
     
-    
-    //@State var profileImage = ImageResource .profileicon
     
     @State var showPopup = false
     func buttonPresed(){
@@ -79,13 +73,6 @@ struct Homepage: View {
     
     @State var showingProfilePopup = false
     
-    //@State var profileImage = ImageResource(name: profileString, bundle: .main)
-    /*let bundle = Bundle.main
-    init(profileString: String, bundle: Bundle){
-        self.profileString = profileString
-        self.bundle = bundle
-    }*/
-    
     
     var body: some View {
         VStack(spacing: 5) {
@@ -103,17 +90,48 @@ struct Homepage: View {
                         .padding(.bottom, 15)
                 }
             }.popover(isPresented: $showingProfilePopup) {
-                //make grid of buttons that you can set as profileImage
-                //does this require v and h stacks?
-                //profile1, other real goats, olivia?, some random guy?
-                Button{
-                    profileImage = (profileImage == "profile1") ? "profile2" : "profile1"
-                    saveProfileImage(_name: profileImage)
-                } label: {
-                    Image(profileImage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80, height: 80)
+                VStack{
+                    HStack{
+                        Button{
+                            profileImage = "profileicon"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profileicon")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile1"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile1")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile2"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile2")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        
+                    }
+                    HStack{
+                        Button{
+                            profileImage = "profile3"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile3")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                    }
                 }
             }
                 
