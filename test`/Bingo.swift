@@ -1104,9 +1104,9 @@ struct Bingo: View {
                 }
                 HStack{
                     Image("coin")
-                    Text("\(coins)").font(.system(.body, design: .serif))
+                    Text("\(GlobalVariables.coin)").font(.system(.body, design: .serif))
                     Image("tincan")
-                    Text("\(cans)").font(.system(.body, design: .serif))
+                    Text("\(GlobalVariables.can)").font(.system(.body, design: .serif))
                 }.position(x: 280, y: 7).padding(20)
                 
                 VStack{

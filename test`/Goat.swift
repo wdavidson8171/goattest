@@ -46,7 +46,9 @@ struct Goat: View {
     var color1 = Color(#colorLiteral(red: 0.7519986012, green: 0.8191245168, blue: 0.67492058, alpha: 1))
     var color2 = Color(#colorLiteral(red: 0.2172280641, green: 0.289908183, blue: 0.1743075374, alpha: 1))
     
-    
+    func feedGoat(){
+        
+    }
     
     
     
@@ -74,38 +76,41 @@ struct Goat: View {
                     Color.white.ignoresSafeArea()
                 }
             }
-            
+            HStack{
+                Image("tincan")
+                Text("\(GlobalVariables.can)").font(.system(.body, design: .serif))
+            }.position(x: 390, y:40)
             VStack{
-                //tbh I'm not really sure what this does BUT IT WORKS
-                Text("Fatness bar:")
-                    .onReceive(timer) { _ in
-                        currentYear = Calendar.current.component(.year, from: Date())
-                        currentMonth = Calendar.current.component(.month, from: Date())
-                        currentDay = Calendar.current.component(.day, from: Date())
-                        currentHour = Calendar.current.component(.hour, from: Date())
-                        currentMin = Calendar.current.component(.minute, from: Date())
-                        currentSec = Calendar.current.component(.second, from: Date())
-                        currentDate = Date()
-                        secsLeftResult = getSecondsPassed(getFirstOpenedDate(), to: currentDate)
-                        //countDownTimer -= 1
-                        /*if needToReset() {
-                         percent = 100
-                         }
-                         if isFull() {
-                         percent = 100
-                         }
-                         else if isEmpty() {
-                         percent = 0
-                         }
-                         else if percent > 0 {
-                         percent -= (100 / CGFloat(x)) * 0.01
-                         }*/
-                        percent = (100 * x - (CGFloat(secsLeftResult) .truncatingRemainder (dividingBy: 100 * x))) / x
-                        if isEmpty() {
-                            percent = 0
+                                //tbh I'm not really sure what this does BUT IT WORKS
+                    Text("Fatness bar:")
+                        .onReceive(timer) { _ in
+                            currentYear = Calendar.current.component(.year, from: Date())
+                            currentMonth = Calendar.current.component(.month, from: Date())
+                            currentDay = Calendar.current.component(.day, from: Date())
+                            currentHour = Calendar.current.component(.hour, from: Date())
+                            currentMin = Calendar.current.component(.minute, from: Date())
+                            currentSec = Calendar.current.component(.second, from: Date())
+                            currentDate = Date()
+                            secsLeftResult = getSecondsPassed(getFirstOpenedDate(), to: currentDate)
+                            //countDownTimer -= 1
+                            /*if needToReset() {
+                             percent = 100
+                             }
+                             if isFull() {
+                             percent = 100
+                             }
+                             else if isEmpty() {
+                             percent = 0
+                             }
+                             else if percent > 0 {
+                             percent -= (100 / CGFloat(x)) * 0.01
+                             }*/
+                            percent = (100 * x - (CGFloat(secsLeftResult) .truncatingRemainder (dividingBy: 100 * x))) / x
+                            if isEmpty() {
+                                percent = 0
+                            }
                         }
-                    }
-                
+                    
                 //Text("needtoreset result: " + String(needToReset()))
                 ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: height, style: .continuous).frame(width: width, height: height).foregroundColor(Color.gray.opacity(0.2))
@@ -116,6 +121,7 @@ struct Goat: View {
                 
                 Text(getGoatStateText())
                 
+               
                 
                 //calls the method which returns the appropriate bar image
                 //Image(getBarState())

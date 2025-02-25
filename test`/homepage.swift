@@ -198,110 +198,136 @@ struct Homepage: View {
                 
                 ScrollView(.horizontal) {
                     HStack{
-                        Button{
-                            selectedImage = .nada
-                        } label: {
-                            Image(.nada).resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100)
-                                .border(.black, width: 2)
+                        ZStack{
+                            Color.white
+                            Button{
+                                selectedImage = .nada
+                            } label: {
+                                Image(.nada).resizable()
+                                
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 120)
+                                    .border(.black, width: 2)
+                            }
                         }
                         
-                        Button{
-                            if isOwned(imagex: .uggs) {
-                                selectedImage = .uggs
+                        ZStack{
+                            Color.white
+                            Button{
+                                if isOwned(imagex: .uggs) {
+                                    selectedImage = .uggs
+                                }
+                                else{
+                                    clickedImage = .uggs
+                                    costOfItem = 100
+                                    showingPopup = true
+                                }
+                            } label: {
+                                Image(.uggs).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 120).border(.black, width: 2)
                             }
-                            else{
-                                clickedImage = .uggs
-                                costOfItem = 100
-                                showingPopup = true
-                            }
-                        } label: {
-                            Image(.uggs).resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100).border(.black, width: 2)
                         }
-                        
-                        Button{
-                            if isOwned(imagex: .bling) {
-                                selectedImage = .bling
+                        ZStack{
+                            Color.white
+                            Button{
+                                if isOwned(imagex: .bling) {
+                                    selectedImage = .bling
+                                }
+                                else{
+                                    clickedImage = .bling
+                                    costOfItem = 100
+                                    showingPopup = true
+                                }
+                            } label: {
+                                Image(.bling).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 120).border(.black, width: 2)
                             }
-                            else{
-                                clickedImage = .bling
-                                costOfItem = 100
-                                showingPopup = true
-                            }
-                        } label: {
-                            Image(.bling).resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100).border(.black, width: 2)
                         }
-                        Button{
-                            if isOwned(imagex: .cowboy) {
-                                selectedImage = .cowboy
+                        ZStack{
+                            Color.white
+                            Button{
+                                if isOwned(imagex: .cowboy) {
+                                    selectedImage = .cowboy
+                                }
+                                else{
+                                    clickedImage = .cowboy
+                                    costOfItem = 100
+                                    showingPopup = true
+                                }
+                            } label: {
+                                Image(.cowboy).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 120).border(.black, width: 2)
                             }
-                            else{
-                                clickedImage = .cowboy
-                                costOfItem = 100
-                                showingPopup = true
-                            }
-                        } label: {
-                            Image(.cowboy).resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100).border(.black, width: 2)
                         }
-                        Button{
-                            if isOwned(imagex: .ski) {
-                                selectedImage = .ski
+                        ZStack{
+                            Color.white
+                            Button{
+                                if isOwned(imagex: .ski) {
+                                    selectedImage = .ski
+                                }
+                                else{
+                                    clickedImage = .ski
+                                    costOfItem = 100
+                                    showingPopup = true
+                                }
+                            } label: {
+                                Image(.ski).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 120).border(.black, width: 2)
                             }
-                            else{
-                                clickedImage = .ski
-                                costOfItem = 100
-                                showingPopup = true
-                            }
-                        } label: {
-                            Image(.ski).resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100).border(.black, width: 2)
                         }
-                        Button{
-                            if isOwned(imagex: .superhero) {
-                                selectedImage = .superhero
+                        ZStack{
+                            Color.white
+                            Button{
+                                if isOwned(imagex: .superhero) {
+                                    selectedImage = .superhero
+                                }
+                                else{
+                                    clickedImage = .superhero
+                                    costOfItem = 100
+                                    showingPopup = true
+                                }
+                            } label: {
+                                Image(.superhero).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 120).border(.black, width: 2)
                             }
-                            else{
-                                clickedImage = .superhero
-                                costOfItem = 100
-                                showingPopup = true
-                            }
-                        } label: {
-                            Image(.superhero).resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100).border(.black, width: 2)
                         }
-                        Button{
-                            if isOwned(imagex: .pirate) {
-                                selectedImage = .pirate
+                        ZStack{
+                            Color.white
+                            Button{
+                                if isOwned(imagex: .pirate) {
+                                    selectedImage = .pirate
+                                }
+                                else{
+                                    clickedImage = .pirate
+                                    costOfItem = 100
+                                    showingPopup = true
+                                }
+                            } label: {
+                                Image(.pirate).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 120).border(.black, width: 2)
                             }
-                            else{
-                                clickedImage = .pirate
-                                costOfItem = 100
-                                showingPopup = true
-                            }
-                        } label: {
-                            Image(.pirate).resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100).border(.black, width: 2)
                         }
                     }.popover(isPresented: $showingPopup) {
                         VStack{
+                            HStack{
+                                Image("coin")
+                                Text("\(GlobalVariables.coin)").font(.system(.body, design: .serif))
+                            }
                             Image(clickedImage).resizable().aspectRatio(contentMode: .fit)
                                 .frame(width: 500, height: 500).border(.black, width: 5)
                             Text("You need to own Uggs to use this image!")
                             Text("Cost: " + String(costOfItem) + " coins")
                             Button("Buy") {
-                                if tempCoins >= costOfItem {
+                                
+                                if GlobalVariables.coin >= costOfItem {
                                     ownedList.append(clickedImage)
-                                    tempCoins -= costOfItem
+                                    GlobalVariables.coin -= costOfItem
                                     selectedImage = clickedImage
                                     showingPopup = false
                                 }
