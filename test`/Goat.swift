@@ -9,8 +9,6 @@ import SwiftUI
 import Foundation
 
 
-
-
 struct Goat: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -22,6 +20,8 @@ struct Goat: View {
     @AppStorage("firstOpenedSec") var firstOpenedSec: Int = -1
     
     @AppStorage("firstOpenedDate") var firstOpenedDate: Date = Date()
+
+    @AppStorage("Testin") var Testin: String = ".bling"
     
     @State var currentYear: Int = Calendar.current.component(.year, from: Date())
     @State var currentMonth: Int = Calendar.current.component(.month, from: Date())
@@ -79,9 +79,10 @@ struct Goat: View {
             }
             
             Text(getGoatStateText())
-            Text(getCurrentDate(), style: .date)
+            
             
             ZStack(){
+                
                 //calls the method which returns the appropriate goat image
                 Image(getGoatState())
                     .resizable()
@@ -99,6 +100,9 @@ struct Goat: View {
             }
             
             Text("secs passed: " + String(secsLeftResult))
+            
+            
+            
             
             
                 

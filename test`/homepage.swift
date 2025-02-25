@@ -15,6 +15,15 @@ var costOfItem: Int = 0
 var currentPos: Int = 0
 var profileImage = ImageResource .profileicon
 
+class PIClass: ObservableObject {
+    @AppStorage("currentPosPI") var currentPosPI: Int = 0
+
+    func finishGame(item : Int) {
+        currentPosPI = item
+  }
+}
+
+
 extension Array: RawRepresentable where Element: Codable {
     public init?(rawValue: String) {
         guard let data = rawValue.data(using: .utf8),
@@ -41,6 +50,7 @@ struct Homepage: View {
     //NEWPICREMEMBER1
     @AppStorage("ownedList2") public var ownedList2: [Bool] = [false, false, false, false, false, false]
     
+    @StateObject var piClass = PIClass()
     
     
     @State var showPopup = false
@@ -179,7 +189,7 @@ struct Homepage: View {
                     Button{
                         if isOwned2(position: 0) {
                             selectedImage = .uggs
-                            ownedList2[0] = true
+                            piClass.finishGame(1)
                         }
                         else{
                             clickedImage = .uggs
@@ -196,7 +206,6 @@ struct Homepage: View {
                     Button{
                         if isOwned2(position: 1) {
                             selectedImage = .bling
-                            ownedList2[1] = true
                         }
                         else{
                             clickedImage = .bling
@@ -212,7 +221,6 @@ struct Homepage: View {
                     Button{
                         if isOwned2(position: 2) {
                             selectedImage = .cowboy
-                            ownedList2[2] = true
                         }
                         else{
                             clickedImage = .cowboy
@@ -228,7 +236,6 @@ struct Homepage: View {
                     Button{
                         if isOwned2(position: 3) {
                             selectedImage = .ski
-                            ownedList2[3] = true
                         }
                         else{
                             clickedImage = .ski
@@ -244,7 +251,6 @@ struct Homepage: View {
                     Button{
                         if isOwned2(position: 4) {
                             selectedImage = .superhero
-                            ownedList2[4] = true
                         }
                         else{
                             clickedImage = .superhero
@@ -260,7 +266,6 @@ struct Homepage: View {
                     Button{
                         if isOwned2(position: 5) {
                             selectedImage = .pirate
-                            ownedList2[5] = true
                         }
                         else{
                             clickedImage = .pirate
