@@ -44,8 +44,7 @@ struct Homepage: View {
     @AppStorage("ownedList2") public var ownedList2: [Bool] = [false, false, false, false, false, false]
     
     
-    let profileString = "profileicon"
-    @AppStorage("PROFILE_STRING_KEY") var savedProfileString: String = ("")
+    @State private var profileImage: String = UserDefaults.standard.string(forKey: "profileImage") ?? "profileicon"
     /* make a 2nd variabke that is a string of the selected profileImage's name
      save that string instead of the actual image resource
      this might mean you need to change where you change profile image
@@ -53,7 +52,7 @@ struct Homepage: View {
     //@State var profileImage = ImageResource(name: profileString, bundle: .main)
     
     
-    @State var profileImage = ImageResource .profileicon
+    //@State var profileImage = ImageResource .profileicon
     
     @State var showPopup = false
     func buttonPresed(){
@@ -108,12 +107,12 @@ struct Homepage: View {
                 //does this require v and h stacks?
                 //profile1, other real goats, olivia?, some random guy?
                 Button{
-                    profileImage = .profile1
-                    showingProfilePopup = false
-                    
+                    profileImage = (profileImage == "profile1") ? "profile2" : "profile1"
+                    saveProfileImage(_name: profileImage)
                 } label: {
-                    Image("profile1")
+                    Image(profileImage)
                         .resizable()
+                        .scaledToFit()
                         .frame(width: 80, height: 80)
                 }
             }
@@ -356,7 +355,9 @@ struct Homepage: View {
         }
     }
     
-    
+    func saveProfileImage(_name: String) {
+        UserDefaults.standard.set(_name, forKey: "profileImage")
+    }
     
 }
 
