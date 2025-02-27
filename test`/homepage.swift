@@ -4,8 +4,10 @@
 //
 //  Created by Waverly Davidson on 10/8/24.
 //
+//6.14  10.45
 
 import SwiftUI
+import PhotosUI
 
 var selectedImage = ImageResource .nada
 //var ownedList: [ImageResource] = [.nada]
@@ -13,7 +15,6 @@ var clickedImage = ImageResource .nada
 var costOfItem: Int = 0
 //var tempCoins: Int = 500
 var currentPos: Int = 0
-var profileImage = ImageResource .profileicon
 
 
 extension Array: RawRepresentable where Element: Codable {
@@ -43,6 +44,9 @@ struct Homepage: View {
     @AppStorage("ownedList2") public var ownedList2: [Bool] = [false, false, false, false, false, false]
     
 
+    
+    @State private var profileImage: String = UserDefaults.standard.string(forKey: "profileImage") ?? "profileicon"
+    //initializes profileImage variable as a string that if not changed starts as profileIcon
     
     
     @State var showPopup = false
@@ -87,11 +91,155 @@ struct Homepage: View {
                         .padding(.bottom, 15)
                 }
             }.popover(isPresented: $showingProfilePopup) {
-                //make grid of buttons that you can set as profileImage
-                //does this require v and h stacks?
-                //profile1, other real goats, olivia?, some random guy?
+                VStack{
+                    HStack{
+                        Button{
+                            profileImage = "profileicon"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profileicon")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile1"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile1")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile2"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile2")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        
+                    }
+                    HStack{
+                        Button{
+                            profileImage = "profile3"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile3")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile4"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile4")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile5"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile5")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                    }
+                    HStack{
+                        Button{
+                            profileImage = "profile6"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile6")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile7"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile7")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile8"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile8")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                    }
+                    HStack{
+                        Button{
+                            profileImage = "profile9"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile9")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile10"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile10")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile11"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile11")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                    }
+                    HStack{
+                        Button{
+                            profileImage = "profile12"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile12")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile4"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile4")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile5"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile5")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                    }
+                }
             }
-            
                 
             
             TextField("Name", text: $text)
@@ -184,7 +332,7 @@ struct Homepage: View {
                         }
                         else{
                             clickedImage = .uggs
-                            costOfItem = 100
+                            costOfItem = 50
                             currentPos = 0
                             showingPopup = true
                         }
@@ -200,7 +348,7 @@ struct Homepage: View {
                         }
                         else{
                             clickedImage = .bling
-                            costOfItem = 100
+                            costOfItem = 25
                             currentPos = 1
                             showingPopup = true
                         }
@@ -215,7 +363,7 @@ struct Homepage: View {
                         }
                         else{
                             clickedImage = .cowboy
-                            costOfItem = 100
+                            costOfItem = 50
                             currentPos = 2
                             showingPopup = true
                         }
@@ -230,7 +378,7 @@ struct Homepage: View {
                         }
                         else{
                             clickedImage = .ski
-                            costOfItem = 100
+                            costOfItem = 320
                             currentPos = 3
                             showingPopup = true
                         }
@@ -245,7 +393,7 @@ struct Homepage: View {
                         }
                         else{
                             clickedImage = .superhero
-                            costOfItem = 100
+                            costOfItem = 40
                             currentPos = 4
                             showingPopup = true
                         }
@@ -260,7 +408,7 @@ struct Homepage: View {
                         }
                         else{
                             clickedImage = .pirate
-                            costOfItem = 100
+                            costOfItem = 30
                             currentPos = 5
                             showingPopup = true
                         }
@@ -329,6 +477,11 @@ struct Homepage: View {
         } else {
             return 0.7
         }
+    }
+    
+    
+    func saveProfileImage(_name: String) {
+        UserDefaults.standard.set(_name, forKey: "profileImage")
     }
     
 }
