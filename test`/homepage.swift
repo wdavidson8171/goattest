@@ -15,14 +15,6 @@ var costOfItem: Int = 0
 var currentPos: Int = 0
 var profileImage = ImageResource .profileicon
 
-class PIClass: ObservableObject {
-    @AppStorage("currentPosPI") var currentPosPI: Int = 0
-
-    func finishGame(item : Int) {
-        currentPosPI = item
-  }
-}
-
 
 extension Array: RawRepresentable where Element: Codable {
     public init?(rawValue: String) {
@@ -50,7 +42,7 @@ struct Homepage: View {
     //NEWPICREMEMBER1
     @AppStorage("ownedList2") public var ownedList2: [Bool] = [false, false, false, false, false, false]
     
-    @StateObject var piClass = PIClass()
+
     
     
     @State var showPopup = false
@@ -189,7 +181,6 @@ struct Homepage: View {
                     Button{
                         if isOwned2(position: 0) {
                             selectedImage = .uggs
-                            piClass.finishGame(1)
                         }
                         else{
                             clickedImage = .uggs
@@ -287,8 +278,6 @@ struct Homepage: View {
                         Text("Your money: " + String(tempCoins) + " coins")
                         Button("Buy") {
                             if tempCoins >= costOfItem {
-                                //ERROR COME BACK AND CHANGE FIX
-                                //ownedList.append(clickedImage)
                                 ownedList2[currentPos] = true
                                 tempCoins -= costOfItem
                                 selectedImage = clickedImage

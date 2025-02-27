@@ -23,6 +23,8 @@ struct Goat: View {
 
     @AppStorage("Testin") var Testin: String = ".bling"
     
+    @AppStorage("foodFed") var foodFed: Int = 0
+    
     @State var currentYear: Int = Calendar.current.component(.year, from: Date())
     @State var currentMonth: Int = Calendar.current.component(.month, from: Date())
     @State var currentDay: Int = Calendar.current.component(.day, from: Date())
@@ -162,7 +164,7 @@ struct Goat: View {
     //returns the seconds passed from the date the app was first opened to the current date
     func getSecondsPassed(_ from: Date, to: Date)-> Int{
         let secondsPassed: DateComponents = Calendar.current.dateComponents([.second], from: from, to: to)
-        return secondsPassed.second!
+        return secondsPassed.second! + (foodFed * 60)
     }
     
     //returns the date the app was first opened
