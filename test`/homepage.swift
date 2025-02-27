@@ -131,6 +131,111 @@ struct Homepage: View {
                                 .scaledToFit()
                                 .frame(width: 100, height: 100)
                         }
+                        Button{
+                            profileImage = "profile4"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile4")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile5"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile5")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                    }
+                    HStack{
+                        Button{
+                            profileImage = "profile6"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile6")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile7"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile7")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile8"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile8")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                    }
+                    HStack{
+                        Button{
+                            profileImage = "profile9"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile9")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile10"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile10")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile11"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile11")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                    }
+                    HStack{
+                        Button{
+                            profileImage = "profile12"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile12")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile4"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile4")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile5"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile5")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
                     }
                 }
             }
