@@ -47,7 +47,10 @@ struct Goat: View {
     var color2 = Color(#colorLiteral(red: 0.2172280641, green: 0.289908183, blue: 0.1743075374, alpha: 1))
     
     func feedGoat(){
-        
+        if (GlobalVariables.can > 0){
+            GlobalVariables.can -= 1
+        }
+
     }
     
     
@@ -132,7 +135,10 @@ struct Goat: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 500, height: 500)
-                        
+                    Button(action: {feedGoat()}){
+                        Image("FOOD").position(x: 300, y:170)
+                            }
+                    
                     //Image(.testHat)
                     //.resizable()
                     //.aspectRatio(contentMode: .fit)
