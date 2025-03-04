@@ -4,17 +4,38 @@
 //
 //  Created by Waverly Davidson on 10/8/24.
 //
+//6.14  10.45
 
 import SwiftUI
+import PhotosUI
 
 var selectedImage = ImageResource .nada
-var ownedList: [ImageResource] = [.nada]
+//var ownedList: [ImageResource] = [.nada]
 var clickedImage = ImageResource .nada
 var costOfItem: Int = 0
-var tempCoins: Int = 500
-//var color: String
+//var tempCoins: Int = 500
+var currentPos: Int = 0
 
 
+extension Array: RawRepresentable where Element: Codable {
+    public init?(rawValue: String) {
+        guard let data = rawValue.data(using: .utf8),
+              let result = try? JSONDecoder().decode([Element].self, from: data)
+        else {
+            return nil
+        }
+        self = result
+    }
+
+    public var rawValue: String {
+        guard let data = try? JSONEncoder().encode(self),
+              let result = String(data: data, encoding: .utf8)
+        else {
+            return "[]"
+        }
+        return result
+    }
+}
 
 struct Homepage: View {
  
@@ -38,6 +59,10 @@ struct Homepage: View {
         print(GlobalVariables.color)
         internalState = 1
     }
+    @AppStorage("tempCoins")var tempCoins: Int = 500
+
+    //NEWPICREMEMBER1
+    @AppStorage("ownedList2") public var ownedList2: [Bool] = [false, false, false, false, false, false]
     
     func colorPickerBlue(){
         GlobalVariables.color.insert("pastelBlue", at: 0)
@@ -57,11 +82,15 @@ struct Homepage: View {
         
     }
     
+    @State private var profileImage: String = UserDefaults.standard.string(forKey: "profileImage") ?? "profileicon"
+    //initializes profileImage variable as a string that if not changed starts as profileIcon
+    
+    
     @State var showPopup = false
     func buttonPresed(){
         showPopup = true
         buttonPressed = true
-        
+
     }
     
     func colorTester(){
@@ -88,18 +117,214 @@ struct Homepage: View {
     @State var showingPopup = false
     
     @State var internalState: Int = 5
+    @State var showingProfilePopup = false
+    
+    
     var body: some View {
         
        
         ZStack{
             //Color.lavender.ignoresSafeArea()
             [Color.lavender, .coolTeal, .nicePink, .orangish, .pastelBlue, .white][internalState] .ignoresSafeArea()
+        VStack(spacing: 5) {
+            Text("Profile")
+                .font(.largeTitle)
+                .bold()
+                .padding(.top, 10)
+            VStack{
+                Button{
+                    showingProfilePopup = true
+                } label: {
+                    Image(profileImage)
+                        .resizable()
+                        .frame(width: 80, height: 80)
+                        .padding(.bottom, 15)
+                }
+            }.popover(isPresented: $showingProfilePopup) {
+                VStack{
+                    HStack{
+                        Button{
+                            profileImage = "profileicon"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profileicon")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile1"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile1")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile2"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile2")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        
+                    }
+                    HStack{
+                        Button{
+                            profileImage = "profile3"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile3")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile4"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile4")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile5"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile5")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                    }
+                    HStack{
+                        Button{
+                            profileImage = "profile6"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile6")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile7"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile7")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile8"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile8")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                    }
+                    HStack{
+                        Button{
+                            profileImage = "profile9"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile9")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile10"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile10")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile11"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile11")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                    }
+                    HStack{
+                        Button{
+                            profileImage = "profile12"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile12")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile4"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile4")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                        Button{
+                            profileImage = "profile5"
+                            saveProfileImage(_name: profileImage)
+                        } label: {
+                            Image("profile5")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                        }
+                    }
+                }
+            }
+                
             
             VStack(spacing: 5) {
                 Text("Profile")
                     .font(.largeTitle)
                     .bold()
                 Image("profileicon")
+            TextField("Name", text: $text)
+                .padding()
+                .frame(width: 300, height: 30)
+                .background(Color.black.opacity(0.05))
+                .cornerRadius(10)
+                .disableAutocorrection(true)
+                .onChange(of: text) { text in
+                    self.savedText = text
+                }
+                .onAppear {
+                    self.text = savedText
+                    print("Loaded: \(savedText)")
+                }
+            
+            
+            DatePicker("Birthday:", selection: $selectedDate, in: startingDate...endingDate, displayedComponents: [.date])
+                .datePickerStyle(CompactDatePickerStyle())
+                .padding()
+                .onChange(of: selectedDate) { selectedDate in
+                    self.savedDate = selectedDate
+                }
+                .onAppear {
+                    selectedDate = savedDate
+                }.padding(.leading, 25)
+                .padding(.trailing, 20)
+            
+            HStack{
+                Image("goaticon")
                     .resizable()
                     .frame(width: 80, height: 80)
                     .padding()
@@ -141,6 +366,19 @@ struct Homepage: View {
                         .disableAutocorrection(true)
                         .onChange(of: goatName) { goatName in
                             self.savedGoatName = goatName
+            }
+                .padding(.top, -10)
+                .padding(.leading, 5)
+                .padding(.trailing, 5)
+            
+            HStack{
+                Image(systemName: "list.bullet.clipboard").foregroundStyle(.accent)
+                Button(action: {buttonPresed()}){
+                    Text("Survey")}
+                .popover(isPresented: $showPopup, arrowEdge: .bottom) {
+                    TabView {
+                        Survey().tabItem{
+                            Label("Survey", systemImage: "list.bullet.clipboard")
                         }
                         .onAppear {
                             self.goatName = savedGoatName
@@ -151,6 +389,9 @@ struct Homepage: View {
                 HStack{
                     Image(systemName: "arrowshape.right.fill").foregroundStyle(.niceBrown)
                     
+                    Button{
+                        if isOwned2(position: 0) {
+                            selectedImage = .uggs
                     Image(systemName: "list.bullet.clipboard").foregroundStyle(.niceBrown)
                     Button(action: {buttonPresed()}){
                         Text("Survey").font(.system(size: 36, weight: .black, design: .serif)) .foregroundStyle(.niceBrown)}
@@ -160,6 +401,16 @@ struct Homepage: View {
                                 Label("Survey", systemImage: "list.bullet.clipboard")
                             }
                         }
+                        else{
+                            clickedImage = .uggs
+                            costOfItem = 50
+                            currentPos = 0
+                            showingPopup = true
+                        }
+                    } label: {
+                        Image(.uggs).resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 100).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 0)))
                     }
                     Image (systemName: "arrowshape.left.fill").foregroundStyle(.niceBrown)
                 }.padding(15)
@@ -184,6 +435,20 @@ struct Homepage: View {
                             Image("swath lavender")
                         }.border(Color.black, width: 1.5)
                         
+                    Button{
+                        if isOwned2(position: 1) {
+                            selectedImage = .bling
+                        }
+                        else{
+                            clickedImage = .bling
+                            costOfItem = 25
+                            currentPos = 1
+                            showingPopup = true
+                        }
+                    } label: {
+                        Image(.bling).resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 100).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 1)))
                     }
                     .font(.system(size: 15))
                 }.padding(-10)
@@ -209,6 +474,9 @@ struct Homepage: View {
                                     .frame(width: 100, height: 120)
                                     .border(.black, width: 2)
                             }
+                    Button{
+                        if isOwned2(position: 2) {
+                            selectedImage = .cowboy
                         }
                         
                         ZStack{
@@ -227,6 +495,11 @@ struct Homepage: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 100, height: 120).border(.black, width: 2)
                             }
+                        else{
+                            clickedImage = .cowboy
+                            costOfItem = 50
+                            currentPos = 2
+                            showingPopup = true
                         }
                         ZStack{
                             Color.white
@@ -244,6 +517,14 @@ struct Homepage: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 100, height: 120).border(.black, width: 2)
                             }
+                    } label: {
+                        Image(.cowboy).resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 100).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 2)))
+                    }
+                    Button{
+                        if isOwned2(position: 3) {
+                            selectedImage = .ski
                         }
                         ZStack{
                             Color.white
@@ -261,6 +542,11 @@ struct Homepage: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 100, height: 120).border(.black, width: 2)
                             }
+                        else{
+                            clickedImage = .ski
+                            costOfItem = 320
+                            currentPos = 3
+                            showingPopup = true
                         }
                         ZStack{
                             Color.white
@@ -278,6 +564,14 @@ struct Homepage: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 100, height: 120).border(.black, width: 2)
                             }
+                    } label: {
+                        Image(.ski).resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 100).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 3)))
+                    }
+                    Button{
+                        if isOwned2(position: 4) {
+                            selectedImage = .superhero
                         }
                         ZStack{
                             Color.white
@@ -295,6 +589,11 @@ struct Homepage: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 100, height: 120).border(.black, width: 2)
                             }
+                        else{
+                            clickedImage = .superhero
+                            costOfItem = 40
+                            currentPos = 4
+                            showingPopup = true
                         }
                         ZStack{
                             Color.white
@@ -312,12 +611,44 @@ struct Homepage: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 100, height: 120).border(.black, width: 2)
                             }
+                    } label: {
+                        Image(.superhero).resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 100).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 4)))
+                    }
+                    Button{
+                        if isOwned2(position: 5) {
+                            selectedImage = .pirate
                         }
                     }.popover(isPresented: $showingPopup) {
                         VStack{
                             HStack{
                                 Image("coin")
                                 Text("\(GlobalVariables.coin)").font(.system(.body, design: .serif))
+                        else{
+                            clickedImage = .pirate
+                            costOfItem = 30
+                            currentPos = 5
+                            showingPopup = true
+                        }
+                    } label: {
+                        Image(.pirate).resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 100).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 5)))
+                    }
+                }.popover(isPresented: $showingPopup) {
+                    VStack{
+                        Image(clickedImage).resizable().aspectRatio(contentMode: .fit)
+                            .frame(width: 500, height: 500).border(.black, width: 5)
+                        Text("You need to own Uggs to use this image!")
+                        Text("Cost: " + String(costOfItem) + " coins")
+                        Text("Your money: " + String(tempCoins) + " coins")
+                        Button("Buy") {
+                            if tempCoins >= costOfItem {
+                                ownedList2[currentPos] = true
+                                tempCoins -= costOfItem
+                                selectedImage = clickedImage
+                                showingPopup = false
                             }
                             Image(clickedImage).resizable().aspectRatio(contentMode: .fit)
                                 .frame(width: 500, height: 500).border(.black, width: 5)
@@ -363,18 +694,50 @@ struct Homepage: View {
         
         
     }
+    
+    func isOwned2(position: Int) -> Bool {
+        if ownedList2[position] == true{
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    func getOverlayOpacity(position: Int) -> Double {
+        if isOwned2(position: position) {
+            return 0
+        } else {
+            return 0.7
+        }
+    }
+    
+    
+    func saveProfileImage(_name: String) {
+        UserDefaults.standard.set(_name, forKey: "profileImage")
+    }
+    
 }
 
 
 func isOwned(imagex: ImageResource) -> Bool {
     var B = false
-    ownedList.forEach { image in
+    /*ownedList.forEach { image in
         if imagex == image {
             B = true
         }
-    }
+    }*/
     return B
-}
+}*/
+
+/*func isOwned2(position: Int) -> Bool {
+    if ownedList2[position].equals(true) {
+        return true
+    }
+    else {
+        return false
+    }
+}*/
 
         #Preview {
             Homepage()
