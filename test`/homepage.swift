@@ -4,7 +4,7 @@
 //
 //  Created by Waverly Davidson on 10/8/24.
 //
-//6.14  10.45
+//
 
 import SwiftUI
 import PhotosUI
@@ -82,7 +82,7 @@ struct Homepage: View {
     @AppStorage("tempCoins")var tempCoins: Int = 500
 
     //NEWPICREMEMBER1
-    @AppStorage("ownedList2") public var ownedList2: [Bool] = [false, false, false, false, false, false]
+    @AppStorage("ownedList2") public var ownedList2: [Bool] = [false, false, false, false, false, false, false]
     
 
     
@@ -413,10 +413,10 @@ struct Homepage: View {
                                     showingPopup = true
                                 }
                             }
-                                label: {
-                                    Image(.uggs).resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                    .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 0)))  }
+                            label: {
+                                Image(.uggs).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 0)))  }
                         }
                         ZStack{
                             Color.white
@@ -438,77 +438,95 @@ struct Homepage: View {
                         }
                         ZStack{
                             Color.white
-                        
-                        Button{
-                            if isOwned2(position: 2) {
-                                selectedImage = .cowboy
+                            
+                            Button{
+                                if isOwned2(position: 2) {
+                                    selectedImage = .cowboy
+                                }
+                                else{
+                                    clickedImage = .cowboy
+                                    costOfItem = 50
+                                    currentPos = 2
+                                    showingPopup = true
+                                }
+                            } label: {
+                                Image(.cowboy).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 2)))
                             }
-                            else{
-                                clickedImage = .cowboy
-                                costOfItem = 50
-                                currentPos = 2
-                                showingPopup = true
-                            }
-                        } label: {
-                            Image(.cowboy).resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 2)))
                         }
-                    }
-                    ZStack{
-                        Color.white
-                        Button{
-                            if isOwned2(position: 3) {
-                                selectedImage = .ski
+                        ZStack{
+                            Color.white
+                            Button{
+                                if isOwned2(position: 3) {
+                                    selectedImage = .ski
+                                }
+                                else{
+                                    clickedImage = .ski
+                                    costOfItem = 320
+                                    currentPos = 3
+                                    showingPopup = true
+                                }
+                            } label: {
+                                Image(.ski).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 3)))
                             }
-                            else{
-                                clickedImage = .ski
-                                costOfItem = 320
-                                currentPos = 3
-                                showingPopup = true
-                            }
-                        } label: {
-                            Image(.ski).resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 3)))
                         }
-                    }
-                    ZStack{
-                        Color.white
-                        Button{
-                            if isOwned2(position: 4) {
-                                selectedImage = .superhero
+                        ZStack{
+                            Color.white
+                            Button{
+                                if isOwned2(position: 4) {
+                                    selectedImage = .superhero
+                                }
+                                else{
+                                    clickedImage = .superhero
+                                    costOfItem = 40
+                                    currentPos = 4
+                                    showingPopup = true
+                                }
+                            } label: {
+                                Image(.superhero).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 4)))
                             }
-                            else{
-                                clickedImage = .superhero
-                                costOfItem = 40
-                                currentPos = 4
-                                showingPopup = true
-                            }
-                        } label: {
-                            Image(.superhero).resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 4)))
                         }
-                    }
-                    ZStack{
-                        Color.white
-                        Button{
-                            if isOwned2(position: 5) {
-                                selectedImage = .pirate
+                        ZStack{
+                            Color.white
+                            Button{
+                                if isOwned2(position: 5) {
+                                    selectedImage = .pirate
+                                }
+                                else{
+                                    clickedImage = .pirate
+                                    costOfItem = 30
+                                    currentPos = 5
+                                    showingPopup = true
+                                }
+                            } label: {
+                                Image(.pirate).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 5)))
                             }
-                            else{
-                                clickedImage = .pirate
-                                costOfItem = 30
-                                currentPos = 5
-                                showingPopup = true
-                            }
-                        } label: {
-                            Image(.pirate).resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 5)))
                         }
-                    }
+                        ZStack{
+                            Color.white
+                            Button{
+                                if isOwned2(position: 6) {
+                                    selectedImage = .olivia
+                                }
+                                else{
+                                    clickedImage = .olivia
+                                    costOfItem = 500
+                                    currentPos = 6
+                                    showingPopup = true
+                                }
+                            } label: {
+                                Image(.olivia).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 6)))
+                            }
+                        }
                     }.popover(isPresented: $showingPopup) {
                         VStack{
                             HStack{
