@@ -385,47 +385,60 @@ struct Homepage: View {
                                 }
 
                 ScrollView(.horizontal) {
+                    
                     HStack{
-                        Button{
-                            selectedImage = .nada
-                        } label: {
-                            Image(.nada).resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100)
-                                .border(.black, width: 2)
+                        ZStack{
+                            Color.white
+                            Button{
+                                selectedImage = .nada
+                            }
+                            label: {
+                                Image(.nada).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 130)
+                                    .border(.black, width: 2)
+                            }
                         }
+                        ZStack{
+                            Color.white
+                            Button{
+                                
+                                if isOwned2(position: 0) {
+                                    selectedImage = .uggs
+                                }
+                                else{
+                                    clickedImage = .uggs
+                                    costOfItem = 50
+                                    currentPos = 0
+                                    showingPopup = true
+                                }
+                            }
+                                label: {
+                                    Image(.uggs).resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 0)))  }
+                        }
+                        ZStack{
+                            Color.white
+                            Button{
+                                if isOwned2(position: 1) {
+                                    selectedImage = .bling
+                                }
+                                else{
+                                    clickedImage = .bling
+                                    costOfItem = 25
+                                    currentPos = 1
+                                    showingPopup = true
+                                }
+                            } label: {
+                                Image(.bling).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 1)))
+                            }
+                        }
+                        ZStack{
+                            Color.white
                         
-                        Button{
-                            if isOwned2(position: 0) {
-                                selectedImage = .uggs
-                            }
-                            else{
-                                clickedImage = .uggs
-                                costOfItem = 50
-                                currentPos = 0
-                                showingPopup = true
-                            }
-                        } label: {
-                            Image(.uggs).resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 0)))
-                        }
-                        
-                        Button{
-                            if isOwned2(position: 1) {
-                                selectedImage = .bling
-                            }
-                            else{
-                                clickedImage = .bling
-                                costOfItem = 25
-                                currentPos = 1
-                                showingPopup = true
-                            }
-                        } label: {
-                            Image(.bling).resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 1)))
-                        }
                         Button{
                             if isOwned2(position: 2) {
                                 selectedImage = .cowboy
@@ -439,8 +452,11 @@ struct Homepage: View {
                         } label: {
                             Image(.cowboy).resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 2)))
+                                .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 2)))
                         }
+                    }
+                    ZStack{
+                        Color.white
                         Button{
                             if isOwned2(position: 3) {
                                 selectedImage = .ski
@@ -454,8 +470,11 @@ struct Homepage: View {
                         } label: {
                             Image(.ski).resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 3)))
+                                .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 3)))
                         }
+                    }
+                    ZStack{
+                        Color.white
                         Button{
                             if isOwned2(position: 4) {
                                 selectedImage = .superhero
@@ -469,8 +488,11 @@ struct Homepage: View {
                         } label: {
                             Image(.superhero).resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 4)))
+                                .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 4)))
                         }
+                    }
+                    ZStack{
+                        Color.white
                         Button{
                             if isOwned2(position: 5) {
                                 selectedImage = .pirate
@@ -484,10 +506,15 @@ struct Homepage: View {
                         } label: {
                             Image(.pirate).resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 100).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 5)))
+                                .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 5)))
                         }
+                    }
                     }.popover(isPresented: $showingPopup) {
                         VStack{
+                            HStack{
+                                Image("coin")
+                                Text("\(GlobalVariables.coin)").font(.system(.body, design: .serif))
+                            }.padding(20)
                             Image(clickedImage).resizable().aspectRatio(contentMode: .fit)
                                 .frame(width: 500, height: 500).border(.black, width: 5)
                             Text("You need to own Uggs to use this image!")
