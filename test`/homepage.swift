@@ -82,7 +82,9 @@ struct Homepage: View {
     @AppStorage("tempCoins")var tempCoins: Int = 500
 
     //NEWPICREMEMBER1
-    @AppStorage("ownedList2") public var ownedList2: [Bool] = [false, false, false, false, false, false, false]
+    @AppStorage("ownedList2") public var ownedList2 = [Bool?](repeating: false, count: 7)
+    
+    //if i made this exactly the right length then WHAT is out of bounds this is so confusing
     
 
     
@@ -512,12 +514,12 @@ struct Homepage: View {
                         ZStack{
                             Color.white
                             Button{
-                                if isOwned2(position: 6) {
+                                if isOwned2(position: 6){
                                     selectedImage = .olivia
                                 }
                                 else{
                                     clickedImage = .olivia
-                                    costOfItem = 500
+                                    costOfItem = 20
                                     currentPos = 6
                                     showingPopup = true
                                 }
@@ -527,7 +529,8 @@ struct Homepage: View {
                                     .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 6)))
                             }
                         }
-                    }.popover(isPresented: $showingPopup) {
+                    }
+                        .popover(isPresented: $showingPopup) {
                         VStack{
                             HStack{
                                 Image("coin")
