@@ -79,7 +79,7 @@ struct Homepage: View {
         }
 
     
-    @AppStorage("tempCoins")var tempCoins: Int = 500
+    @AppStorage("tempCoins")var tempCoins: Int = GlobalVariables.coin
 
     //NEWPICREMEMBER1
     @AppStorage("ownedList2") public var ownedList2: [Bool] = [false, false, false, false, false, false]
@@ -117,6 +117,7 @@ struct Homepage: View {
     
     @State var internalState: Int = 5
     
+    /// <#Description#>
     var body: some View {
         
         
@@ -513,19 +514,21 @@ struct Homepage: View {
                         VStack{
                             HStack{
                                 Image("coin")
-                                Text("\(GlobalVariables.coin)").font(.system(.body, design: .serif))
+                                Text("\(GlobalVariables.coin -  GlobalVariables.purchased)").font(.system(.body, design: .serif))
                             }.padding(20)
                             Image(clickedImage).resizable().aspectRatio(contentMode: .fit)
                                 .frame(width: 500, height: 500).border(.black, width: 5)
                             Text("You need to own Uggs to use this image!")
                             Text("Cost: " + String(costOfItem) + " coins")
-                            Text("Your money: " + String(tempCoins) + " coins")
+                            //Text("Your money: " + String(tempCoins) + " coins")
                             Button("Buy") {
-                                if tempCoins >= costOfItem {
+                                if GlobalVariables.coin >= costOfItem {
                                     ownedList2[currentPos] = true
-                                    tempCoins -= costOfItem
+                                    GlobalVariables.purchased += costOfItem
+                                    GlobalVariables.coin -= GlobalVariables.purchased
                                     selectedImage = clickedImage
                                     showingPopup = false
+                                    
                                 }
                                 else{
                                     Text("Not enough coins!")

@@ -120,15 +120,14 @@ struct Goat: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 500, height: 500)
                     Button(action: {feedGoat()}){
-                        Image("FOOD").position(x: 300, y:170)
+                        Image("FOOD").position(x: 170, y:170)
                             }
                     if(getGoatState() != .deadGoat){
                         Image(selectedImage)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 500, height: 500)
-                            .padding([.trailing], 30)
-                            .padding([.top], 10)
+                            .position(x: 250, y: 349)
                     }
                 }
                 
