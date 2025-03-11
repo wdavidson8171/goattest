@@ -525,7 +525,7 @@ struct Homepage: View {
                                 if GlobalVariables.coin >= costOfItem {
                                     ownedList2[currentPos] = true
                                     GlobalVariables.purchased += costOfItem
-                                    GlobalVariables.coin -= GlobalVariables.purchased
+                                    GlobalVariables.coin //-= GlobalVariables.purchased
                                     selectedImage = clickedImage
                                     showingPopup = false
                                     

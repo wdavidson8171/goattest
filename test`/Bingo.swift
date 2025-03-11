@@ -13,8 +13,7 @@ var buttonPressed = false
 var hideButton = false
 var hide = false
 var chosenColor = GlobalVariables.color[GlobalVariables.color.count-1]
-
-var testSquares = ["a","b","c","d","e","f"]
+//var testSquares = ["a","b","c","d","e","f"]
 
 let choreArray = [ "clean_bathroom", "laundry","trash", "sweep", "dishes", "clean_bedroom","bed"]
 let familyArray = ["boardgame", "walk","meal","picnic"]
@@ -90,7 +89,13 @@ struct Bingo: View {
     @State var chosenColor = GlobalVariables.color[0]
     
     //var coins = GlobalVariables.coin
-    
+    func blackout() {
+        
+        randomArray.removeAll()
+        randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
+
+        GlobalVariables.submitted = false
+    }
     
     func randomImage(){
         print(GlobalVariables.SavedItems.count)
@@ -418,6 +423,7 @@ struct Bingo: View {
         if (disabled1 && disabled2 && disabled3 && disabled4 && disabled5 && disabled6 && disabled7 && disabled8 && disabled9 && disabled10 && disabled11 && disabled12 && disabled13 && disabled14 && disabled15 && disabled16 && disabled17 && disabled18 && disabled19 && disabled20 && disabled21 && disabled22 && disabled23 && disabled24){
             if !moneyArray.contains("blackout"){
                 moneyArray.append("blackout")
+                blackout()
             }
             GlobalVariables.coin = (moneyArray.count*10)-10+50
             coins = GlobalVariables.coin
@@ -1104,7 +1110,7 @@ struct Bingo: View {
                 }
                 HStack{
                     Image("coin")
-                    Text("\(GlobalVariables.coin - GlobalVariables.purchased)").font(.system(.body, design: .serif))
+                    Text("\(GlobalVariables.coin -  GlobalVariables.purchased )").font(.system(.body, design: .serif))
                     Image("tincan")
                     Text("\(GlobalVariables.can)").font(.system(.body, design: .serif))
                 }.position(x: 280, y: 7).padding(20)
@@ -1118,6 +1124,7 @@ struct Bingo: View {
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
+                        
                         
                         Button(action: {buttonPresed2()}){
                             Image(button2)}
