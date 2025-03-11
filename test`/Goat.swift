@@ -51,6 +51,7 @@ struct Goat: View {
     func feedGoat(){
         if (GlobalVariables.can > 0){
             GlobalVariables.can -= 1
+            foodFed += 100
         }
     }
     
@@ -133,6 +134,7 @@ struct Goat: View {
                 
                 Text("secs passed: " + String(secsLeftResult))
                 //Text("secs passed: " + String(bigFatTest))
+                Text("cansss: " + String(foodFed))
                 
                 
             }
@@ -191,7 +193,12 @@ struct Goat: View {
     //returns the seconds passed from the date the app was first opened to the current date
     func getSecondsPassed(_ from: Date, to: Date)-> Int{
         let secondsPassed: DateComponents = Calendar.current.dateComponents([.second], from: from, to: to)
-        return secondsPassed.second! + (foodFed * 60)
+        if (secondsPassed.second!) - (foodFed * 60) < 0{
+            return 0
+        }
+        else{
+            return (secondsPassed.second!) - (foodFed * 60)
+        }
     }
     
     //returns the date the app was first opened
