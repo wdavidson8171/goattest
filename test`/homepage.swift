@@ -117,6 +117,7 @@ struct Homepage: View {
     
     @State var internalState: Int = 5
     
+    /// <#Description#>
     var body: some View {
         
         
@@ -523,8 +524,8 @@ struct Homepage: View {
                             Button("Buy") {
                                 if GlobalVariables.coin >= costOfItem {
                                     ownedList2[currentPos] = true
-                                    GlobalVariables.coin -= costOfItem
                                     GlobalVariables.purchased += costOfItem
+                                    GlobalVariables.coin -= GlobalVariables.purchased
                                     selectedImage = clickedImage
                                     showingPopup = false
                                     
