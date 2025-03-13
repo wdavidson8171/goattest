@@ -16,7 +16,7 @@ import SwiftUI
         
         @State var selectedItems = [String]()
         
-        
+        //declares array of categories you can choose
         @State var allItems:[String] = [
             "Family Activities",
             "Household Chores",
@@ -41,21 +41,26 @@ import SwiftUI
     #Preview {
         Survey()
     }
-    
+    //allows you to select mutiple items in a picker
     struct MultiSelectPickerView: View {
         
         @State var allItems: [String]
         
+        //maybe binding storage of selected items with clicked items from allitems list???
         @Binding var selectedItems: [String]
         
         
         
         var body: some View{
+            //container to group controls
             Form{
                 List{
+                    //looping through allItems array and creates buttons for each
                     ForEach(allItems, id: \.self){ item in
                         Button(action: {
+                            //I think this is animating the checkmarks?
                             withAnimation {
+                                //checks if item you click already exists in selected items: if it does, then it unselects, else it appends the item to selectedItems array
                                 if self.selectedItems.contains(item){
                                     self.selectedItems.removeAll(where: {$0 == item})
                                 } else {
@@ -63,6 +68,7 @@ import SwiftUI
                                 }
                             }
                         }){
+                            //adds checkmark to selected items
                             HStack{
                                 Image(systemName: "checkmark")
                                     . opacity(self.selectedItems.contains(item) ? 1.0 : 0.0)
@@ -91,6 +97,9 @@ struct GlobalVariables{
         
         func saveSurvey(){
             GlobalVariables.submitted = true
+            //I think userDefaults could be replaced with APPStorage here to save the data?
+            //or something with the globalvariables.saveditems
+            //orOR it needs to be done throuh the selectedItems variable
             let userDefaults = UserDefaults.standard
             userDefaults.set(selectedItems, forKey: "selectedItems")
             GlobalVariables.SavedItems = (userDefaults.array(forKey: "selectedItems") as? [String] ?? [])

@@ -83,7 +83,7 @@ struct Homepage: View {
 
     //NEWPICREMEMBER1
     //@AppStorage("ownedList2") public var ownedList2 = [Bool?](repeating: false, count: 7)
-    @State public var ownedList2 = [false, false, false, false, false, false, false]
+    @AppStorage("ownedList3") public var ownedList2 = [false, false, false, false, false, false, false]
     
     
     @State private var profileImage: String = UserDefaults.standard.string(forKey: "profileImage") ?? "profileicon"
@@ -269,10 +269,10 @@ struct Homepage: View {
                                     .frame(width: 100, height: 100)
                             }
                             Button{
-                                profileImage = "profile4"
+                                profileImage = "profile13"
                                 saveProfileImage(_name: profileImage)
                             } label: {
-                                Image("profile4")
+                                Image("profile13")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 100, height: 100)
