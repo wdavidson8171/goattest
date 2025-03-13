@@ -82,11 +82,9 @@ struct Homepage: View {
     @AppStorage("tempCoins")var tempCoins: Int = 500
 
     //NEWPICREMEMBER1
-    @AppStorage("ownedList2") public var ownedList2 = [Bool?](repeating: false, count: 7)
+    //@AppStorage("ownedList2") public var ownedList2 = [Bool?](repeating: false, count: 7)
+    @State public var ownedList2 = [false, false, false, false, false, false, false]
     
-    //if i made this exactly the right length then WHAT is out of bounds this is so confusing
-    
-
     
     @State private var profileImage: String = UserDefaults.standard.string(forKey: "profileImage") ?? "profileicon"
     //initializes profileImage variable as a string that if not changed starts as profileIcon
@@ -519,7 +517,7 @@ struct Homepage: View {
                                 }
                                 else{
                                     clickedImage = .olivia
-                                    costOfItem = 20
+                                    costOfItem = 400
                                     currentPos = 6
                                     showingPopup = true
                                 }
