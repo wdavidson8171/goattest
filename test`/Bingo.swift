@@ -29,6 +29,7 @@ let winterArray = ["goToMountain","hotChocolate","pajamaParty","snowman"]
 let springArray = ["sitInMeadow","springCleaning","dyeEgg","bouquet"]
 let summerArray = ["waterBaloonFight","swimmingHole","pool","berryPicking","amusementPark","beach"]
 
+
 struct Bingo: View {
     
     @State var showImage: Bool = false
@@ -61,6 +62,30 @@ struct Bingo: View {
     @State var overlayOpacity22 = 0.0
     @State var overlayOpacity23 = 0.0
     @State var overlayOpacity24 = 0.0
+    @State var opacity1 = 1.0
+    @State var opacity2 = 1.0
+    @State var opacity3 = 1.0
+    @State var opacity4 = 1.0
+    @State var opacity5 = 1.0
+    @State var opacity6 = 1.0
+    @State var opacity7 = 1.0
+    @State var opacity8 = 1.0
+    @State var opacity9 = 1.0
+    @State var opacity10 = 1.0
+    @State var opacity11 = 1.0
+    @State var opacity12 = 1.0
+    @State var opacity13 = 1.0
+    @State var opacity14 = 1.0
+    @State var opacity15 = 1.0
+    @State var opacity16 = 1.0
+    @State var opacity17 = 1.0
+    @State var opacity18 = 1.0
+    @State var opacity19 = 1.0
+    @State var opacity20 = 1.0
+    @State var opacity21 = 1.0
+    @State var opacity22 = 1.0
+    @State var opacity23 = 1.0
+    @State var opacity24 = 1.0
     @State var disabled1: Bool = false
     @State var disabled2: Bool = false
     @State var disabled3: Bool = false
@@ -90,12 +115,97 @@ struct Bingo: View {
     
     //var coins = GlobalVariables.coin
     func blackout() {
-        
+        GlobalVariables.SavedItems = ["You're selected items", "will appear here"]
         randomArray.removeAll()
         randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
-
+        moneyArray.removeAll()
         GlobalVariables.submitted = false
+
+        overlayOpacity1 = 0.0
+        overlayOpacity2 = 0.0
+        overlayOpacity3 = 0.0
+        overlayOpacity4 = 0.0
+        overlayOpacity5 = 0.0
+        overlayOpacity6 = 0.0
+        overlayOpacity7 = 0.0
+        overlayOpacity8 = 0.0
+        overlayOpacity9 = 0.0
+        overlayOpacity10 = 0.0
+        overlayOpacity11 = 0.0
+        overlayOpacity12 = 0.0
+        overlayOpacity13 = 0.0
+        overlayOpacity14 = 0.0
+        overlayOpacity15 = 0.0
+        overlayOpacity16 = 0.0
+        overlayOpacity17 = 0.0
+        overlayOpacity18 = 0.0
+        overlayOpacity19 = 0.0
+        overlayOpacity20 = 0.0
+        overlayOpacity21 = 0.0
+        overlayOpacity22 = 0.0
+        overlayOpacity23 = 0.0
+        overlayOpacity24 = 0.0
+        opacity1 = 0.0
+        opacity2 = 0.0
+        opacity3 = 0.0
+        opacity4 = 0.0
+        opacity5 = 0.0
+        opacity6 = 0.0
+        opacity7 = 0.0
+        opacity8 = 0.0
+        opacity9 = 0.0
+        opacity10 = 0.0
+        opacity11 = 0.0
+        opacity12 = 0.0
+        opacity13 = 0.0
+        opacity14 = 0.0
+        opacity15 = 0.0
+        opacity16 = 0.0
+        opacity17 = 0.0
+        opacity18 = 0.0
+        opacity19 = 0.0
+        opacity20 = 0.0
+        opacity21 = 0.0
+        opacity22 = 0.0
+        opacity23 = 0.0
+        opacity24 = 0.0
+       
+        
+        
     }
+    func remakeButtons(){
+        while GlobalVariables.submitted == false {
+            
+            if GlobalVariables.submitted == true {
+                opacity1 = 1.0
+                opacity2 = 1.0
+                opacity3 = 1.0
+                opacity4 = 1.0
+                opacity5 = 1.0
+                opacity6 = 1.0
+                opacity7 = 1.0
+                opacity8 = 1.0
+                opacity9 = 1.0
+                opacity10 = 1.0
+                opacity11 = 1.0
+                opacity12 = 1.0
+                opacity13 = 1.0
+                opacity14 = 1.0
+                opacity15 = 1.0
+                opacity16 = 1.0
+                opacity17 = 1.0
+                opacity18 = 1.0
+                opacity19 = 1.0
+                opacity20 = 1.0
+                opacity21 = 1.0
+                opacity22 = 1.0
+                opacity23 = 1.0
+                opacity24 = 1.0
+                
+            }
+        }
+    }
+
     
     func randomImage(){
         print(GlobalVariables.SavedItems.count)
@@ -424,6 +534,7 @@ struct Bingo: View {
             if !moneyArray.contains("blackout"){
                 moneyArray.append("blackout")
                 blackout()
+                remakeButtons()
             }
             GlobalVariables.coin = (moneyArray.count*10)-10+50
             coins = GlobalVariables.coin
@@ -1119,11 +1230,13 @@ struct Bingo: View {
                     HStack{
                         
                         Button(action: {buttonPresed1()}){
-                            Image(button1)}.disabled(tnum <= 0)
+                            Image(button1)}
                         .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity1))
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
+                        .opacity(opacity1)
+                        
                         
                         
                         Button(action: {buttonPresed2()}){
@@ -1134,6 +1247,7 @@ struct Bingo: View {
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
+                        .opacity(opacity2)
                         
                         Button(action: {buttonPresed3()}){
                             Image(button3)}
@@ -1142,6 +1256,7 @@ struct Bingo: View {
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
+                        .opacity(opacity3)
                         
                         Button(action: {buttonPresed4()}){
                             Image(button4)}
@@ -1150,6 +1265,7 @@ struct Bingo: View {
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(2)
+                        .opacity(opacity4)
                     }
                     HStack{
                         Button(action: {buttonPresed5()}){
@@ -1158,6 +1274,7 @@ struct Bingo: View {
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
+                        .opacity(opacity5)
                         
                         Button(action: {buttonPresed6()}){
                             Image(button6)}
@@ -1166,6 +1283,7 @@ struct Bingo: View {
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
+                        .opacity(opacity6)
                         
                         Button(action: {buttonPresed7()}){
                             Image(button7)                 }
@@ -1174,6 +1292,7 @@ struct Bingo: View {
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
+                        .opacity(opacity7)
                         
                         Button(action: {buttonPresed8()}){
                             Image(button8)                 }
@@ -1182,6 +1301,7 @@ struct Bingo: View {
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(2)
+                        .opacity(opacity8)
                     }
                     HStack{
                         Button(action: {buttonPresed9()}){
@@ -1190,6 +1310,7 @@ struct Bingo: View {
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
+                        .opacity(opacity9)
                         
                         Button(action: {buttonPresed10()}){
                             Image(button10)                 }
@@ -1198,6 +1319,7 @@ struct Bingo: View {
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
+                        .opacity(opacity10)
                         
                         Button(action: {buttonPresed11()}){
                             Image(button11)                 }
@@ -1206,6 +1328,7 @@ struct Bingo: View {
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
+                        .opacity(opacity11)
                         
                         Button(action: {buttonPresed12()}){
                             Image(button12)                 }
@@ -1214,6 +1337,7 @@ struct Bingo: View {
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(2)
+                        .opacity(opacity12)
                     }
                     HStack{
                         Button(action: {buttonPresed13()}){
@@ -1222,6 +1346,7 @@ struct Bingo: View {
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
+                        .opacity(opacity13)
                         
                         Button(action: {buttonPresed14()}){
                             Image(button14)                 }
@@ -1230,6 +1355,7 @@ struct Bingo: View {
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
+                        .opacity(opacity14)
                         
                         Button(action: {buttonPresed15()}){
                             Image(button15)                 }
@@ -1238,6 +1364,7 @@ struct Bingo: View {
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
+                        .opacity(opacity15)
                         
                         Button(action: {buttonPresed16()}){
                             Image(button16)                 }
@@ -1246,6 +1373,7 @@ struct Bingo: View {
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(2)
+                        .opacity(opacity16)
                     }
                     HStack{
                         Button(action: {buttonPresed17()}){
@@ -1254,6 +1382,7 @@ struct Bingo: View {
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
+                        .opacity(opacity17)
                         
                         Button(action: {buttonPresed18()}){
                             Image(button18)                 }
@@ -1262,6 +1391,7 @@ struct Bingo: View {
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
+                        .opacity(opacity18)
                         
                         Button(action: {buttonPresed19()}){
                             Image(button19)                 }
@@ -1270,6 +1400,7 @@ struct Bingo: View {
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
+                        .opacity(opacity19)
                         
                         Button(action: {buttonPresed20()}){
                             Image(button20)                 }
@@ -1278,6 +1409,7 @@ struct Bingo: View {
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(2)
+                        .opacity(opacity20)
                     }
                     HStack{
                         Button(action: {buttonPresed21()}){
@@ -1286,6 +1418,7 @@ struct Bingo: View {
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
+                        .opacity(opacity21)
                         
                         Button(action: {buttonPresed22()}){
                             Image(button22)                 }
@@ -1294,6 +1427,7 @@ struct Bingo: View {
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
+                        .opacity(opacity22)
                         
                         Button(action: {buttonPresed23()}){
                             Image(button23)                 }
@@ -1302,6 +1436,7 @@ struct Bingo: View {
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(5)
+                        .opacity(opacity23)
                         
                         Button(action: {buttonPresed24()}){
                             Image(button24)                 }
@@ -1310,6 +1445,7 @@ struct Bingo: View {
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
                         .padding(2)
+                        .opacity(opacity24)
                     }
                 }.padding()
                     .onAppear{
