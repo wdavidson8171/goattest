@@ -392,6 +392,7 @@ struct Homepage: View {
                             Color.white
                             Button{
                                 selectedImage = .nada
+                                GlobalVariables.clothesNum = 0
                             }
                             label: {
                                 Image(.nada).resizable()
@@ -406,6 +407,7 @@ struct Homepage: View {
                                 
                                 if isOwned2(position: 0) {
                                     selectedImage = .uggs
+                                    GlobalVariables.clothesNum = 1
                                 }
                                 else{
                                     clickedImage = .uggs
@@ -424,6 +426,7 @@ struct Homepage: View {
                             Button{
                                 if isOwned2(position: 1) {
                                     selectedImage = .bling
+                                    GlobalVariables.clothesNum = 2
                                 }
                                 else{
                                     clickedImage = .bling
@@ -443,6 +446,7 @@ struct Homepage: View {
                         Button{
                             if isOwned2(position: 2) {
                                 selectedImage = .cowboy
+                                GlobalVariables.clothesNum = 3
                             }
                             else{
                                 clickedImage = .cowboy
@@ -461,6 +465,7 @@ struct Homepage: View {
                         Button{
                             if isOwned2(position: 3) {
                                 selectedImage = .ski
+                                GlobalVariables.clothesNum = 4
                             }
                             else{
                                 clickedImage = .ski
@@ -479,6 +484,7 @@ struct Homepage: View {
                         Button{
                             if isOwned2(position: 4) {
                                 selectedImage = .superhero
+                                GlobalVariables.clothesNum = 5
                             }
                             else{
                                 clickedImage = .superhero
@@ -497,6 +503,7 @@ struct Homepage: View {
                         Button{
                             if isOwned2(position: 5) {
                                 selectedImage = .pirate
+                                GlobalVariables.clothesNum = 6
                             }
                             else{
                                 clickedImage = .pirate
@@ -527,6 +534,7 @@ struct Homepage: View {
                                     GlobalVariables.purchased += costOfItem
                                     GlobalVariables.coin -= GlobalVariables.purchased
                                     selectedImage = clickedImage
+                                    GlobalVariables.clothesNum = currentPos + 1
                                     showingPopup = false
                                     
                                 }

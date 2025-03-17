@@ -26,6 +26,8 @@ struct Goat: View {
     
     @AppStorage("foodFed") var foodFed: Int = 0
     
+    var clothesList: [ImageResource] = [.nada, .uggs, .bling, .cowboy, .ski, .superhero, .pirate]
+    
     @State var currentYear: Int = Calendar.current.component(.year, from: Date())
     @State var currentMonth: Int = Calendar.current.component(.month, from: Date())
     @State var currentDay: Int = Calendar.current.component(.day, from: Date())
@@ -124,7 +126,7 @@ struct Goat: View {
                         Image("FOOD").position(x: 170, y:170)
                             }
                     //if(getGoatState() != .deadGoat){
-                        Image(selectedImage)
+                        Image(clothesList[GlobalVariables.clothesNum])
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 500, height: 500)

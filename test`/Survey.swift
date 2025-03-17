@@ -77,13 +77,14 @@ import SwiftUI
     }
 
 struct GlobalVariables{
-    static var SavedItems:[String] = ["Your selected items ","will appear here"]
-    static var submitted:Bool = false
-    static var coin:Int = 0
-    static var can:Int = 0
-    static var color:[String] = ["white"]
-    static var purchased:Int = 0
+    @AppStorage("SavedItems") static var SavedItems:[String] = ["Your selected items ","will appear here"]
+    @AppStorage("submitted") static var submitted:Bool = false
+    @AppStorage("coin") static var coin:Int = 0
+    @AppStorage("can") static var can:Int = 0
+    @AppStorage("color") static var color:[String] = ["white"]
+    @AppStorage("purchased") static var purchased:Int = 0
     //static var selected:String
+    @AppStorage("clothesNum") static var clothesNum: Int = 0
 }
     struct iOSview:View{
         @State var selectedItems:[String]
