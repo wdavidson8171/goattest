@@ -29,6 +29,30 @@ let winterArray = ["goToMountain","hotChocolate","pajamaParty","snowman"]
 let springArray = ["sitInMeadow","springCleaning","dyeEgg","bouquet"]
 let summerArray = ["waterBaloonFight","swimmingHole","pool","berryPicking","amusementPark","beach"]
 
+ var opacity1 = 1.0
+var opacity2 = 1.0
+ var opacity3 = 1.0
+ var opacity4 = 1.0
+ var opacity5 = 1.0
+ var opacity6 = 1.0
+ var opacity7 = 1.0
+ var opacity8 = 1.0
+ var opacity9 = 1.0
+ var opacity10 = 1.0
+ var opacity11 = 1.0
+ var opacity12 = 1.0
+ var opacity13 = 1.0
+ var opacity14 = 1.0
+ var opacity15 = 1.0
+ var opacity16 = 1.0
+ var opacity17 = 1.0
+ var opacity18 = 1.0
+ var opacity19 = 1.0
+ var opacity20 = 1.0
+ var opacity21 = 1.0
+ var opacity22 = 1.0
+ var opacity23 = 1.0
+ var opacity24 = 1.0
 
 struct Bingo: View {
     
@@ -62,30 +86,7 @@ struct Bingo: View {
     @State var overlayOpacity22 = 0.0
     @State var overlayOpacity23 = 0.0
     @State var overlayOpacity24 = 0.0
-    @State var opacity1 = 1.0
-    @State var opacity2 = 1.0
-    @State var opacity3 = 1.0
-    @State var opacity4 = 1.0
-    @State var opacity5 = 1.0
-    @State var opacity6 = 1.0
-    @State var opacity7 = 1.0
-    @State var opacity8 = 1.0
-    @State var opacity9 = 1.0
-    @State var opacity10 = 1.0
-    @State var opacity11 = 1.0
-    @State var opacity12 = 1.0
-    @State var opacity13 = 1.0
-    @State var opacity14 = 1.0
-    @State var opacity15 = 1.0
-    @State var opacity16 = 1.0
-    @State var opacity17 = 1.0
-    @State var opacity18 = 1.0
-    @State var opacity19 = 1.0
-    @State var opacity20 = 1.0
-    @State var opacity21 = 1.0
-    @State var opacity22 = 1.0
-    @State var opacity23 = 1.0
-    @State var opacity24 = 1.0
+    
     @State var disabled1: Bool = false
     @State var disabled2: Bool = false
     @State var disabled3: Bool = false
@@ -173,9 +174,8 @@ struct Bingo: View {
         
         
     }
-    func remakeButtons(){
-        while GlobalVariables.submitted == false {
-            
+   /* func remakeButtons(){
+        
             if GlobalVariables.submitted == true {
                 opacity1 = 1.0
                 opacity2 = 1.0
@@ -203,8 +203,7 @@ struct Bingo: View {
                 opacity24 = 1.0
                 
             }
-        }
-    }
+    }*/
 
     
     func randomImage(){
@@ -349,6 +348,52 @@ struct Bingo: View {
             count += 1
         }
         
+    }
+    
+    class ViewController: UIViewController {
+        var bingoTimer: Timer?
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            
+            bingoTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(remakeButtons), userInfo: nil, repeats: true)
+        }
+    
+        override func viewDidDisappear(_ animated: Bool) {
+            super.viewDidDisappear(animated)
+            bingoTimer?.invalidate()
+        }
+            
+        @objc func remakeButtons() {
+            print("does this run? plese say yes")
+            if GlobalVariables.submitted == true {
+                opacity1 = 1.0
+                opacity2 = 1.0
+                opacity3 = 1.0
+                opacity4 = 1.0
+                opacity5 = 1.0
+                opacity6 = 1.0
+                opacity7 = 1.0
+                opacity8 = 1.0
+                opacity9 = 1.0
+                opacity10 = 1.0
+                opacity11 = 1.0
+                opacity12 = 1.0
+                opacity13 = 1.0
+                opacity14 = 1.0
+                opacity15 = 1.0
+                opacity16 = 1.0
+                opacity17 = 1.0
+                opacity18 = 1.0
+                opacity19 = 1.0
+                opacity20 = 1.0
+                opacity21 = 1.0
+                opacity22 = 1.0
+                opacity23 = 1.0
+                opacity24 = 1.0
+                
+            }
+        }
     }
     
     func checkBingo(){
@@ -534,7 +579,7 @@ struct Bingo: View {
             if !moneyArray.contains("blackout"){
                 moneyArray.append("blackout")
                 blackout()
-                remakeButtons()
+                //remakeButtons()
             }
             GlobalVariables.coin = (moneyArray.count*10)-10+50
             coins = GlobalVariables.coin
@@ -1191,7 +1236,7 @@ struct Bingo: View {
        
     }
         
-        
+    
         
         var body: some View {
             ZStack{
