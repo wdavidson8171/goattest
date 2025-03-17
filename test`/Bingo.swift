@@ -34,7 +34,7 @@ struct Bingo: View {
     
     @State var showImage: Bool = false
     @State var showingPopup: Bool = false
-    @State var randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
+    @AppStorage("randomArray") var randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
     @State var cans = 0
     @State var coins = 0
     @State var tnum = 1

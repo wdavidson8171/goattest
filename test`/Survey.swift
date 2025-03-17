@@ -83,11 +83,11 @@ import SwiftUI
     }
 
 struct GlobalVariables{
-    static var SavedItems:[String] = ["Your selected items ","will appear here"]
-    static var submitted:Bool = false
-    static var coin:Int = 0
-    static var can:Int = 0
-    static var color:[String] = ["white"]
+    @AppStorage("SavedItems") static var SavedItems:[String] = ["Your selected items ","will appear here"]
+    @AppStorage("submitted") static var submitted:Bool = false
+    @AppStorage("coin") static var coin:Int = 0
+    @AppStorage("can") static var can:Int = 0
+    @AppStorage("color")static var color:[String] = ["white"]
     //static var selected:String
 }
     struct iOSview:View{
@@ -100,6 +100,7 @@ struct GlobalVariables{
             //I think userDefaults could be replaced with APPStorage here to save the data?
             //or something with the globalvariables.saveditems
             //orOR it needs to be done throuh the selectedItems variable
+            //orOROR it needs to be done in bingo tab? (ie. saving random array to appstorage)
             let userDefaults = UserDefaults.standard
             userDefaults.set(selectedItems, forKey: "selectedItems")
             GlobalVariables.SavedItems = (userDefaults.array(forKey: "selectedItems") as? [String] ?? [])
