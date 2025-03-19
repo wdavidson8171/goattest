@@ -83,15 +83,18 @@ import SwiftUI
     }
 
 struct GlobalVariables{
-    @AppStorage("SavedItems") static var SavedItems:[String] = ["Your selected items ","will appear here"]
-    @AppStorage("submitted") static var submitted:Bool = false
+    @AppStorage("savedItems") static var SavedItems:[String] = ["Your selected items ","will appear here"]
+    //permanently saves selections in popup
+    static var submitted:Bool = false
     @AppStorage("coin") static var coin:Int = 0
     @AppStorage("can") static var can:Int = 0
     @AppStorage("color")static var color:[String] = ["white"]
     //static var selected:String
 }
+let defaults = UserDefaults.standard
     struct iOSview:View{
         @State var selectedItems:[String]
+        //defaults.set(selectedItems, forKey: "savedSelectedItems")
         @State var allItems:[String]
         
         
@@ -105,6 +108,7 @@ struct GlobalVariables{
             userDefaults.set(selectedItems, forKey: "selectedItems")
             GlobalVariables.SavedItems = (userDefaults.array(forKey: "selectedItems") as? [String] ?? [])
             print(GlobalVariables.SavedItems)
+            //SAVE RHE SAVED ITEMS SOMEHOW
         }
         
         
