@@ -145,6 +145,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profileicon"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profileicon")
                                     .resizable()
@@ -154,15 +155,18 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile1"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile1")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 100, height: 100)
+                                
                             }
                             Button{
                                 profileImage = "profile2"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile2")
                                     .resizable()
@@ -175,6 +179,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile3"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile3")
                                     .resizable()
@@ -184,6 +189,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile4"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile4")
                                     .resizable()
@@ -193,6 +199,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile5"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile5")
                                     .resizable()
@@ -204,6 +211,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile6"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile6")
                                     .resizable()
@@ -213,6 +221,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile7"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile7")
                                     .resizable()
@@ -222,6 +231,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile8"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile8")
                                     .resizable()
@@ -233,6 +243,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile9"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile9")
                                     .resizable()
@@ -242,6 +253,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile10"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile10")
                                     .resizable()
@@ -251,6 +263,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile11"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile11")
                                     .resizable()
@@ -262,6 +275,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile12"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile12")
                                     .resizable()
@@ -271,6 +285,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile13"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile13")
                                     .resizable()
@@ -280,6 +295,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile14"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile14")
                                     .resizable()
