@@ -396,7 +396,7 @@ struct Homepage: View {
                             }
                             label: {
                                 Image(.nada).resizable()
-                                    .aspectRatio(contentMode: .fit)
+                                    .aspectRatio(CGSize(width: 25, height: 25), contentMode: .fit)
                                     .frame(width: 100, height: 130)
                                     .border(.black, width: 2)
                             }
@@ -419,7 +419,8 @@ struct Homepage: View {
                                 label: {
                                     Image(.uggs).resizable()
                                         .aspectRatio(contentMode: .fit)
-                                    .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 0)))  }
+                                        .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 0)))
+                                }
                         }
                         ZStack{
                             Color.white
