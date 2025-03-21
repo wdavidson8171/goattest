@@ -29,7 +29,7 @@ let winterArray = ["goToMountain","hotChocolate","pajamaParty","snowman"]
 let springArray = ["sitInMeadow","springCleaning","dyeEgg","bouquet"]
 let summerArray = ["waterBaloonFight","swimmingHole","pool","berryPicking","amusementPark","beach"]
 
- var opacity1 = 1.0
+ //@State var opacity1 = 1.0
 var opacity2 = 1.0
  var opacity3 = 1.0
  var opacity4 = 1.0
@@ -55,7 +55,7 @@ var opacity2 = 1.0
  var opacity24 = 1.0
 
 struct Bingo: View {
-    
+    @State var opacity1 = 1.0
     @State var showImage: Bool = false
     @State var showingPopup: Bool = false
     @State var randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
@@ -114,8 +114,11 @@ struct Bingo: View {
     @State var moneyArray: [String] = [" "]
     @State var chosenColor = GlobalVariables.color[0]
     
+    @State var blackoutCoins: Int = 0
+    
     //var coins = GlobalVariables.coin
     func blackout() {
+        blackoutCoins += GlobalVariables.coin
         GlobalVariables.SavedItems = ["You're selected items", "will appear here"]
         randomArray.removeAll()
         randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
@@ -174,36 +177,60 @@ struct Bingo: View {
         
         
     }
-   /* func remakeButtons(){
+   func remakeButtons(){
         
-            if GlobalVariables.submitted == true {
-                opacity1 = 1.0
-                opacity2 = 1.0
-                opacity3 = 1.0
-                opacity4 = 1.0
-                opacity5 = 1.0
-                opacity6 = 1.0
-                opacity7 = 1.0
-                opacity8 = 1.0
-                opacity9 = 1.0
-                opacity10 = 1.0
-                opacity11 = 1.0
-                opacity12 = 1.0
-                opacity13 = 1.0
-                opacity14 = 1.0
-                opacity15 = 1.0
-                opacity16 = 1.0
-                opacity17 = 1.0
-                opacity18 = 1.0
-                opacity19 = 1.0
-                opacity20 = 1.0
-                opacity21 = 1.0
-                opacity22 = 1.0
-                opacity23 = 1.0
-                opacity24 = 1.0
-                
-            }
-    }*/
+        opacity1 = 1.0
+        opacity2 = 1.0
+        opacity3 = 1.0
+        opacity4 = 1.0
+        opacity5 = 1.0
+        opacity6 = 1.0
+        opacity7 = 1.0
+        opacity8 = 1.0
+        opacity9 = 1.0
+        opacity10 = 1.0
+        opacity11 = 1.0
+        opacity12 = 1.0
+        opacity13 = 1.0
+        opacity14 = 1.0
+        opacity15 = 1.0
+        opacity16 = 1.0
+        opacity17 = 1.0
+        opacity18 = 1.0
+        opacity19 = 1.0
+        opacity20 = 1.0
+        opacity21 = 1.0
+        opacity22 = 1.0
+        opacity23 = 1.0
+        opacity24 = 1.0
+       
+       disabled1 = false
+       disabled2 = false
+       disabled3 = false
+       disabled4 = false
+       disabled5 = false
+       disabled6 = false
+       disabled7 = false
+       disabled8 = false
+       disabled9 = false
+       disabled10 = false
+       disabled11 = false
+       disabled12 = false
+       disabled13 = false
+       disabled14 = false
+       disabled15 = false
+       disabled16 = false
+       disabled17 = false
+       disabled18 = false
+       disabled19 = false
+       disabled20 = false
+       disabled21 = false
+       disabled22 = false
+       disabled23 = false
+       disabled24 = false
+       
+       GlobalVariables.coin = blackoutCoins
+    }
 
     
     func randomImage(){
@@ -350,51 +377,7 @@ struct Bingo: View {
         
     }
     
-    class ViewController: UIViewController {
-        var bingoTimer: Timer?
-        
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            
-            bingoTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(remakeButtons), userInfo: nil, repeats: true)
-        }
     
-        override func viewDidDisappear(_ animated: Bool) {
-            super.viewDidDisappear(animated)
-            bingoTimer?.invalidate()
-        }
-            
-        @objc func remakeButtons() {
-            print("does this run? plese say yes")
-            if GlobalVariables.submitted == true {
-                opacity1 = 1.0
-                opacity2 = 1.0
-                opacity3 = 1.0
-                opacity4 = 1.0
-                opacity5 = 1.0
-                opacity6 = 1.0
-                opacity7 = 1.0
-                opacity8 = 1.0
-                opacity9 = 1.0
-                opacity10 = 1.0
-                opacity11 = 1.0
-                opacity12 = 1.0
-                opacity13 = 1.0
-                opacity14 = 1.0
-                opacity15 = 1.0
-                opacity16 = 1.0
-                opacity17 = 1.0
-                opacity18 = 1.0
-                opacity19 = 1.0
-                opacity20 = 1.0
-                opacity21 = 1.0
-                opacity22 = 1.0
-                opacity23 = 1.0
-                opacity24 = 1.0
-                
-            }
-        }
-    }
     
     func checkBingo(){
 
@@ -406,6 +389,9 @@ struct Bingo: View {
             GlobalVariables.coin = (moneyArray.count*10)-10
             coins = GlobalVariables.coin
             print(coins)
+            if blackoutCoins != 0{
+                coins = GlobalVariables.coin + 300
+            }
         }
    
         if (disabled5 && disabled6 && disabled7 && disabled8){
@@ -603,6 +589,7 @@ struct Bingo: View {
         checkBingo()
         //return hideButton
     }
+    
     func buttonPresed2(){
         tnum = tnum - 1
         overlayOpacity2 = 0.6
@@ -663,6 +650,7 @@ struct Bingo: View {
         checkBingo()
         //return hideButton
     }
+    
     func buttonPresed6(){
         tnum = tnum - 1
         overlayOpacity6 = 0.6
@@ -723,6 +711,7 @@ struct Bingo: View {
         checkBingo()
         //return hideButton
     }
+    
     func buttonPresed10(){
         tnum = tnum - 1
         overlayOpacity10 = 0.6
@@ -783,6 +772,7 @@ struct Bingo: View {
         checkBingo()
         //return hideButton
     }
+    
     func buttonPresed14(){
         tnum = tnum - 1
         overlayOpacity14 = 0.6
@@ -843,6 +833,7 @@ struct Bingo: View {
         checkBingo()
         //return hideButton
     }
+    
     func buttonPresed18(){
         tnum = tnum - 1
         overlayOpacity18 = 0.6
@@ -903,6 +894,7 @@ struct Bingo: View {
         checkBingo()
         //return hideButton
     }
+    
     func buttonPresed22(){
         tnum = tnum - 1
         overlayOpacity22 = 0.6
@@ -957,10 +949,6 @@ struct Bingo: View {
     }
     
     
-    
-    func test(){
-        print("aghhhhh")
-    }
     @State var button1 = " "
     @State var button2 = " "
     @State var button3 = " "
@@ -1244,6 +1232,7 @@ struct Bingo: View {
                 
                 
                 if GlobalVariables.submitted == true{
+                    
                     if GlobalVariables.color[0] == "lavender"{
                         Text("lavender ischosen")
                         Color.lavender.ignoresSafeArea()
@@ -1498,6 +1487,7 @@ struct Bingo: View {
                             randomImage()
                             populateArray()
                             canCounter()
+                            remakeButtons()
                            
                         }
                         
@@ -1509,7 +1499,7 @@ struct Bingo: View {
         
     }
     
-    
+
     #Preview {
         
         Bingo()
