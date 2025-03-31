@@ -4,7 +4,7 @@
 //
 //  Created by Waverly Davidson on 10/8/24.
 //
-//6.14  10.45
+//
 
 import SwiftUI
 import PhotosUI
@@ -82,9 +82,9 @@ struct Homepage: View {
     @AppStorage("tempCoins")var tempCoins: Int = GlobalVariables.coin
 
     //NEWPICREMEMBER1
-    @AppStorage("ownedList2") public var ownedList2: [Bool] = [false, false, false, false, false, false]
+    //@AppStorage("ownedList2") public var ownedList2 = [Bool?](repeating: false, count: 7)
+    @AppStorage("ownedList3") public var ownedList2 = [false, false, false, false, false, false, false]
     
-
     
     @State private var profileImage: String = UserDefaults.standard.string(forKey: "profileImage") ?? "profileicon"
     //initializes profileImage variable as a string that if not changed starts as profileIcon
@@ -146,6 +146,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profileicon"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profileicon")
                                     .resizable()
@@ -155,15 +156,18 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile1"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile1")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 100, height: 100)
+                                
                             }
                             Button{
                                 profileImage = "profile2"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile2")
                                     .resizable()
@@ -176,6 +180,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile3"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile3")
                                     .resizable()
@@ -185,6 +190,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile4"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile4")
                                     .resizable()
@@ -194,6 +200,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile5"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile5")
                                     .resizable()
@@ -205,6 +212,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile6"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile6")
                                     .resizable()
@@ -214,6 +222,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile7"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile7")
                                     .resizable()
@@ -223,6 +232,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile8"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile8")
                                     .resizable()
@@ -234,6 +244,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile9"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile9")
                                     .resizable()
@@ -243,6 +254,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile10"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile10")
                                     .resizable()
@@ -252,6 +264,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile11"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile11")
                                     .resizable()
@@ -263,6 +276,7 @@ struct Homepage: View {
                             Button{
                                 profileImage = "profile12"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
                                 Image("profile12")
                                     .resizable()
@@ -270,19 +284,21 @@ struct Homepage: View {
                                     .frame(width: 100, height: 100)
                             }
                             Button{
-                                profileImage = "profile4"
+                                profileImage = "profile13"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
-                                Image("profile4")
+                                Image("profile13")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 100, height: 100)
                             }
                             Button{
-                                profileImage = "profile5"
+                                profileImage = "profile14"
                                 saveProfileImage(_name: profileImage)
+                                showingProfilePopup = false
                             } label: {
-                                Image("profile5")
+                                Image("profile14")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 100, height: 100)
@@ -416,11 +432,10 @@ struct Homepage: View {
                                     showingPopup = true
                                 }
                             }
-                                label: {
-                                    Image(.uggs).resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 0)))
-                                }
+                            label: {
+                                Image(.uggs).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 0)))  }
                         }
                         ZStack{
                             Color.white
@@ -443,82 +458,97 @@ struct Homepage: View {
                         }
                         ZStack{
                             Color.white
-                        
-                        Button{
-                            if isOwned2(position: 2) {
-                                selectedImage = .cowboy
-                                GlobalVariables.clothesNum = 3
+                            
+                            Button{
+                                if isOwned2(position: 2) {
+                                    selectedImage = .cowboy
+                                }
+                                else{
+                                    clickedImage = .cowboy
+                                    costOfItem = 50
+                                    currentPos = 2
+                                    showingPopup = true
+                                }
+                            } label: {
+                                Image(.cowboy).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 2)))
                             }
-                            else{
-                                clickedImage = .cowboy
-                                costOfItem = 50
-                                currentPos = 2
-                                showingPopup = true
+                        }
+                        ZStack{
+                            Color.white
+                            Button{
+                                if isOwned2(position: 3) {
+                                    selectedImage = .ski
+                                }
+                                else{
+                                    clickedImage = .ski
+                                    costOfItem = 320
+                                    currentPos = 3
+                                    showingPopup = true
+                                }
+                            } label: {
+                                Image(.ski).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 3)))
                             }
-                        } label: {
-                            Image(.cowboy).resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 2)))
+                        }
+                        ZStack{
+                            Color.white
+                            Button{
+                                if isOwned2(position: 4) {
+                                    selectedImage = .superhero
+                                }
+                                else{
+                                    clickedImage = .superhero
+                                    costOfItem = 40
+                                    currentPos = 4
+                                    showingPopup = true
+                                }
+                            } label: {
+                                Image(.superhero).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 4)))
+                            }
+                        }
+                        ZStack{
+                            Color.white
+                            Button{
+                                if isOwned2(position: 5) {
+                                    selectedImage = .pirate
+                                }
+                                else{
+                                    clickedImage = .pirate
+                                    costOfItem = 30
+                                    currentPos = 5
+                                    showingPopup = true
+                                }
+                            } label: {
+                                Image(.pirate).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 5)))
+                            }
+                        }
+                        ZStack{
+                            Color.white
+                            Button{
+                                if isOwned2(position: 6){
+                                    selectedImage = .olivia
+                                }
+                                else{
+                                    clickedImage = .olivia
+                                    costOfItem = 400
+                                    currentPos = 6
+                                    showingPopup = true
+                                }
+                            } label: {
+                                Image(.olivia).resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 6)))
+                            }
                         }
                     }
-                    ZStack{
-                        Color.white
-                        Button{
-                            if isOwned2(position: 3) {
-                                selectedImage = .ski
-                                GlobalVariables.clothesNum = 4
-                            }
-                            else{
-                                clickedImage = .ski
-                                costOfItem = 320
-                                currentPos = 3
-                                showingPopup = true
-                            }
-                        } label: {
-                            Image(.ski).resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 3)))
-                        }
-                    }
-                    ZStack{
-                        Color.white
-                        Button{
-                            if isOwned2(position: 4) {
-                                selectedImage = .superhero
-                                GlobalVariables.clothesNum = 5
-                            }
-                            else{
-                                clickedImage = .superhero
-                                costOfItem = 40
-                                currentPos = 4
-                                showingPopup = true
-                            }
-                        } label: {
-                            Image(.superhero).resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 4)))
-                        }
-                    }
-                    ZStack{
-                        Color.white
-                        Button{
-                            if isOwned2(position: 5) {
-                                selectedImage = .pirate
-                                GlobalVariables.clothesNum = 6
-                            }
-                            else{
-                                clickedImage = .pirate
-                                costOfItem = 30
-                                currentPos = 5
-                                showingPopup = true
-                            }
-                        } label: {
-                            Image(.pirate).resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 5)))
-                        }
-                    }
-                    }.popover(isPresented: $showingPopup) {
+                        .popover(isPresented: $showingPopup) {
                         VStack{
                             HStack{
                                 Image("coin")
