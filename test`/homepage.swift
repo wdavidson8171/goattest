@@ -462,6 +462,7 @@ struct Homepage: View {
                             Button{
                                 if isOwned2(position: 2) {
                                     selectedImage = .cowboy
+                                    GlobalVariables.clothesNum = 3
                                 }
                                 else{
                                     clickedImage = .cowboy
@@ -480,6 +481,7 @@ struct Homepage: View {
                             Button{
                                 if isOwned2(position: 3) {
                                     selectedImage = .ski
+                                    GlobalVariables.clothesNum = 4
                                 }
                                 else{
                                     clickedImage = .ski
@@ -498,6 +500,7 @@ struct Homepage: View {
                             Button{
                                 if isOwned2(position: 4) {
                                     selectedImage = .superhero
+                                    GlobalVariables.clothesNum = 5
                                 }
                                 else{
                                     clickedImage = .superhero
@@ -516,6 +519,7 @@ struct Homepage: View {
                             Button{
                                 if isOwned2(position: 5) {
                                     selectedImage = .pirate
+                                    GlobalVariables.clothesNum = 6
                                 }
                                 else{
                                     clickedImage = .pirate
@@ -534,6 +538,7 @@ struct Homepage: View {
                             Button{
                                 if isOwned2(position: 6){
                                     selectedImage = .olivia
+                                    GlobalVariables.clothesNum = 7
                                 }
                                 else{
                                     clickedImage = .olivia
@@ -562,8 +567,8 @@ struct Homepage: View {
                             Button("Buy") {
                                 if GlobalVariables.coin >= costOfItem {
                                     ownedList2[currentPos] = true
-                                    GlobalVariables.purchased += costOfItem
-                                    GlobalVariables.coin -= GlobalVariables.purchased
+                                    //GlobalVariables.purchased += costOfItem
+                                    GlobalVariables.coin -= costOfItem
                                     selectedImage = clickedImage
                                     GlobalVariables.clothesNum = currentPos + 1
                                     showingPopup = false

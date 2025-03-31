@@ -26,7 +26,7 @@ struct Goat: View {
     
     @AppStorage("foodFed") var foodFed: Int = 0
     
-    var clothesList: [ImageResource] = [.nada, .uggs, .bling, .cowboy, .ski, .superhero, .pirate]
+    var clothesList: [ImageResource] = [.nada, .uggs, .bling, .cowboy, .ski, .superhero, .pirate, .olivia]
     
     @State var currentYear: Int = Calendar.current.component(.year, from: Date())
     @State var currentMonth: Int = Calendar.current.component(.month, from: Date())
