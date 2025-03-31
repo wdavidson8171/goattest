@@ -113,17 +113,28 @@ struct Bingo: View {
     @State var disabled24: Bool = false
     @State var moneyArray: [String] = [" "]
     @State var chosenColor = GlobalVariables.color[0]
-    
-    @State var blackoutCoins: Int = 0
+    @State var i = 0
+    @State var m = 0
+    //@State var blackoutCoins: Int = 0
     
     //var coins = GlobalVariables.coin
     func blackout() {
-        blackoutCoins += GlobalVariables.coin
+        m += 1
+        GlobalVariables.blackoutCoins += GlobalVariables.coin
+        print("coins")
+        print(GlobalVariables.coin)
+        print("blackout coins")
+        print(GlobalVariables.blackoutCoins)
         GlobalVariables.SavedItems = ["You're selected items", "will appear here"]
         randomArray.removeAll()
         randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
         moneyArray.removeAll()
+        while (i) < (25 * m) {
+            moneyArray.append ("a")
+            i += 1
+        }
         GlobalVariables.submitted = false
+        print(m)
 
         overlayOpacity1 = 0.0
         overlayOpacity2 = 0.0
@@ -174,7 +185,6 @@ struct Bingo: View {
         opacity23 = 0.0
         opacity24 = 0.0
        
-        
         
     }
    func remakeButtons(){
@@ -229,7 +239,7 @@ struct Bingo: View {
        disabled23 = false
        disabled24 = false
        
-       GlobalVariables.coin = blackoutCoins
+      // GlobalVariables.coin = GlobalVariables.blackoutCoins
     }
 
     
@@ -389,7 +399,7 @@ struct Bingo: View {
             GlobalVariables.coin = (moneyArray.count*10)-10
             coins = GlobalVariables.coin
             print(coins)
-            if blackoutCoins != 0{
+            if GlobalVariables.blackoutCoins != 0{
                 coins = GlobalVariables.coin + 300
             }
         }
@@ -405,7 +415,6 @@ struct Bingo: View {
         if (disabled9 && disabled10 && disabled11 && disabled12){
             if !moneyArray.contains("bingo3"){
                 moneyArray.append("bingo3")
-                print("IT SEES THE BINGO")
             }
             GlobalVariables.coin = (moneyArray.count*10)-10
             coins = GlobalVariables.coin
@@ -1255,7 +1264,7 @@ struct Bingo: View {
                 }
                 HStack{
                     Image("coin")
-                    Text("\(GlobalVariables.coin -  GlobalVariables.purchased )").font(.system(.body, design: .serif))
+                    Text("\(GlobalVariables.coin -  GlobalVariables.purchased)").font(.system(.body, design: .serif))
                     Image("tincan")
                     Text("\(GlobalVariables.can)").font(.system(.body, design: .serif))
                 }.position(x: 280, y: 7).padding(20)
