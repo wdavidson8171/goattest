@@ -89,6 +89,7 @@ struct GlobalVariables{
     @AppStorage("coin") static var coin:Int = 0
     @AppStorage("can") static var can:Int = 0
     @AppStorage("color")static var color:[String] = ["white"]
+    static var purchased:Int = 0
     //static var selected:String
 }
 let defaults = UserDefaults.standard
@@ -116,14 +117,14 @@ let defaults = UserDefaults.standard
             
             NavigationView{
                 Form{
-                    Section("What activities are you interested in? \nPlease select at least 3 for a more satisfying experience", content: {
+                    Section("What activities are you interested in? \nPlease select at least 5 for a more satisfying experience", content: {
                         NavigationLink(destination: {
                             MultiSelectPickerView(allItems: allItems, selectedItems: $selectedItems)
                                 .navigationTitle("Choose your activities")
                         }, label: {
                             HStack{
                                 Text("Select Activities:")
-                                    .foregroundColor(.darkGreen)
+                                    .foregroundColor(.accentColor)
                                 
                                 Spacer()
                                 Image(systemName: "\($selectedItems.count).cirlce")
