@@ -831,7 +831,7 @@ struct Bingo: View {
     
     
     func populateArray() {  //randomImage()
-       
+       //save button name so that it saves the button image
         print(randomArray.count)
         
         //randomImage()
@@ -845,6 +845,13 @@ struct Bingo: View {
                 button1 = randomArray[Int.random(in:0...randomArray.count-1)]
           }
         }
+        @AppStorage("savedButton1") var savedButton1: String = button1
+        print(savedButton1)
+        /*trying to save the variable that defines the image
+         maybe have to do an if loop where it uses the not app storage untl saved array has a length
+         then uses app storage version??
+         idrk
+         */
         randomArray.remove(at: randomArray.firstIndex(of: button1)!)
         
         button2 = randomArray[Int.random(in:0...randomArray.count-1)]
@@ -1310,16 +1317,19 @@ struct Bingo: View {
                     }
                 }.padding()
                     .onAppear{
-                        if GlobalVariables.submitted == true{
+                        if GlobalVariables.SavedItems.count > 0 {
+                            
+                            populateArray()
+                            canCounter()
+                        }
+                        else if GlobalVariables.submitted == true{
                             //or if random array has values then show
                             //maybe change second part to own if loop
                             //in 2nd if loop dont include randomImage() function
                             randomImage()
                             populateArray()
                             canCounter()
-                           
                         }
-                        
                     }
                 
                 
