@@ -574,7 +574,7 @@ struct Homepage: View {
                                     showingPopup = false
                                     
                                 }
-                                else{
+                                else if GlobalVariables.coin < costOfItem{
                                     Text("Not enough coins!")
                                 }
                             }
