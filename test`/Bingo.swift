@@ -58,7 +58,7 @@ struct Bingo: View {
     @State var opacity1 = 1.0
     @State var showImage: Bool = false
     @State var showingPopup: Bool = false
-    @State var randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
+    @AppStorage("randomArray") var randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
     @State var cans = 0
     @State var coins = 0
     @State var tnum = 1
@@ -244,7 +244,11 @@ struct Bingo: View {
 
     
     func randomImage(){
-        print(GlobalVariables.SavedItems.count)
+        /*print(GlobalVariables.SavedItems.count)
+        for choice in randomArray{
+            print(choice)
+        }*/
+        //this shows that random array saves the appended items and remembers them after closing the app (but the bingo card still doesn't show them)
         
         var count = 0
         
@@ -1264,7 +1268,7 @@ struct Bingo: View {
                 }
                 HStack{
                     Image("coin")
-                    Text("\(GlobalVariables.coin -  GlobalVariables.purchased)").font(.system(.body, design: .serif))
+                    Text("\(GlobalVariables.coin)").font(.system(.body, design: .serif))
                     Image("tincan")
                     Text("\(GlobalVariables.can)").font(.system(.body, design: .serif))
                 }.position(x: 280, y: 7).padding(20)
@@ -1493,6 +1497,9 @@ struct Bingo: View {
                 }.padding()
                     .onAppear{
                         if GlobalVariables.submitted == true{
+                            //or if random array has values then show
+                            //maybe change second part to own if loop
+                            //in 2nd if loop dont include randomImage() function
                             randomImage()
                             populateArray()
                             canCounter()
