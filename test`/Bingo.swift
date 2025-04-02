@@ -1317,12 +1317,20 @@ struct Bingo: View {
                     }
                 }.padding()
                     .onAppear{
-                        if GlobalVariables.SavedItems.count > 0 {
-                            
-                            populateArray()
-                            canCounter()
-                        }
-                        else if GlobalVariables.submitted == true{
+                        /*if GlobalVariables.SavedItems.count > 0 {
+                         
+                         populateArray()
+                         canCounter()
+                         }
+                         else if GlobalVariables.submitted == true{
+                         //or if random array has values then show
+                         //maybe change second part to own if loop
+                         //in 2nd if loop dont include randomImage() function
+                         randomImage()
+                         populateArray()
+                         canCounter()
+                         }*/
+                        if GlobalVariables.submitted == true{
                             //or if random array has values then show
                             //maybe change second part to own if loop
                             //in 2nd if loop dont include randomImage() function
