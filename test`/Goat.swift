@@ -195,11 +195,13 @@ struct Goat: View {
     //returns the seconds passed from the date the app was first opened to the current date
     func getSecondsPassed(_ from: Date, to: Date)-> Int{
         let secondsPassed: DateComponents = Calendar.current.dateComponents([.second], from: from, to: to)
-        if ((secondsPassed.second!) - (foodFed * 60)) < 0{
+        let secs: Int = (secondsPassed.second!) - (foodFed * 60)
+        print("secs passed wav: " + String(secs))
+        if secs < 0{
             return 1
         }
         //else{
-            return (secondsPassed.second!) - (foodFed * 60)
+            return secs
         //}
     }
     
