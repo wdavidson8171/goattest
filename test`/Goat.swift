@@ -130,7 +130,7 @@ struct Goat: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 500, height: 500)
-                            .position(x: 250, y: 349)
+                            .position(x: 250, y: 335)
                     //}
                 }
                 
