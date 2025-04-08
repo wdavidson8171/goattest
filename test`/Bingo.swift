@@ -803,30 +803,30 @@ struct Bingo: View {
     func test(){
         print("aghhhhh")
     }
-    @State var button1 = " "
-    @State var button2 = " "
-    @State var button3 = " "
-    @State var button4 = " "
-    @State var button5 = " "
-    @State var button6 = " "
-    @State var button7 = " "
-    @State var button8 = " "
-    @State var button9 = " "
-    @State var button10 = " "
-    @State var button11 = " "
-    @State var button12 = " "
-    @State var button13 = " "
-    @State var button14 = " "
-    @State var button15 = " "
-    @State var button16 = " "
-    @State var button17 = " "
-    @State var button18 = " "
-    @State var button19 = " "
-    @State var button20 = " "
-    @State var button21 = " "
-    @State var button22 = " "
-    @State var button23 = " "
-    @State var button24 = " "
+    @AppStorage("button1") var button1: String = " "
+    @AppStorage("button2") var button2: String = " "
+    @AppStorage("button3") var button3: String = " "
+    @AppStorage("button4") var button4: String = " "
+    @AppStorage("button5") var button5: String = " "
+    @AppStorage("button6") var button6: String = " "
+    @AppStorage("button7") var button7: String = " "
+    @AppStorage("button8") var button8: String = " "
+    @AppStorage("button9") var button9: String = " "
+    @AppStorage("button10") var button10: String = " "
+    @AppStorage("button11") var button11: String = " "
+    @AppStorage("button12") var button12: String = " "
+    @AppStorage("button13") var button13: String = " "
+    @AppStorage("button14") var button14: String = " "
+    @AppStorage("button15") var button15: String = " "
+    @AppStorage("button16") var button16: String = " "
+    @AppStorage("button17") var button17: String = " "
+    @AppStorage("button18") var button18: String = " "
+    @AppStorage("button19") var button19: String = " "
+    @AppStorage("button20") var button20: String = " "
+    @AppStorage("button21") var button21: String = " "
+    @AppStorage("button22") var button22: String = " "
+    @AppStorage("button23") var button23: String = " "
+    @AppStorage("button24") var button24: String = " "
 
     
     
@@ -845,8 +845,7 @@ struct Bingo: View {
                 button1 = randomArray[Int.random(in:0...randomArray.count-1)]
           }
         }
-        @AppStorage("savedButton1") var savedButton1: String = button1
-        print(savedButton1)
+        
         /*trying to save the variable that defines the image
          maybe have to do an if loop where it uses the not app storage untl saved array has a length
          then uses app storage version??
