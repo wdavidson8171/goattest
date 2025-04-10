@@ -561,8 +561,8 @@ struct Homepage: View {
                             }.padding(20)
                             Image(clickedImage).resizable().aspectRatio(contentMode: .fit)
                                 .frame(width: 500, height: 500).border(.black, width: 5)
-                            Text("You need to own Uggs to use this image!")
-                            Text("Cost: " + String(costOfItem) + " coins")
+                           // Text("You need to own Uggs to use this image!")
+                            Text("Cost: " + String(costOfItem) + " coins").font(.system(size: 20, weight: .black, design: .serif)) .foregroundStyle(.niceBrown)
                             //Text("Your money: " + String(tempCoins) + " coins")
                             Button("Buy") {
                                 if GlobalVariables.coin >= costOfItem {
