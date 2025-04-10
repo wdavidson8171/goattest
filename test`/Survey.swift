@@ -83,14 +83,15 @@ import SwiftUI
     }
 
 struct GlobalVariables{
-    @AppStorage("savedItems") static var SavedItems:[String] = ["Your selected items ","will appear here"]
-    //permanently saves selections in popup
-    static var submitted:Bool = false
+    @AppStorage("SavedItems") static var SavedItems:[String] = ["Your selected items ","will appear here"]
+    @AppStorage("submitted") static var submitted:Bool = false
+    static var blackoutCoins: Int = 0
     @AppStorage("coin") static var coin:Int = 0
     @AppStorage("can") static var can:Int = 0
-    @AppStorage("color")static var color:[String] = ["white"]
-    static var purchased:Int = 0
+    @AppStorage("color") static var color:[String] = ["white"]
+    @AppStorage("purchased") static var purchased:Int = 0
     //static var selected:String
+    @AppStorage("clothesNum") static var clothesNum: Int = 0
 }
 let defaults = UserDefaults.standard
     struct iOSview:View{

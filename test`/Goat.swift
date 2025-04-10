@@ -26,6 +26,8 @@ struct Goat: View {
     
     @AppStorage("foodFed") var foodFed: Int = 0
     
+    var clothesList: [ImageResource] = [.nada, .uggs, .bling, .cowboy, .ski, .superhero, .pirate, .olivia]
+    
     @State var currentYear: Int = Calendar.current.component(.year, from: Date())
     @State var currentMonth: Int = Calendar.current.component(.month, from: Date())
     @State var currentDay: Int = Calendar.current.component(.day, from: Date())
@@ -51,7 +53,7 @@ struct Goat: View {
     func feedGoat(){
         if (GlobalVariables.can > 0){
             GlobalVariables.can -= 1
-            foodFed += 100
+            foodFed += 10
         }
     }
     
@@ -123,13 +125,13 @@ struct Goat: View {
                     Button(action: {feedGoat()}){
                         Image("FOOD").position(x: 170, y:170)
                             }
-                    if(getGoatState() != .deadGoat){
-                        Image(selectedImage)
+                    //if(getGoatState() != .deadGoat){
+                        Image(clothesList[GlobalVariables.clothesNum])
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 500, height: 500)
-                            .position(x: 250, y: 349)
-                    }
+                            .position(x: 250, y: 335)
+                    //}
                 }
                 
                 Text("secs passed: " + String(secsLeftResult))
@@ -193,12 +195,12 @@ struct Goat: View {
     //returns the seconds passed from the date the app was first opened to the current date
     func getSecondsPassed(_ from: Date, to: Date)-> Int{
         let secondsPassed: DateComponents = Calendar.current.dateComponents([.second], from: from, to: to)
-        if (secondsPassed.second!) - (foodFed * 60) < 0{
-            return 0
+        if ((secondsPassed.second!) - (foodFed * 60)) < 0{
+            return 1
         }
-        else{
+        //else{
             return (secondsPassed.second!) - (foodFed * 60)
-        }
+        //}
     }
     
     //returns the date the app was first opened
@@ -305,9 +307,9 @@ struct Goat: View {
     
 }
 
-struct globalVariable{
+/*struct globalVariable{
     @AppStorage("bigFatTest") var bigFatTest: Int = 0
-}
+}*/
 
 #Preview {
     Goat()
