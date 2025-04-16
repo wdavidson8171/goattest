@@ -101,7 +101,7 @@ struct Bingo: View {
         
         var count = 0
         
-        while count < GlobalVariables.SavedItems.count{
+        while count < 25{
             let choice = GlobalVariables.SavedItems[Int.random(in:0...GlobalVariables.SavedItems.count-1)]
             
             if choice == "Household Chores"{
@@ -112,6 +112,7 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
+                    count+=1
                 }
             }
             if choice == "Indoor Activities"{
@@ -122,6 +123,7 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
+                    count+=1
                 }
             }
             if choice == "Family Activities"{
@@ -132,6 +134,7 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
+                    count+=1
                 }
             }
             if choice == "Creative Activities"{
@@ -142,6 +145,7 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
+                    count+=1
                 }
             }
             if choice == "Exercise"{
@@ -152,6 +156,7 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
+                    count+=1
                 }
             }
             if choice == "Going Out (fancy)"{
@@ -162,6 +167,7 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
+                    count+=1
                 }
             }
             if choice == "Going Out (cheap)"{
@@ -172,6 +178,7 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
+                    count+=1
                 }
             }
             if choice == "Cooking/Baking"{
@@ -182,6 +189,7 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
+                    count+=1
                 }
             }
             if choice == "Self Care"{
@@ -192,6 +200,7 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
+                    count+=1
                 }
             }
             if choice == "Spring"{
@@ -202,6 +211,7 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
+                    count+=1
                 }
             }
             if choice == "Summer"{
@@ -212,6 +222,7 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
+                    count+=1
                 }
             }
             if choice == "Fall"{
@@ -222,6 +233,7 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
+                    count+=1
                 }
             }
             if choice == "Winter"{
@@ -232,11 +244,17 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
+                    count+=1
                 }
             }
-            
-            count += 1
+        
         }
+        @AppStorage("savedRandomArray") var savedRandomArray: [String] = randomArray
+        print(savedRandomArray)
+        /*appends all options to random array
+         maybe if change to append random and only 24 then it can't choose other options
+         and then it would save the right ones
+         */
         
     }
     
