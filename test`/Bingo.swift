@@ -101,7 +101,7 @@ struct Bingo: View {
         
         var count = 0
         
-        while count < 25{
+        while count < GlobalVariables.SavedItems.count{
             let choice = GlobalVariables.SavedItems[Int.random(in:0...GlobalVariables.SavedItems.count-1)]
             
             if choice == "Household Chores"{
@@ -112,7 +112,6 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
-                    count+=1
                 }
             }
             if choice == "Indoor Activities"{
@@ -123,7 +122,6 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
-                    count+=1
                 }
             }
             if choice == "Family Activities"{
@@ -134,7 +132,6 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
-                    count+=1
                 }
             }
             if choice == "Creative Activities"{
@@ -145,7 +142,6 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
-                    count+=1
                 }
             }
             if choice == "Exercise"{
@@ -156,7 +152,6 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
-                    count+=1
                 }
             }
             if choice == "Going Out (fancy)"{
@@ -167,7 +162,6 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
-                    count+=1
                 }
             }
             if choice == "Going Out (cheap)"{
@@ -178,7 +172,6 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
-                    count+=1
                 }
             }
             if choice == "Cooking/Baking"{
@@ -189,7 +182,6 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
-                    count+=1
                 }
             }
             if choice == "Self Care"{
@@ -200,7 +192,6 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
-                    count+=1
                 }
             }
             if choice == "Spring"{
@@ -211,7 +202,6 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
-                    count+=1
                 }
             }
             if choice == "Summer"{
@@ -222,7 +212,6 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
-                    count+=1
                 }
             }
             if choice == "Fall"{
@@ -233,7 +222,6 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
-                    count+=1
                 }
             }
             if choice == "Winter"{
@@ -244,16 +232,15 @@ struct Bingo: View {
                     else{
                         randomArray.append(thing)
                     }
-                    count+=1
                 }
             }
-        
+            
+            count += 1
         }
         @AppStorage("savedRandomArray") var savedRandomArray: [String] = randomArray
         print(savedRandomArray)
         /*appends all options to random array
          maybe if change to append random and only 24 then it can't choose other options
-         and then it would save the right ones
          */
         
     }
@@ -1101,8 +1088,7 @@ struct Bingo: View {
         randomArray.remove(at: randomArray.firstIndex(of: button24)!)
        
     }
-        
-        
+
         
         var body: some View {
             ZStack{
@@ -1139,7 +1125,9 @@ struct Bingo: View {
                 
                 VStack{
                     HStack{
-                        
+                        //checking to see if button 1 changes and if it does then when
+                        let test3 = print(button1)
+                        //okay so why tf is the appstorage variable changing and HOW DO I STOP IT????
                         Button(action: {buttonPresed1()}){
                             Image(button1)}.disabled(tnum <= 0)
                         .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity1))
@@ -1334,27 +1322,26 @@ struct Bingo: View {
                     }
                 }.padding()
                     .onAppear{
-                        /*if GlobalVariables.SavedItems.count > 0 {
-                         
-                         populateArray()
+                        
+                        if GlobalVariables.SavedItems.count > 0 {
                          canCounter()
                          }
-                         else if GlobalVariables.submitted == true{
+                         else {
                          //or if random array has values then show
                          //maybe change second part to own if loop
                          //in 2nd if loop dont include randomImage() function
                          randomImage()
                          populateArray()
                          canCounter()
-                         }*/
-                        if GlobalVariables.submitted == true{
+                         }
+                        /*if GlobalVariables.submitted == true{
                             //or if random array has values then show
                             //maybe change second part to own if loop
                             //in 2nd if loop dont include randomImage() function
                             randomImage()
                             populateArray()
                             canCounter()
-                        }
+                        }*/
                     }
                 
                 
