@@ -115,26 +115,33 @@ struct Bingo: View {
     @State var chosenColor = GlobalVariables.color[0]
     @State var i = 0
     @State var m = 0
+    @State var n = 0
     //@State var blackoutCoins: Int = 0
     
     //var coins = GlobalVariables.coin
     func blackout() {
-        m += 1
-        GlobalVariables.blackoutCoins += GlobalVariables.coin
-        print("coins")
-        print(GlobalVariables.coin)
-        print("blackout coins")
-        print(GlobalVariables.blackoutCoins)
+        
+        //GlobalVariables.coin = GlobalVariables.coin + m
+        //GlobalVariables.blackoutCoins += (GlobalVariables.coin + m * 50)
+       // print("coins")
+        
+        //coins = GlobalVariables.blackoutCoins + GlobalVariables.coin
+        //print("blackout coins")
+        //print(GlobalVariables.blackoutCoins)
         GlobalVariables.SavedItems = ["You're selected items", "will appear here"]
         randomArray.removeAll()
         randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
         moneyArray.removeAll()
+        m += 1
         while (i) < (25 * m) {
             moneyArray.append ("a")
             i += 1
         }
+        //GlobalVariables.coin
         GlobalVariables.submitted = false
         print(m)
+        print("LOOK HERE THIS IS THE ARRAY")
+        print(moneyArray)
 
         overlayOpacity1 = 0.0
         overlayOpacity2 = 0.0
@@ -188,7 +195,8 @@ struct Bingo: View {
         
     }
    func remakeButtons(){
-        
+       print("coins")
+       print(GlobalVariables.coin)
         opacity1 = 1.0
         opacity2 = 1.0
         opacity3 = 1.0
@@ -244,10 +252,7 @@ struct Bingo: View {
 
     
     func randomImage(){
-        /*print(GlobalVariables.SavedItems.count)
-        for choice in randomArray{
-            print(choice)
-        }*/
+        
         //this shows that random array saves the appended items and remembers them after closing the app (but the bingo card still doesn't show them)
         
         var count = 0
@@ -580,7 +585,7 @@ struct Bingo: View {
                 blackout()
                 //remakeButtons()
             }
-            GlobalVariables.coin = (moneyArray.count*10)-10+50
+            GlobalVariables.coin = (moneyArray.count*10) + 50
             coins = GlobalVariables.coin
         }
     }
