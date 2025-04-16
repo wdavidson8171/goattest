@@ -99,6 +99,9 @@ struct Goat: View {
                             currentSec = Calendar.current.component(.second, from: Date())
                             currentDate = Date()
                             secsLeftResult = getSecondsPassed(getFirstOpenedDate(), to: currentDate)
+                            if secsLeftResult < 0 {
+                                secsLeftResult = 1
+                            }
                             percent = (100 * x - (CGFloat(secsLeftResult) .truncatingRemainder (dividingBy: 100 * x))) / x
                             if isEmpty() {
                                 percent = 0
@@ -125,17 +128,16 @@ struct Goat: View {
                     Button(action: {feedGoat()}){
                         Image("FOOD").position(x: 170, y:170)
                             }
-                    //if(getGoatState() != .deadGoat){
+                    if(getGoatState() != .deadGoat){
                         Image(clothesList[GlobalVariables.clothesNum])
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 500, height: 500)
                             .position(x: 250, y: 335)
-                    //}
+                    }
                 }
                 
                 Text("secs passed: " + String(secsLeftResult))
-                //Text("secs passed: " + String(bigFatTest))
                 Text("cansss: " + String(foodFed))
                 
                 
@@ -197,13 +199,9 @@ struct Goat: View {
         let secondsPassed: DateComponents = Calendar.current.dateComponents([.second], from: from, to: to)
         let secs: Int = (secondsPassed.second!) - (foodFed * 60)
         print("secs passed wav: " + String(secs))
-        if secs < 0{
-            return 1
-        }
-        //else{
-            return secs
-        //}
+        return secs
     }
+
     
     //returns the date the app was first opened
     func getFirstOpenedDate() -> Date{
@@ -309,9 +307,6 @@ struct Goat: View {
     
 }
 
-/*struct globalVariable{
-    @AppStorage("bigFatTest") var bigFatTest: Int = 0
-}*/
 
 #Preview {
     Goat()
