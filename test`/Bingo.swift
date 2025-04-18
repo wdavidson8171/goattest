@@ -123,7 +123,6 @@ struct Bingo: View {
     
     @AppStorage("opened") var opened = 0
     func blackout() {
-        
         GlobalVariables.coin = GlobalVariables.coin + m
         GlobalVariables.blackoutCoins += (GlobalVariables.coin + m * 50)
        // print("coins")
@@ -597,9 +596,11 @@ struct Bingo: View {
             coins = GlobalVariables.coin
         }
         if (disabled1 && disabled2 && disabled3 && disabled4 && disabled5 && disabled6 && disabled7 && disabled8 && disabled9 && disabled10 && disabled11 && disabled12 && disabled13 && disabled14 && disabled15 && disabled16 && disabled17 && disabled18 && disabled19 && disabled20 && disabled21 && disabled22 && disabled23 && disabled24){
+            opened = 0
             if !moneyArray.contains("blackout"){
                 moneyArray.append("blackout")
             }
+            blackout()
             GlobalVariables.coin = (moneyArray.count*10) + 50
             coins = GlobalVariables.coin
         }
