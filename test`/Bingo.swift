@@ -30,39 +30,64 @@ let winterArray = ["goToMountain","hotChocolate","pajamaParty","snowman"]
 let springArray = ["sitInMeadow","springCleaning","dyeEgg","bouquet"]
 let summerArray = ["waterBaloonFight","swimmingHole","pool","berryPicking","amusementPark","beach"]
 
+var opacity1 = 1.0
+var opacity2 = 1.0
+ var opacity3 = 1.0
+ var opacity4 = 1.0
+ var opacity5 = 1.0
+ var opacity6 = 1.0
+ var opacity7 = 1.0
+ var opacity8 = 1.0
+ var opacity9 = 1.0
+ var opacity10 = 1.0
+ var opacity11 = 1.0
+ var opacity12 = 1.0
+ var opacity13 = 1.0
+ var opacity14 = 1.0
+ var opacity15 = 1.0
+ var opacity16 = 1.0
+ var opacity17 = 1.0
+ var opacity18 = 1.0
+ var opacity19 = 1.0
+ var opacity20 = 1.0
+ var opacity21 = 1.0
+ var opacity22 = 1.0
+ var opacity23 = 1.0
+ var opacity24 = 1.0
 
 struct Bingo: View {
-    
+    //var opacity1 = 1.0
     @State var showImage: Bool = false
     @State var showingPopup: Bool = false
     @AppStorage("randomArray") var randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
     @State var cans = 0
     @State var coins = 0
     @State var tnum = 1
-    @State var overlayOpacity1 = 0.0
-    @State var overlayOpacity2 = 0.0
-    @State var overlayOpacity3 = 0.0
-    @State var overlayOpacity4 = 0.0
-    @State var overlayOpacity5 = 0.0
-    @State var overlayOpacity6 = 0.0
-    @State var overlayOpacity7 = 0.0
-    @State var overlayOpacity8 = 0.0
-    @State var overlayOpacity9 = 0.0
-    @State var overlayOpacity10 = 0.0
-    @State var overlayOpacity11 = 0.0
-    @State var overlayOpacity12 = 0.0
-    @State var overlayOpacity13 = 0.0
-    @State var overlayOpacity14 = 0.0
-    @State var overlayOpacity15 = 0.0
-    @State var overlayOpacity16 = 0.0
-    @State var overlayOpacity17 = 0.0
-    @State var overlayOpacity18 = 0.0
-    @State var overlayOpacity19 = 0.0
-    @State var overlayOpacity20 = 0.0
-    @State var overlayOpacity21 = 0.0
-    @State var overlayOpacity22 = 0.0
-    @State var overlayOpacity23 = 0.0
-    @State var overlayOpacity24 = 0.0
+    @AppStorage("over1") var overlayOpacity1 = 0.0
+    @AppStorage("over2") var overlayOpacity2 = 0.0
+    @AppStorage("over3") var overlayOpacity3 = 0.0
+    @AppStorage("over4") var overlayOpacity4 = 0.0
+    @AppStorage("over5") var overlayOpacity5 = 0.0
+    @AppStorage("over6") var overlayOpacity6 = 0.0
+    @AppStorage("over7") var overlayOpacity7 = 0.0
+    @AppStorage("over8") var overlayOpacity8 = 0.0
+    @AppStorage("over9") var overlayOpacity9 = 0.0
+    @AppStorage("over10") var overlayOpacity10 = 0.0
+    @AppStorage("over11") var overlayOpacity11 = 0.0
+    @AppStorage("over12") var overlayOpacity12 = 0.0
+    @AppStorage("over13") var overlayOpacity13 = 0.0
+    @AppStorage("over14") var overlayOpacity14 = 0.0
+    @AppStorage("over15") var overlayOpacity15 = 0.0
+    @AppStorage("over16") var overlayOpacity16 = 0.0
+    @AppStorage("over17") var overlayOpacity17 = 0.0
+    @AppStorage("over18") var overlayOpacity18 = 0.0
+    @AppStorage("over19") var overlayOpacity19 = 0.0
+    @AppStorage("over20") var overlayOpacity20 = 0.0
+    @AppStorage("over21") var overlayOpacity21 = 0.0
+    @AppStorage("over22") var overlayOpacity22 = 0.0
+    @AppStorage("over23") var overlayOpacity23 = 0.0
+    @AppStorage("over24") var overlayOpacity24 = 0.0
+    
     @State var disabled1: Bool = false
     @State var disabled2: Bool = false
     @State var disabled3: Bool = false
@@ -89,17 +114,148 @@ struct Bingo: View {
     @State var disabled24: Bool = false
     @State var moneyArray: [String] = [" "]
     @State var chosenColor = GlobalVariables.color[0]
+    @State var i = 0
+    @State var m = 0
+    @State var n = 0
+    @State var blackoutCoins: Int = 0
     
     //var coins = GlobalVariables.coin
     
     @AppStorage("opened") var opened = 0
+    func blackout() {
+        
+        GlobalVariables.coin = GlobalVariables.coin + m
+        GlobalVariables.blackoutCoins += (GlobalVariables.coin + m * 50)
+       // print("coins")
+        
+        coins = GlobalVariables.blackoutCoins + GlobalVariables.coin
+        print("blackout coins")
+        print(GlobalVariables.blackoutCoins)
+        GlobalVariables.SavedItems = ["You're selected items", "will appear here"]
+        randomArray.removeAll()
+        randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
+        moneyArray.removeAll()
+        m += 1
+        while (i) < (25 * m) {
+            moneyArray.append ("a")
+            i += 1
+        }
+        //GlobalVariables.coin
+        GlobalVariables.submitted = false
+        print(m)
+        print("LOOK HERE THIS IS THE ARRAY")
+        print(moneyArray)
+
+        overlayOpacity1 = 0.0
+        overlayOpacity2 = 0.0
+        overlayOpacity3 = 0.0
+        overlayOpacity4 = 0.0
+        overlayOpacity5 = 0.0
+        overlayOpacity6 = 0.0
+        overlayOpacity7 = 0.0
+        overlayOpacity8 = 0.0
+        overlayOpacity9 = 0.0
+        overlayOpacity10 = 0.0
+        overlayOpacity11 = 0.0
+        overlayOpacity12 = 0.0
+        overlayOpacity13 = 0.0
+        overlayOpacity14 = 0.0
+        overlayOpacity15 = 0.0
+        overlayOpacity16 = 0.0
+        overlayOpacity17 = 0.0
+        overlayOpacity18 = 0.0
+        overlayOpacity19 = 0.0
+        overlayOpacity20 = 0.0
+        overlayOpacity21 = 0.0
+        overlayOpacity22 = 0.0
+        overlayOpacity23 = 0.0
+        overlayOpacity24 = 0.0
+        opacity1 = 0.0
+        opacity2 = 0.0
+        opacity3 = 0.0
+        opacity4 = 0.0
+        opacity5 = 0.0
+        opacity6 = 0.0
+        opacity7 = 0.0
+        opacity8 = 0.0
+        opacity9 = 0.0
+        opacity10 = 0.0
+        opacity11 = 0.0
+        opacity12 = 0.0
+        opacity13 = 0.0
+        opacity14 = 0.0
+        opacity15 = 0.0
+        opacity16 = 0.0
+        opacity17 = 0.0
+        opacity18 = 0.0
+        opacity19 = 0.0
+        opacity20 = 0.0
+        opacity21 = 0.0
+        opacity22 = 0.0
+        opacity23 = 0.0
+        opacity24 = 0.0
+       
+        
+    }
+   func remakeButtons(){
+       print("coins")
+       print(GlobalVariables.coin)
+        opacity1 = 1.0
+        opacity2 = 1.0
+        opacity3 = 1.0
+        opacity4 = 1.0
+        opacity5 = 1.0
+        opacity6 = 1.0
+        opacity7 = 1.0
+        opacity8 = 1.0
+        opacity9 = 1.0
+        opacity10 = 1.0
+        opacity11 = 1.0
+        opacity12 = 1.0
+        opacity13 = 1.0
+        opacity14 = 1.0
+        opacity15 = 1.0
+        opacity16 = 1.0
+        opacity17 = 1.0
+        opacity18 = 1.0
+        opacity19 = 1.0
+        opacity20 = 1.0
+        opacity21 = 1.0
+        opacity22 = 1.0
+        opacity23 = 1.0
+        opacity24 = 1.0
+       
+       disabled1 = false
+       disabled2 = false
+       disabled3 = false
+       disabled4 = false
+       disabled5 = false
+       disabled6 = false
+       disabled7 = false
+       disabled8 = false
+       disabled9 = false
+       disabled10 = false
+       disabled11 = false
+       disabled12 = false
+       disabled13 = false
+       disabled14 = false
+       disabled15 = false
+       disabled16 = false
+       disabled17 = false
+       disabled18 = false
+       disabled19 = false
+       disabled20 = false
+       disabled21 = false
+       disabled22 = false
+       disabled23 = false
+       disabled24 = false
+       
+      // GlobalVariables.coin = GlobalVariables.blackoutCoins
+    }
 
     
     func randomImage(){
-        /*print(GlobalVariables.SavedItems.count)
-        for choice in randomArray{
-            print(choice)
-        }*/
+        
         //this shows that random array saves the appended items and remembers them after closing the app (but the bingo card still doesn't show them)
         
         var count = 0
@@ -258,6 +414,14 @@ struct Bingo: View {
             GlobalVariables.coin = (moneyArray.count*10)-10
             coins = GlobalVariables.coin
             print(coins)
+            if GlobalVariables.blackoutCoins != 0{
+                coins = GlobalVariables.coin + 300
+            }
+            if (m > 0){
+                GlobalVariables.coin += 60
+                coins = GlobalVariables.coin
+                m = 0
+            }
         }
    
         if (disabled5 && disabled6 && disabled7 && disabled8){
@@ -266,6 +430,11 @@ struct Bingo: View {
             }
             GlobalVariables.coin = (moneyArray.count*10)-10
             coins = GlobalVariables.coin
+            if (m > 0){
+                GlobalVariables.coin += 60
+                coins = GlobalVariables.coin
+                m = 0
+            }
         }
         
         if (disabled9 && disabled10 && disabled11 && disabled12){
@@ -431,7 +600,7 @@ struct Bingo: View {
             if !moneyArray.contains("blackout"){
                 moneyArray.append("blackout")
             }
-            GlobalVariables.coin = (moneyArray.count*10)-10+50
+            GlobalVariables.coin = (moneyArray.count*10) + 50
             coins = GlobalVariables.coin
         }
     }
