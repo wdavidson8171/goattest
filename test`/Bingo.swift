@@ -29,7 +29,7 @@ let winterArray = ["goToMountain","hotChocolate","pajamaParty","snowman"]
 let springArray = ["sitInMeadow","springCleaning","dyeEgg","bouquet"]
 let summerArray = ["waterBaloonFight","swimmingHole","pool","berryPicking","amusementPark","beach"]
 
- //@State var opacity1 = 1.0
+var opacity1 = 1.0
 var opacity2 = 1.0
  var opacity3 = 1.0
  var opacity4 = 1.0
@@ -55,37 +55,37 @@ var opacity2 = 1.0
  var opacity24 = 1.0
 
 struct Bingo: View {
-    @State var opacity1 = 1.0
+    //var opacity1 = 1.0
     @State var showImage: Bool = false
     @State var showingPopup: Bool = false
     @AppStorage("randomArray") var randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
     @State var cans = 0
     @State var coins = 0
     @State var tnum = 1
-    @State var overlayOpacity1 = 0.0
-    @State var overlayOpacity2 = 0.0
-    @State var overlayOpacity3 = 0.0
-    @State var overlayOpacity4 = 0.0
-    @State var overlayOpacity5 = 0.0
-    @State var overlayOpacity6 = 0.0
-    @State var overlayOpacity7 = 0.0
-    @State var overlayOpacity8 = 0.0
-    @State var overlayOpacity9 = 0.0
-    @State var overlayOpacity10 = 0.0
-    @State var overlayOpacity11 = 0.0
-    @State var overlayOpacity12 = 0.0
-    @State var overlayOpacity13 = 0.0
-    @State var overlayOpacity14 = 0.0
-    @State var overlayOpacity15 = 0.0
-    @State var overlayOpacity16 = 0.0
-    @State var overlayOpacity17 = 0.0
-    @State var overlayOpacity18 = 0.0
-    @State var overlayOpacity19 = 0.0
-    @State var overlayOpacity20 = 0.0
-    @State var overlayOpacity21 = 0.0
-    @State var overlayOpacity22 = 0.0
-    @State var overlayOpacity23 = 0.0
-    @State var overlayOpacity24 = 0.0
+    @AppStorage("over1") var overlayOpacity1 = 0.0
+    @AppStorage("over2") var overlayOpacity2 = 0.0
+    @AppStorage("over3") var overlayOpacity3 = 0.0
+    @AppStorage("over4") var overlayOpacity4 = 0.0
+    @AppStorage("over5") var overlayOpacity5 = 0.0
+    @AppStorage("over6") var overlayOpacity6 = 0.0
+    @AppStorage("over7") var overlayOpacity7 = 0.0
+    @AppStorage("over8") var overlayOpacity8 = 0.0
+    @AppStorage("over9") var overlayOpacity9 = 0.0
+    @AppStorage("over10") var overlayOpacity10 = 0.0
+    @AppStorage("over11") var overlayOpacity11 = 0.0
+    @AppStorage("over12") var overlayOpacity12 = 0.0
+    @AppStorage("over13") var overlayOpacity13 = 0.0
+    @AppStorage("over14") var overlayOpacity14 = 0.0
+    @AppStorage("over15") var overlayOpacity15 = 0.0
+    @AppStorage("over16") var overlayOpacity16 = 0.0
+    @AppStorage("over17") var overlayOpacity17 = 0.0
+    @AppStorage("over18") var overlayOpacity18 = 0.0
+    @AppStorage("over19") var overlayOpacity19 = 0.0
+    @AppStorage("over20") var overlayOpacity20 = 0.0
+    @AppStorage("over21") var overlayOpacity21 = 0.0
+    @AppStorage("over22") var overlayOpacity22 = 0.0
+    @AppStorage("over23") var overlayOpacity23 = 0.0
+    @AppStorage("over24") var overlayOpacity24 = 0.0
     
     @State var disabled1: Bool = false
     @State var disabled2: Bool = false
@@ -116,18 +116,18 @@ struct Bingo: View {
     @State var i = 0
     @State var m = 0
     @State var n = 0
-    //@State var blackoutCoins: Int = 0
+    @State var blackoutCoins: Int = 0
     
     //var coins = GlobalVariables.coin
     func blackout() {
         
-        //GlobalVariables.coin = GlobalVariables.coin + m
-        //GlobalVariables.blackoutCoins += (GlobalVariables.coin + m * 50)
+        GlobalVariables.coin = GlobalVariables.coin + m
+        GlobalVariables.blackoutCoins += (GlobalVariables.coin + m * 50)
        // print("coins")
         
-        //coins = GlobalVariables.blackoutCoins + GlobalVariables.coin
-        //print("blackout coins")
-        //print(GlobalVariables.blackoutCoins)
+        coins = GlobalVariables.blackoutCoins + GlobalVariables.coin
+        print("blackout coins")
+        print(GlobalVariables.blackoutCoins)
         GlobalVariables.SavedItems = ["You're selected items", "will appear here"]
         randomArray.removeAll()
         randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
@@ -411,6 +411,11 @@ struct Bingo: View {
             if GlobalVariables.blackoutCoins != 0{
                 coins = GlobalVariables.coin + 300
             }
+            if (m > 0){
+                GlobalVariables.coin += 60
+                coins = GlobalVariables.coin
+                m = 0
+            }
         }
    
         if (disabled5 && disabled6 && disabled7 && disabled8){
@@ -419,6 +424,11 @@ struct Bingo: View {
             }
             GlobalVariables.coin = (moneyArray.count*10)-10
             coins = GlobalVariables.coin
+            if (m > 0){
+                GlobalVariables.coin += 60
+                coins = GlobalVariables.coin
+                m = 0
+            }
         }
         
         if (disabled9 && disabled10 && disabled11 && disabled12){
