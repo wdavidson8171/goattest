@@ -121,13 +121,12 @@ struct Bingo: View {
     //var coins = GlobalVariables.coin
     func blackout() {
         
-        GlobalVariables.coin = GlobalVariables.coin + m
-        GlobalVariables.blackoutCoins += (GlobalVariables.coin + m * 50)
+        //GlobalVariables.blackoutCoins += (GlobalVariables.coin + m * 50)
        // print("coins")
         
-        coins = GlobalVariables.blackoutCoins + GlobalVariables.coin
-        print("blackout coins")
-        print(GlobalVariables.blackoutCoins)
+        //coins = GlobalVariables.blackoutCoins + GlobalVariables.coin
+        //print("blackout coins")
+        //print(GlobalVariables.blackoutCoins)
         GlobalVariables.SavedItems = ["You're selected items", "will appear here"]
         randomArray.removeAll()
         randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
@@ -139,9 +138,9 @@ struct Bingo: View {
         }
         //GlobalVariables.coin
         GlobalVariables.submitted = false
-        print(m)
-        print("LOOK HERE THIS IS THE ARRAY")
-        print(moneyArray)
+        //print(m)
+      //  print("LOOK HERE THIS IS THE ARRAY")
+        //print(moneyArray)
 
         overlayOpacity1 = 0.0
         overlayOpacity2 = 0.0
@@ -195,8 +194,8 @@ struct Bingo: View {
         
     }
    func remakeButtons(){
-       print("coins")
-       print(GlobalVariables.coin)
+       //print("coins")
+      // print(GlobalVariables.coin)
         opacity1 = 1.0
         opacity2 = 1.0
         opacity3 = 1.0
@@ -411,11 +410,11 @@ struct Bingo: View {
             if GlobalVariables.blackoutCoins != 0{
                 coins = GlobalVariables.coin + 300
             }
-            if (m > 0){
+            /*if (m == 0){
                 GlobalVariables.coin += 60
                 coins = GlobalVariables.coin
-                m = 0
-            }
+                //m = 0
+            }*/
         }
    
         if (disabled5 && disabled6 && disabled7 && disabled8){
@@ -424,10 +423,10 @@ struct Bingo: View {
             }
             GlobalVariables.coin = (moneyArray.count*10)-10
             coins = GlobalVariables.coin
-            if (m > 0){
+           if (m > 0){
                 GlobalVariables.coin += 60
                 coins = GlobalVariables.coin
-                m = 0
+                //m = 0
             }
         }
         
@@ -595,7 +594,7 @@ struct Bingo: View {
                 blackout()
                 //remakeButtons()
             }
-            GlobalVariables.coin = (moneyArray.count*10) + 50
+            GlobalVariables.coin = (moneyArray.count*10) + 40
             coins = GlobalVariables.coin
         }
     }
@@ -646,6 +645,10 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            //m = 0
+        }
     }
     
     func buttonPresed4(){
