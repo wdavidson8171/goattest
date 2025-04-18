@@ -40,6 +40,7 @@
 		F3ADEA312CA33A1500349343 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3ADEA332CA33A1500349343 /* test_.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = test_.entitlements; sourceTree = "<group>"; };
 		F3ADEA352CA33A1500349343 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F3EEF83C2DB2D17F00814968 /* GOATgame-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GOATgame-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +57,7 @@
 		F3ADEA1F2CA33A1400349343 = {
 			isa = PBXGroup;
 			children = (
+				F3EEF83C2DB2D17F00814968 /* GOATgame-Info.plist */,
 				F3ADEA2A2CA33A1400349343 /* test` */,
 				F3ADEA292CA33A1400349343 /* Products */,
 			);
@@ -312,6 +314,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"test`/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "GOATgame-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = binGOAT;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -349,6 +352,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"test`/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "GOATgame-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = binGOAT;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
