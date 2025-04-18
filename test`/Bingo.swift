@@ -30,6 +30,7 @@ let winterArray = ["goToMountain","hotChocolate","pajamaParty","snowman"]
 let springArray = ["sitInMeadow","springCleaning","dyeEgg","bouquet"]
 let summerArray = ["waterBaloonFight","swimmingHole","pool","berryPicking","amusementPark","beach"]
 
+
 struct Bingo: View {
     
     @State var showImage: Bool = false
@@ -91,6 +92,8 @@ struct Bingo: View {
     
     //var coins = GlobalVariables.coin
     
+    @AppStorage("opened") var opened = 0
+
     
     func randomImage(){
         /*print(GlobalVariables.SavedItems.count)
@@ -1322,17 +1325,17 @@ struct Bingo: View {
                     }
                 }.padding()
                     .onAppear{
-                        
-                        if GlobalVariables.SavedItems.count > 0 {
-                         canCounter()
+                        opened+=1
+                        if opened == 2 {
+                            randomImage()
+                            populateArray()
+                            canCounter()
                          }
                          else {
                          //or if random array has values then show
                          //maybe change second part to own if loop
                          //in 2nd if loop dont include randomImage() function
-                         randomImage()
-                         populateArray()
-                         canCounter()
+                             canCounter()
                          }
                         /*if GlobalVariables.submitted == true{
                             //or if random array has values then show
