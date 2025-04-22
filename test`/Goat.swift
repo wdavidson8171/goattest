@@ -12,7 +12,6 @@ import Foundation
 
 
 struct Goat: View {
-    //@State var countDownTimer = 8
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @AppStorage("firstOpenedYear") var firstOpenedYear: Int = -1
@@ -198,7 +197,6 @@ struct Goat: View {
     func getSecondsPassed(_ from: Date, to: Date)-> Int{
         let secondsPassed: DateComponents = Calendar.current.dateComponents([.second], from: from, to: to)
         let secs: Int = (secondsPassed.second!) - (foodFed * 60)
-        print("secs passed wav: " + String(secs))
         return secs
     }
 
@@ -255,7 +253,7 @@ struct Goat: View {
         }
     }
     
-    //returns the appropriate goat image
+    //returns the appropriate goat text
     func getGoatStateText()-> String{
         let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
         if CGFloat(secondsPassed) >= 400 * x{
