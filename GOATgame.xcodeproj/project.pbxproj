@@ -54,6 +54,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B039A492DBAB97B00F9FC02 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = sounds;
+			sourceTree = "<group>";
+		};
 		F3ADEA1F2CA33A1400349343 = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +93,7 @@
 				F392187A2CC2D0C3006E02CB /* Inventory.swift */,
 				F392187E2CC2D0F1006E02CB /* DressUp.swift */,
 				F3ADEA312CA33A1500349343 /* Assets.xcassets */,
+				7B039A492DBAB97B00F9FC02 /* sounds */,
 				F3ADEA332CA33A1500349343 /* test_.entitlements */,
 				F3ADEA342CA33A1500349343 /* Preview Content */,
 				7B0BCB482CE3DA450084EFB9 /* popUpWindow.swift */,

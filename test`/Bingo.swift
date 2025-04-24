@@ -1,3 +1,8 @@
+
+
+
+
+
 //
 //  Bingo.swift
 //  test`
@@ -7,6 +12,7 @@
 
 import SwiftUI
 import UIKit
+import AVKit
 
 
 var buttonPressed = false
@@ -54,7 +60,35 @@ var opacity2 = 1.0
  var opacity23 = 1.0
  var opacity24 = 1.0
 
+
+class SoundManager{
+    
+    static let instance = SoundManager()
+    
+    var player: AVAudioPlayer?
+    
+    func playSound() {
+        
+        guard let url = URL(string: "") else {return}
+        
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+        } catch let error{
+            print("Error playing sound. \(error.localizedDescription)")
+    }
+
+}
+
+
+
+
+
 struct Bingo: View {
+    var soundManager = SoundManager()
+    
+
+    
+    
     //var opacity1 = 1.0
     @State var showImage: Bool = false
     @State var showingPopup: Bool = false
@@ -87,31 +121,31 @@ struct Bingo: View {
     @AppStorage("over23") var overlayOpacity23 = 0.0
     @AppStorage("over24") var overlayOpacity24 = 0.0
     
-    @State var disabled1: Bool = false
-    @State var disabled2: Bool = false
-    @State var disabled3: Bool = false
-    @State var disabled4: Bool = false
-    @State var disabled5: Bool = false
-    @State var disabled6: Bool = false
-    @State var disabled7: Bool = false
-    @State var disabled8: Bool = false
-    @State var disabled9: Bool = false
-    @State var disabled10: Bool = false
-    @State var disabled11: Bool = false
-    @State var disabled12: Bool = false
-    @State var disabled13: Bool = false
-    @State var disabled14: Bool = false
-    @State var disabled15: Bool = false
-    @State var disabled16: Bool = false
-    @State var disabled17: Bool = false
-    @State var disabled18: Bool = false
-    @State var disabled19: Bool = false
-    @State var disabled20: Bool = false
-    @State var disabled21: Bool = false
-    @State var disabled22: Bool = false
-    @State var disabled23: Bool = false
-    @State var disabled24: Bool = false
-    @State var moneyArray: [String] = [" "]
+    @AppStorage("dis1") var disabled1: Bool = false
+    @AppStorage("dis2") var disabled2: Bool = false
+    @AppStorage("dis3") var disabled3: Bool = false
+    @AppStorage("dis4") var disabled4: Bool = false
+    @AppStorage("dis5") var disabled5: Bool = false
+    @AppStorage("dis6") var disabled6: Bool = false
+    @AppStorage("dis7") var disabled7: Bool = false
+    @AppStorage("dis8") var disabled8: Bool = false
+    @AppStorage("dis9") var disabled9: Bool = false
+    @AppStorage("dis10") var disabled10: Bool = false
+    @AppStorage("dis11") var disabled11: Bool = false
+    @AppStorage("dis12") var disabled12: Bool = false
+    @AppStorage("dis13") var disabled13: Bool = false
+    @AppStorage("dis14") var disabled14: Bool = false
+    @AppStorage("dis15") var disabled15: Bool = false
+    @AppStorage("dis16") var disabled16: Bool = false
+    @AppStorage("dis17") var disabled17: Bool = false
+    @AppStorage("dis18") var disabled18: Bool = false
+    @AppStorage("dis19") var disabled19: Bool = false
+    @AppStorage("dis20") var disabled20: Bool = false
+    @AppStorage("dis21") var disabled21: Bool = false
+    @AppStorage("dis22") var disabled22: Bool = false
+    @AppStorage("dis23") var disabled23: Bool = false
+    @AppStorage("dis24") var disabled24: Bool = false
+    @AppStorage("moneyArray") var moneyArray: [String] = [" "]
     @State var chosenColor = GlobalVariables.color[0]
     @State var i = 0
     @State var m = 0
@@ -1654,4 +1688,4 @@ struct Bingo: View {
         Bingo()
     }
     
-    
+
