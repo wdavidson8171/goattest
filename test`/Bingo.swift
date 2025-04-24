@@ -125,14 +125,41 @@ struct Bingo: View {
     func blackout() {
         GlobalVariables.coin = GlobalVariables.coin + m
         GlobalVariables.blackoutCoins += (GlobalVariables.coin + m * 50)
+        randomArray.removeAll()
+        randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
+        print(randomArray)
+        button1 = " "
+        button2 = " "
+        button3 = " "
+        button4 = " "
+        button5 = " "
+        button6 = " "
+        button7 = " "
+        button8 = " "
+        button9 = " "
+        button10 = " "
+        button11 = " "
+        button12 = " "
+        button13 = " "
+        button14 = " "
+        button15 = " "
+        button16 = " "
+        button17 = " "
+        button18 = " "
+        button19 = " "
+        button20 = " "
+        button21 = " "
+        button22 = " "
+        button23 = " "
+        button24 = " "
+        print(button9)
+        print(button24)
        // print("coins")
         
         coins = GlobalVariables.blackoutCoins + GlobalVariables.coin
         print("blackout coins")
         print(GlobalVariables.blackoutCoins)
         GlobalVariables.SavedItems = ["You're selected items", "will appear here"]
-        randomArray.removeAll()
-        randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
         moneyArray.removeAll()
         m += 1
         while (i) < (25 * m) {
