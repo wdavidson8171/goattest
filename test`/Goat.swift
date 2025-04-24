@@ -61,7 +61,7 @@ struct Goat: View {
     
     var body: some View {
         ZStack{
-            if GlobalVariables.submitted == true{
+            if GlobalVariables.submitted == true || GlobalVariables.submitted == false{
                 if GlobalVariables.color[0] == "lavender"{
                     Text("lavender ischosen")
                     Color.lavender.ignoresSafeArea()

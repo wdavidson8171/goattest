@@ -115,7 +115,7 @@ struct Homepage: View {
     
     @State var showingProfilePopup = false
     
-    @State var internalState: Int = 5
+    @AppStorage("internal") var internalState: Int = 5
     
     /// <#Description#>
     var body: some View {
@@ -559,10 +559,10 @@ struct Homepage: View {
                                 Image("coin")
                                 Text("\(GlobalVariables.coin -  GlobalVariables.purchased)").font(.system(.body, design: .serif))
                             }.padding(20)
-                            Image(clickedImage).resizable().aspectRatio(contentMode: .fill)
-                                .frame(width: 200, height: 200).border(.black, width: 5).padding(50)
-                            Text("You need to own Uggs to use this image!")
-                            Text("Cost: " + String(costOfItem) + " coins")
+                            Image(clickedImage).resizable().aspectRatio(contentMode: .fit)
+                                .frame(width: 500, height: 500).border(.black, width: 5)
+                           // Text("You need to own Uggs to use this image!")
+                            Text("Cost: " + String(costOfItem) + " coins").font(.system(size: 20, weight: .black, design: .serif)) .foregroundStyle(.niceBrown)
                             //Text("Your money: " + String(tempCoins) + " coins")
                             Button("Buy") {
                                 if GlobalVariables.coin >= costOfItem {
