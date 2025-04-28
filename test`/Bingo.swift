@@ -35,33 +35,10 @@ let winterArray = ["goToMountain","hotChocolate","pajamaParty","snowman"]
 let springArray = ["sitInMeadow","springCleaning","dyeEgg","bouquet"]
 let summerArray = ["waterBaloonFight","swimmingHole","pool","berryPicking","amusementPark","beach"]
 
-var opacity1 = 1.0
-var opacity2 = 1.0
- var opacity3 = 1.0
- var opacity4 = 1.0
- var opacity5 = 1.0
- var opacity6 = 1.0
- var opacity7 = 1.0
- var opacity8 = 1.0
- var opacity9 = 1.0
- var opacity10 = 1.0
- var opacity11 = 1.0
- var opacity12 = 1.0
- var opacity13 = 1.0
- var opacity14 = 1.0
- var opacity15 = 1.0
- var opacity16 = 1.0
- var opacity17 = 1.0
- var opacity18 = 1.0
- var opacity19 = 1.0
- var opacity20 = 1.0
- var opacity21 = 1.0
- var opacity22 = 1.0
- var opacity23 = 1.0
- var opacity24 = 1.0
 
 
-class SoundManager{
+
+/*class SoundManager{
     
     static let instance = SoundManager()
     
@@ -75,16 +52,17 @@ class SoundManager{
             player = try AVAudioPlayer(contentsOf: url)
         } catch let error{
             print("Error playing sound. \(error.localizedDescription)")
+        }
+        
     }
-
-}
+}*/
 
 
 
 
 
 struct Bingo: View {
-    var soundManager = SoundManager()
+   // var soundManager = SoundManager()
     
 
     
@@ -96,60 +74,112 @@ struct Bingo: View {
     @State var cans = 0
     @State var coins = 0
     @State var tnum = 1
-    @AppStorage("over1") var overlayOpacity1 = 0.0
-    @AppStorage("over2") var overlayOpacity2 = 0.0
-    @AppStorage("over3") var overlayOpacity3 = 0.0
-    @AppStorage("over4") var overlayOpacity4 = 0.0
-    @AppStorage("over5") var overlayOpacity5 = 0.0
-    @AppStorage("over6") var overlayOpacity6 = 0.0
-    @AppStorage("over7") var overlayOpacity7 = 0.0
-    @AppStorage("over8") var overlayOpacity8 = 0.0
-    @AppStorage("over9") var overlayOpacity9 = 0.0
-    @AppStorage("over10") var overlayOpacity10 = 0.0
-    @AppStorage("over11") var overlayOpacity11 = 0.0
-    @AppStorage("over12") var overlayOpacity12 = 0.0
-    @AppStorage("over13") var overlayOpacity13 = 0.0
-    @AppStorage("over14") var overlayOpacity14 = 0.0
-    @AppStorage("over15") var overlayOpacity15 = 0.0
-    @AppStorage("over16") var overlayOpacity16 = 0.0
-    @AppStorage("over17") var overlayOpacity17 = 0.0
-    @AppStorage("over18") var overlayOpacity18 = 0.0
-    @AppStorage("over19") var overlayOpacity19 = 0.0
-    @AppStorage("over20") var overlayOpacity20 = 0.0
-    @AppStorage("over21") var overlayOpacity21 = 0.0
-    @AppStorage("over22") var overlayOpacity22 = 0.0
-    @AppStorage("over23") var overlayOpacity23 = 0.0
-    @AppStorage("over24") var overlayOpacity24 = 0.0
+    @AppStorage("overlayOpacity1") var overlayOpacity1 = 0.0
+    @AppStorage("overlayOpacity2") var overlayOpacity2 = 0.0
+    @AppStorage("overlayOpacity3") var overlayOpacity3 = 0.0
+    @AppStorage("overlayOpacity4") var overlayOpacity4 = 0.0
+    @AppStorage("overlayOpacity5") var overlayOpacity5 = 0.0
+    @AppStorage("overlayOpacity6") var overlayOpacity6 = 0.0
+    @AppStorage("overlayOpacity7") var overlayOpacity7 = 0.0
+    @AppStorage("overlayOpacity8") var overlayOpacity8 = 0.0
+    @AppStorage("overlayOpacity9") var overlayOpacity9 = 0.0
+    @AppStorage("overlayOpacity10") var overlayOpacity10 = 0.0
+    @AppStorage("overlayOpacity11") var overlayOpacity11 = 0.0
+    @AppStorage("overlayOpacity12") var overlayOpacity12 = 0.0
+    @AppStorage("overlayOpacity13") var overlayOpacity13 = 0.0
+    @AppStorage("overlayOpacity14") var overlayOpacity14 = 0.0
+    @AppStorage("overlayOpacity15") var overlayOpacity15 = 0.0
+    @AppStorage("overlayOpacity16") var overlayOpacity16 = 0.0
+    @AppStorage("overlayOpacity17") var overlayOpacity17 = 0.0
+    @AppStorage("overlayOpacity18") var overlayOpacity18 = 0.0
+    @AppStorage("overlayOpacity19") var overlayOpacity19 = 0.0
+    @AppStorage("overlayOpacity20") var overlayOpacity20 = 0.0
+    @AppStorage("overlayOpacity21") var overlayOpacity21 = 0.0
+    @AppStorage("overlayOpacity22") var overlayOpacity22 = 0.0
+    @AppStorage("overlayOpacity23") var overlayOpacity23 = 0.0
+    @AppStorage("overlayOpacity24") var overlayOpacity24 = 0.0
     
-    @AppStorage("dis1") var disabled1: Bool = false
-    @AppStorage("dis2") var disabled2: Bool = false
-    @AppStorage("dis3") var disabled3: Bool = false
-    @AppStorage("dis4") var disabled4: Bool = false
-    @AppStorage("dis5") var disabled5: Bool = false
-    @AppStorage("dis6") var disabled6: Bool = false
-    @AppStorage("dis7") var disabled7: Bool = false
-    @AppStorage("dis8") var disabled8: Bool = false
-    @AppStorage("dis9") var disabled9: Bool = false
-    @AppStorage("dis10") var disabled10: Bool = false
-    @AppStorage("dis11") var disabled11: Bool = false
-    @AppStorage("dis12") var disabled12: Bool = false
-    @AppStorage("dis13") var disabled13: Bool = false
-    @AppStorage("dis14") var disabled14: Bool = false
-    @AppStorage("dis15") var disabled15: Bool = false
-    @AppStorage("dis16") var disabled16: Bool = false
-    @AppStorage("dis17") var disabled17: Bool = false
-    @AppStorage("dis18") var disabled18: Bool = false
-    @AppStorage("dis19") var disabled19: Bool = false
-    @AppStorage("dis20") var disabled20: Bool = false
-    @AppStorage("dis21") var disabled21: Bool = false
-    @AppStorage("dis22") var disabled22: Bool = false
-    @AppStorage("dis23") var disabled23: Bool = false
-    @AppStorage("dis24") var disabled24: Bool = false
+    @AppStorage("opacity1") var opacity1 = 1.0
+    @AppStorage("opacity2") var opacity2 = 1.0
+    @AppStorage("opacity3") var opacity3 = 1.0
+    @AppStorage("opacity4") var opacity4 = 1.0
+    @AppStorage("opacity5") var opacity5 = 1.0
+    @AppStorage("opacity6") var opacity6 = 1.0
+    @AppStorage("opacity7") var opacity7 = 1.0
+    @AppStorage("opacity8") var opacity8 = 1.0
+    @AppStorage("opacity9") var opacity9 = 1.0
+    @AppStorage("opacity10") var opacity10 = 1.0
+    @AppStorage("opacity11") var opacity11 = 1.0
+    @AppStorage("opacity12") var opacity12 = 1.0
+    @AppStorage("opacity13") var opacity13 = 1.0
+    @AppStorage("opacity14") var opacity14 = 1.0
+    @AppStorage("opacity15") var opacity15 = 1.0
+    @AppStorage("opacity16") var opacity16 = 1.0
+    @AppStorage("opacity17") var opacity17 = 1.0
+    @AppStorage("opacity18") var opacity18 = 1.0
+    @AppStorage("opacity19") var opacity19 = 1.0
+    @AppStorage("opacity20") var opacity20 = 1.0
+    @AppStorage("opacity21") var opacity21 = 1.0
+    @AppStorage("opacity22") var opacity22 = 1.0
+    @AppStorage("opacity23") var opacity23 = 1.0
+    @AppStorage("opacity24") var opacity24 = 1.0
+    
+    @AppStorage("dis1") var dis1: Bool = false
+    @AppStorage("dis2") var dis2: Bool = false
+    @AppStorage("dis3") var dis3: Bool = false
+    @AppStorage("dis4") var dis4: Bool = false
+    @AppStorage("dis5") var dis5: Bool = false
+    @AppStorage("dis6") var dis6: Bool = false
+    @AppStorage("dis7") var dis7: Bool = false
+    @AppStorage("dis8") var dis8: Bool = false
+    @AppStorage("dis9") var dis9: Bool = false
+    @AppStorage("dis10") var dis10: Bool = false
+    @AppStorage("dis11") var dis11: Bool = false
+    @AppStorage("dis12") var dis12: Bool = false
+    @AppStorage("dis13") var dis13: Bool = false
+    @AppStorage("dis14") var dis14: Bool = false
+    @AppStorage("dis15") var dis15: Bool = false
+    @AppStorage("dis16") var dis16: Bool = false
+    @AppStorage("dis17") var dis17: Bool = false
+    @AppStorage("dis18") var dis18: Bool = false
+    @AppStorage("dis19") var dis19: Bool = false
+    @AppStorage("dis20") var dis20: Bool = false
+    @AppStorage("dis21") var dis21: Bool = false
+    @AppStorage("dis22") var dis22: Bool = false
+    @AppStorage("dis23") var dis23: Bool = false
+    @AppStorage("dis24") var dis24: Bool = false
+    
+    
+    @State var disabled1: Bool = false
+    @State var disabled2: Bool = false
+    @State var disabled3: Bool = false
+    @State var disabled4: Bool = false
+    @State var disabled5: Bool = false
+    @State var disabled6: Bool = false
+    @State var disabled7: Bool = false
+    @State var disabled8: Bool = false
+    @State var disabled9: Bool = false
+    @State var disabled10: Bool = false
+    @State var disabled11: Bool = false
+    @State var disabled12: Bool = false
+    @State var disabled13: Bool = false
+    @State var disabled14: Bool = false
+    @State var disabled15: Bool = false
+    @State var disabled16: Bool = false
+    @State var disabled17: Bool = false
+    @State var disabled18: Bool = false
+    @State var disabled19: Bool = false
+    @State var disabled20: Bool = false
+    @State var disabled21: Bool = false
+    @State var disabled22: Bool = false
+    @State var disabled23: Bool = false
+    @State var disabled24: Bool = false
+    
     @AppStorage("moneyArray") var moneyArray: [String] = [" "]
     @State var chosenColor = GlobalVariables.color[0]
-    @State var i = 0
-    @State var m = 0
-    @State var n = 0
+    @AppStorage("i") var i = 0
+    @AppStorage("m") var m = 0
+    @AppStorage("n") var n = 0
     @State var blackoutCoins: Int = 0
     
     //var coins = GlobalVariables.coin
@@ -432,201 +462,301 @@ struct Bingo: View {
     
     
     func checkBingo(){
-
-        if (disabled1 && disabled2 && disabled3 && disabled4){
+        if (dis1 && dis2 && dis3 && dis4){
             if !moneyArray.contains("bingo1"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo1")
+                
             }
             //moneyArray.append("bingo1")
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
             
         }
    
-        if (disabled5 && disabled6 && disabled7 && disabled8){
+        if (dis5 && dis6 && dis7 && dis8){
             if !moneyArray.contains("bingo2"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo2")
             }
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
         
-        if (disabled9 && disabled10 && disabled11 && disabled12){
+        if (dis9 && dis10 && dis11 && dis12){
             if !moneyArray.contains("bingo3"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo3")
             }
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
             
         }
-        if (disabled13 && disabled14 && disabled15 && disabled16){
+        if (dis13 && dis14 && dis15 && dis16){
             if !moneyArray.contains("bingo4"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo4")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled17 && disabled18 && disabled19 && disabled20){
+        if (dis17 && dis18 && dis19 && dis20){
             if !moneyArray.contains("bingo5"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo5")
             }
-           
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled21 && disabled22 && disabled23 && disabled24){
+        if (dis21 && dis22 && dis23 && dis24){
             if !moneyArray.contains("bingo6"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo6")
             }
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled1 && disabled5 && disabled9 && disabled13){// doesn't work
+        if (dis1 && dis5 && dis9 && dis13){// doesn't work
             if !moneyArray.contains("bingo7"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo7")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled5 && disabled9 && disabled13 && disabled17){ // doesn't work
+        if (dis5 && dis9 && dis13 && dis17){ // doesn't work
             if !moneyArray.contains("bingo8"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo8")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled9 && disabled13 && disabled17 && disabled21){ // doesn't work
+        if (dis9 && dis13 && dis17 && dis21){ // doesn't work
             if !moneyArray.contains("bingo9"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo9")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled2 && disabled6 && disabled10 && disabled14){
+        if (dis2 && dis6 && dis10 && dis14){
             if !moneyArray.contains("bingo10"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo10")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled6 && disabled10 && disabled14 && disabled18){
+        if (dis6 && dis10 && dis14 && dis18){
             if !moneyArray.contains("bingo11"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo11")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled10 && disabled14 && disabled18 && disabled22){
+        if (dis10 && dis14 && dis18 && dis22){
             if !moneyArray.contains("bingo12"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo12")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled3 && disabled7 && disabled11 && disabled15){ // doesn't work
+        if (dis3 && dis7 && dis11 && dis15){ // doesn't work
             if !moneyArray.contains("bingo13"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo13")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled19 && disabled15 && disabled7 && disabled11){ // doesn't work
+        if (dis19 && dis15 && dis7 && dis11){ // doesn't work
             if !moneyArray.contains("bingo14"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo14")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled15 && disabled11 && disabled19 && disabled23){ // doesn't work
+        if (dis15 && dis11 && dis19 && dis23){ // doesn't work
             if !moneyArray.contains("bingo15"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo15")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled4 && disabled16 && disabled12 && disabled8){
+        if (dis4 && dis16 && dis12 && dis8){
             if !moneyArray.contains("bingo16"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo16")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled20 && disabled16 && disabled12 && disabled8){
+        if (dis20 && dis16 && dis12 && dis8){
             if !moneyArray.contains("bingo17"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo17")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled12 && disabled16 && disabled20 && disabled24){
+        if (dis12 && dis16 && dis20 && dis24){
             if !moneyArray.contains("bingo18"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo18")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled1 && disabled6 && disabled11 && disabled16){ // doesn't work IDK why
+        if (dis1 && dis6 && dis11 && dis16){ // doesn't work IDK why
             if !moneyArray.contains("bingo19"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo19")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled5 && disabled10 && disabled15 && disabled20){
+        if (dis5 && dis10 && dis15 && dis20){
             if !moneyArray.contains("bingo20"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo20")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled9 && disabled14 && disabled19 && disabled24){
+        if (dis9 && dis14 && dis19 && dis24){
             if !moneyArray.contains("bingo21"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo21")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled4 && disabled7 && disabled10 && disabled13){ // doesn't work
+        if (dis4 && dis7 && dis10 && dis13){ // doesn't work
             if !moneyArray.contains("bingo22"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo22")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled8 && disabled11 && disabled17 && disabled14){ // doesn't work
+        if (dis8 && dis11 && dis17 && dis14){ // doesn't work
             if !moneyArray.contains("bingo23"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo23")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled15 && disabled12 && disabled21 && disabled18){
+        if (dis15 && dis12 && dis21 && dis18){
             if !moneyArray.contains("bingo24"){
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo24")
             }
-            
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)
         }
-        if (disabled1 && disabled2 && disabled3 && disabled4 && disabled5 && disabled6 && disabled7 && disabled8 && disabled9 && disabled10 && disabled11 && disabled12 && disabled13 && disabled14 && disabled15 && disabled16 && disabled17 && disabled18 && disabled19 && disabled20 && disabled21 && disabled22 && disabled23 && disabled24){
+        if (dis1 && dis2 && dis3 && dis4 && dis5 && dis6 && dis7 && dis8 && dis9 && dis10 && dis11 && dis12 && dis13 && dis14 && dis15 && dis16 && dis17 && dis18 && dis19 && dis20 && dis21 && dis22 && dis23 && dis24){
             if !moneyArray.contains("blackout"){
                 GlobalVariables.coin = GlobalVariables.coin + 60
                 coins = GlobalVariables.coin
@@ -635,7 +765,11 @@ struct Bingo: View {
                 //remakeButtons()
             }
         
-        }
+            print("LOOK HERE!!")
+            print(dis1)
+            print(dis2)
+            print(dis3)
+            print(dis4)        }
     }
     
     
@@ -652,11 +786,17 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         disabled1 = true
+        self.dis1 = disabled1
         checkBingo()
         if (m == 1) {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        print("LOOK HERE pt2!!")
+        print(dis1)
+        print(dis2)
+        print(dis3)
+        print(dis4)
         //return hideButton
     }
     
@@ -664,6 +804,7 @@ struct Bingo: View {
         tnum = tnum - 1
         overlayOpacity2 = 0.6
         disabled2 = true
+        self.dis2 = disabled2
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -677,12 +818,18 @@ struct Bingo: View {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        print("LOOK HERE pt2!!")
+        print(dis1)
+        print(dis2)
+        print(dis3)
+        print(dis4)
     }
     
     func buttonPresed3(){
         tnum = tnum - 1
         overlayOpacity3 = 0.6
         disabled3 = true
+        self.dis3 = disabled3
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -696,12 +843,18 @@ struct Bingo: View {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        print("LOOK HERE pt2!!")
+        print(dis1)
+        print(dis2)
+        print(dis3)
+        print(dis4)
     }
     
     func buttonPresed4(){
         tnum = tnum - 1
         overlayOpacity4 = 0.6
         disabled4 = true
+        self.dis4 = disabled4 // copy this onto all buttons
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -715,6 +868,11 @@ struct Bingo: View {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        print("LOOK HERE pt2!!")
+        print(dis1)
+        print(dis2)
+        print(dis3)
+        print(dis4)
     }
     
     func buttonPresed5(){
@@ -735,6 +893,11 @@ struct Bingo: View {
             m = 0
         }
         //return hideButton
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed6(){
@@ -754,6 +917,11 @@ struct Bingo: View {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed7(){
@@ -773,6 +941,11 @@ struct Bingo: View {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed8(){
@@ -792,6 +965,11 @@ struct Bingo: View {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed9(){
@@ -812,6 +990,11 @@ struct Bingo: View {
             m = 0
         }
         //return hideButton
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed10(){
@@ -831,6 +1014,11 @@ struct Bingo: View {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed11(){
@@ -850,6 +1038,11 @@ struct Bingo: View {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed12(){
@@ -869,6 +1062,11 @@ struct Bingo: View {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed13(){
@@ -889,6 +1087,11 @@ struct Bingo: View {
             m = 0
         }
         //return hideButton
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed14(){
@@ -908,6 +1111,11 @@ struct Bingo: View {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed15(){
@@ -927,6 +1135,11 @@ struct Bingo: View {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed16(){
@@ -946,6 +1159,11 @@ struct Bingo: View {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed17(){
@@ -966,6 +1184,11 @@ struct Bingo: View {
             m = 0
         }
         //return hideButton
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed18(){
@@ -985,6 +1208,11 @@ struct Bingo: View {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed19(){
@@ -1004,6 +1232,11 @@ struct Bingo: View {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed20(){
@@ -1023,6 +1256,11 @@ struct Bingo: View {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed21(){
@@ -1043,6 +1281,11 @@ struct Bingo: View {
             m = 0
         }
         //return hideButton
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed22(){
@@ -1062,6 +1305,11 @@ struct Bingo: View {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed23(){
@@ -1081,6 +1329,11 @@ struct Bingo: View {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed24(){
@@ -1100,6 +1353,7 @@ struct Bingo: View {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
             m = 0
         }
+        
     }
     
     func canCounter(){
