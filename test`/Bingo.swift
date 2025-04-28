@@ -598,7 +598,7 @@ struct Bingo: View {
         }
         if (disabled1 && disabled2 && disabled3 && disabled4 && disabled5 && disabled6 && disabled7 && disabled8 && disabled9 && disabled10 && disabled11 && disabled12 && disabled13 && disabled14 && disabled15 && disabled16 && disabled17 && disabled18 && disabled19 && disabled20 && disabled21 && disabled22 && disabled23 && disabled24){
             opened = 0
-            button1 = " "
+            button1 = "a "
             button2 = " "
             button3 = " "
             button4 = " "
