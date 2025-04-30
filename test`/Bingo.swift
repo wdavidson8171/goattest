@@ -310,6 +310,31 @@ struct Bingo: View {
        disabled23 = false
        disabled24 = false
        
+       self.dis1 = false
+       self.dis2 = false
+       self.dis3 = false
+       self.dis4 = false
+       self.dis5 = false
+       self.dis6 = false
+       self.dis7 = false
+       self.dis8 = false
+       self.dis9 = false
+       self.dis10 = false
+       self.dis11 = false
+       self.dis12 = false
+       self.dis13 = false
+       self.dis14 = false
+       self.dis15 = false
+       self.dis16 = false
+       self.dis17 = false
+       self.dis18 = false
+       self.dis19 = false
+       self.dis20 = false
+       self.dis21 = false
+       self.dis22 = false
+       self.dis23 = false
+       self.dis24 = false
+       
       // GlobalVariables.coin = GlobalVariables.blackoutCoins
     }
 
@@ -470,11 +495,7 @@ struct Bingo: View {
                 
             }
             //moneyArray.append("bingo1")
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+            
             
         }
    
@@ -484,11 +505,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo2")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+          
         }
         
         if (dis9 && dis10 && dis11 && dis12){
@@ -497,11 +514,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo3")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+           
             
         }
         if (dis13 && dis14 && dis15 && dis16){
@@ -510,11 +523,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo4")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+            
         }
         if (dis17 && dis18 && dis19 && dis20){
             if !moneyArray.contains("bingo5"){
@@ -522,11 +531,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo5")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+           
         }
         if (dis21 && dis22 && dis23 && dis24){
             if !moneyArray.contains("bingo6"){
@@ -534,11 +539,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo6")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+           
         }
         if (dis1 && dis5 && dis9 && dis13){// doesn't work
             if !moneyArray.contains("bingo7"){
@@ -546,11 +547,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo7")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+            
         }
         if (dis5 && dis9 && dis13 && dis17){ // doesn't work
             if !moneyArray.contains("bingo8"){
@@ -558,11 +555,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo8")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+            
         }
         if (dis9 && dis13 && dis17 && dis21){ // doesn't work
             if !moneyArray.contains("bingo9"){
@@ -570,11 +563,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo9")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+          
         }
         if (dis2 && dis6 && dis10 && dis14){
             if !moneyArray.contains("bingo10"){
@@ -582,11 +571,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo10")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+           
         }
         if (dis6 && dis10 && dis14 && dis18){
             if !moneyArray.contains("bingo11"){
@@ -594,11 +579,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo11")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+           
         }
         if (dis10 && dis14 && dis18 && dis22){
             if !moneyArray.contains("bingo12"){
@@ -606,11 +587,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo12")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+           
         }
         if (dis3 && dis7 && dis11 && dis15){ // doesn't work
             if !moneyArray.contains("bingo13"){
@@ -618,11 +595,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo13")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+          
         }
         if (dis19 && dis15 && dis7 && dis11){ // doesn't work
             if !moneyArray.contains("bingo14"){
@@ -630,11 +603,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo14")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+            
         }
         if (dis15 && dis11 && dis19 && dis23){ // doesn't work
             if !moneyArray.contains("bingo15"){
@@ -642,11 +611,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo15")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+           
         }
         if (dis4 && dis16 && dis12 && dis8){
             if !moneyArray.contains("bingo16"){
@@ -654,11 +619,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo16")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+           
         }
         if (dis20 && dis16 && dis12 && dis8){
             if !moneyArray.contains("bingo17"){
@@ -666,11 +627,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo17")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+           
         }
         if (dis12 && dis16 && dis20 && dis24){
             if !moneyArray.contains("bingo18"){
@@ -678,11 +635,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo18")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+           
         }
         if (dis1 && dis6 && dis11 && dis16){ // doesn't work IDK why
             if !moneyArray.contains("bingo19"){
@@ -690,11 +643,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo19")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+            
         }
         if (dis5 && dis10 && dis15 && dis20){
             if !moneyArray.contains("bingo20"){
@@ -702,11 +651,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo20")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+         
         }
         if (dis9 && dis14 && dis19 && dis24){
             if !moneyArray.contains("bingo21"){
@@ -714,11 +659,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo21")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+           
         }
         if (dis4 && dis7 && dis10 && dis13){ // doesn't work
             if !moneyArray.contains("bingo22"){
@@ -726,11 +667,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo22")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+           
         }
         if (dis8 && dis11 && dis17 && dis14){ // doesn't work
             if !moneyArray.contains("bingo23"){
@@ -738,11 +675,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo23")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+            
         }
         if (dis15 && dis12 && dis21 && dis18){
             if !moneyArray.contains("bingo24"){
@@ -750,11 +683,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo24")
             }
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)
+           
         }
         if (dis1 && dis2 && dis3 && dis4 && dis5 && dis6 && dis7 && dis8 && dis9 && dis10 && dis11 && dis12 && dis13 && dis14 && dis15 && dis16 && dis17 && dis18 && dis19 && dis20 && dis21 && dis22 && dis23 && dis24){
             if !moneyArray.contains("blackout"){
@@ -765,11 +694,7 @@ struct Bingo: View {
                 //remakeButtons()
             }
         
-            print("LOOK HERE!!")
-            print(dis1)
-            print(dis2)
-            print(dis3)
-            print(dis4)        }
+                    }
     }
     
     
@@ -786,7 +711,10 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         disabled1 = true
-        self.dis1 = disabled1
+        dis1 = true
+        UserDefaults
+            .standard
+            .synchronize()
         checkBingo()
         if (m == 1) {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
@@ -805,6 +733,9 @@ struct Bingo: View {
         overlayOpacity2 = 0.6
         disabled2 = true
         self.dis2 = disabled2
+        UserDefaults
+            .standard
+            .synchronize()
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -830,6 +761,9 @@ struct Bingo: View {
         overlayOpacity3 = 0.6
         disabled3 = true
         self.dis3 = disabled3
+        UserDefaults
+            .standard
+            .synchronize()
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -854,7 +788,10 @@ struct Bingo: View {
         tnum = tnum - 1
         overlayOpacity4 = 0.6
         disabled4 = true
-        self.dis4 = disabled4 // copy this onto all buttons
+        self.dis4 = disabled4
+        UserDefaults
+            .standard
+            .synchronize()// copy this onto all buttons
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -879,6 +816,7 @@ struct Bingo: View {
         tnum = tnum - 1
         overlayOpacity5 = 0.6
         disabled5 = true
+        self.dis5 = disabled5
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -904,6 +842,7 @@ struct Bingo: View {
         tnum = tnum - 1
         overlayOpacity6 = 0.6
         disabled6 = true
+        self.dis6 = disabled6
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -928,6 +867,7 @@ struct Bingo: View {
         tnum = tnum - 1
         overlayOpacity7 = 0.6
         disabled7 = true
+        self.dis7 = disabled7
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -952,6 +892,7 @@ struct Bingo: View {
         tnum = tnum - 1
         overlayOpacity8 = 0.6
         disabled8 = true
+        self.dis8 = disabled8
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -984,6 +925,7 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         disabled9 = true
+        self.dis9 = disabled9
         checkBingo()
         if (m == 1) {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
@@ -1001,6 +943,7 @@ struct Bingo: View {
         tnum = tnum - 1
         overlayOpacity10 = 0.6
         disabled10 = true
+        self.dis10 = disabled10
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -1025,6 +968,7 @@ struct Bingo: View {
         tnum = tnum - 1
         overlayOpacity11 = 0.6
         disabled11 = true
+        self.dis11 = disabled11
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -1049,6 +993,7 @@ struct Bingo: View {
         tnum = tnum - 1
         overlayOpacity12 = 0.6
         disabled12 = true
+        self.dis12 = disabled12
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -1081,6 +1026,7 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         disabled13 = true
+        self.dis13 = disabled13
         checkBingo()
         if (m == 1) {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
@@ -1098,6 +1044,7 @@ struct Bingo: View {
         tnum = tnum - 1
         overlayOpacity14 = 0.6
         disabled14 = true
+        self.dis14 = disabled14
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -1122,6 +1069,7 @@ struct Bingo: View {
         tnum = tnum - 1
         overlayOpacity15 = 0.6
         disabled15 = true
+        self.dis15 = disabled15
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -1146,6 +1094,7 @@ struct Bingo: View {
         tnum = tnum - 1
         overlayOpacity16 = 0.6
         disabled16 = true
+        self.dis16 = disabled16
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -1178,6 +1127,7 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         disabled17 = true
+        self.dis17 = disabled17
         checkBingo()
         if (m == 1) {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
@@ -1195,6 +1145,7 @@ struct Bingo: View {
         tnum = tnum - 1
         overlayOpacity18 = 0.6
         disabled18 = true
+        self.dis18 = disabled18
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -1219,6 +1170,7 @@ struct Bingo: View {
         tnum = tnum - 1
         overlayOpacity19 = 0.6
         disabled19 = true
+        self.dis19 = disabled19
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -1243,6 +1195,7 @@ struct Bingo: View {
         tnum = tnum - 1
         overlayOpacity20 = 0.6
         disabled20 = true
+        self.dis20 = disabled20
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -1275,6 +1228,7 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         disabled21 = true
+        self.dis21 = disabled21
         checkBingo()
         if (m == 1) {
             GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
@@ -1292,6 +1246,7 @@ struct Bingo: View {
         tnum = tnum - 1
         overlayOpacity22 = 0.6
         disabled22 = true
+        self.dis22 = disabled22
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -1316,6 +1271,7 @@ struct Bingo: View {
         tnum = tnum - 1
         overlayOpacity23 = 0.6
         disabled23 = true
+        self.dis23 = disabled23
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -1340,6 +1296,7 @@ struct Bingo: View {
         tnum = tnum - 1
         overlayOpacity24 = 0.6
         disabled24 = true
+        self.dis24 = disabled24
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -1905,6 +1862,24 @@ struct Bingo: View {
                     }
                 }.padding()
                     .onAppear{
+                        print("overlay opacity")
+                        print(overlayOpacity1)
+                        if (overlayOpacity1 == 0.6) {
+                            disabled1 = true
+                            dis1 = true
+                        }
+                        if (overlayOpacity2 == 0.6) {
+                            dis2 = true
+                            disabled2 = true
+                        }
+                        if (overlayOpacity3 == 0.6) {
+                            dis3 = true
+                            disabled3 = true
+                        }
+                        if (overlayOpacity4 == 0.6) {
+                            dis4 = true
+                            disabled4 = true
+                        }
                         /*if GlobalVariables.SavedItems.count > 0 {
                          
                          populateArray()
