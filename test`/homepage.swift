@@ -10,10 +10,8 @@ import SwiftUI
 import PhotosUI
 
 var selectedImage = ImageResource .nada
-//var ownedList: [ImageResource] = [.nada]
 var clickedImage = ImageResource .nada
 var costOfItem: Int = 0
-//var tempCoins: Int = 500
 var currentPos: Int = 0
 
 
@@ -117,7 +115,7 @@ struct Homepage: View {
     
     @AppStorage("internal") var internalState: Int = 5
     
-    /// <#Description#>
+    /// Description
     var body: some View {
         
         
@@ -560,25 +558,25 @@ struct Homepage: View {
                                 Image("coin")
                                 Text("\(GlobalVariables.coin -  GlobalVariables.purchased)").font(.system(.body, design: .serif))
                             }.padding(20)
-                            Image(clickedImage).resizable().aspectRatio(contentMode: .fit)
-                                .frame(width: 500, height: 500).border(.black, width: 5)
-                           // Text("You need to own Uggs to use this image!")
-                            Text("Cost: " + String(costOfItem) + " coins").font(.system(size: 20, weight: .black, design: .serif)) .foregroundStyle(.niceBrown)
-                            //Text("Your money: " + String(tempCoins) + " coins")
+                            if GlobalVariables.coin < costOfItem{
+                                HStack{
+                                    Text("Not enough coins!").italic() .foregroundStyle(.niceBrown)
+                                }
+                            }
+                            Image(clickedImage).resizable().aspectRatio(contentMode: .fill)
+                                .frame(width: 300, height: 300).border(.black, width: 5)
+                            Text("Cost: " + String(costOfItem) + " coins").font(.system(size: 20, weight: .black, design: .serif)).foregroundStyle(.niceBrown)
                             Button("Buy") {
                                 if GlobalVariables.coin >= costOfItem {
                                     ownedList2[currentPos] = true
-                                    //GlobalVariables.purchased += costOfItem
                                     GlobalVariables.coin -= costOfItem
                                     selectedImage = clickedImage
                                     GlobalVariables.clothesNum = currentPos + 1
                                     showingPopup = false
                                     
                                 }
-                                else if GlobalVariables.coin < costOfItem{
-                                    Text("Not enough coins!")
-                                }
-                            }
+                            }.padding(20).background(.niceBrown).clipShape(Capsule(style: .continuous))
+                            
                         }
                         
                     }
@@ -602,7 +600,6 @@ struct Homepage: View {
             
             .padding()
         }
-        //GlobalVariables.coin += 10
         
     }
     
@@ -629,26 +626,6 @@ struct Homepage: View {
     }
     
 }
-
-//ERROR, OWNEDLIST, COME BACK & EDIT
-/*func isOwned(imagex: ImageResource) -> Bool {
-    var B = false
-    /*ownedList.forEach { image in
-        if imagex == image {
-            B = true
-        }
-    }*/
-    return B
-}*/
-
-/*func isOwned2(position: Int) -> Bool {
-    if ownedList2[position].equals(true) {
-        return true
-    }
-    else {
-        return false
-    }
-}*/
 
         #Preview {
             Homepage()
