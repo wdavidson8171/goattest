@@ -343,6 +343,7 @@ struct Homepage: View {
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
                         .disableAutocorrection(true)
+                    //use this to model what we're trying
                         .onChange(of: goatName) { goatName in
                             self.savedGoatName = goatName
                         }
