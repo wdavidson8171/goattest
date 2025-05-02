@@ -432,7 +432,7 @@ struct Homepage: View {
                             }
                             label: {
                                 Image(.uggs).resizable()
-                                    .aspectRatio(CGSize(width: 100, height: 60), contentMode: .fill)
+                                    .aspectRatio(contentMode: .fit)
                                 .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 0)))  }
                         }
                         ZStack{
@@ -450,7 +450,7 @@ struct Homepage: View {
                                 }
                             } label: {
                                 Image(.bling).resizable()
-                                    .aspectRatio(CGSize(width: 100, height: 60), contentMode: .fill)
+                                    .aspectRatio(contentMode: .fit)
                                     .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 1)))
                             }
                         }
@@ -470,7 +470,7 @@ struct Homepage: View {
                                 }
                             } label: {
                                 Image(.cowboy).resizable()
-                                    .aspectRatio(CGSize(width: 100, height: 60), contentMode: .fill)
+                                    .aspectRatio(contentMode: .fit)
                                     .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 2)))
                             }
                         }
@@ -489,7 +489,7 @@ struct Homepage: View {
                                 }
                             } label: {
                                 Image(.ski).resizable()
-                                    .aspectRatio(CGSize(width: 100, height: 60), contentMode: .fill)
+                                    .aspectRatio(contentMode: .fit)
                                     .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 3)))
                             }
                         }
@@ -508,7 +508,7 @@ struct Homepage: View {
                                 }
                             } label: {
                                 Image(.superhero).resizable()
-                                    .aspectRatio(CGSize(width: 90, height: 60), contentMode: .fill)
+                                    .aspectRatio(contentMode: .fit)
                                     .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 4)))
                             }
                         }
@@ -527,7 +527,7 @@ struct Homepage: View {
                                 }
                             } label: {
                                 Image(.pirate).resizable()
-                                    .aspectRatio(CGSize(width: 100, height: 60), contentMode: .fill)
+                                    .aspectRatio(contentMode: .fit)
                                     .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 5)))
                             }
                         }
@@ -546,7 +546,7 @@ struct Homepage: View {
                                 }
                             } label: {
                                 Image(.olivia).resizable()
-                                    .aspectRatio(CGSize(width: 100, height: 60), contentMode: .fill)
+                                    .aspectRatio(contentMode: .fit)
                                     .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 6)))
                             }
                         }
@@ -629,3 +629,4 @@ struct Homepage: View {
         #Preview {
             Homepage()
         }
+

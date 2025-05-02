@@ -92,6 +92,7 @@ struct GlobalVariables{
     @AppStorage("purchased") static var purchased:Int = 0
     //static var selected:String
     @AppStorage("clothesNum") static var clothesNum: Int = 0
+    @AppStorage("fixer") static var fixer:Bool = false
 }
 let defaults = UserDefaults.standard
     struct iOSview:View{
@@ -102,6 +103,7 @@ let defaults = UserDefaults.standard
         
         func saveSurvey(){
             GlobalVariables.submitted = true
+            GlobalVariables.fixer = true
             //I think userDefaults could be replaced with APPStorage here to save the data?
             //or something with the globalvariables.saveditems
             //orOR it needs to be done throuh the selectedItems variable
