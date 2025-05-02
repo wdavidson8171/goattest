@@ -1949,8 +1949,8 @@ struct Bingo: View {
                          //maybe change second part to own if loop
                          //in 2nd if loop dont include randomImage() function
                              canCounter()
-                         }
-                        /*if GlobalVariables.submitted == true{
+                         }*/
+                        if GlobalVariables.submitted == true{
                             //or if random array has values then show
                             //maybe change second part to own if loop
                             //in 2nd if loop dont include randomImage() function
