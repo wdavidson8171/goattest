@@ -202,9 +202,6 @@ struct Bingo: View {
         }
         //GlobalVariables.coin
         GlobalVariables.submitted = false
-        //print(m)
-      //  print("LOOK HERE THIS IS THE ARRAY")
-        //print(moneyArray)
 
         overlayOpacity1 = 0.0
         overlayOpacity2 = 0.0
