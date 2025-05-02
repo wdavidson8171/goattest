@@ -1,3 +1,8 @@
+
+
+
+
+
 //
 //  Bingo.swift
 //  test`
@@ -7,6 +12,7 @@
 
 import SwiftUI
 import UIKit
+import AVKit
 
 
 var buttonPressed = false
@@ -30,32 +36,38 @@ let winterArray = ["goToMountain","hotChocolate","pajamaParty","snowman"]
 let springArray = ["sitInMeadow","springCleaning","dyeEgg","bouquet"]
 let summerArray = ["waterBaloonFight","swimmingHole","pool","berryPicking","amusementPark","beach"]
 
-var opacity1 = 1.0
-var opacity2 = 1.0
- var opacity3 = 1.0
- var opacity4 = 1.0
- var opacity5 = 1.0
- var opacity6 = 1.0
- var opacity7 = 1.0
- var opacity8 = 1.0
- var opacity9 = 1.0
- var opacity10 = 1.0
- var opacity11 = 1.0
- var opacity12 = 1.0
- var opacity13 = 1.0
- var opacity14 = 1.0
- var opacity15 = 1.0
- var opacity16 = 1.0
- var opacity17 = 1.0
- var opacity18 = 1.0
- var opacity19 = 1.0
- var opacity20 = 1.0
- var opacity21 = 1.0
- var opacity22 = 1.0
- var opacity23 = 1.0
- var opacity24 = 1.0
+
+
+
+/*class SoundManager{
+    
+    static let instance = SoundManager()
+    
+    var player: AVAudioPlayer?
+    
+    func playSound() {
+        
+        guard let url = URL(string: "") else {return}
+        
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+        } catch let error{
+            print("Error playing sound. \(error.localizedDescription)")
+        }
+        
+    }
+}*/
+
+
+
+
 
 struct Bingo: View {
+   // var soundManager = SoundManager()
+    
+
+    
+    
     //var opacity1 = 1.0
     @State var showImage: Bool = false
     @State var showingPopup: Bool = false
@@ -63,30 +75,81 @@ struct Bingo: View {
     @State var cans = 0
     @State var coins = 0
     @State var tnum = 1
-    @AppStorage("over1") var overlayOpacity1 = 0.0
-    @AppStorage("over2") var overlayOpacity2 = 0.0
-    @AppStorage("over3") var overlayOpacity3 = 0.0
-    @AppStorage("over4") var overlayOpacity4 = 0.0
-    @AppStorage("over5") var overlayOpacity5 = 0.0
-    @AppStorage("over6") var overlayOpacity6 = 0.0
-    @AppStorage("over7") var overlayOpacity7 = 0.0
-    @AppStorage("over8") var overlayOpacity8 = 0.0
-    @AppStorage("over9") var overlayOpacity9 = 0.0
-    @AppStorage("over10") var overlayOpacity10 = 0.0
-    @AppStorage("over11") var overlayOpacity11 = 0.0
-    @AppStorage("over12") var overlayOpacity12 = 0.0
-    @AppStorage("over13") var overlayOpacity13 = 0.0
-    @AppStorage("over14") var overlayOpacity14 = 0.0
-    @AppStorage("over15") var overlayOpacity15 = 0.0
-    @AppStorage("over16") var overlayOpacity16 = 0.0
-    @AppStorage("over17") var overlayOpacity17 = 0.0
-    @AppStorage("over18") var overlayOpacity18 = 0.0
-    @AppStorage("over19") var overlayOpacity19 = 0.0
-    @AppStorage("over20") var overlayOpacity20 = 0.0
-    @AppStorage("over21") var overlayOpacity21 = 0.0
-    @AppStorage("over22") var overlayOpacity22 = 0.0
-    @AppStorage("over23") var overlayOpacity23 = 0.0
-    @AppStorage("over24") var overlayOpacity24 = 0.0
+    @AppStorage("overlayOpacity1") var overlayOpacity1 = 0.0
+    @AppStorage("overlayOpacity2") var overlayOpacity2 = 0.0
+    @AppStorage("overlayOpacity3") var overlayOpacity3 = 0.0
+    @AppStorage("overlayOpacity4") var overlayOpacity4 = 0.0
+    @AppStorage("overlayOpacity5") var overlayOpacity5 = 0.0
+    @AppStorage("overlayOpacity6") var overlayOpacity6 = 0.0
+    @AppStorage("overlayOpacity7") var overlayOpacity7 = 0.0
+    @AppStorage("overlayOpacity8") var overlayOpacity8 = 0.0
+    @AppStorage("overlayOpacity9") var overlayOpacity9 = 0.0
+    @AppStorage("overlayOpacity10") var overlayOpacity10 = 0.0
+    @AppStorage("overlayOpacity11") var overlayOpacity11 = 0.0
+    @AppStorage("overlayOpacity12") var overlayOpacity12 = 0.0
+    @AppStorage("overlayOpacity13") var overlayOpacity13 = 0.0
+    @AppStorage("overlayOpacity14") var overlayOpacity14 = 0.0
+    @AppStorage("overlayOpacity15") var overlayOpacity15 = 0.0
+    @AppStorage("overlayOpacity16") var overlayOpacity16 = 0.0
+    @AppStorage("overlayOpacity17") var overlayOpacity17 = 0.0
+    @AppStorage("overlayOpacity18") var overlayOpacity18 = 0.0
+    @AppStorage("overlayOpacity19") var overlayOpacity19 = 0.0
+    @AppStorage("overlayOpacity20") var overlayOpacity20 = 0.0
+    @AppStorage("overlayOpacity21") var overlayOpacity21 = 0.0
+    @AppStorage("overlayOpacity22") var overlayOpacity22 = 0.0
+    @AppStorage("overlayOpacity23") var overlayOpacity23 = 0.0
+    @AppStorage("overlayOpacity24") var overlayOpacity24 = 0.0
+    
+    @AppStorage("opacity1") var opacity1 = 1.0
+    @AppStorage("opacity2") var opacity2 = 1.0
+    @AppStorage("opacity3") var opacity3 = 1.0
+    @AppStorage("opacity4") var opacity4 = 1.0
+    @AppStorage("opacity5") var opacity5 = 1.0
+    @AppStorage("opacity6") var opacity6 = 1.0
+    @AppStorage("opacity7") var opacity7 = 1.0
+    @AppStorage("opacity8") var opacity8 = 1.0
+    @AppStorage("opacity9") var opacity9 = 1.0
+    @AppStorage("opacity10") var opacity10 = 1.0
+    @AppStorage("opacity11") var opacity11 = 1.0
+    @AppStorage("opacity12") var opacity12 = 1.0
+    @AppStorage("opacity13") var opacity13 = 1.0
+    @AppStorage("opacity14") var opacity14 = 1.0
+    @AppStorage("opacity15") var opacity15 = 1.0
+    @AppStorage("opacity16") var opacity16 = 1.0
+    @AppStorage("opacity17") var opacity17 = 1.0
+    @AppStorage("opacity18") var opacity18 = 1.0
+    @AppStorage("opacity19") var opacity19 = 1.0
+    @AppStorage("opacity20") var opacity20 = 1.0
+    @AppStorage("opacity21") var opacity21 = 1.0
+    @AppStorage("opacity22") var opacity22 = 1.0
+    @AppStorage("opacity23") var opacity23 = 1.0
+    @AppStorage("opacity24") var opacity24 = 1.0
+    
+    @AppStorage("dis1") var dis1: Bool = false
+    @AppStorage("dis2") var dis2: Bool = false
+    @AppStorage("dis3") var dis3: Bool = false
+    @AppStorage("dis4") var dis4: Bool = false
+    @AppStorage("dis5") var dis5: Bool = false
+    @AppStorage("dis6") var dis6: Bool = false
+    @AppStorage("dis7") var dis7: Bool = false
+    @AppStorage("dis8") var dis8: Bool = false
+    @AppStorage("dis9") var dis9: Bool = false
+    @AppStorage("dis10") var dis10: Bool = false
+    @AppStorage("dis11") var dis11: Bool = false
+    @AppStorage("dis12") var dis12: Bool = false
+    @AppStorage("dis13") var dis13: Bool = false
+    @AppStorage("dis14") var dis14: Bool = false
+    @AppStorage("dis15") var dis15: Bool = false
+    @AppStorage("dis16") var dis16: Bool = false
+    @AppStorage("dis17") var dis17: Bool = false
+    @AppStorage("dis18") var dis18: Bool = false
+    @AppStorage("dis19") var dis19: Bool = false
+    @AppStorage("dis20") var dis20: Bool = false
+    @AppStorage("dis21") var dis21: Bool = false
+    @AppStorage("dis22") var dis22: Bool = false
+    @AppStorage("dis23") var dis23: Bool = false
+    @AppStorage("dis24") var dis24: Bool = false
+    
     
     @State var disabled1: Bool = false
     @State var disabled2: Bool = false
@@ -112,25 +175,25 @@ struct Bingo: View {
     @State var disabled22: Bool = false
     @State var disabled23: Bool = false
     @State var disabled24: Bool = false
-    @State var moneyArray: [String] = [" "]
+    
+    @AppStorage("moneyArray") var moneyArray: [String] = [" "]
     @State var chosenColor = GlobalVariables.color[0]
-    @State var i = 0
-    @State var m = 0
-    @State var n = 0
+    @AppStorage("i") var i = 0
+    @AppStorage("m") var m = 0
+    @AppStorage("n") var n = 0
     @State var blackoutCoins: Int = 0
     
     //var coins = GlobalVariables.coin
     
     @AppStorage("opened") var opened = 0
     func blackout() {
-        GlobalVariables.coin = GlobalVariables.coin + m
-        GlobalVariables.blackoutCoins += (GlobalVariables.coin + m * 50)
         
+        //GlobalVariables.blackoutCoins += (GlobalVariables.coin + m * 50)
        // print("coins")
         
-        coins = GlobalVariables.blackoutCoins + GlobalVariables.coin
-        print("blackout coins")
-        print(GlobalVariables.blackoutCoins)
+        //coins = GlobalVariables.blackoutCoins + GlobalVariables.coin
+        //print("blackout coins")
+        //print(GlobalVariables.blackoutCoins)
         GlobalVariables.SavedItems = ["You're selected items", "will appear here"]
         randomArray.removeAll()
         randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
@@ -142,9 +205,9 @@ struct Bingo: View {
         }
         //GlobalVariables.coin
         GlobalVariables.submitted = false
-        print(m)
-        print("LOOK HERE THIS IS THE ARRAY")
-        print(moneyArray)
+        //print(m)
+      //  print("LOOK HERE THIS IS THE ARRAY")
+        //print(moneyArray)
 
         overlayOpacity1 = 0.0
         overlayOpacity2 = 0.0
@@ -198,8 +261,8 @@ struct Bingo: View {
         
     }
    func remakeButtons(){
-       print("coins")
-       print(GlobalVariables.coin)
+       //print("coins")
+      // print(GlobalVariables.coin)
         opacity1 = 1.0
         opacity2 = 1.0
         opacity3 = 1.0
@@ -249,6 +312,31 @@ struct Bingo: View {
        disabled22 = false
        disabled23 = false
        disabled24 = false
+       
+       self.dis1 = false
+       self.dis2 = false
+       self.dis3 = false
+       self.dis4 = false
+       self.dis5 = false
+       self.dis6 = false
+       self.dis7 = false
+       self.dis8 = false
+       self.dis9 = false
+       self.dis10 = false
+       self.dis11 = false
+       self.dis12 = false
+       self.dis13 = false
+       self.dis14 = false
+       self.dis15 = false
+       self.dis16 = false
+       self.dis17 = false
+       self.dis18 = false
+       self.dis19 = false
+       self.dis20 = false
+       self.dis21 = false
+       self.dis22 = false
+       self.dis23 = false
+       self.dis24 = false
        
       // GlobalVariables.coin = GlobalVariables.blackoutCoins
     }
@@ -405,234 +493,213 @@ struct Bingo: View {
     }
     
     func checkBingo(){
-
-        if (disabled1 && disabled2 && disabled3 && disabled4){
+        if (dis1 && dis2 && dis3 && dis4){
             if !moneyArray.contains("bingo1"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
                 moneyArray.append("bingo1")
+                
             }
             //moneyArray.append("bingo1")
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-            print(coins)
-            if GlobalVariables.blackoutCoins != 0{
-                coins = GlobalVariables.coin + 300
-            }
-            if (m > 0){
-                GlobalVariables.coin += 60
-                coins = GlobalVariables.coin
-                m = 0
-            }
+            
+            
         }
    
-        if (disabled5 && disabled6 && disabled7 && disabled8){
+        if (dis5 && dis6 && dis7 && dis8){
             if !moneyArray.contains("bingo2"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
                 moneyArray.append("bingo2")
             }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-            if (m > 0){
-                GlobalVariables.coin += 60
-                coins = GlobalVariables.coin
-                m = 0
-            }
+          
         }
         
-        if (disabled9 && disabled10 && disabled11 && disabled12){
+        if (dis9 && dis10 && dis11 && dis12){
             if !moneyArray.contains("bingo3"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
                 moneyArray.append("bingo3")
                 print("IT SEES THE BINGO")
             }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-        }
-        if (disabled13 && disabled14 && disabled15 && disabled16){
-            if !moneyArray.contains("bingo4"){
-                moneyArray.append("bingo4")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-
-            coins = GlobalVariables.coin
-        }
-        if (disabled17 && disabled18 && disabled19 && disabled20){
-            if !moneyArray.contains("bingo5"){
-                moneyArray.append("bingo5")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-
-            coins = GlobalVariables.coin
-        }
-        if (disabled21 && disabled22 && disabled23 && disabled24){
-            if !moneyArray.contains("bingo6"){
-                moneyArray.append("bingo6")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-
-            coins = GlobalVariables.coin
-        }
-        if (disabled1 && disabled5 && disabled9 && disabled13){// doesn't work
-            if !moneyArray.contains("bingo7"){
-                moneyArray.append("bingo7")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-
-            coins = GlobalVariables.coin
-        }
-        if (disabled5 && disabled9 && disabled13 && disabled17){ // doesn't work
-            if !moneyArray.contains("bingo8"){
-                moneyArray.append("bingo8")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-        }
-        if (disabled9 && disabled13 && disabled17 && disabled21){ // doesn't work
-            if !moneyArray.contains("bingo9"){
-                moneyArray.append("bingo9")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-        }
-        if (disabled2 && disabled6 && disabled10 && disabled14){
-            if !moneyArray.contains("bingo10"){
-                moneyArray.append("bingo10")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-        }
-        if (disabled6 && disabled10 && disabled14 && disabled18){
-            if !moneyArray.contains("bingo11"){
-                moneyArray.append("bingo11")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-        }
-        if (disabled10 && disabled14 && disabled18 && disabled22){
-            if !moneyArray.contains("bingo12"){
-                moneyArray.append("bingo12")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-        }
-        if (disabled3 && disabled7 && disabled11 && disabled15){ // doesn't work
-            if !moneyArray.contains("bingo13"){
-                moneyArray.append("bingo13")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-        }
-        if (disabled19 && disabled15 && disabled7 && disabled11){ // doesn't work
-            if !moneyArray.contains("bingo14"){
-                moneyArray.append("bingo14")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-        }
-        if (disabled15 && disabled11 && disabled19 && disabled23){ // doesn't work
-            if !moneyArray.contains("bingo15"){
-                moneyArray.append("bingo15")
-            }
-            GlobalVariables.coin = GlobalVariables.coin+10
-            coins = GlobalVariables.coin
-        }
-        if (disabled4 && disabled16 && disabled12 && disabled8){
-            if !moneyArray.contains("bingo16"){
-                moneyArray.append("bingo16")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-        }
-        if (disabled20 && disabled16 && disabled12 && disabled8){
-            if !moneyArray.contains("bingo17"){
-                moneyArray.append("bingo17")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-        }
-        if (disabled12 && disabled16 && disabled20 && disabled24){
-            if !moneyArray.contains("bingo18"){
-                moneyArray.append("bingo18")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-        }
-        if (disabled1 && disabled6 && disabled11 && disabled16){ // doesn't work IDK why
-            if !moneyArray.contains("bingo19"){
-                moneyArray.append("bingo19")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-        }
-        if (disabled5 && disabled10 && disabled15 && disabled20){
-            if !moneyArray.contains("bingo20"){
-                moneyArray.append("bingo20")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-        }
-        if (disabled9 && disabled14 && disabled19 && disabled24){
-            if !moneyArray.contains("bingo21"){
-                moneyArray.append("bingo21")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-        }
-        if (disabled4 && disabled7 && disabled10 && disabled13){ // doesn't work
-            if !moneyArray.contains("bingo22"){
-                moneyArray.append("bingo22")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-        }
-        if (disabled8 && disabled11 && disabled17 && disabled14){ // doesn't work
-            if !moneyArray.contains("bingo23"){
-                moneyArray.append("bingo23")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-        }
-        if (disabled15 && disabled12 && disabled21 && disabled18){
-            if !moneyArray.contains("bingo24"){
-                moneyArray.append("bingo24")
-            }
-            GlobalVariables.coin = (moneyArray.count*10)-10
-            coins = GlobalVariables.coin
-        }
-        if (disabled1 && disabled2 && disabled3 && disabled4 && disabled5 && disabled6 && disabled7 && disabled8 && disabled9 && disabled10 && disabled11 && disabled12 && disabled13 && disabled14 && disabled15 && disabled16 && disabled17 && disabled18 && disabled19 && disabled20 && disabled21 && disabled22 && disabled23 && disabled24){
-            opened = 0
-            button1 = "a "
-            button2 = " "
-            button3 = " "
-            button4 = " "
-            button5 = " "
-            button6 = " "
-            button7 = " "
-            button8 = " "
-            button9 = " "
-            //button9.removeAll() also works
-            button10 = " "
-            button11 = " "
-            button12 = " "
-            button13 = " "
-            button14 = " "
-            button15 = " "
-            button16 = " "
-            button17 = " "
-            button18 = " "
-            button19 = " "
-            button20 = " "
-            button21 = " "
-            button22 = " "
-            button23 = " "
-            button24 = " "
-            print("button9: \(button9)")
-            print("button24: \(button24)")
-            if !moneyArray.contains("blackout"){
-                moneyArray.append("blackout")
-            }
-            blackout()
-            GlobalVariables.coin = (moneyArray.count*10) + 50
-            coins = GlobalVariables.coin
+           
             
         }
+        if (dis13 && dis14 && dis15 && dis16){
+            if !moneyArray.contains("bingo4"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo4")
+            }
+            
+        }
+        if (dis17 && dis18 && dis19 && dis20){
+            if !moneyArray.contains("bingo5"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo5")
+            }
+           
+        }
+        if (dis21 && dis22 && dis23 && dis24){
+            if !moneyArray.contains("bingo6"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo6")
+            }
+           
+        }
+        if (dis1 && dis5 && dis9 && dis13){// doesn't work
+            if !moneyArray.contains("bingo7"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo7")
+            }
+            
+        }
+        if (dis5 && dis9 && dis13 && dis17){ // doesn't work
+            if !moneyArray.contains("bingo8"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo8")
+            }
+            
+        }
+        if (dis9 && dis13 && dis17 && dis21){ // doesn't work
+            if !moneyArray.contains("bingo9"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo9")
+            }
+          
+        }
+        if (dis2 && dis6 && dis10 && dis14){
+            if !moneyArray.contains("bingo10"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo10")
+            }
+           
+        }
+        if (dis6 && dis10 && dis14 && dis18){
+            if !moneyArray.contains("bingo11"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo11")
+            }
+           
+        }
+        if (dis10 && dis14 && dis18 && dis22){
+            if !moneyArray.contains("bingo12"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo12")
+            }
+           
+        }
+        if (dis3 && dis7 && dis11 && dis15){ // doesn't work
+            if !moneyArray.contains("bingo13"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo13")
+            }
+          
+        }
+        if (dis19 && dis15 && dis7 && dis11){ // doesn't work
+            if !moneyArray.contains("bingo14"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo14")
+            }
+            
+        }
+        if (dis15 && dis11 && dis19 && dis23){ // doesn't work
+            if !moneyArray.contains("bingo15"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo15")
+            }
+           
+        }
+        if (dis4 && dis16 && dis12 && dis8){
+            if !moneyArray.contains("bingo16"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo16")
+            }
+           
+        }
+        if (dis20 && dis16 && dis12 && dis8){
+            if !moneyArray.contains("bingo17"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo17")
+            }
+           
+        }
+        if (dis12 && dis16 && dis20 && dis24){
+            if !moneyArray.contains("bingo18"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo18")
+            }
+           
+        }
+        if (dis1 && dis6 && dis11 && dis16){ // doesn't work IDK why
+            if !moneyArray.contains("bingo19"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo19")
+            }
+            
+        }
+        if (dis5 && dis10 && dis15 && dis20){
+            if !moneyArray.contains("bingo20"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo20")
+            }
+         
+        }
+        if (dis9 && dis14 && dis19 && dis24){
+            if !moneyArray.contains("bingo21"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo21")
+            }
+           
+        }
+        if (dis4 && dis7 && dis10 && dis13){ // doesn't work
+            if !moneyArray.contains("bingo22"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo22")
+            }
+           
+        }
+        if (dis8 && dis11 && dis17 && dis14){ // doesn't work
+            if !moneyArray.contains("bingo23"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo23")
+            }
+            
+        }
+        if (dis15 && dis12 && dis21 && dis18){
+            if !moneyArray.contains("bingo24"){
+                GlobalVariables.coin = GlobalVariables.coin + 10
+                coins = GlobalVariables.coin
+                moneyArray.append("bingo24")
+            }
+           
+        }
+        if (dis1 && dis2 && dis3 && dis4 && dis5 && dis6 && dis7 && dis8 && dis9 && dis10 && dis11 && dis12 && dis13 && dis14 && dis15 && dis16 && dis17 && dis18 && dis19 && dis20 && dis21 && dis22 && dis23 && dis24){
+            if !moneyArray.contains("blackout"){
+                GlobalVariables.coin = GlobalVariables.coin + 60
+                coins = GlobalVariables.coin
+                moneyArray.append("blackout")
+            }
+        
+                    }
     }
     
     
@@ -649,13 +716,30 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         disabled1 = true
+        dis1 = true
+        UserDefaults
+            .standard
+            .synchronize()
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        print("LOOK HERE pt2!!")
+        print(dis1)
+        print(dis2)
+        print(dis3)
+        print(dis4)
         //return hideButton
     }
     func buttonPresed2(){
         tnum = tnum - 1
         overlayOpacity2 = 0.6
         disabled2 = true
+        self.dis2 = disabled2
+        UserDefaults
+            .standard
+            .synchronize()
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -665,12 +749,25 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        print("LOOK HERE pt2!!")
+        print(dis1)
+        print(dis2)
+        print(dis3)
+        print(dis4)
     }
     
     func buttonPresed3(){
         tnum = tnum - 1
         overlayOpacity3 = 0.6
         disabled3 = true
+        self.dis3 = disabled3
+        UserDefaults
+            .standard
+            .synchronize()
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -680,12 +777,25 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        print("LOOK HERE pt2!!")
+        print(dis1)
+        print(dis2)
+        print(dis3)
+        print(dis4)
     }
     
     func buttonPresed4(){
         tnum = tnum - 1
         overlayOpacity4 = 0.6
         disabled4 = true
+        self.dis4 = disabled4
+        UserDefaults
+            .standard
+            .synchronize()// copy this onto all buttons
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -695,12 +805,22 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        print("LOOK HERE pt2!!")
+        print(dis1)
+        print(dis2)
+        print(dis3)
+        print(dis4)
     }
     
     func buttonPresed5(){
         tnum = tnum - 1
         overlayOpacity5 = 0.6
         disabled5 = true
+        self.dis5 = disabled5
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -710,12 +830,22 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
         //return hideButton
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     func buttonPresed6(){
         tnum = tnum - 1
         overlayOpacity6 = 0.6
         disabled6 = true
+        self.dis6 = disabled6
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -725,12 +855,22 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed7(){
         tnum = tnum - 1
         overlayOpacity7 = 0.6
         disabled7 = true
+        self.dis7 = disabled7
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -740,12 +880,22 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed8(){
         tnum = tnum - 1
         overlayOpacity8 = 0.6
         disabled8 = true
+        self.dis8 = disabled8
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -755,6 +905,15 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed9(){
@@ -769,13 +928,24 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         disabled9 = true
+        self.dis9 = disabled9
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
         //return hideButton
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     func buttonPresed10(){
         tnum = tnum - 1
         overlayOpacity10 = 0.6
         disabled10 = true
+        self.dis10 = disabled10
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -785,12 +955,22 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed11(){
         tnum = tnum - 1
         overlayOpacity11 = 0.6
         disabled11 = true
+        self.dis11 = disabled11
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -800,12 +980,22 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed12(){
         tnum = tnum - 1
         overlayOpacity12 = 0.6
         disabled12 = true
+        self.dis12 = disabled12
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -815,6 +1005,15 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed13(){
@@ -829,13 +1028,24 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         disabled13 = true
+        self.dis13 = disabled13
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
         //return hideButton
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     func buttonPresed14(){
         tnum = tnum - 1
         overlayOpacity14 = 0.6
         disabled14 = true
+        self.dis14 = disabled14
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -845,12 +1055,22 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed15(){
         tnum = tnum - 1
         overlayOpacity15 = 0.6
         disabled15 = true
+        self.dis15 = disabled15
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -860,12 +1080,22 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed16(){
         tnum = tnum - 1
         overlayOpacity16 = 0.6
         disabled16 = true
+        self.dis16 = disabled16
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -875,6 +1105,15 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed17(){
@@ -889,13 +1128,24 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         disabled17 = true
+        self.dis17 = disabled17
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
         //return hideButton
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     func buttonPresed18(){
         tnum = tnum - 1
         overlayOpacity18 = 0.6
         disabled18 = true
+        self.dis18 = disabled18
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -905,12 +1155,22 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed19(){
         tnum = tnum - 1
         overlayOpacity19 = 0.6
         disabled19 = true
+        self.dis19 = disabled19
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -920,12 +1180,22 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed20(){
         tnum = tnum - 1
         overlayOpacity20 = 0.6
         disabled20 = true
+        self.dis20 = disabled20
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -935,6 +1205,15 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed21(){
@@ -949,13 +1228,24 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         disabled21 = true
+        self.dis21 = disabled21
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
         //return hideButton
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     func buttonPresed22(){
         tnum = tnum - 1
         overlayOpacity22 = 0.6
         disabled22 = true
+        self.dis22 = disabled22
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -965,12 +1255,22 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed23(){
         tnum = tnum - 1
         overlayOpacity23 = 0.6
         disabled23 = true
+        self.dis23 = disabled23
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -980,12 +1280,22 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        print("LOOK HERE pt2!!")
+        print(disabled1)
+        print(disabled2)
+        print(disabled3)
+        print(disabled4)
     }
     
     func buttonPresed24(){
         tnum = tnum - 1
         overlayOpacity24 = 0.6
         disabled24 = true
+        self.dis24 = disabled24
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -995,6 +1305,11 @@ struct Bingo: View {
         print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
+        if (m == 1) {
+            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            m = 0
+        }
+        
     }
     
     func canCounter(){
@@ -1524,11 +1839,110 @@ struct Bingo: View {
                     }
                 }.padding()
                     .onAppear{
-                        opened+=1
-                        if opened == 2 {
-                            randomImage()
-                            populateArray()
-                            canCounter()
+                        print("overlay opacity")
+                        print(overlayOpacity1)
+                        if (overlayOpacity1 == 0.6) {
+                            disabled1 = true
+                            dis1 = true
+                            print("dis1:")
+                            print(dis1)
+                        }
+                        if (overlayOpacity2 == 0.6) {
+                            dis2 = true
+                            disabled2 = true
+                        }
+                        if (overlayOpacity3 == 0.6) {
+                            dis3 = true
+                            disabled3 = true
+                        }
+                        if (overlayOpacity4 == 0.6) {
+                            dis4 = true
+                            disabled4 = true
+                        }
+                        if (overlayOpacity5 == 0.6) {
+                            dis5 = true
+                            disabled5 = true
+                        }
+                        if (overlayOpacity6 == 0.6) {
+                            dis6 = true
+                            disabled6 = true
+                        }
+                        if (overlayOpacity7 == 0.6) {
+                            dis7 = true
+                            disabled7 = true
+                        }
+                        if (overlayOpacity8 == 0.6) {
+                            dis8 = true
+                            disabled8 = true
+                        }
+                        if (overlayOpacity9 == 0.6) {
+                            dis9 = true
+                            disabled9 = true
+                        }
+                        if (overlayOpacity10 == 0.6) {
+                            dis10 = true
+                            disabled10 = true
+                        }
+                        if (overlayOpacity11 == 0.6) {
+                            dis11 = true
+                            disabled11 = true
+                        }
+                        if (overlayOpacity12 == 0.6) {
+                            dis12 = true
+                            disabled12 = true
+                        }
+                        if (overlayOpacity13 == 0.6) {
+                            dis13 = true
+                            disabled13 = true
+                        }
+                        if (overlayOpacity14 == 0.6) {
+                            dis14 = true
+                            disabled14 = true
+                        }
+                        if (overlayOpacity15 == 0.6) {
+                            dis15 = true
+                            disabled15 = true
+                        }
+                        if (overlayOpacity16 == 0.6) {
+                            dis16 = true
+                            disabled16 = true
+                        }
+                        if (overlayOpacity17 == 0.6) {
+                            dis17 = true
+                            disabled17 = true
+                        }
+                        if (overlayOpacity18 == 0.6) {
+                            dis18 = true
+                            disabled18 = true
+                        }
+                        if (overlayOpacity19 == 0.6) {
+                            dis19 = true
+                            disabled19 = true
+                        }
+                        if (overlayOpacity20 == 0.6) {
+                            dis20 = true
+                            disabled20 = true
+                        }
+                        if (overlayOpacity21 == 0.6) {
+                            dis21 = true
+                            disabled21 = true
+                        }
+                        if (overlayOpacity22 == 0.6) {
+                            dis22 = true
+                            disabled22 = true
+                        }
+                        if (overlayOpacity23 == 0.6) {
+                            dis23 = true
+                            disabled23 = true
+                        }
+                        if (overlayOpacity24 == 0.6) {
+                            dis24 = true
+                            disabled24 = true
+                        }
+                        /*if GlobalVariables.SavedItems.count > 0 {
+                         
+                         populateArray()
+                         canCounter()
                          }
                          else {
                          //or if random array has values then show
@@ -1543,7 +1957,15 @@ struct Bingo: View {
                             randomImage()
                             populateArray()
                             canCounter()
-                        }*/
+                        }
+                            
+                        if GlobalVariables.fixer == true {
+                            remakeButtons()
+                            GlobalVariables.fixer = false
+                            }
+                            
+                           
+                        
                     }
                 
                 
@@ -1558,4 +1980,4 @@ struct Bingo: View {
         Bingo()
     }
     
-    
+

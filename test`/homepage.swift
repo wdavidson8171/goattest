@@ -115,7 +115,7 @@ struct Homepage: View {
     
     @State var showingProfilePopup = false
     
-    @State var internalState: Int = 5
+    @AppStorage("internal") var internalState: Int = 5
     
     /// <#Description#>
     var body: some View {
@@ -653,3 +653,4 @@ struct Homepage: View {
         #Preview {
             Homepage()
         }
+

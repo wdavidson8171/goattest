@@ -12,7 +12,6 @@ import Foundation
 
 
 struct Goat: View {
-    //@State var countDownTimer = 8
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @AppStorage("firstOpenedYear") var firstOpenedYear: Int = -1
@@ -62,7 +61,7 @@ struct Goat: View {
     
     var body: some View {
         ZStack{
-            if GlobalVariables.submitted == true{
+            if GlobalVariables.submitted == true || GlobalVariables.submitted == false{
                 if GlobalVariables.color[0] == "lavender"{
                     Text("lavender ischosen")
                     Color.lavender.ignoresSafeArea()
@@ -99,6 +98,9 @@ struct Goat: View {
                             currentSec = Calendar.current.component(.second, from: Date())
                             currentDate = Date()
                             secsLeftResult = getSecondsPassed(getFirstOpenedDate(), to: currentDate)
+                            if secsLeftResult < 0 {
+                                secsLeftResult = 1
+                            }
                             percent = (100 * x - (CGFloat(secsLeftResult) .truncatingRemainder (dividingBy: 100 * x))) / x
                             if isEmpty() {
                                 percent = 0
@@ -125,17 +127,16 @@ struct Goat: View {
                     Button(action: {feedGoat()}){
                         Image("FOOD").position(x: 170, y:170)
                             }
-                    //if(getGoatState() != .deadGoat){
+                    if(getGoatState() != .deadGoat){
                         Image(clothesList[GlobalVariables.clothesNum])
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 500, height: 500)
                             .position(x: 250, y: 335)
-                    //}
+                    }
                 }
                 
                 Text("secs passed: " + String(secsLeftResult))
-                //Text("secs passed: " + String(bigFatTest))
                 Text("cansss: " + String(foodFed))
                 
                 
@@ -195,13 +196,10 @@ struct Goat: View {
     //returns the seconds passed from the date the app was first opened to the current date
     func getSecondsPassed(_ from: Date, to: Date)-> Int{
         let secondsPassed: DateComponents = Calendar.current.dateComponents([.second], from: from, to: to)
-        if ((secondsPassed.second!) - (foodFed * 60)) < 0{
-            return 1
-        }
-        //else{
-            return (secondsPassed.second!) - (foodFed * 60)
-        //}
+        let secs: Int = (secondsPassed.second!) - (foodFed * 60)
+        return secs
     }
+
     
     //returns the date the app was first opened
     func getFirstOpenedDate() -> Date{
@@ -255,7 +253,7 @@ struct Goat: View {
         }
     }
     
-    //returns the appropriate goat image
+    //returns the appropriate goat text
     func getGoatStateText()-> String{
         let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
         if CGFloat(secondsPassed) >= 400 * x{
@@ -307,9 +305,6 @@ struct Goat: View {
     
 }
 
-/*struct globalVariable{
-    @AppStorage("bigFatTest") var bigFatTest: Int = 0
-}*/
 
 #Preview {
     Goat()
