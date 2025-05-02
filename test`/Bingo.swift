@@ -1867,6 +1867,8 @@ struct Bingo: View {
                         if (overlayOpacity1 == 0.6) {
                             disabled1 = true
                             dis1 = true
+                            print("dis1:")
+                            print(dis1)
                         }
                         if (overlayOpacity2 == 0.6) {
                             dis2 = true
@@ -1879,6 +1881,86 @@ struct Bingo: View {
                         if (overlayOpacity4 == 0.6) {
                             dis4 = true
                             disabled4 = true
+                        }
+                        if (overlayOpacity5 == 0.6) {
+                            dis5 = true
+                            disabled5 = true
+                        }
+                        if (overlayOpacity6 == 0.6) {
+                            dis6 = true
+                            disabled6 = true
+                        }
+                        if (overlayOpacity7 == 0.6) {
+                            dis7 = true
+                            disabled7 = true
+                        }
+                        if (overlayOpacity8 == 0.6) {
+                            dis8 = true
+                            disabled8 = true
+                        }
+                        if (overlayOpacity9 == 0.6) {
+                            dis9 = true
+                            disabled9 = true
+                        }
+                        if (overlayOpacity10 == 0.6) {
+                            dis10 = true
+                            disabled10 = true
+                        }
+                        if (overlayOpacity11 == 0.6) {
+                            dis11 = true
+                            disabled11 = true
+                        }
+                        if (overlayOpacity12 == 0.6) {
+                            dis12 = true
+                            disabled12 = true
+                        }
+                        if (overlayOpacity13 == 0.6) {
+                            dis13 = true
+                            disabled13 = true
+                        }
+                        if (overlayOpacity14 == 0.6) {
+                            dis14 = true
+                            disabled14 = true
+                        }
+                        if (overlayOpacity15 == 0.6) {
+                            dis15 = true
+                            disabled15 = true
+                        }
+                        if (overlayOpacity16 == 0.6) {
+                            dis16 = true
+                            disabled16 = true
+                        }
+                        if (overlayOpacity17 == 0.6) {
+                            dis17 = true
+                            disabled17 = true
+                        }
+                        if (overlayOpacity18 == 0.6) {
+                            dis18 = true
+                            disabled18 = true
+                        }
+                        if (overlayOpacity19 == 0.6) {
+                            dis19 = true
+                            disabled19 = true
+                        }
+                        if (overlayOpacity20 == 0.6) {
+                            dis20 = true
+                            disabled20 = true
+                        }
+                        if (overlayOpacity21 == 0.6) {
+                            dis21 = true
+                            disabled21 = true
+                        }
+                        if (overlayOpacity22 == 0.6) {
+                            dis22 = true
+                            disabled22 = true
+                        }
+                        if (overlayOpacity23 == 0.6) {
+                            dis23 = true
+                            disabled23 = true
+                        }
+                        if (overlayOpacity24 == 0.6) {
+                            dis24 = true
+                            disabled24 = true
                         }
                         /*if GlobalVariables.SavedItems.count > 0 {
                          
@@ -1900,9 +1982,15 @@ struct Bingo: View {
                             randomImage()
                             populateArray()
                             canCounter()
-                            remakeButtons()
-                           
                         }
+                            
+                        if GlobalVariables.fixer == true {
+                            remakeButtons()
+                            GlobalVariables.fixer = false
+                            }
+                            
+                           
+                        
                     }
                 
                 
