@@ -717,15 +717,9 @@ struct Bingo: View {
             .synchronize()
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        print("LOOK HERE pt2!!")
-        print(dis1)
-        print(dis2)
-        print(dis3)
-        print(dis4)
-        //return hideButton
     }
     
     func buttonPresed2(){
@@ -746,14 +740,9 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        print("LOOK HERE pt2!!")
-        print(dis1)
-        print(dis2)
-        print(dis3)
-        print(dis4)
     }
     
     func buttonPresed3(){
@@ -774,14 +763,9 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        print("LOOK HERE pt2!!")
-        print(dis1)
-        print(dis2)
-        print(dis3)
-        print(dis4)
     }
     
     func buttonPresed4(){
@@ -791,7 +775,7 @@ struct Bingo: View {
         self.dis4 = disabled4
         UserDefaults
             .standard
-            .synchronize()// copy this onto all buttons
+            .synchronize()
         print("kill meeee")
         buttonPressed = true
         hideButton = true
@@ -802,14 +786,9 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        print("LOOK HERE pt2!!")
-        print(dis1)
-        print(dis2)
-        print(dis3)
-        print(dis4)
     }
     
     func buttonPresed5(){
@@ -827,15 +806,9 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        //return hideButton
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed6(){
@@ -853,14 +826,9 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed7(){
@@ -878,14 +846,9 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed8(){
@@ -903,14 +866,9 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed9(){
@@ -928,15 +886,9 @@ struct Bingo: View {
         self.dis9 = disabled9
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        //return hideButton
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed10(){
@@ -954,14 +906,9 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed11(){
@@ -979,14 +926,9 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed12(){
@@ -1004,14 +946,9 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed13(){
@@ -1029,15 +966,9 @@ struct Bingo: View {
         self.dis13 = disabled13
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        //return hideButton
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed14(){
@@ -1055,14 +986,9 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed15(){
@@ -1080,14 +1006,9 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed16(){
@@ -1105,14 +1026,9 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed17(){
@@ -1130,15 +1046,9 @@ struct Bingo: View {
         self.dis17 = disabled17
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        //return hideButton
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed18(){
@@ -1156,14 +1066,9 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed19(){
@@ -1181,14 +1086,9 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed20(){
@@ -1206,14 +1106,9 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed21(){
@@ -1231,15 +1126,9 @@ struct Bingo: View {
         self.dis21 = disabled21
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        //return hideButton
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed22(){
@@ -1257,14 +1146,9 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed23(){
@@ -1282,14 +1166,9 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
-        print("LOOK HERE pt2!!")
-        print(disabled1)
-        print(disabled2)
-        print(disabled3)
-        print(disabled4)
     }
     
     func buttonPresed24(){
@@ -1307,7 +1186,7 @@ struct Bingo: View {
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
-            GlobalVariables.coin += 0  //COPY AND PASTE TO ALL BUTTONS!!!!
+            GlobalVariables.coin += 0
             m = 0
         }
         
@@ -1962,30 +1841,18 @@ struct Bingo: View {
                             dis24 = true
                             disabled24 = true
                         }
-                        /*if GlobalVariables.SavedItems.count > 0 {
-                         
-                         populateArray()
-                         canCounter()
-                         }
-                         else if GlobalVariables.submitted == true{
-                         //or if random array has values then show
-                         //maybe change second part to own if loop
-                         //in 2nd if loop dont include randomImage() function
-                         randomImage()
-                         populateArray()
-                         canCounter()
-                         }*/
+
                         if GlobalVariables.submitted == true{
                             //or if random array has values then show
                             //maybe change second part to own if loop
                             //in 2nd if loop dont include randomImage() function
                             randomImage()
-                            populateArray()
                             canCounter()
                         }
                             
                         if GlobalVariables.fixer == true {
                             remakeButtons()
+                            populateArray()
                             GlobalVariables.fixer = false
                             }
                             
