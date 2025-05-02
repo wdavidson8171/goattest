@@ -130,8 +130,8 @@ let defaults = UserDefaults.standard
                                     .foregroundColor(.accentColor)
                                 
                                 Spacer()
-                                Image(systemName: "\($selectedItems.count).cirlce")
-                                    .foregroundColor(.red)
+                                Image(systemName: "\($selectedItems.count).circle")
+                                    .foregroundColor(.accentColor)
                                     .font(.title2)
                             }
                             
