@@ -20,9 +20,7 @@ struct Goat: View {
     @AppStorage("firstOpenedHour") var firstOpenedHour: Int = -1
     @AppStorage("firstOpenedMin") var firstOpenedMin: Int = -1
     @AppStorage("firstOpenedSec") var firstOpenedSec: Int = -1
-    
     @AppStorage("firstOpenedDate") var firstOpenedDate: Date = Date()
-    
     @AppStorage("foodFed") var foodFed: Int = 0
     
     var clothesList: [ImageResource] = [.nada, .uggs, .bling, .cowboy, .ski, .superhero, .pirate, .olivia]
@@ -33,9 +31,7 @@ struct Goat: View {
     @State var currentHour: Int = Calendar.current.component(.hour, from: Date())
     @State var currentMin: Int = Calendar.current.component(.minute, from: Date())
     @State var currentSec: Int = Calendar.current.component(.second, from: Date())
-    
     @State var secsLeftResult: Int = 0
-    
     @State var currentDate = Date()
     
     var b: Bool = true
@@ -55,8 +51,6 @@ struct Goat: View {
             foodFed += 10
         }
     }
-    
-    
     
     
     var body: some View {
@@ -85,10 +79,11 @@ struct Goat: View {
             HStack{
                 Image("tincan")
                 Text("\(GlobalVariables.can)").font(.system(.body, design: .serif))
-            }.position(x: 390, y:40)
+            }.position(x: 410, y:55)
             VStack{
                                 //tbh I'm not really sure what this does BUT IT WORKS
                     Text("Fatness bar:")
+                    .font(.system(size: 24, weight: .black, design: .serif)) .foregroundStyle(.niceBrown)
                         .onReceive(timer) { _ in
                             currentYear = Calendar.current.component(.year, from: Date())
                             currentMonth = Calendar.current.component(.month, from: Date())
@@ -116,6 +111,7 @@ struct Goat: View {
                 }
                 
                 Text(getGoatStateText())
+                    .font(.system(size: 24, weight: .black, design: .serif)) .foregroundStyle(.niceBrown)
                 
                 
                 ZStack(){
@@ -132,16 +128,14 @@ struct Goat: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 500, height: 500)
-                            .position(x: 250, y: 335)
+                            .position(x: 251.5, y: 329)
                     }
                 }
-                
-                Text("secs passed: " + String(secsLeftResult))
-                Text("cansss: " + String(foodFed))
-                
-                
-            }
-            
+                HStack(){
+                    Text(GlobalVariables.goatNameText)
+                        .font(.system(size: 24, weight: .black, design: .serif)) .foregroundStyle(.niceBrown)
+                }//.padding(-10)
+            }//.padding(10)
         }
     }
     

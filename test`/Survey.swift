@@ -93,6 +93,7 @@ struct GlobalVariables{
     //static var selected:String
     @AppStorage("clothesNum") static var clothesNum: Int = 0
     @AppStorage("fixer") static var fixer:Bool = false
+    @AppStorage("goatNameText") static var goatNameText:String = " "
 }
 let defaults = UserDefaults.standard
     struct iOSview:View{

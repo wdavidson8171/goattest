@@ -346,6 +346,7 @@ struct Homepage: View {
                     //use this to model what we're trying
                         .onChange(of: goatName) { goatName in
                             self.savedGoatName = goatName
+                            GlobalVariables.goatNameText = goatName
                         }
                         .onAppear {
                             self.goatName = savedGoatName
