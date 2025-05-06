@@ -131,8 +131,8 @@ struct Goat: View {
                     Text(GlobalVariables.goatNameText)
                         .font(.system(size: 24, weight: .black, design: .serif)) .foregroundStyle(.niceBrown)
                     Text("Time: " + String(secsLeftResult))
-                }//.padding(-10)
-            }//.padding(10)
+                }
+            }
         }
     }
     
