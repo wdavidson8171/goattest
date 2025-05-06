@@ -25,6 +25,7 @@ extension Array: RawRepresentable where Element: Codable {
         self = result
     }
 
+    
     public var rawValue: String {
         guard let data = try? JSONEncoder().encode(self),
               let result = String(data: data, encoding: .utf8)
@@ -36,15 +37,11 @@ extension Array: RawRepresentable where Element: Codable {
 }
 
 
-
 struct Homepage: View {
-    
     func colorPickerPurple(){
             GlobalVariables.color.insert("lavender", at: 0)
             print(GlobalVariables.color)
             internalState = 0
-            //update()
-            
         }
         func colorPickerPink(){
             GlobalVariables.color.insert("nicePink", at: 0)
@@ -56,46 +53,33 @@ struct Homepage: View {
             print(GlobalVariables.color)
             internalState = 1
         }
-        
-        
         func colorPickerBlue(){
             GlobalVariables.color.insert("pastelBlue", at: 0)
             print(GlobalVariables.color)
             internalState = 4
-            
         }
         func colorPickerOrange(){
             GlobalVariables.color.insert("orangish", at: 0)
             print(GlobalVariables.color)
             internalState = 3
         }
-        
         func resetColor(){
             internalState = 5
             GlobalVariables.color.insert("white", at: 0)
-            
         }
 
-    
-    @AppStorage("tempCoins")var tempCoins: Int = GlobalVariables.coin
-
-    //NEWPICREMEMBER1
-    //@AppStorage("ownedList2") public var ownedList2 = [Bool?](repeating: false, count: 7)
-    @AppStorage("ownedList3") public var ownedList2 = [false, false, false, false, false, false, false]
-    
-    
-    @State private var profileImage: String = UserDefaults.standard.string(forKey: "profileImage") ?? "profileicon"
-    //initializes profileImage variable as a string that if not changed starts as profileIcon
     
     
     @State var showPopup = false
     func buttonPresed(){
         showPopup = true
         buttonPressed = true
-
     }
-    
-    
+    //NEWPICREMEMBER1
+    @AppStorage("ownedList3") public var ownedList2 = [false, false, false, false, false, false, false]
+    @AppStorage("tempCoins")var tempCoins: Int = GlobalVariables.coin
+    //initializes profileImage variable as a string that if not changed starts as profileIcon
+    @State private var profileImage: String = UserDefaults.standard.string(forKey: "profileImage") ?? "profileicon"
     @State private var text = ""
     @AppStorage("STRING_KEY") var savedText = ""
     @State var selectedDate: Date = Date()
@@ -106,24 +90,16 @@ struct Homepage: View {
     @AppStorage("GOAT_NAME_KEY") var savedGoatName = ""
     @State var joinDate: Date = Date()
     @AppStorage("JOIN_DATE_KEY") var savedJoinDate: Date = Date()
-    
     @State private var selection: String?
-    
     @State var showingPopup = false
-    
     @State var showingProfilePopup = false
-    
     @AppStorage("internal") var internalState: Int = 5
+    
     
     /// Description
     var body: some View {
-        
-        
-        
-
         ZStack{
-            [Color.lavender, .coolTeal, .nicePink, .orangish, .pastelBlue, .white][internalState] .ignoresSafeArea()
-            
+            [Color.lavender, .coolTeal, .nicePink, .orangish, .pastelBlue, .white][internalState] .ignoresSafeArea(
             VStack(spacing: 5) {
                 Text("Profile")
                     .font(.largeTitle)
@@ -160,7 +136,6 @@ struct Homepage: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 100, height: 100)
-                                
                             }
                             Button{
                                 profileImage = "profile2"
@@ -172,7 +147,6 @@ struct Homepage: View {
                                     .scaledToFit()
                                     .frame(width: 100, height: 100)
                             }
-                            
                         }
                         HStack{
                             Button{
@@ -332,6 +306,7 @@ struct Homepage: View {
                     }.padding(.leading, 25)
                     .padding(.trailing, 20)
                 
+                
                 HStack{
                     Image("goaticon")
                         .resizable()
@@ -343,7 +318,6 @@ struct Homepage: View {
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
                         .disableAutocorrection(true)
-                    //use this to model what we're trying
                         .onChange(of: goatName) { goatName in
                             self.savedGoatName = goatName
                             GlobalVariables.goatNameText = goatName
@@ -357,10 +331,9 @@ struct Homepage: View {
                 .padding(.leading, 5)
                 .padding(.trailing, 5)
                 
+                
                 HStack{
                     Image(systemName: "arrowshape.right.fill").foregroundStyle(.niceBrown)
-
-                    
                     Image(systemName: "list.bullet.clipboard").foregroundStyle(.accent)
                     Button(action: {buttonPresed()}){
                         Text("Survey").font(.system(size: 36, weight: .black, design: .serif)) .foregroundStyle(.niceBrown)}
@@ -369,11 +342,12 @@ struct Homepage: View {
                             Survey().tabItem{
                                 Label("Survey", systemImage: "list.bullet.clipboard")
                             }
-                            
-                                           }
+                        }
                     }
                     Image (systemName: "arrowshape.left.fill").foregroundStyle(.niceBrown)
                 }.padding(15)
+                
+                
                 VStack{
                     Text("Customize your background!").font(.system(size: 18, design: .rounded)) .foregroundStyle(.niceBrown)
                     HStack{
@@ -395,14 +369,15 @@ struct Homepage: View {
                         }.border(Color.black, width: 1.5)
                     }.padding(7)
                 }
+                
+                
                 Button (action: {resetColor()}){
-                                    Text("Reset Color")
-                                        .font(.system(size: 15, design: .rounded)) .foregroundStyle(.niceBrown)
-                                        .padding(10)
-                                }
+                    Text("Reset Color")
+                        .font(.system(size: 15, design: .rounded)) .foregroundStyle(.niceBrown)
+                        .padding(10)
+                }
 
                 ScrollView(.horizontal) {
-                    
                     HStack{
                         ZStack{
                             Color.white
@@ -420,7 +395,6 @@ struct Homepage: View {
                         ZStack{
                             Color.white
                             Button{
-                                
                                 if isOwned2(position: 0) {
                                     selectedImage = .uggs
                                     GlobalVariables.clothesNum = 1
@@ -458,7 +432,6 @@ struct Homepage: View {
                         }
                         ZStack{
                             Color.white
-                            
                             Button{
                                 if isOwned2(position: 2) {
                                     selectedImage = .cowboy
@@ -552,8 +525,7 @@ struct Homepage: View {
                                     .frame(width: 100, height: 130).border(.black, width: 2).overlay(Color.gray.opacity(getOverlayOpacity(position : 6)))
                             }
                         }
-                    }
-                        .popover(isPresented: $showingPopup) {
+                    }.popover(isPresented: $showingPopup) {
                         VStack{
                             HStack{
                                 Image("coin")
@@ -574,18 +546,15 @@ struct Homepage: View {
                                     selectedImage = clickedImage
                                     GlobalVariables.clothesNum = currentPos + 1
                                     showingPopup = false
-                                    
                                 }
                             }.padding(20).background(.niceBrown).clipShape(Capsule(style: .continuous))
-                            
                         }
-                        
                     }
                 }
                 
                 
-                
                 Spacer()
+                
                 
                 Text("Member Since \(joinDate, format: Date.FormatStyle(date: .numeric, time: .omitted))")
                     .font(.caption)
@@ -595,15 +564,11 @@ struct Homepage: View {
                     .onAppear {
                         self.$joinDate.wrappedValue = savedJoinDate
                     }
-                
-            }
-            
-            
-            .padding()
+            }.padding()
         }
-        
     }
     
+            
     func isOwned2(position: Int) -> Bool {
         if ownedList2[position] == true{
             return true
@@ -613,6 +578,7 @@ struct Homepage: View {
         }
     }
     
+            
     func getOverlayOpacity(position: Int) -> Double {
         if isOwned2(position: position) {
             return 0
@@ -625,10 +591,9 @@ struct Homepage: View {
     func saveProfileImage(_name: String) {
         UserDefaults.standard.set(_name, forKey: "profileImage")
     }
-    
 }
 
+            
         #Preview {
             Homepage()
         }
-
