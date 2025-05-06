@@ -34,10 +34,8 @@ struct Goat: View {
     @State var secsLeftResult: Int = 0
     @State var currentDate = Date()
     
-    var b: Bool = true
-    
     //how many seconds it takes for the bar to go down by one thing (you can change this number to make it faster/slower, higher number = slower, closer to 0 = faster)
-    @State var x: CGFloat = 5
+    @State var x: CGFloat = 10
     
     var width: CGFloat = 200
     var height: CGFloat = 20
@@ -101,7 +99,6 @@ struct Goat: View {
                                 percent = 0
                             }
                         }
-                    
                 //the code for the bar's appearance
                 ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: height, style: .continuous).frame(width: width, height: height).foregroundColor(Color.gray.opacity(0.2))
@@ -109,7 +106,6 @@ struct Goat: View {
                         LinearGradient(gradient: Gradient(colors: [color1, color2]), startPoint: .leading, endPoint: .trailing).clipShape(RoundedRectangle(cornerRadius: height, style: .continuous))
                     ).foregroundColor(.clear)
                 }
-                
                 Text(getGoatStateText())
                     .font(.system(size: 24, weight: .black, design: .serif)) .foregroundStyle(.niceBrown)
                 
@@ -194,7 +190,6 @@ struct Goat: View {
         return secs
     }
 
-    
     //returns the date the app was first opened
     func getFirstOpenedDate() -> Date{
         var comps = DateComponents()
@@ -271,7 +266,6 @@ struct Goat: View {
         if CGFloat(percent) <= 0{
             return true
         }
-        
         else{
             return false
         }
@@ -286,19 +280,7 @@ struct Goat: View {
             return false
         }
     }
-    
-    func isFull()-> Bool{
-        let secondsPassed: Int = getSecondsPassed(getFirstOpenedDate(), to: getCurrentDate())
-        if CGFloat(secondsPassed) <= 0 * x{
-            return true
-        }
-        else{
-            return false
-        }
-    }
-    
 }
-
 
 #Preview {
     Goat()

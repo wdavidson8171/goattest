@@ -688,7 +688,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("blackout")
                 blackout()
-                //remakeButtons()
+                
             }
         
                     }
@@ -699,13 +699,9 @@ struct Bingo: View {
     func buttonPresed1(){
         tnum = tnum - 1
         overlayOpacity1 = 0.6
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         disabled1 = true
         dis1 = true
@@ -727,13 +723,9 @@ struct Bingo: View {
         UserDefaults
             .standard
             .synchronize()
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -750,13 +742,9 @@ struct Bingo: View {
         UserDefaults
             .standard
             .synchronize()
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -773,13 +761,9 @@ struct Bingo: View {
         UserDefaults
             .standard
             .synchronize()
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -793,13 +777,9 @@ struct Bingo: View {
         overlayOpacity5 = 0.6
         disabled5 = true
         self.dis5 = disabled5
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -813,13 +793,9 @@ struct Bingo: View {
         overlayOpacity6 = 0.6
         disabled6 = true
         self.dis6 = disabled6
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -833,13 +809,9 @@ struct Bingo: View {
         overlayOpacity7 = 0.6
         disabled7 = true
         self.dis7 = disabled7
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -853,13 +825,9 @@ struct Bingo: View {
         overlayOpacity8 = 0.6
         disabled8 = true
         self.dis8 = disabled8
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -871,13 +839,9 @@ struct Bingo: View {
     func buttonPresed9(){
         tnum = tnum - 1
         overlayOpacity9 = 0.6
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         disabled9 = true
         self.dis9 = disabled9
@@ -893,13 +857,9 @@ struct Bingo: View {
         overlayOpacity10 = 0.6
         disabled10 = true
         self.dis10 = disabled10
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -913,13 +873,9 @@ struct Bingo: View {
         overlayOpacity11 = 0.6
         disabled11 = true
         self.dis11 = disabled11
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -933,13 +889,9 @@ struct Bingo: View {
         overlayOpacity12 = 0.6
         disabled12 = true
         self.dis12 = disabled12
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -951,13 +903,9 @@ struct Bingo: View {
     func buttonPresed13(){
         tnum = tnum - 1
         overlayOpacity13 = 0.6
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         disabled13 = true
         self.dis13 = disabled13
@@ -973,13 +921,9 @@ struct Bingo: View {
         overlayOpacity14 = 0.6
         disabled14 = true
         self.dis14 = disabled14
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -993,13 +937,9 @@ struct Bingo: View {
         overlayOpacity15 = 0.6
         disabled15 = true
         self.dis15 = disabled15
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -1013,13 +953,9 @@ struct Bingo: View {
         overlayOpacity16 = 0.6
         disabled16 = true
         self.dis16 = disabled16
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -1031,13 +967,9 @@ struct Bingo: View {
     func buttonPresed17(){
         tnum = tnum - 1
         overlayOpacity17 = 0.6
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         disabled17 = true
         self.dis17 = disabled17
@@ -1053,13 +985,9 @@ struct Bingo: View {
         overlayOpacity18 = 0.6
         disabled18 = true
         self.dis18 = disabled18
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -1073,13 +1001,9 @@ struct Bingo: View {
         overlayOpacity19 = 0.6
         disabled19 = true
         self.dis19 = disabled19
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -1093,13 +1017,9 @@ struct Bingo: View {
         overlayOpacity20 = 0.6
         disabled20 = true
         self.dis20 = disabled20
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -1111,13 +1031,9 @@ struct Bingo: View {
     func buttonPresed21(){
         tnum = tnum - 1
         overlayOpacity21 = 0.6
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         disabled21 = true
         self.dis21 = disabled21
@@ -1133,13 +1049,9 @@ struct Bingo: View {
         overlayOpacity22 = 0.6
         disabled22 = true
         self.dis22 = disabled22
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -1153,13 +1065,9 @@ struct Bingo: View {
         overlayOpacity23 = 0.6
         disabled23 = true
         self.dis23 = disabled23
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -1173,13 +1081,9 @@ struct Bingo: View {
         overlayOpacity24 = 0.6
         disabled24 = true
         self.dis24 = disabled24
-        print("kill meeee")
         buttonPressed = true
         hideButton = true
-        print(hideButton)
-        print(randomArray)
         GlobalVariables.can = GlobalVariables.can+1
-        print(GlobalVariables.can)
         cans = GlobalVariables.can
         checkBingo()
         if (m == 1) {
@@ -1193,7 +1097,7 @@ struct Bingo: View {
        
         if buttonPressed == true{
             
-            print("fuck swift")
+            print(" ")
         }
     }
     
@@ -1228,12 +1132,9 @@ struct Bingo: View {
     func populateArray() {  //randomImage()
        //save button name so that it saves the button image
         print(randomArray.count)
-        
-        //randomImage()
-        
+                
         button1 = randomArray[Int.random(in:0...randomArray.count-1)]
         randomImage()
-        //print(randomArray)
         if button1 == "a" || button1 == "b" || button1 == "c" || button1 == "d" || button1 == "e" || button1 == "f" || button1 == "g" || button1 == "h" || button1 == "i" || button1 == "j" || button1 == "k" || button1 == "l" || button1 == "m" || button1 == "n" || button1 == "o" || button1 == "p" || button1 == "q" || button1 == "r" || button1 == "s" || button1 == "t" || button1 == "u" || button1 == "v" || button1 == "w" || button1 == "x"{
             while button1 == "a" || button1 == "b" || button1 == "c" || button1 == "d" || button1 == "e" || button1 == "f" || button1 == "g" || button1 == "h" || button1 == "i" || button1 == "j" || button1 == "k" || button1 == "l" || button1 == "m" || button1 == "n" || button1 == "o" || button1 == "p" || button1 == "q" || button1 == "r" || button1 == "s" || button1 == "t" || button1 == "u" || button1 == "v" || button1 == "w" || button1 == "x"{
                 
@@ -1241,15 +1142,10 @@ struct Bingo: View {
           }
         }
         
-        /*trying to save the variable that defines the image
-         maybe have to do an if loop where it uses the not app storage untl saved array has a length
-         then uses app storage version??
-         idrk
-         */
+        
         randomArray.remove(at: randomArray.firstIndex(of: button1)!)
         
         button2 = randomArray[Int.random(in:0...randomArray.count-1)]
-        //randomImage()
         if button2 == "a" || button2 == "b" || button2 == "c" || button2 == "d" || button2 == "e" || button2 == "f" || button2 == "g" || button2 == "h" || button2 == "i" || button2 == "j" || button2 == "k" || button2 == "l" || button2 == "m" || button2 == "n" || button2 == "o" || button2 == "p" || button2 == "q" || button2 == "r" || button2 == "s" || button2 == "t" || button2 == "u" || button2 == "v" || button2 == "w" || button2 == "x"{
             while button2 == "a" || button2 == "b" || button2 == "c" || button2 == "d" || button2 == "e" || button2 == "f" || button2 == "g" || button2 == "h" || button2 == "i" || button2 == "j" || button2 == "k" || button2 == "l" || button2 == "m" || button2 == "n" || button2 == "o" || button2 == "p" || button2 == "q" || button2 == "r" || button2 == "s" || button2 == "t" || button2 == "u" || button2 == "v" || button2 == "w" || button2 == "x"{
                 print(button2)
@@ -1531,7 +1427,6 @@ struct Bingo: View {
                         Button(action: {buttonPresed2()}){
                             Image(button2)}
                         .overlay(Rectangle().foregroundColor(.black).opacity(overlayOpacity2))
-                        //.foregroundColor(.blue)
                         .border(Color.darkBrown, width: 3.5)
                         .clipShape(.rect(cornerRadius: 7))
                         .shadow(radius: 5)
@@ -1738,8 +1633,6 @@ struct Bingo: View {
                     }
                 }.padding()
                     .onAppear{
-                        print("overlay opacity")
-                        print(overlayOpacity1)
                         if (overlayOpacity1 == 0.6) {
                             disabled1 = true
                             dis1 = true
@@ -1840,9 +1733,7 @@ struct Bingo: View {
                         }
 
                         if GlobalVariables.submitted == true{
-                            //or if random array has values then show
-                            //maybe change second part to own if loop
-                            //in 2nd if loop dont include randomImage() function
+                            
                             randomImage()
                             canCounter()
                         }
@@ -1852,12 +1743,7 @@ struct Bingo: View {
                             populateArray()
                             GlobalVariables.fixer = false
                             }
-                            
-                           
-                        
                     }
-                
-                
             }
         }
         
