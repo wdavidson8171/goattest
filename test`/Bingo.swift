@@ -16,7 +16,8 @@ var buttonPressed = false
 var hideButton = false
 var hide = false
 var chosenColor = GlobalVariables.color[GlobalVariables.color.count-1]
-//var testSquares = ["a","b","c","d","e","f"]
+var volume = 1.0
+var speakerType: String = "speaker.wave.3.fill"
 
 let choreArray = [ "clean_bathroom", "laundry","trash", "sweep", "dishes", "clean_bedroom","bed"]
 let familyArray = ["boardgame", "walk","meal","picnic"]
@@ -35,7 +36,7 @@ let summerArray = ["waterBaloonFight","swimmingHole","pool","berryPicking","amus
 
 
 
-/*class SoundManager{
+class SoundManager{
     
     static let instance = SoundManager()
     
@@ -43,28 +44,54 @@ let summerArray = ["waterBaloonFight","swimmingHole","pool","berryPicking","amus
     
     func playSound() {
         
-        guard let url = URL(string: "") else {return}
+        guard let url = Bundle.main.url(forResource: "click", withExtension:".mp3") else {return}
         
         do {
             player = try AVAudioPlayer(contentsOf: url)
+            player?.play()
         } catch let error{
             print("Error playing sound. \(error.localizedDescription)")
         }
         
     }
-}*/
+    func playCoin(){
+        guard let url = Bundle.main.url(forResource: "coin", withExtension:".mp3") else {return}
+        
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.play()
+        } catch let error{
+            print("Error playing sound. \(error.localizedDescription)")
+        }
+    }
+    
+    func playBlackout(){
+        guard let url = Bundle.main.url(forResource: "blackout", withExtension:".mp3") else {return}
+        
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.play()
+        } catch let error{
+            print("Error playing sound. \(error.localizedDescription)")
+        }
+    }
+    func playGoat(){
+        guard let url = Bundle.main.url(forResource: "goat", withExtension:".mp3") else {return}
+        
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.play()
+        } catch let error{
+            print("Error playing sound. \(error.localizedDescription)")
+        }
+    }
 
-
-
-
+}
 
 struct Bingo: View {
-   // var soundManager = SoundManager()
-    
+   var soundManager = SoundManager()
 
     
-    
-    //var opacity1 = 1.0
     @State var showImage: Bool = false
     @State var showingPopup: Bool = false
     @AppStorage("randomArray") var randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
@@ -179,15 +206,10 @@ struct Bingo: View {
     @AppStorage("n") var n = 0
     @State var blackoutCoins: Int = 0
     
-    //var coins = GlobalVariables.coin
+    
     func blackout() {
         
-        //GlobalVariables.blackoutCoins += (GlobalVariables.coin + m * 50)
-       // print("coins")
         
-        //coins = GlobalVariables.blackoutCoins + GlobalVariables.coin
-        //print("blackout coins")
-        //print(GlobalVariables.blackoutCoins)
         GlobalVariables.SavedItems = ["You're selected items", "will appear here"]
         randomArray.removeAll()
         randomArray = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
@@ -197,11 +219,9 @@ struct Bingo: View {
             moneyArray.append ("a")
             i += 1
         }
-        //GlobalVariables.coin
+        
         GlobalVariables.submitted = false
-        //print(m)
-      //  print("LOOK HERE THIS IS THE ARRAY")
-        //print(moneyArray)
+        
 
         overlayOpacity1 = 0.0
         overlayOpacity2 = 0.0
@@ -332,7 +352,6 @@ struct Bingo: View {
        self.dis23 = false
        self.dis24 = false
        
-      // GlobalVariables.coin = GlobalVariables.blackoutCoins
     }
 
     
@@ -348,7 +367,7 @@ struct Bingo: View {
             if choice == "Household Chores"{
                 for thing in choreArray{
                     if randomArray.contains(thing){
-                        print("contains thing")
+                        print(" ")
                     }
                     else{
                         randomArray.append(thing)
@@ -358,7 +377,7 @@ struct Bingo: View {
             if choice == "Indoor Activities"{
                 for thing in indoorArray{
                     if randomArray.contains(thing){
-                        print("contains thing")
+                        print(" ")
                     }
                     else{
                         randomArray.append(thing)
@@ -368,7 +387,7 @@ struct Bingo: View {
             if choice == "Family Activities"{
                 for thing in familyArray{
                     if randomArray.contains(thing){
-                        print("contains thing")
+                        print(" ")
                     }
                     else{
                         randomArray.append(thing)
@@ -378,7 +397,7 @@ struct Bingo: View {
             if choice == "Creative Activities"{
                 for thing in creativeArray{
                     if randomArray.contains(thing){
-                        print("contains thing")
+                        print(" ")
                     }
                     else{
                         randomArray.append(thing)
@@ -388,7 +407,7 @@ struct Bingo: View {
             if choice == "Exercise"{
                 for thing in exerciseArray{
                     if randomArray.contains(thing){
-                        print("contains thing")
+                        print(" ")
                     }
                     else{
                         randomArray.append(thing)
@@ -481,23 +500,35 @@ struct Bingo: View {
         
     }
     
-    
+    func speaker(){
+        if volume != 0{
+            speakerType = "speaker.slash.fill"
+            volume = 0
+        }
+        if volume == 0{
+            speakerType = "speaker.wave.3.fill"
+            volume = 1
+            
+        }
+            
+        }
     
     func checkBingo(){
         if (dis1 && dis2 && dis3 && dis4){
             if !moneyArray.contains("bingo1"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo1")
                 
             }
-            //moneyArray.append("bingo1")
             
             
         }
    
         if (dis5 && dis6 && dis7 && dis8){
             if !moneyArray.contains("bingo2"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo2")
@@ -507,6 +538,7 @@ struct Bingo: View {
         
         if (dis9 && dis10 && dis11 && dis12){
             if !moneyArray.contains("bingo3"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo3")
@@ -516,6 +548,7 @@ struct Bingo: View {
         }
         if (dis13 && dis14 && dis15 && dis16){
             if !moneyArray.contains("bingo4"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo4")
@@ -524,6 +557,7 @@ struct Bingo: View {
         }
         if (dis17 && dis18 && dis19 && dis20){
             if !moneyArray.contains("bingo5"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo5")
@@ -532,6 +566,7 @@ struct Bingo: View {
         }
         if (dis21 && dis22 && dis23 && dis24){
             if !moneyArray.contains("bingo6"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo6")
@@ -540,6 +575,7 @@ struct Bingo: View {
         }
         if (dis1 && dis5 && dis9 && dis13){// doesn't work
             if !moneyArray.contains("bingo7"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo7")
@@ -548,6 +584,7 @@ struct Bingo: View {
         }
         if (dis5 && dis9 && dis13 && dis17){ // doesn't work
             if !moneyArray.contains("bingo8"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo8")
@@ -556,6 +593,7 @@ struct Bingo: View {
         }
         if (dis9 && dis13 && dis17 && dis21){ // doesn't work
             if !moneyArray.contains("bingo9"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo9")
@@ -564,6 +602,7 @@ struct Bingo: View {
         }
         if (dis2 && dis6 && dis10 && dis14){
             if !moneyArray.contains("bingo10"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo10")
@@ -572,6 +611,7 @@ struct Bingo: View {
         }
         if (dis6 && dis10 && dis14 && dis18){
             if !moneyArray.contains("bingo11"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo11")
@@ -580,6 +620,7 @@ struct Bingo: View {
         }
         if (dis10 && dis14 && dis18 && dis22){
             if !moneyArray.contains("bingo12"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo12")
@@ -588,6 +629,7 @@ struct Bingo: View {
         }
         if (dis3 && dis7 && dis11 && dis15){ // doesn't work
             if !moneyArray.contains("bingo13"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo13")
@@ -596,6 +638,7 @@ struct Bingo: View {
         }
         if (dis19 && dis15 && dis7 && dis11){ // doesn't work
             if !moneyArray.contains("bingo14"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo14")
@@ -604,6 +647,7 @@ struct Bingo: View {
         }
         if (dis15 && dis11 && dis19 && dis23){ // doesn't work
             if !moneyArray.contains("bingo15"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo15")
@@ -612,6 +656,7 @@ struct Bingo: View {
         }
         if (dis4 && dis16 && dis12 && dis8){
             if !moneyArray.contains("bingo16"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo16")
@@ -620,6 +665,7 @@ struct Bingo: View {
         }
         if (dis20 && dis16 && dis12 && dis8){
             if !moneyArray.contains("bingo17"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo17")
@@ -628,6 +674,7 @@ struct Bingo: View {
         }
         if (dis12 && dis16 && dis20 && dis24){
             if !moneyArray.contains("bingo18"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo18")
@@ -636,6 +683,7 @@ struct Bingo: View {
         }
         if (dis1 && dis6 && dis11 && dis16){ // doesn't work IDK why
             if !moneyArray.contains("bingo19"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo19")
@@ -644,6 +692,7 @@ struct Bingo: View {
         }
         if (dis5 && dis10 && dis15 && dis20){
             if !moneyArray.contains("bingo20"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo20")
@@ -652,6 +701,7 @@ struct Bingo: View {
         }
         if (dis9 && dis14 && dis19 && dis24){
             if !moneyArray.contains("bingo21"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo21")
@@ -660,6 +710,7 @@ struct Bingo: View {
         }
         if (dis4 && dis7 && dis10 && dis13){ // doesn't work
             if !moneyArray.contains("bingo22"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo22")
@@ -668,6 +719,7 @@ struct Bingo: View {
         }
         if (dis8 && dis11 && dis17 && dis14){ // doesn't work
             if !moneyArray.contains("bingo23"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo23")
@@ -676,6 +728,7 @@ struct Bingo: View {
         }
         if (dis15 && dis12 && dis21 && dis18){
             if !moneyArray.contains("bingo24"){
+                SoundManager.instance.playCoin()
                 GlobalVariables.coin = GlobalVariables.coin + 10
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo24")
@@ -684,6 +737,7 @@ struct Bingo: View {
         }
         if (dis1 && dis2 && dis3 && dis4 && dis5 && dis6 && dis7 && dis8 && dis9 && dis10 && dis11 && dis12 && dis13 && dis14 && dis15 && dis16 && dis17 && dis18 && dis19 && dis20 && dis21 && dis22 && dis23 && dis24){
             if !moneyArray.contains("blackout"){
+                SoundManager.instance.playBlackout()
                 GlobalVariables.coin = GlobalVariables.coin + 60
                 coins = GlobalVariables.coin
                 moneyArray.append("blackout")
@@ -697,6 +751,7 @@ struct Bingo: View {
     
     
     func buttonPresed1(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity1 = 0.6
         buttonPressed = true
@@ -716,6 +771,7 @@ struct Bingo: View {
     }
     
     func buttonPresed2(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity2 = 0.6
         disabled2 = true
@@ -735,6 +791,7 @@ struct Bingo: View {
     }
     
     func buttonPresed3(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity3 = 0.6
         disabled3 = true
@@ -754,6 +811,7 @@ struct Bingo: View {
     }
     
     func buttonPresed4(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity4 = 0.6
         disabled4 = true
@@ -773,6 +831,7 @@ struct Bingo: View {
     }
     
     func buttonPresed5(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity5 = 0.6
         disabled5 = true
@@ -789,6 +848,7 @@ struct Bingo: View {
     }
     
     func buttonPresed6(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity6 = 0.6
         disabled6 = true
@@ -805,6 +865,7 @@ struct Bingo: View {
     }
     
     func buttonPresed7(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity7 = 0.6
         disabled7 = true
@@ -821,6 +882,7 @@ struct Bingo: View {
     }
     
     func buttonPresed8(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity8 = 0.6
         disabled8 = true
@@ -837,6 +899,7 @@ struct Bingo: View {
     }
     
     func buttonPresed9(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity9 = 0.6
         buttonPressed = true
@@ -853,6 +916,7 @@ struct Bingo: View {
     }
     
     func buttonPresed10(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity10 = 0.6
         disabled10 = true
@@ -869,6 +933,7 @@ struct Bingo: View {
     }
     
     func buttonPresed11(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity11 = 0.6
         disabled11 = true
@@ -885,6 +950,7 @@ struct Bingo: View {
     }
     
     func buttonPresed12(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity12 = 0.6
         disabled12 = true
@@ -901,6 +967,7 @@ struct Bingo: View {
     }
     
     func buttonPresed13(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity13 = 0.6
         buttonPressed = true
@@ -917,6 +984,7 @@ struct Bingo: View {
     }
     
     func buttonPresed14(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity14 = 0.6
         disabled14 = true
@@ -933,6 +1001,7 @@ struct Bingo: View {
     }
     
     func buttonPresed15(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity15 = 0.6
         disabled15 = true
@@ -949,6 +1018,7 @@ struct Bingo: View {
     }
     
     func buttonPresed16(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity16 = 0.6
         disabled16 = true
@@ -965,6 +1035,7 @@ struct Bingo: View {
     }
     
     func buttonPresed17(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity17 = 0.6
         buttonPressed = true
@@ -981,6 +1052,7 @@ struct Bingo: View {
     }
     
     func buttonPresed18(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity18 = 0.6
         disabled18 = true
@@ -997,6 +1069,7 @@ struct Bingo: View {
     }
     
     func buttonPresed19(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity19 = 0.6
         disabled19 = true
@@ -1013,6 +1086,7 @@ struct Bingo: View {
     }
     
     func buttonPresed20(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity20 = 0.6
         disabled20 = true
@@ -1029,6 +1103,7 @@ struct Bingo: View {
     }
     
     func buttonPresed21(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity21 = 0.6
         buttonPressed = true
@@ -1045,6 +1120,7 @@ struct Bingo: View {
     }
     
     func buttonPresed22(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity22 = 0.6
         disabled22 = true
@@ -1061,6 +1137,7 @@ struct Bingo: View {
     }
     
     func buttonPresed23(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity23 = 0.6
         disabled23 = true
@@ -1077,6 +1154,7 @@ struct Bingo: View {
     }
     
     func buttonPresed24(){
+        SoundManager.instance.playSound()
         tnum = tnum - 1
         overlayOpacity24 = 0.6
         disabled24 = true
@@ -1404,6 +1482,10 @@ struct Bingo: View {
                         Color.white.ignoresSafeArea()
                     }
                 }
+                HStack{
+                    //update action with speaker func
+                    Button (systemName: "speaker.wave.3.fill").foregroundStyle(.niceBrown)
+                }.position(x: 30, y: 7).padding(20)
                 HStack{
                     Image("coin")
                     Text("\(GlobalVariables.coin)").font(.system(.body, design: .serif))

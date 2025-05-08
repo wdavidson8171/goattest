@@ -11,6 +11,7 @@ import Foundation
 
 
 
+
 struct Goat: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -44,6 +45,7 @@ struct Goat: View {
     var color2 = Color(#colorLiteral(red: 0.2172280641, green: 0.289908183, blue: 0.1743075374, alpha: 1))
     
     func feedGoat(){
+        SoundManager.instance.playGoat()
         if (GlobalVariables.can > 0){
             GlobalVariables.can -= 1
             foodFed += 10
