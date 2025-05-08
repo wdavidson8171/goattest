@@ -124,14 +124,15 @@ struct Goat: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 500, height: 500)
-                            .position(x: 251.5, y: 329)
+                            .position(x: 250.5, y: 317)
                     }
                 }
-                HStack(){
+                VStack(){
                     Text(GlobalVariables.goatNameText)
                         .font(.system(size: 24, weight: .black, design: .serif)) .foregroundStyle(.niceBrown)
-                }//.padding(-10)
-            }//.padding(10)
+                    Text("Time: " + String(secsLeftResult))
+                }
+            }
         }
     }
     
