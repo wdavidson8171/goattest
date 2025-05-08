@@ -105,10 +105,6 @@ let defaults = UserDefaults.standard
         func saveSurvey(){
             GlobalVariables.submitted = true
             GlobalVariables.fixer = true
-            //I think userDefaults could be replaced with APPStorage here to save the data?
-            //or something with the globalvariables.saveditems
-            //orOR it needs to be done throuh the selectedItems variable
-            //orOROR it needs to be done in bingo tab? (ie. saving random array to appstorage)
             let userDefaults = UserDefaults.standard
             userDefaults.set(selectedItems, forKey: "selectedItems")
             GlobalVariables.SavedItems = (userDefaults.array(forKey: "selectedItems") as? [String] ?? [])
@@ -116,15 +112,22 @@ let defaults = UserDefaults.standard
             //SAVE RHE SAVED ITEMS SOMEHOW
         }
         
-        
+        @Environment(\.presentationMode) var mode: Binding<PresentationMode>
         var body: some View{
             
             NavigationView{
+                //nonononono doesnt work
                 Form{
                     Section("What activities are you interested in? \nPlease select at least 5 for a more satisfying experience", content: {
                         NavigationLink(destination: {
                             MultiSelectPickerView(allItems: allItems, selectedItems: $selectedItems)
                                 .navigationTitle("Choose your activities")
+                                .navigationBarBackButtonHidden(true)
+                                            .navigationBarItems(leading: Button(action : {
+                                                self.mode.wrappedValue.dismiss()
+                                            }){
+                                                Image(systemName: "arrow.left")
+                                            })
                         }, label: {
                             HStack{
                                 Text("Select Activities:")
@@ -134,7 +137,9 @@ let defaults = UserDefaults.standard
                                 Image(systemName: "\($selectedItems.count).circle")
                                     .foregroundColor(.accentColor)
                                     .font(.title2)
+                                
                             }
+                            
                             
                         })
                         
