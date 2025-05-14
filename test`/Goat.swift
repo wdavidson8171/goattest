@@ -35,6 +35,7 @@ struct Goat: View {
     @State var secsLeftResult: Int = 0
     @State var currentDate = Date()
     
+    
     //how many seconds it takes for the bar to go down by one thing (you can change this number to make it faster/slower, higher number = slower, closer to 0 = faster)
     @State var x: CGFloat = 10
     
@@ -43,7 +44,7 @@ struct Goat: View {
     @State var percent: CGFloat = 100
     var color1 = Color(#colorLiteral(red: 0.7519986012, green: 0.8191245168, blue: 0.67492058, alpha: 1))
     var color2 = Color(#colorLiteral(red: 0.2172280641, green: 0.289908183, blue: 0.1743075374, alpha: 1))
-    
+
     func feedGoat(){
         SoundManager.instance.playGoat()
         if (GlobalVariables.can > 0){
@@ -76,6 +77,10 @@ struct Goat: View {
                     Color.white.ignoresSafeArea()
                 }
             }
+            HStack{
+                //update action with speaker func
+                Button (action: {speaker()}){Image( systemName: GlobalVariables.speakerType)}.foregroundStyle(.niceBrown)
+                }.position(x: 110, y: 55)
             HStack{
                 Image("tincan")
                 Text("\(GlobalVariables.can)").font(.system(.body, design: .serif))
@@ -126,13 +131,13 @@ struct Goat: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 500, height: 500)
-                            .position(x: 250.5, y: 317)
+                            .position(x: 250.5, y: 300)
                     }
                 }
                 VStack(){
                     Text(GlobalVariables.goatNameText)
                         .font(.system(size: 24, weight: .black, design: .serif)) .foregroundStyle(.niceBrown)
-                    Text("Time: " + String(secsLeftResult))
+                    Text("Time: " + String(secsLeftResult)).position(x:1000, y:1000)
                 }
             }
         }
@@ -224,6 +229,20 @@ struct Goat: View {
         let date3 = Calendar.current.date(from: comps)!
         return date3
     }
+    
+    func speaker(){
+        if GlobalVariables.volume == 0.5{
+            GlobalVariables.speakerType = "speaker.slash.fill"
+            GlobalVariables.volume = 0
+        }
+        else if GlobalVariables.volume == 0{
+            GlobalVariables.speakerType = "speaker.wave.3.fill"
+            GlobalVariables.volume = 0.5
+            
+        }
+        
+    }
+
     
     //returns the appropriate goat image
     func getGoatState()-> ImageResource{

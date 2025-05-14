@@ -16,8 +16,7 @@ var buttonPressed = false
 var hideButton = false
 var hide = false
 var chosenColor = GlobalVariables.color[GlobalVariables.color.count-1]
-var volume = 1.0
-var speakerType: String = "speaker.wave.3.fill"
+
 
 let choreArray = [ "clean_bathroom", "laundry","trash", "sweep", "dishes", "clean_bedroom","bed"]
 let familyArray = ["boardgame", "walk","meal","picnic"]
@@ -48,6 +47,7 @@ class SoundManager{
         
         do {
             player = try AVAudioPlayer(contentsOf: url)
+            player?.volume = Float(GlobalVariables.volume)
             player?.play()
         } catch let error{
             print("Error playing sound. \(error.localizedDescription)")
@@ -59,6 +59,7 @@ class SoundManager{
         
         do {
             player = try AVAudioPlayer(contentsOf: url)
+            player?.volume = Float(GlobalVariables.volume)
             player?.play()
         } catch let error{
             print("Error playing sound. \(error.localizedDescription)")
@@ -70,6 +71,7 @@ class SoundManager{
         
         do {
             player = try AVAudioPlayer(contentsOf: url)
+            player?.volume = Float(GlobalVariables.volume)
             player?.play()
         } catch let error{
             print("Error playing sound. \(error.localizedDescription)")
@@ -80,6 +82,7 @@ class SoundManager{
         
         do {
             player = try AVAudioPlayer(contentsOf: url)
+            player?.volume = Float(GlobalVariables.volume)
             player?.play()
         } catch let error{
             print("Error playing sound. \(error.localizedDescription)")
@@ -89,8 +92,8 @@ class SoundManager{
 }
 
 struct Bingo: View {
-   var soundManager = SoundManager()
-
+    var soundManager = SoundManager()
+    
     
     @State var showImage: Bool = false
     @State var showingPopup: Bool = false
@@ -206,6 +209,10 @@ struct Bingo: View {
     @AppStorage("n") var n = 0
     @State var blackoutCoins: Int = 0
     
+    @State var countUpTimer = 0
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    
     
     func blackout() {
         
@@ -222,7 +229,7 @@ struct Bingo: View {
         
         GlobalVariables.submitted = false
         
-
+        
         overlayOpacity1 = 0.0
         overlayOpacity2 = 0.0
         overlayOpacity3 = 0.0
@@ -271,12 +278,12 @@ struct Bingo: View {
         opacity22 = 0.0
         opacity23 = 0.0
         opacity24 = 0.0
-       
+        
         
     }
-   func remakeButtons(){
-       //print("coins")
-      // print(GlobalVariables.coin)
+    func remakeButtons(){
+        //print("coins")
+        // print(GlobalVariables.coin)
         opacity1 = 1.0
         opacity2 = 1.0
         opacity3 = 1.0
@@ -301,59 +308,59 @@ struct Bingo: View {
         opacity22 = 1.0
         opacity23 = 1.0
         opacity24 = 1.0
-       
-       disabled1 = false
-       disabled2 = false
-       disabled3 = false
-       disabled4 = false
-       disabled5 = false
-       disabled6 = false
-       disabled7 = false
-       disabled8 = false
-       disabled9 = false
-       disabled10 = false
-       disabled11 = false
-       disabled12 = false
-       disabled13 = false
-       disabled14 = false
-       disabled15 = false
-       disabled16 = false
-       disabled17 = false
-       disabled18 = false
-       disabled19 = false
-       disabled20 = false
-       disabled21 = false
-       disabled22 = false
-       disabled23 = false
-       disabled24 = false
-       
-       self.dis1 = false
-       self.dis2 = false
-       self.dis3 = false
-       self.dis4 = false
-       self.dis5 = false
-       self.dis6 = false
-       self.dis7 = false
-       self.dis8 = false
-       self.dis9 = false
-       self.dis10 = false
-       self.dis11 = false
-       self.dis12 = false
-       self.dis13 = false
-       self.dis14 = false
-       self.dis15 = false
-       self.dis16 = false
-       self.dis17 = false
-       self.dis18 = false
-       self.dis19 = false
-       self.dis20 = false
-       self.dis21 = false
-       self.dis22 = false
-       self.dis23 = false
-       self.dis24 = false
-       
+        
+        disabled1 = false
+        disabled2 = false
+        disabled3 = false
+        disabled4 = false
+        disabled5 = false
+        disabled6 = false
+        disabled7 = false
+        disabled8 = false
+        disabled9 = false
+        disabled10 = false
+        disabled11 = false
+        disabled12 = false
+        disabled13 = false
+        disabled14 = false
+        disabled15 = false
+        disabled16 = false
+        disabled17 = false
+        disabled18 = false
+        disabled19 = false
+        disabled20 = false
+        disabled21 = false
+        disabled22 = false
+        disabled23 = false
+        disabled24 = false
+        
+        self.dis1 = false
+        self.dis2 = false
+        self.dis3 = false
+        self.dis4 = false
+        self.dis5 = false
+        self.dis6 = false
+        self.dis7 = false
+        self.dis8 = false
+        self.dis9 = false
+        self.dis10 = false
+        self.dis11 = false
+        self.dis12 = false
+        self.dis13 = false
+        self.dis14 = false
+        self.dis15 = false
+        self.dis16 = false
+        self.dis17 = false
+        self.dis18 = false
+        self.dis19 = false
+        self.dis20 = false
+        self.dis21 = false
+        self.dis22 = false
+        self.dis23 = false
+        self.dis24 = false
+        
     }
-
+    
     
     func randomImage(){
         
@@ -501,17 +508,17 @@ struct Bingo: View {
     }
     
     func speaker(){
-        if volume != 0{
-            speakerType = "speaker.slash.fill"
-            volume = 0
+        if GlobalVariables.volume == 0.5{
+            GlobalVariables.speakerType = "speaker.slash.fill"
+            GlobalVariables.volume = 0
         }
-        if volume == 0{
-            speakerType = "speaker.wave.3.fill"
-            volume = 1
+        else if GlobalVariables.volume == 0{
+            GlobalVariables.speakerType = "speaker.wave.3.fill"
+            GlobalVariables.volume = 0.5
             
         }
-            
-        }
+        
+    }
     
     func checkBingo(){
         if (dis1 && dis2 && dis3 && dis4){
@@ -525,7 +532,7 @@ struct Bingo: View {
             
             
         }
-   
+        
         if (dis5 && dis6 && dis7 && dis8){
             if !moneyArray.contains("bingo2"){
                 SoundManager.instance.playCoin()
@@ -533,7 +540,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo2")
             }
-          
+            
         }
         
         if (dis9 && dis10 && dis11 && dis12){
@@ -543,7 +550,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo3")
             }
-           
+            
             
         }
         if (dis13 && dis14 && dis15 && dis16){
@@ -562,7 +569,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo5")
             }
-           
+            
         }
         if (dis21 && dis22 && dis23 && dis24){
             if !moneyArray.contains("bingo6"){
@@ -571,7 +578,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo6")
             }
-           
+            
         }
         if (dis1 && dis5 && dis9 && dis13){// doesn't work
             if !moneyArray.contains("bingo7"){
@@ -598,7 +605,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo9")
             }
-          
+            
         }
         if (dis2 && dis6 && dis10 && dis14){
             if !moneyArray.contains("bingo10"){
@@ -607,7 +614,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo10")
             }
-           
+            
         }
         if (dis6 && dis10 && dis14 && dis18){
             if !moneyArray.contains("bingo11"){
@@ -616,7 +623,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo11")
             }
-           
+            
         }
         if (dis10 && dis14 && dis18 && dis22){
             if !moneyArray.contains("bingo12"){
@@ -625,7 +632,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo12")
             }
-           
+            
         }
         if (dis3 && dis7 && dis11 && dis15){ // doesn't work
             if !moneyArray.contains("bingo13"){
@@ -634,7 +641,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo13")
             }
-          
+            
         }
         if (dis19 && dis15 && dis7 && dis11){ // doesn't work
             if !moneyArray.contains("bingo14"){
@@ -652,7 +659,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo15")
             }
-           
+            
         }
         if (dis4 && dis16 && dis12 && dis8){
             if !moneyArray.contains("bingo16"){
@@ -661,7 +668,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo16")
             }
-           
+            
         }
         if (dis20 && dis16 && dis12 && dis8){
             if !moneyArray.contains("bingo17"){
@@ -670,7 +677,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo17")
             }
-           
+            
         }
         if (dis12 && dis16 && dis20 && dis24){
             if !moneyArray.contains("bingo18"){
@@ -679,7 +686,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo18")
             }
-           
+            
         }
         if (dis1 && dis6 && dis11 && dis16){ // doesn't work IDK why
             if !moneyArray.contains("bingo19"){
@@ -697,7 +704,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo20")
             }
-         
+            
         }
         if (dis9 && dis14 && dis19 && dis24){
             if !moneyArray.contains("bingo21"){
@@ -706,7 +713,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo21")
             }
-           
+            
         }
         if (dis4 && dis7 && dis10 && dis13){ // doesn't work
             if !moneyArray.contains("bingo22"){
@@ -715,7 +722,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo22")
             }
-           
+            
         }
         if (dis8 && dis11 && dis17 && dis14){ // doesn't work
             if !moneyArray.contains("bingo23"){
@@ -733,7 +740,7 @@ struct Bingo: View {
                 coins = GlobalVariables.coin
                 moneyArray.append("bingo24")
             }
-           
+            
         }
         if (dis1 && dis2 && dis3 && dis4 && dis5 && dis6 && dis7 && dis8 && dis9 && dis10 && dis11 && dis12 && dis13 && dis14 && dis15 && dis16 && dis17 && dis18 && dis19 && dis20 && dis21 && dis22 && dis23 && dis24){
             if !moneyArray.contains("blackout"){
@@ -744,8 +751,8 @@ struct Bingo: View {
                 blackout()
                 
             }
-        
-                    }
+            
+        }
     }
     
     
@@ -1172,7 +1179,7 @@ struct Bingo: View {
     }
     
     func canCounter(){
-       
+        
         if buttonPressed == true{
             
             print(" ")
@@ -1204,20 +1211,20 @@ struct Bingo: View {
     @AppStorage("button22") var button22: String = " "
     @AppStorage("button23") var button23: String = " "
     @AppStorage("button24") var button24: String = " "
-
+    
     
     
     func populateArray() {  //randomImage()
-       //save button name so that it saves the button image
+        //save button name so that it saves the button image
         print(randomArray.count)
-                
+        
         button1 = randomArray[Int.random(in:0...randomArray.count-1)]
         randomImage()
         if button1 == "a" || button1 == "b" || button1 == "c" || button1 == "d" || button1 == "e" || button1 == "f" || button1 == "g" || button1 == "h" || button1 == "i" || button1 == "j" || button1 == "k" || button1 == "l" || button1 == "m" || button1 == "n" || button1 == "o" || button1 == "p" || button1 == "q" || button1 == "r" || button1 == "s" || button1 == "t" || button1 == "u" || button1 == "v" || button1 == "w" || button1 == "x"{
             while button1 == "a" || button1 == "b" || button1 == "c" || button1 == "d" || button1 == "e" || button1 == "f" || button1 == "g" || button1 == "h" || button1 == "i" || button1 == "j" || button1 == "k" || button1 == "l" || button1 == "m" || button1 == "n" || button1 == "o" || button1 == "p" || button1 == "q" || button1 == "r" || button1 == "s" || button1 == "t" || button1 == "u" || button1 == "v" || button1 == "w" || button1 == "x"{
                 
                 button1 = randomArray[Int.random(in:0...randomArray.count-1)]
-          }
+            }
         }
         
         
@@ -1273,7 +1280,7 @@ struct Bingo: View {
         randomArray.remove(at: randomArray.firstIndex(of: button6)!)
         
         button7 = randomArray[Int.random(in:0...randomArray.count-1)]
-       //randomImage()
+        //randomImage()
         if button7 == "a" || button7 == "b" || button7 == "c" || button7 == "d" || button7 == "e" || button7 == "f" || button7 == "g" || button7 == "h" || button7 == "i" || button7 == "j" || button7 == "k" || button7 == "l" || button7 == "m" || button7 == "n" || button7 == "o" || button7 == "p" || button7 == "q" || button7 == "r" || button7 == "s" || button7 == "t" || button7 == "u" || button7 == "v" || button7 == "w" || button7 == "x"{
             while button7 == "a" || button7 == "b" || button7 == "c" || button7 == "d" || button7 == "e" || button7 == "f" || button7 == "g" || button7 == "h" || button7 == "i" || button7 == "j" || button7 == "k" || button7 == "l" || button7 == "m" || button7 == "n" || button7 == "o" || button7 == "p" || button7 == "q" || button7 == "r" || button7 == "s" || button7 == "t" || button7 == "u" || button7 == "v" || button7 == "w" || button7 == "x"{
                 
@@ -1450,42 +1457,49 @@ struct Bingo: View {
             }
         }
         randomArray.remove(at: randomArray.firstIndex(of: button24)!)
-       
+        
     }
-        
     
-        
-        var body: some View {
-            ZStack{
-                Image("bingoLady").border(Color.pastelPink, width: 10).cornerRadius(10)
+    
+    
+    var body: some View {
+        ZStack{
+            Image("bingoLady").border(Color.pastelPink, width: 10).cornerRadius(10)
+            
+            
+            if GlobalVariables.submitted == true{
                 
-                
-                if GlobalVariables.submitted == true{
-                    
-                    if GlobalVariables.color[0] == "lavender"{
-                        Text("lavender ischosen")
-                        Color.lavender.ignoresSafeArea()
-                    }
-                    else if GlobalVariables.color[0] == "nicePink"{
-                        Color.nicePink.ignoresSafeArea()
-                    }
-                    else if GlobalVariables.color[0] == "coolTeal"{
-                        Color.coolTeal.ignoresSafeArea()
-                    }
-                    else if GlobalVariables.color[0] == "pastelBlue"{
-                        Color.pastelBlue.ignoresSafeArea()
-                    }
-                    else if GlobalVariables.color[0] == "orangish"{
-                        Color.orangish.ignoresSafeArea()
-                    }
-                    else {
-                        Color.white.ignoresSafeArea()
-                    }
+                if GlobalVariables.color[0] == "lavender"{
+                    Text("lavender ischosen")
+                    Color.lavender.ignoresSafeArea()
                 }
-                HStack{
-                    //update action with speaker func
-                    Button (systemName: "speaker.wave.3.fill").foregroundStyle(.niceBrown)
-                }.position(x: 30, y: 7).padding(20)
+                else if GlobalVariables.color[0] == "nicePink"{
+                    Color.nicePink.ignoresSafeArea()
+                }
+                else if GlobalVariables.color[0] == "coolTeal"{
+                    Color.coolTeal.ignoresSafeArea()
+                }
+                else if GlobalVariables.color[0] == "pastelBlue"{
+                    Color.pastelBlue.ignoresSafeArea()
+                }
+                else if GlobalVariables.color[0] == "orangish"{
+                    Color.orangish.ignoresSafeArea()
+                }
+                else {
+                    Color.white.ignoresSafeArea()
+                }
+            }
+            VStack{
+                Text("\(countUpTimer)")
+                    .onReceive(timer) { _ in
+                        if countUpTimer == 0 {
+                            countUpTimer += 1
+                        } else { countUpTimer += 1}}
+            }.position(x: 1500, y: 2500)
+            HStack{
+                //update action with speaker func
+                Button (action: {speaker()}){Image( systemName: GlobalVariables.speakerType)}.foregroundStyle(.niceBrown)
+                }.position(x: 60, y: 30)
                 HStack{
                     Image("coin")
                     Text("\(GlobalVariables.coin)").font(.system(.body, design: .serif))
@@ -1718,8 +1732,6 @@ struct Bingo: View {
                         if (overlayOpacity1 == 0.6) {
                             disabled1 = true
                             dis1 = true
-                            print("dis1:")
-                            print(dis1)
                         }
                         if (overlayOpacity2 == 0.6) {
                             dis2 = true
@@ -1813,18 +1825,18 @@ struct Bingo: View {
                             dis24 = true
                             disabled24 = true
                         }
-
+                        
                         if GlobalVariables.submitted == true{
                             
                             randomImage()
                             canCounter()
                         }
-                            
+                        
                         if GlobalVariables.fixer == true {
                             remakeButtons()
                             populateArray()
                             GlobalVariables.fixer = false
-                            }
+                        }
                     }
             }
         }
