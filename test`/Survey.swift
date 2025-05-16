@@ -36,6 +36,7 @@ import SwiftUI
         var body: some View{
             iOSview(selectedItems: selectedItems, allItems: allItems)
         }
+        
     }
     
     #Preview {
@@ -80,10 +81,12 @@ import SwiftUI
                 }
             }
         }
+
     }
 
 struct GlobalVariables{
     @AppStorage("SavedItems") static var SavedItems:[String] = ["Your selected items ","will appear here"]
+    @AppStorage("saveSelected") static var saveSelected:[String] = []
     @AppStorage("submitted") static var submitted:Bool = false
     static var blackoutCoins: Int = 0
     @AppStorage("coin") static var coin:Int = 0
@@ -105,6 +108,9 @@ let defaults = UserDefaults.standard
         func saveSurvey(){
             GlobalVariables.submitted = true
             GlobalVariables.fixer = true
+            if GlobalVariables.submitted == true{
+                
+            }
             //I think userDefaults could be replaced with APPStorage here to save the data?
             //or something with the globalvariables.saveditems
             //orOR it needs to be done throuh the selectedItems variable
@@ -114,6 +120,17 @@ let defaults = UserDefaults.standard
             GlobalVariables.SavedItems = (userDefaults.array(forKey: "selectedItems") as? [String] ?? [])
             print(GlobalVariables.SavedItems)
             //SAVE RHE SAVED ITEMS SOMEHOW
+            GlobalVariables.saveSelected = GlobalVariables.SavedItems
+        }
+        
+        func returnSelectedItems() -> [String] {
+            if GlobalVariables.submitted == true{
+                GlobalVariables.saveSelected = GlobalVariables.SavedItems
+            }
+            else{
+                GlobalVariables.saveSelected = selectedItems
+            }
+            return GlobalVariables.saveSelected
         }
         
         
@@ -140,7 +157,7 @@ let defaults = UserDefaults.standard
                         
                     })
                     Section("My selected activities:", content: {
-                        Text(selectedItems.joined(separator: "\n"))
+                        Text(returnSelectedItems().joined(separator: "\n"))
                             .foregroundColor(.darkBrown)
                     }
                     )

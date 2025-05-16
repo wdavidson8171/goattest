@@ -117,8 +117,8 @@ struct Goat: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 500, height: 500)
                     Button(action: {feedGoat()}){
-                        Image("FOOD").position(x: 170, y:170).cornerRadius(10).border(Color.purple, width: 5)
-                            }
+                        Image("FOOD").resizable().frame(width: 150, height: 100).scaledToFit()
+                            }.position(x: 150, y:170)
                     if(getGoatState() != .deadGoat){
                         Image(clothesList[GlobalVariables.clothesNum])
                             .resizable()
