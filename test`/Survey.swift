@@ -43,7 +43,7 @@ import SwiftUI
         
         //maybe binding storage of selected items with clicked items from allitems list???
         @Binding var selectedItems: [String]
-        
+       
         
         
         var body: some View{
@@ -90,6 +90,7 @@ struct GlobalVariables{
     @AppStorage("goatNameText") static var goatNameText:String = " "
     @AppStorage("volume") static var volume = 0.5
     @AppStorage("speakerType") static var speakerType:String = "speaker.wave.3.fill"
+    static var showPopup = false
 }
 let defaults = UserDefaults.standard
     struct iOSview:View{
@@ -97,9 +98,13 @@ let defaults = UserDefaults.standard
         //defaults.set(selectedItems, forKey: "savedSelectedItems")
         @State var allItems:[String]
         
+        func closePopOver(){
+            //code
+        }
         
         func saveSurvey(){
             GlobalVariables.submitted = true
+            closePopOver()
             GlobalVariables.fixer = true
             //I think userDefaults could be replaced with APPStorage here to save the data?
             //or something with the globalvariables.saveditems
@@ -140,16 +145,23 @@ let defaults = UserDefaults.standard
                             .foregroundColor(.darkBrown)
                     }
                     )
-                    Button(action: {saveSurvey()}){
-                        HStack{
-                            Image(systemName: "star.fill").foregroundStyle(.nicePink)
-                            Text("Submit").font(.system(size: 18, weight: .black, design: .serif)) .foregroundStyle(.niceBrown).frame(maxWidth: .infinity, alignment: .center)
-                            Image(systemName: "star.fill").foregroundStyle(.nicePink)
+                    
+                    NavigationLink(destination: Homepage()){
+                        Button(action: {saveSurvey()}){
+                            HStack{
+                                Image(systemName: "star.fill").foregroundStyle(.nicePink)
+                                Text("Submit").font(.system(size: 18, weight: .black, design: .serif)) .foregroundStyle(.niceBrown).frame(maxWidth: .infinity, alignment: .center)
+                                Image(systemName: "star.fill").foregroundStyle(.nicePink)
+                            }
                         }
                     }
-                    }
+                    
+                }
             }
             .navigationTitle("my items")
             
         }
     }
+
+
+

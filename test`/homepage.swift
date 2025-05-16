@@ -59,6 +59,7 @@ struct Homepage: View {
     
     @State var showPopup = false
     func buttonPresed(){
+        GlobalVariables.showPopup = true
         showPopup = true
         buttonPressed = true
     }
@@ -580,6 +581,8 @@ struct Homepage: View {
         UserDefaults.standard.set(_name, forKey: "profileImage")
     }
 }
+
+
             
         #Preview {
             Homepage()
