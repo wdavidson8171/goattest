@@ -13,6 +13,8 @@ var buttonPressed = false
 var hideButton = false
 var hide = false
 var chosenColor = GlobalVariables.color[GlobalVariables.color.count-1]
+
+
 let choreArray = [ "clean_bathroom", "laundry","trash", "sweep", "dishes", "clean_bedroom","bed"]
 let familyArray = ["boardgame", "walk","meal","picnic"]
 let indoorArray = ["movie","read","puzzle","videoGame"]
@@ -26,6 +28,10 @@ let fallArray = ["pumpkinPatch","pumpkinSpice","hauntedHouse","cornMaze","carveP
 let winterArray = ["goToMountain","hotChocolate","pajamaParty","snowman"]
 let springArray = ["sitInMeadow","springCleaning","dyeEgg","bouquet"]
 let summerArray = ["waterBaloonFight","swimmingHole","pool","berryPicking","amusementPark","beach"]
+
+
+
+
 class SoundManager{
     
     static let instance = SoundManager()
@@ -79,7 +85,9 @@ class SoundManager{
             print("Error playing sound. \(error.localizedDescription)")
         }
     }
+
 }
+
 struct Bingo: View {
     var soundManager = SoundManager()
     

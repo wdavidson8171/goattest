@@ -6,6 +6,11 @@
 //
 import SwiftUI
 import Foundation
+
+
+
+
+
 struct Goat: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -36,8 +41,9 @@ struct Goat: View {
     var width: CGFloat = 200
     var height: CGFloat = 20
     @State var percent: CGFloat = 100
-    var color1 = Color( colorLiteral(red: 0.7519986012, green: 0.8191245168, blue: 0.67492058, alpha: 1))
-    var color2 = Color( colorLiteral(red: 0.2172280641, green: 0.289908183, blue: 0.1743075374, alpha: 1))
+    var color1 = Color(#colorLiteral(red: 0.7519986012, green: 0.8191245168, blue: 0.67492058, alpha: 1))
+    var color2 = Color(#colorLiteral(red: 0.2172280641, green: 0.289908183, blue: 0.1743075374, alpha: 1))
+
     func feedGoat(){
         SoundManager.instance.playGoat()
         if (GlobalVariables.can > 0){
@@ -234,6 +240,7 @@ struct Goat: View {
         }
         
     }
+
     
     //returns the appropriate goat image
     func getGoatState()-> ImageResource{
