@@ -124,7 +124,7 @@ struct Goat: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 500, height: 500)
                     Button(action: {feedGoat()}){
-                        Image("FOOD").position(x: 170, y:170)
+                        Image("FOOD").position(x: 170, y:170).cornerRadius(10).border(Color.purple, width: 5)
                             }
                     if(getGoatState() != .deadGoat){
                         Image(clothesList[GlobalVariables.clothesNum])
