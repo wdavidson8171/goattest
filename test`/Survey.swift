@@ -140,7 +140,7 @@ let defaults = UserDefaults.standard
                         
                     })
                     Section("My selected activities:", content: {
-                        Text(GlobalVariables.SavedItems.joined(separator: "\n"))
+                        Text(selectedItems.joined(separator: "\n"))
                             .foregroundColor(.darkBrown)
                     }
                     )
