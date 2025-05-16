@@ -96,6 +96,7 @@ struct GlobalVariables{
     @AppStorage("goatNameText") static var goatNameText:String = " "
     @AppStorage("volume") static var volume = 0.5
     @AppStorage("speakerType") static var speakerType:String = "speaker.wave.3.fill"
+    
 }
 let defaults = UserDefaults.standard
     struct iOSview:View{
