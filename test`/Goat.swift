@@ -4,13 +4,8 @@
 //
 //  Created by Waverly Davidson on 10/8/24.
 //
-
 import SwiftUI
 import Foundation
-
-
-
-
 struct Goat: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -34,16 +29,17 @@ struct Goat: View {
     @State var secsLeftResult: Int = 0
     @State var currentDate = Date()
     
+    
     //how many seconds it takes for the bar to go down by one thing (you can change this number to make it faster/slower, higher number = slower, closer to 0 = faster)
     @State var x: CGFloat = 10
     
     var width: CGFloat = 200
     var height: CGFloat = 20
     @State var percent: CGFloat = 100
-    var color1 = Color(#colorLiteral(red: 0.7519986012, green: 0.8191245168, blue: 0.67492058, alpha: 1))
-    var color2 = Color(#colorLiteral(red: 0.2172280641, green: 0.289908183, blue: 0.1743075374, alpha: 1))
-    
+    var color1 = Color( colorLiteral(red: 0.7519986012, green: 0.8191245168, blue: 0.67492058, alpha: 1))
+    var color2 = Color( colorLiteral(red: 0.2172280641, green: 0.289908183, blue: 0.1743075374, alpha: 1))
     func feedGoat(){
+        SoundManager.instance.playGoat()
         if (GlobalVariables.can > 0){
             GlobalVariables.can -= 1
             foodFed += 10
@@ -74,6 +70,10 @@ struct Goat: View {
                     Color.white.ignoresSafeArea()
                 }
             }
+            HStack{
+                //update action with speaker func
+                Button (action: {speaker()}){Image( systemName: GlobalVariables.speakerType)}.foregroundStyle(.niceBrown)
+                }.position(x: 110, y: 55)
             HStack{
                 Image("tincan")
                 Text("\(GlobalVariables.can)").font(.system(.body, design: .serif))
@@ -117,20 +117,20 @@ struct Goat: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 500, height: 500)
                     Button(action: {feedGoat()}){
-                        Image("FOOD").position(x: 170, y:170)
+                        Image("FOOD").position(x: 170, y:170).cornerRadius(10).border(Color.purple, width: 5)
                             }
                     if(getGoatState() != .deadGoat){
                         Image(clothesList[GlobalVariables.clothesNum])
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 500, height: 500)
-                            .position(x: 250.5, y: 317)
+                            .position(x: 250.5, y: 300)
                     }
                 }
                 VStack(){
                     Text(GlobalVariables.goatNameText)
                         .font(.system(size: 24, weight: .black, design: .serif)) .foregroundStyle(.niceBrown)
-                    Text("Time: " + String(secsLeftResult))
+                    Text("Time: " + String(secsLeftResult)).position(x:1000, y:1000)
                 }
             }
         }
@@ -190,7 +190,6 @@ struct Goat: View {
         let secs: Int = (secondsPassed.second!) - (foodFed * 60)
         return secs
     }
-
     //returns the date the app was first opened
     func getFirstOpenedDate() -> Date{
         var comps = DateComponents()
@@ -221,6 +220,19 @@ struct Goat: View {
         comps.second = Calendar.current.component(.second, from: Date())
         let date3 = Calendar.current.date(from: comps)!
         return date3
+    }
+    
+    func speaker(){
+        if GlobalVariables.volume == 0.5{
+            GlobalVariables.speakerType = "speaker.slash.fill"
+            GlobalVariables.volume = 0
+        }
+        else if GlobalVariables.volume == 0{
+            GlobalVariables.speakerType = "speaker.wave.3.fill"
+            GlobalVariables.volume = 0.5
+            
+        }
+        
     }
     
     //returns the appropriate goat image
@@ -282,7 +294,9 @@ struct Goat: View {
         }
     }
 }
-
 #Preview {
     Goat()
 }
+
+
+

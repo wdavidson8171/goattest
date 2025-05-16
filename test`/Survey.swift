@@ -4,15 +4,10 @@
 //
 //  Created by Waverly Davidson on 10/8/24.
 //
-
 import SwiftUI
-
-
-
     struct Survey: View {
         
         //let names = [1, 2, 3]
-
         
         @State var selectedItems = [String]()
         
@@ -81,7 +76,6 @@ import SwiftUI
             }
         }
     }
-
 struct GlobalVariables{
     @AppStorage("SavedItems") static var SavedItems:[String] = ["Your selected items ","will appear here"]
     @AppStorage("submitted") static var submitted:Bool = false
@@ -94,6 +88,8 @@ struct GlobalVariables{
     @AppStorage("clothesNum") static var clothesNum: Int = 0
     @AppStorage("fixer") static var fixer:Bool = false
     @AppStorage("goatNameText") static var goatNameText:String = " "
+    @AppStorage("volume") static var volume = 0.5
+    @AppStorage("speakerType") static var speakerType:String = "speaker.wave.3.fill"
 }
 let defaults = UserDefaults.standard
     struct iOSview:View{
@@ -105,6 +101,10 @@ let defaults = UserDefaults.standard
         func saveSurvey(){
             GlobalVariables.submitted = true
             GlobalVariables.fixer = true
+            //I think userDefaults could be replaced with APPStorage here to save the data?
+            //or something with the globalvariables.saveditems
+            //orOR it needs to be done throuh the selectedItems variable
+            //orOROR it needs to be done in bingo tab? (ie. saving random array to appstorage)
             let userDefaults = UserDefaults.standard
             userDefaults.set(selectedItems, forKey: "selectedItems")
             GlobalVariables.SavedItems = (userDefaults.array(forKey: "selectedItems") as? [String] ?? [])
@@ -112,22 +112,15 @@ let defaults = UserDefaults.standard
             //SAVE RHE SAVED ITEMS SOMEHOW
         }
         
-        @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+        
         var body: some View{
             
             NavigationView{
-                //nonononono doesnt work
                 Form{
                     Section("What activities are you interested in? \nPlease select at least 5 for a more satisfying experience", content: {
                         NavigationLink(destination: {
                             MultiSelectPickerView(allItems: allItems, selectedItems: $selectedItems)
                                 .navigationTitle("Choose your activities")
-                                .navigationBarBackButtonHidden(true)
-                                            .navigationBarItems(leading: Button(action : {
-                                                self.mode.wrappedValue.dismiss()
-                                            }){
-                                                Image(systemName: "arrow.left")
-                                            })
                         }, label: {
                             HStack{
                                 Text("Select Activities:")
@@ -137,24 +130,26 @@ let defaults = UserDefaults.standard
                                 Image(systemName: "\($selectedItems.count).circle")
                                     .foregroundColor(.accentColor)
                                     .font(.title2)
-                                
                             }
-                            
                             
                         })
                         
                     })
                     Section("My selected activities:", content: {
-                        Text(GlobalVariables.SavedItems.joined(separator: "\n"))
+                        Text(selectedItems.joined(separator: "\n"))
                             .foregroundColor(.darkBrown)
                     }
                     )
                     Button(action: {saveSurvey()}){
-                        Text("Submit")                 }
-                }
+                        HStack{
+                            Image(systemName: "star.fill").foregroundStyle(.nicePink)
+                            Text("Submit").font(.system(size: 18, weight: .black, design: .serif)) .foregroundStyle(.niceBrown).frame(maxWidth: .infinity, alignment: .center)
+                            Image(systemName: "star.fill").foregroundStyle(.nicePink)
+                        }
+                    }
+                    }
             }
             .navigationTitle("my items")
             
         }
-
     }
