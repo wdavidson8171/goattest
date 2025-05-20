@@ -4,6 +4,7 @@
 //
 //  Created by Waverly Davidson on 10/8/24.
 //
+
 import SwiftUI
 import Foundation
 
@@ -196,6 +197,7 @@ struct Goat: View {
         let secs: Int = (secondsPassed.second!) - (foodFed * 60)
         return secs
     }
+
     //returns the date the app was first opened
     func getFirstOpenedDate() -> Date{
         var comps = DateComponents()
@@ -301,9 +303,7 @@ struct Goat: View {
         }
     }
 }
+
 #Preview {
     Goat()
 }
-
-
-

@@ -4,10 +4,15 @@
 //
 //  Created by Waverly Davidson on 10/8/24.
 //
+
 import SwiftUI
+
+
+
     struct Survey: View {
         
         //let names = [1, 2, 3]
+
         
         @State var selectedItems = [String]()
         
@@ -44,7 +49,7 @@ import SwiftUI
         
         //maybe binding storage of selected items with clicked items from allitems list???
         @Binding var selectedItems: [String]
-       
+        
         
         
         var body: some View{
@@ -78,6 +83,7 @@ import SwiftUI
         }
 
     }
+
 struct GlobalVariables{
     @AppStorage("SavedItems") static var SavedItems:[String] = ["Your selected items ","will appear here"]
     @AppStorage("saveSelected") static var saveSelected:[String] = []
@@ -105,7 +111,6 @@ let defaults = UserDefaults.standard
         
         func saveSurvey(){
             GlobalVariables.submitted = true
-            closePopOver()
             GlobalVariables.fixer = true
             dismiss()
             if GlobalVariables.submitted == true{
@@ -161,23 +166,17 @@ let defaults = UserDefaults.standard
                             .foregroundColor(.darkBrown)
                     }
                     )
-                    
-                    NavigationLink(destination: Homepage()){
-                        Button(action: {saveSurvey()}){
-                            HStack{
-                                Image(systemName: "star.fill").foregroundStyle(.nicePink)
-                                Text("Submit").font(.system(size: 18, weight: .black, design: .serif)) .foregroundStyle(.niceBrown).frame(maxWidth: .infinity, alignment: .center)
-                                Image(systemName: "star.fill").foregroundStyle(.nicePink)
-                            }
+                    Button(action: {saveSurvey()}){
+                        HStack{
+                            Image(systemName: "star.fill").foregroundStyle(.nicePink)
+                            Text("Submit").font(.system(size: 18, weight: .black, design: .serif)) .foregroundStyle(.niceBrown).frame(maxWidth: .infinity, alignment: .center)
+                            Image(systemName: "star.fill").foregroundStyle(.nicePink)
                         }
                     }
-                    
-                }
+                    }
             }
             .navigationTitle("my items")
             
         }
+
     }
-
-
-

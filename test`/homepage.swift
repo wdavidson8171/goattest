@@ -5,12 +5,16 @@
 //  Created by Waverly Davidson on 10/8/24.
 //
 //
+
 import SwiftUI
 import PhotosUI
+
 var selectedImage = ImageResource .nada
 var clickedImage = ImageResource .nada
 var costOfItem: Int = 0
 var currentPos: Int = 0
+
+
 extension Array: RawRepresentable where Element: Codable {
     public init?(rawValue: String) {
         guard let data = rawValue.data(using: .utf8),
@@ -20,6 +24,7 @@ extension Array: RawRepresentable where Element: Codable {
         }
         self = result
     }
+
     
     public var rawValue: String {
         guard let data = try? JSONEncoder().encode(self),
@@ -30,6 +35,8 @@ extension Array: RawRepresentable where Element: Codable {
         return result
     }
 }
+
+
 struct Homepage: View {
     func colorPickerPurple(){
             GlobalVariables.color.insert("lavender", at: 0)
@@ -55,11 +62,11 @@ struct Homepage: View {
             internalState = 5
             GlobalVariables.color.insert("white", at: 0)
         }
+
     
     
     @State var showPopup = false
     func buttonPresed(){
-        GlobalVariables.showPopup = true
         showPopup = true
         buttonPressed = true
     }
@@ -581,7 +588,6 @@ struct Homepage: View {
         UserDefaults.standard.set(_name, forKey: "profileImage")
     }
 }
-
 
             
         #Preview {
