@@ -31,6 +31,7 @@ import SwiftUI
         var body: some View{
             iOSview(selectedItems: selectedItems, allItems: allItems)
         }
+        
     }
     
     #Preview {
@@ -75,9 +76,11 @@ import SwiftUI
                 }
             }
         }
+
     }
 struct GlobalVariables{
     @AppStorage("SavedItems") static var SavedItems:[String] = ["Your selected items ","will appear here"]
+    @AppStorage("saveSelected") static var saveSelected:[String] = []
     @AppStorage("submitted") static var submitted:Bool = false
     static var blackoutCoins: Int = 0
     @AppStorage("coin") static var coin:Int = 0
@@ -90,7 +93,7 @@ struct GlobalVariables{
     @AppStorage("goatNameText") static var goatNameText:String = " "
     @AppStorage("volume") static var volume = 0.5
     @AppStorage("speakerType") static var speakerType:String = "speaker.wave.3.fill"
-    static var showPopup = false
+    
 }
 let defaults = UserDefaults.standard
     struct iOSview:View{
@@ -98,14 +101,16 @@ let defaults = UserDefaults.standard
         //defaults.set(selectedItems, forKey: "savedSelectedItems")
         @State var allItems:[String]
         
-        func closePopOver(){
-            //code
-        }
+        @Environment(\.dismiss) var dismiss
         
         func saveSurvey(){
             GlobalVariables.submitted = true
             closePopOver()
             GlobalVariables.fixer = true
+            dismiss()
+            if GlobalVariables.submitted == true{
+                
+            }
             //I think userDefaults could be replaced with APPStorage here to save the data?
             //or something with the globalvariables.saveditems
             //orOR it needs to be done throuh the selectedItems variable
@@ -115,6 +120,17 @@ let defaults = UserDefaults.standard
             GlobalVariables.SavedItems = (userDefaults.array(forKey: "selectedItems") as? [String] ?? [])
             print(GlobalVariables.SavedItems)
             //SAVE RHE SAVED ITEMS SOMEHOW
+            GlobalVariables.saveSelected = GlobalVariables.SavedItems
+        }
+        
+        func returnSelectedItems() -> [String] {
+            if GlobalVariables.submitted == true{
+                GlobalVariables.saveSelected = GlobalVariables.SavedItems
+            }
+            else{
+                GlobalVariables.saveSelected = selectedItems
+            }
+            return GlobalVariables.saveSelected
         }
         
         
@@ -141,7 +157,7 @@ let defaults = UserDefaults.standard
                         
                     })
                     Section("My selected activities:", content: {
-                        Text(selectedItems.joined(separator: "\n"))
+                        Text(returnSelectedItems().joined(separator: "\n"))
                             .foregroundColor(.darkBrown)
                     }
                     )
