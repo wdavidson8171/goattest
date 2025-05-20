@@ -11,7 +11,8 @@ import SwiftUI
 
 
 struct popup: View {
-  
+    @State var countUpTimer = 0
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var showPopup = false
     func buttonPresed(){
         showPopup = true
@@ -19,6 +20,12 @@ struct popup: View {
             
     }
 
+    func hidePopup(){
+        if GlobalVariables.submitted == true{
+            showPopup = false
+            print("test")
+        }
+    }
     
     var body: some View {
         Button(action: {buttonPresed()}){
@@ -29,9 +36,14 @@ struct popup: View {
                     Label("Survey", systemImage: "list.bullet.clipboard")
                 }
             }
-        }    }
-}
+           
+                
+        }
 
+    }
+}
+    
 #Preview {
     popup()
+    
 }

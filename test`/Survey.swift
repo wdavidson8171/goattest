@@ -104,10 +104,12 @@ let defaults = UserDefaults.standard
         //defaults.set(selectedItems, forKey: "savedSelectedItems")
         @State var allItems:[String]
         
+        @Environment(\.dismiss) var dismiss
         
         func saveSurvey(){
             GlobalVariables.submitted = true
             GlobalVariables.fixer = true
+            dismiss()
             //I think userDefaults could be replaced with APPStorage here to save the data?
             //or something with the globalvariables.saveditems
             //orOR it needs to be done throuh the selectedItems variable
