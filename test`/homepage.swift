@@ -40,27 +40,22 @@ extension Array: RawRepresentable where Element: Codable {
 struct Homepage: View {
     func colorPickerPurple(){
             GlobalVariables.color.insert("lavender", at: 0)
-            print(GlobalVariables.color)
             internalState = 0
         }
         func colorPickerPink(){
             GlobalVariables.color.insert("nicePink", at: 0)
-            print(GlobalVariables.color)
             internalState = 2
         }
         func colorPickerTeal(){
             GlobalVariables.color.insert("coolTeal", at: 0)
-            print(GlobalVariables.color)
             internalState = 1
         }
         func colorPickerBlue(){
             GlobalVariables.color.insert("pastelBlue", at: 0)
-            print(GlobalVariables.color)
             internalState = 4
         }
         func colorPickerOrange(){
             GlobalVariables.color.insert("orangish", at: 0)
-            print(GlobalVariables.color)
             internalState = 3
         }
         func resetColor(){
@@ -401,7 +396,7 @@ struct Homepage: View {
                                     }
                                     else{
                                         clickedImage = .uggs
-                                        costOfItem = 50
+                                        costOfItem = 25
                                         currentPos = 0
                                         showingPopup = true
                                     }
@@ -420,7 +415,7 @@ struct Homepage: View {
                                     }
                                     else{
                                         clickedImage = .bling
-                                        costOfItem = 25
+                                        costOfItem = 75
                                         currentPos = 1
                                         showingPopup = true
                                     }
@@ -439,7 +434,7 @@ struct Homepage: View {
                                     }
                                     else{
                                         clickedImage = .cowboy
-                                        costOfItem = 50
+                                        costOfItem = 150
                                         currentPos = 2
                                         showingPopup = true
                                     }
@@ -458,7 +453,7 @@ struct Homepage: View {
                                     }
                                     else{
                                         clickedImage = .ski
-                                        costOfItem = 320
+                                        costOfItem = 200
                                         currentPos = 3
                                         showingPopup = true
                                     }
@@ -477,7 +472,7 @@ struct Homepage: View {
                                     }
                                     else{
                                         clickedImage = .superhero
-                                        costOfItem = 40
+                                        costOfItem = 30
                                         currentPos = 4
                                         showingPopup = true
                                     }
@@ -496,7 +491,7 @@ struct Homepage: View {
                                     }
                                     else{
                                         clickedImage = .pirate
-                                        costOfItem = 30
+                                        costOfItem = 50
                                         currentPos = 5
                                         showingPopup = true
                                     }
@@ -515,7 +510,7 @@ struct Homepage: View {
                                     }
                                     else{
                                         clickedImage = .olivia
-                                        costOfItem = 400
+                                        costOfItem = 600
                                         currentPos = 6
                                         showingPopup = true
                                     }
