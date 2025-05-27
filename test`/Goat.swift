@@ -49,6 +49,7 @@ struct Goat: View {
         SoundManager.instance.playGoat()
         if (GlobalVariables.can > 0){
             GlobalVariables.can -= 1
+            //the # here is the # of minutes that feeding the goat once subtracts from your time
             foodFed += 10
         }
     }
